@@ -63,7 +63,11 @@
 		84D9C3BC1F5A5F9F00AC0B75 /* SKTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3B71F5A5F9F00AC0B75 /* SKTag.m */; };
 		84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3B91F5A5F9F00AC0B75 /* SKTagButton.m */; };
 		84D9C3BE1F5A5F9F00AC0B75 /* SKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3BB1F5A5F9F00AC0B75 /* SKTagView.m */; };
-		84D9C3C11F5A6C3800AC0B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3BF1F5A6C3800AC0B75 /* Assets.xcassets */; };
+		84D9C3C31F5A97ED00AC0B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3C21F5A97ED00AC0B75 /* Assets.xcassets */; };
+		84D9C3CD1F5AA0CF00AC0B75 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3CB1F5AA0CF00AC0B75 /* Login.storyboard */; };
+		84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3CF1F5AA1A600AC0B75 /* Activity.storyboard */; };
+		84D9C3D61F5AA43D00AC0B75 /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3D41F5AA43D00AC0B75 /* MyOrder.storyboard */; };
+		84D9C3DA1F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */; };
 		A6EF6E13BDCD8108F5E49436 /* libPods-Convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */; };
 /* End PBXBuildFile section */
 
@@ -190,7 +194,12 @@
 		84D9C3B91F5A5F9F00AC0B75 /* SKTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagButton.m; sourceTree = "<group>"; };
 		84D9C3BA1F5A5F9F00AC0B75 /* SKTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTagView.h; sourceTree = "<group>"; };
 		84D9C3BB1F5A5F9F00AC0B75 /* SKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTagView.m; sourceTree = "<group>"; };
-		84D9C3C01F5A6C3800AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Convergence/Base.lproj/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		84D9C3C21F5A97ED00AC0B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Convergence/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		84D9C3CC1F5AA0CF00AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Login.storyboard; sourceTree = SOURCE_ROOT; };
+		84D9C3D01F5AA1A600AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Activity.storyboard; sourceTree = SOURCE_ROOT; };
+		84D9C3D51F5AA43D00AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/MyOrder.storyboard; sourceTree = SOURCE_ROOT; };
+		84D9C3D81F5AA4EC00AC0B75 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
+		84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -324,13 +333,15 @@
 		84D9C3231F5A3D0A00AC0B75 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84D9C2FD1F5A39FB00AC0B75 /* LaunchScreen.storyboard */,
-				84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */,
-				84D9C3841F5A55D900AC0B75 /* Home.storyboard */,
-				84D9C3871F5A561500AC0B75 /* Find.storyboard */,
-				84D9C38A1F5A564600AC0B75 /* MyInfo.storyboard */,
-				84D9C38D1F5A573700AC0B75 /* Setting.storyboard */,
-				84D9C3BF1F5A6C3800AC0B75 /* Assets.xcassets */,
+				84D9C3D31F5AA3FB00AC0B75 /* MyOrder */,
+				84D9C3C51F5A9DDA00AC0B75 /* main */,
+				84D9C3C61F5A9DF000AC0B75 /* Home */,
+				84D9C3C71F5A9E0400AC0B75 /* Find */,
+				84D9C3CE1F5AA13200AC0B75 /* Activity */,
+				84D9C3C91F5AA07000AC0B75 /* LoginReg */,
+				84D9C3C81F5A9E1600AC0B75 /* MyInfo */,
+				84D9C3D21F5AA3AB00AC0B75 /* Setting */,
+				84D9C3C21F5A97ED00AC0B75 /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,6 +351,7 @@
 			children = (
 				84D9C3901F5A5D2800AC0B75 /* Home */,
 				84D9C3911F5A5D3900AC0B75 /* Find */,
+				84D9C3DB1F5AA51200AC0B75 /* Activity */,
 				84D9C3921F5A5D4300AC0B75 /* MyInfo */,
 			);
 			path = Controller;
@@ -351,6 +363,7 @@
 				84D9C3261F5A3D1C00AC0B75 /* HMSegmentedControl */,
 				84D9C39F1F5A5F6800AC0B75 /* MDQREncode */,
 				84D9C3B51F5A5F9F00AC0B75 /* SKTagView */,
+				84D9C3D71F5AA4EC00AC0B75 /* ZLImageViewDisplay */,
 				84D9C3291F5A3D1C00AC0B75 /* SCZ-BasicEncodingRules */,
 			);
 			path = 3rd;
@@ -509,6 +522,88 @@
 			path = SKTagView;
 			sourceTree = "<group>";
 		};
+		84D9C3C51F5A9DDA00AC0B75 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C2FD1F5A39FB00AC0B75 /* LaunchScreen.storyboard */,
+				84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		84D9C3C61F5A9DF000AC0B75 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3841F5A55D900AC0B75 /* Home.storyboard */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		84D9C3C71F5A9E0400AC0B75 /* Find */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3871F5A561500AC0B75 /* Find.storyboard */,
+			);
+			name = Find;
+			sourceTree = "<group>";
+		};
+		84D9C3C81F5A9E1600AC0B75 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C38A1F5A564600AC0B75 /* MyInfo.storyboard */,
+			);
+			name = MyInfo;
+			sourceTree = "<group>";
+		};
+		84D9C3C91F5AA07000AC0B75 /* LoginReg */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3CB1F5AA0CF00AC0B75 /* Login.storyboard */,
+			);
+			name = LoginReg;
+			sourceTree = "<group>";
+		};
+		84D9C3CE1F5AA13200AC0B75 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3CF1F5AA1A600AC0B75 /* Activity.storyboard */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		84D9C3D21F5AA3AB00AC0B75 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C38D1F5A573700AC0B75 /* Setting.storyboard */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		84D9C3D31F5AA3FB00AC0B75 /* MyOrder */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3D41F5AA43D00AC0B75 /* MyOrder.storyboard */,
+			);
+			name = MyOrder;
+			sourceTree = "<group>";
+		};
+		84D9C3D71F5AA4EC00AC0B75 /* ZLImageViewDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3D81F5AA4EC00AC0B75 /* ZLImageViewDisplayView.h */,
+				84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */,
+			);
+			name = ZLImageViewDisplay;
+			path = Convergence/3rd/ZLImageViewDisplay;
+			sourceTree = SOURCE_ROOT;
+		};
+		84D9C3DB1F5AA51200AC0B75 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
 		A40A344F080C751FF503D05B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,8 +728,11 @@
 				84D9C2F71F5A39FB00AC0B75 /* Main.storyboard in Resources */,
 				84D9C38C1F5A564600AC0B75 /* MyInfo.storyboard in Resources */,
 				84D9C3891F5A561500AC0B75 /* Find.storyboard in Resources */,
-				84D9C3C11F5A6C3800AC0B75 /* Assets.xcassets in Resources */,
+				84D9C3C31F5A97ED00AC0B75 /* Assets.xcassets in Resources */,
+				84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */,
+				84D9C3D61F5AA43D00AC0B75 /* MyOrder.storyboard in Resources */,
 				84D9C38F1F5A573700AC0B75 /* Setting.storyboard in Resources */,
+				84D9C3CD1F5AA0CF00AC0B75 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +816,7 @@
 				84D9C2F11F5A39FB00AC0B75 /* AppDelegate.m in Sources */,
 				84D9C3B41F5A5F6800AC0B75 /* split.m in Sources */,
 				84D9C3631F5A3D3700AC0B75 /* AppAPIClient.m in Sources */,
+				84D9C3DA1F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m in Sources */,
 				84D9C35E1F5A3D3700AC0B75 /* MD5DataSigner.m in Sources */,
 				84D9C39B1F5A5DD500AC0B75 /* MyInfoViewController.m in Sources */,
 				84D9C39E1F5A5DF200AC0B75 /* SettingViewController.m in Sources */,
@@ -834,12 +933,28 @@
 			name = Setting.storyboard;
 			sourceTree = "<group>";
 		};
-		84D9C3BF1F5A6C3800AC0B75 /* Assets.xcassets */ = {
+		84D9C3CB1F5AA0CF00AC0B75 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84D9C3C01F5A6C3800AC0B75 /* Base */,
+				84D9C3CC1F5AA0CF00AC0B75 /* Base */,
 			);
-			name = Assets.xcassets;
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		84D9C3CF1F5AA1A600AC0B75 /* Activity.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84D9C3D01F5AA1A600AC0B75 /* Base */,
+			);
+			name = Activity.storyboard;
+			sourceTree = "<group>";
+		};
+		84D9C3D41F5AA43D00AC0B75 /* MyOrder.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84D9C3D51F5AA43D00AC0B75 /* Base */,
+			);
+			name = MyOrder.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -942,6 +1057,7 @@
 			baseConfigurationReference = 6E0C5292616EB82BF6AB7E35 /* Pods-Convergence.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Convergence",
@@ -966,6 +1082,7 @@
 			baseConfigurationReference = 81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Convergence",

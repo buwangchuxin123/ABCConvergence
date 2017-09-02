@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j9F-bk-Tsk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rbd-F3-dp2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,44 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="ZFe-ob-ycV">
-            <objects>
-                <tabBarController id="j9F-bk-Tsk" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="DFa-We-oHJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="spa-GY-t0w" kind="relationship" relationship="viewControllers" id="g9F-gA-1vY"/>
-                        <segue destination="ORQ-I2-6MV" kind="relationship" relationship="viewControllers" id="yJ0-3a-KvQ"/>
-                        <segue destination="dyJ-zB-jsY" kind="relationship" relationship="viewControllers" id="ic5-dJ-dwV"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WaD-w8-Qgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1135" y="-242"/>
-        </scene>
-        <!--首页-->
-        <scene sceneID="D0s-AQ-lPE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="spa-GY-t0w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="home" selectedImage="homeSelected" id="ZwN-ed-xLT"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fv1-g1-Aev">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pCp-so-3QH" kind="relationship" relationship="rootViewController" id="wn6-eb-7ri"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vDa-4a-C6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="434" y="-742"/>
-        </scene>
         <!--Home-->
         <scene sceneID="x9x-Yw-Mey">
             <objects>
@@ -54,26 +16,26 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6l-se-7Aw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="-869"/>
+            <point key="canvasLocation" x="2394" y="-1759"/>
         </scene>
-        <!--发现-->
-        <scene sceneID="GRv-1U-t1i">
+        <!--Tab Bar Controller-->
+        <scene sceneID="49a-Ot-4TZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ORQ-I2-6MV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现" image="find" selectedImage="findselected" id="Cyo-lh-DSi"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ugb-Cs-wCl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <tabBarController id="rbd-F3-dp2" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Ef5-XW-ids">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="ZRv-jE-gdl" kind="relationship" relationship="rootViewController" id="qzP-Bi-yLg"/>
+                        <segue destination="E1h-CA-1EQ" kind="relationship" relationship="viewControllers" id="wmP-tB-QJM"/>
+                        <segue destination="HWM-zP-X7v" kind="relationship" relationship="viewControllers" id="Uaf-zp-Epd"/>
+                        <segue destination="bbm-Vj-AmM" kind="relationship" relationship="viewControllers" id="GwR-8N-XDX"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aoK-PX-13a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mrr-GE-7ce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="-22"/>
+            <point key="canvasLocation" x="-1191" y="-1124"/>
         </scene>
         <!--Find-->
         <scene sceneID="cF4-In-BXM">
@@ -83,44 +45,79 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjU-Fb-iMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-61"/>
+            <point key="canvasLocation" x="2310" y="-966"/>
         </scene>
-        <!--我的-->
-        <scene sceneID="4qJ-2r-d4S">
+        <!--Activity-->
+        <scene sceneID="wsa-ye-dRj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dyJ-zB-jsY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="mine" selectedImage="mineselected" id="n6A-84-wzH"/>
+                <viewControllerPlaceholder storyboardName="Activity" id="6B5-RN-0JT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sCZ-tM-4oP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sr3-8f-0bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2418" y="-476"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="gjz-T4-IXc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E1h-CA-1EQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" image="home" id="LZ8-JH-fgb"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="F8d-sW-O9f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ALE-Cd-E9J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6B5-RN-0JT" kind="relationship" relationship="rootViewController" id="8fW-Od-Twp"/>
+                        <segue destination="pCp-so-3QH" kind="relationship" relationship="rootViewController" id="p4Q-il-n6k"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b11-ZX-4kr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rjk-lp-m41" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="806"/>
+            <point key="canvasLocation" x="1703" y="-1988"/>
         </scene>
-        <!--MyInfo-->
-        <scene sceneID="wsa-ye-dRj">
+        <!--发现-->
+        <scene sceneID="EJ0-kI-vif">
             <objects>
-                <viewControllerPlaceholder storyboardName="MyInfo" id="6B5-RN-0JT" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="sCZ-tM-4oP"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sr3-8f-0bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HWM-zP-X7v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="发现" image="发现1" id="KGh-nN-qNq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kJr-2t-b4M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZRv-jE-gdl" kind="relationship" relationship="rootViewController" id="n1K-hS-3D9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yC4-jF-8JD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="618"/>
+            <point key="canvasLocation" x="1702" y="-1155"/>
+        </scene>
+        <!--活动-->
+        <scene sceneID="5p8-Tu-dwD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bbm-Vj-AmM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="活动" image="活动1" id="Y25-GJ-Yey"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dGs-45-Khd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6B5-RN-0JT" kind="relationship" relationship="rootViewController" id="fQx-Qa-C6y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEw-ac-oIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729" y="-386"/>
         </scene>
     </scenes>
     <resources>
-        <image name="find" width="44" height="44"/>
-        <image name="findselected" width="44" height="44"/>
-        <image name="home" width="44" height="44"/>
-        <image name="homeSelected" width="44" height="44"/>
-        <image name="mine" width="44" height="44"/>
-        <image name="mineselected" width="44" height="44"/>
+        <image name="home" width="22" height="22"/>
+        <image name="发现1" width="22" height="22"/>
+        <image name="活动1" width="21" height="25"/>
     </resources>
 </document>
