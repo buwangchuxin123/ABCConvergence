@@ -40,7 +40,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjU-Fb-iMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3248" y="-966.11694152923542"/>
+            <point key="canvasLocation" x="2637" y="-1149"/>
         </scene>
         <!--Activity-->
         <scene sceneID="wsa-ye-dRj">
@@ -120,6 +120,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZRv-jE-gdl" kind="relationship" relationship="rootViewController" id="br1-Ar-Zcr"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZe-7g-wcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

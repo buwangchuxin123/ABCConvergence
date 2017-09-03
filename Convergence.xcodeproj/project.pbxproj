@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84791BDB1F5BE94B008A83EB /* FindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */; };
 		84D9C2EE1F5A39FB00AC0B75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2ED1F5A39FB00AC0B75 /* main.m */; };
 		84D9C2F11F5A39FB00AC0B75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2F01F5A39FB00AC0B75 /* AppDelegate.m */; };
 		84D9C2F71F5A39FB00AC0B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */; };
@@ -91,6 +92,8 @@
 /* Begin PBXFileReference section */
 		6E0C5292616EB82BF6AB7E35 /* Pods-Convergence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Convergence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Convergence/Pods-Convergence.debug.xcconfig"; sourceTree = "<group>"; };
 		81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Convergence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Convergence/Pods-Convergence.release.xcconfig"; sourceTree = "<group>"; };
+		84791BD91F5BE94B008A83EB /* FindCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindCollectionViewCell.h; path = ../Model/FindCollectionViewCell.h; sourceTree = "<group>"; };
+		84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindCollectionViewCell.m; path = ../Model/FindCollectionViewCell.m; sourceTree = "<group>"; };
 		84D9C2E91F5A39FB00AC0B75 /* Convergence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Convergence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D9C2ED1F5A39FB00AC0B75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84D9C2EF1F5A39FB00AC0B75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 			isa = PBXGroup;
 			children = (
 				84D9C3871F5A561500AC0B75 /* Find.storyboard */,
+				84791BD91F5BE94B008A83EB /* FindCollectionViewCell.h */,
+				84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */,
 			);
 			name = Find;
 			sourceTree = "<group>";
@@ -818,6 +823,7 @@
 				84D9C3631F5A3D3700AC0B75 /* AppAPIClient.m in Sources */,
 				84D9C3DA1F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m in Sources */,
 				84D9C35E1F5A3D3700AC0B75 /* MD5DataSigner.m in Sources */,
+				84791BDB1F5BE94B008A83EB /* FindCollectionViewCell.m in Sources */,
 				84D9C39B1F5A5DD500AC0B75 /* MyInfoViewController.m in Sources */,
 				84D9C39E1F5A5DF200AC0B75 /* SettingViewController.m in Sources */,
 				84D9C2EE1F5A39FB00AC0B75 /* main.m in Sources */,
