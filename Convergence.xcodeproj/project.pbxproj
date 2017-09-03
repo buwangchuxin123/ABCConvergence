@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84791BDB1F5BE94B008A83EB /* FindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */; };
+		84791BDF1F5C081A008A83EB /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDE1F5C081A008A83EB /* FindModel.m */; };
 		84D9C2EE1F5A39FB00AC0B75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2ED1F5A39FB00AC0B75 /* main.m */; };
 		84D9C2F11F5A39FB00AC0B75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2F01F5A39FB00AC0B75 /* AppDelegate.m */; };
 		84D9C2F71F5A39FB00AC0B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */; };
@@ -94,6 +95,8 @@
 		81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Convergence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Convergence/Pods-Convergence.release.xcconfig"; sourceTree = "<group>"; };
 		84791BD91F5BE94B008A83EB /* FindCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindCollectionViewCell.h; path = ../Model/FindCollectionViewCell.h; sourceTree = "<group>"; };
 		84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindCollectionViewCell.m; path = ../Model/FindCollectionViewCell.m; sourceTree = "<group>"; };
+		84791BDD1F5C081A008A83EB /* FindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindModel.h; sourceTree = "<group>"; };
+		84791BDE1F5C081A008A83EB /* FindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindModel.m; sourceTree = "<group>"; };
 		84D9C2E91F5A39FB00AC0B75 /* Convergence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Convergence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D9C2ED1F5A39FB00AC0B75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84D9C2EF1F5A39FB00AC0B75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -256,6 +259,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84791BDC1F5C07EB008A83EB /* Find */ = {
+			isa = PBXGroup;
+			children = (
+				84791BDD1F5C081A008A83EB /* FindModel.h */,
+				84791BDE1F5C081A008A83EB /* FindModel.m */,
+			);
+			name = Find;
+			sourceTree = "<group>";
+		};
 		84D9C2E01F5A39FB00AC0B75 = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +338,7 @@
 		84D9C3221F5A3CFF00AC0B75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84791BDC1F5C07EB008A83EB /* Find */,
 				84D9C2F81F5A39FB00AC0B75 /* Convergence.xcdatamodeld */,
 				84D9C3811F5A44A800AC0B75 /* Order.h */,
 				84D9C3821F5A44A800AC0B75 /* Order.m */,
@@ -841,6 +854,7 @@
 				84D9C3681F5A3D3700AC0B75 /* NSDateFormatter+Category.m in Sources */,
 				84D9C36C1F5A3D3700AC0B75 /* Utilities.m in Sources */,
 				84D9C3651F5A3D3700AC0B75 /* JSONS.m in Sources */,
+				84791BDF1F5C081A008A83EB /* FindModel.m in Sources */,
 				84D9C32D1F5A3D1C00AC0B75 /* BasicEncodingRules.m in Sources */,
 				84D9C35C1F5A3D3700AC0B75 /* DataSigner.m in Sources */,
 				84D9C3B01F5A5F6800AC0B75 /* qrencode.m in Sources */,
