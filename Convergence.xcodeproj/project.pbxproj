@@ -72,6 +72,9 @@
 		84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3CF1F5AA1A600AC0B75 /* Activity.storyboard */; };
 		84D9C3DA1F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */; };
 		A6EF6E13BDCD8108F5E49436 /* libPods-Convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */; };
+		B248F35C1F5D2E5600C3C0C5 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B248F35B1F5D2E5600C3C0C5 /* ActivityModel.m */; };
+		B248F35F1F5D2FA000C3C0C5 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B248F35E1F5D2FA000C3C0C5 /* ActivityCell.m */; };
+		B248F3621F5D300100C3C0C5 /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B248F3611F5D300100C3C0C5 /* ActivityTableViewController.m */; };
 		B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */; };
 		B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */; };
 		B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */; };
@@ -214,6 +217,12 @@
 		84D9C3D81F5AA4EC00AC0B75 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
 		84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B248F35A1F5D2E5600C3C0C5 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
+		B248F35B1F5D2E5600C3C0C5 /* ActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModel.m; sourceTree = "<group>"; };
+		B248F35D1F5D2FA000C3C0C5 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
+		B248F35E1F5D2FA000C3C0C5 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		B248F3601F5D300100C3C0C5 /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
+		B248F3611F5D300100C3C0C5 /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
 		B29B9BEE1F5D0B16000230EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/MyOrder.storyboard; sourceTree = SOURCE_ROOT; };
 		B29B9BF41F5D10B9000230EC /* MyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewController.h; sourceTree = "<group>"; };
 		B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
@@ -361,6 +370,7 @@
 		84D9C3221F5A3CFF00AC0B75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B248F3591F5D2E1400C3C0C5 /* Activity */,
 				84791BDC1F5C07EB008A83EB /* Find */,
 				84D9C2F81F5A39FB00AC0B75 /* Convergence.xcdatamodeld */,
 				84D9C3811F5A44A800AC0B75 /* Order.h */,
@@ -610,6 +620,8 @@
 			isa = PBXGroup;
 			children = (
 				84D9C3CF1F5AA1A600AC0B75 /* Activity.storyboard */,
+				B248F35D1F5D2FA000C3C0C5 /* ActivityCell.h */,
+				B248F35E1F5D2FA000C3C0C5 /* ActivityCell.m */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -645,6 +657,8 @@
 		84D9C3DB1F5AA51200AC0B75 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				B248F3601F5D300100C3C0C5 /* ActivityTableViewController.h */,
+				B248F3611F5D300100C3C0C5 /* ActivityTableViewController.m */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -656,6 +670,15 @@
 				81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B248F3591F5D2E1400C3C0C5 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				B248F35A1F5D2E5600C3C0C5 /* ActivityModel.h */,
+				B248F35B1F5D2E5600C3C0C5 /* ActivityModel.m */,
+			);
+			name = Activity;
 			sourceTree = "<group>";
 		};
 		B29B9BF71F5D1F49000230EC /* MyOrder */ = {
@@ -894,6 +917,7 @@
 				84D9C36C1F5A3D3700AC0B75 /* Utilities.m in Sources */,
 				84D9C3651F5A3D3700AC0B75 /* JSONS.m in Sources */,
 				84791BDF1F5C081A008A83EB /* FindModel.m in Sources */,
+				B248F3621F5D300100C3C0C5 /* ActivityTableViewController.m in Sources */,
 				84D9C32D1F5A3D1C00AC0B75 /* BasicEncodingRules.m in Sources */,
 				84D9C35C1F5A3D3700AC0B75 /* DataSigner.m in Sources */,
 				84D9C3B01F5A5F6800AC0B75 /* qrencode.m in Sources */,
@@ -901,12 +925,14 @@
 				84D9C3B21F5A5F6800AC0B75 /* qrspec.m in Sources */,
 				84D9C3621F5A3D3700AC0B75 /* RSADataVerifier.m in Sources */,
 				84D9C3641F5A3D3700AC0B75 /* ErrorHandler.m in Sources */,
+				B248F35F1F5D2FA000C3C0C5 /* ActivityCell.m in Sources */,
 				84D9C2FA1F5A39FB00AC0B75 /* Convergence.xcdatamodeld in Sources */,
 				843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */,
 				84D9C3601F5A3D3700AC0B75 /* openssl_wrapper.m in Sources */,
 				842FA0B11F5CE84A00C1AA1D /* FindCollectionViewCell.m in Sources */,
 				84D9C3671F5A3D3700AC0B75 /* NSDate+Utility.m in Sources */,
 				84D9C3611F5A3D3700AC0B75 /* RSADataSigner.m in Sources */,
+				B248F35C1F5D2E5600C3C0C5 /* ActivityModel.m in Sources */,
 				84D9C32C1F5A3D1C00AC0B75 /* HMSegmentedControl.m in Sources */,
 				84D9C3951F5A5D9A00AC0B75 /* HomeViewController.m in Sources */,
 			);

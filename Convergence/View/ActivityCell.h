@@ -6,8 +6,6 @@
 //  Copyright © 2017年 EDucation. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface ActivityCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *activityImageView;
 @property (weak, nonatomic) IBOutlet UILabel *activityNameLabel;
