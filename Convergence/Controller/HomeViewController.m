@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self switchAction];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +35,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)switchAction{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
+}
 
 @end
