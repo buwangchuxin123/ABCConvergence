@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5tn-Ii-Jb1">
-                                <rect key="frame" x="25" y="60" width="335" height="40"/>
+                                <rect key="frame" x="25" y="100" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="bDa-cO-Zly"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Wl-qp-J0m">
-                                <rect key="frame" x="25" y="120" width="335" height="40"/>
+                                <rect key="frame" x="25" y="160" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5Ne-X6-80P"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9g-r2-XuY">
-                                <rect key="frame" x="25" y="200" width="335" height="50"/>
+                                <rect key="frame" x="25" y="240" width="335" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kV2-aO-lNY"/>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rCW-GC-2Cc">
-                                <rect key="frame" x="108.5" y="265" width="158" height="26"/>
+                                <rect key="frame" x="108.5" y="305" width="158" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="还没有账号？点击加入我们吧！">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,13 +75,13 @@
                         <constraints>
                             <constraint firstItem="6Wl-qp-J0m" firstAttribute="top" secondItem="5tn-Ii-Jb1" secondAttribute="bottom" constant="20" id="1Mo-J9-lze"/>
                             <constraint firstItem="e9g-r2-XuY" firstAttribute="leading" secondItem="6Wl-qp-J0m" secondAttribute="leading" id="7b7-hY-dvJ"/>
+                            <constraint firstItem="5tn-Ii-Jb1" firstAttribute="top" secondItem="udS-oy-tyT" secondAttribute="top" constant="100" id="B1r-uZ-UXX"/>
                             <constraint firstItem="5tn-Ii-Jb1" firstAttribute="leading" secondItem="udS-oy-tyT" secondAttribute="leading" constant="25" id="COy-tf-UYC"/>
                             <constraint firstItem="6Wl-qp-J0m" firstAttribute="trailing" secondItem="5tn-Ii-Jb1" secondAttribute="trailing" id="ETu-vt-T1X"/>
                             <constraint firstAttribute="trailing" secondItem="5tn-Ii-Jb1" secondAttribute="trailing" constant="15" id="N6g-Id-0Ic"/>
                             <constraint firstItem="e9g-r2-XuY" firstAttribute="trailing" secondItem="6Wl-qp-J0m" secondAttribute="trailing" id="VkF-on-hTI"/>
                             <constraint firstItem="e9g-r2-XuY" firstAttribute="top" secondItem="6Wl-qp-J0m" secondAttribute="bottom" constant="40" id="bcF-sn-EQh"/>
                             <constraint firstItem="6Wl-qp-J0m" firstAttribute="leading" secondItem="5tn-Ii-Jb1" secondAttribute="leading" id="d9E-jo-BKA"/>
-                            <constraint firstItem="5tn-Ii-Jb1" firstAttribute="top" secondItem="gny-9F-JAN" secondAttribute="bottom" constant="40" id="jHk-UG-k1P"/>
                             <constraint firstItem="rCW-GC-2Cc" firstAttribute="centerX" secondItem="udS-oy-tyT" secondAttribute="centerX" id="qfp-Mv-HUT"/>
                             <constraint firstItem="rCW-GC-2Cc" firstAttribute="top" secondItem="e9g-r2-XuY" secondAttribute="bottom" constant="15" id="uTd-3j-2tN"/>
                         </constraints>
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tqM-BV-9Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-374" y="208"/>
+            <point key="canvasLocation" x="564" y="207.34632683658174"/>
         </scene>
         <!--注册-->
         <scene sceneID="gso-D3-arT">
@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名（手机号）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2c-pR-91I">
-                                <rect key="frame" x="25" y="50" width="325" height="35"/>
+                                <rect key="frame" x="25" y="124" width="325" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="b5p-NL-UYC"/>
                                 </constraints>
@@ -119,7 +119,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Cw-4P-naZ">
-                                <rect key="frame" x="25" y="110" width="325" height="35"/>
+                                <rect key="frame" x="25" y="184" width="325" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="G6h-zW-Ocd"/>
                                 </constraints>
@@ -128,7 +128,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9j-pF-F2c">
-                                <rect key="frame" x="25" y="175" width="325" height="35"/>
+                                <rect key="frame" x="25" y="249" width="325" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="pj6-XB-Pnf"/>
                                 </constraints>
@@ -137,7 +137,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-gc-4fu">
-                                <rect key="frame" x="25" y="240" width="325" height="35"/>
+                                <rect key="frame" x="25" y="314" width="325" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Rzl-o9-Kfa"/>
                                 </constraints>
@@ -146,7 +146,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hMn-IX-y3n">
-                                <rect key="frame" x="25" y="305" width="216.5" height="35"/>
+                                <rect key="frame" x="25" y="379" width="216.5" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="fwO-dF-Hfk"/>
                                 </constraints>
@@ -155,7 +155,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDc-gB-AnR">
-                                <rect key="frame" x="251.5" y="312" width="98.5" height="28"/>
+                                <rect key="frame" x="251.5" y="386" width="98.5" height="28"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="点击获取验证码">
@@ -171,7 +171,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGB-YD-Wap">
-                                <rect key="frame" x="25" y="380" width="325" height="40"/>
+                                <rect key="frame" x="25" y="454" width="325" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="U8j-iW-Oi8"/>
@@ -191,7 +191,7 @@
                             <constraint firstItem="5JT-gc-4fu" firstAttribute="leading" secondItem="R8B-wu-Zae" secondAttribute="leading" constant="25" id="2rS-ZW-qpA"/>
                             <constraint firstItem="2Cw-4P-naZ" firstAttribute="top" secondItem="f2c-pR-91I" secondAttribute="bottom" constant="25" id="3s5-QI-h2C"/>
                             <constraint firstItem="hMn-IX-y3n" firstAttribute="top" secondItem="5JT-gc-4fu" secondAttribute="bottom" constant="30" id="4M8-GJ-TQm"/>
-                            <constraint firstItem="f2c-pR-91I" firstAttribute="top" secondItem="OwA-Di-zoB" secondAttribute="bottom" constant="30" id="7Ot-F4-Pn7"/>
+                            <constraint firstItem="f2c-pR-91I" firstAttribute="top" secondItem="OwA-Di-zoB" secondAttribute="bottom" constant="60" id="7Ot-F4-Pn7"/>
                             <constraint firstItem="o9j-pF-F2c" firstAttribute="top" secondItem="2Cw-4P-naZ" secondAttribute="bottom" constant="30" id="BiQ-5l-Vyh"/>
                             <constraint firstItem="hMn-IX-y3n" firstAttribute="leading" secondItem="R8B-wu-Zae" secondAttribute="leading" constant="25" id="C2l-fh-XC6"/>
                             <constraint firstAttribute="trailing" secondItem="f2c-pR-91I" secondAttribute="trailing" constant="25" id="FvJ-eS-UXd"/>
@@ -221,7 +221,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Kr-Ue-Ljt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="207"/>
+            <point key="canvasLocation" x="2428" y="206.44677661169416"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wgk-Lu-M5d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ys4-lq-hgm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z7O-AY-EgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LMP-Hf-5E6" kind="relationship" relationship="rootViewController" id="Sa4-Ci-jVh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGN-3j-JWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-375.19999999999999" y="207.34632683658174"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Tia-xV-SmE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6V3-T7-oom" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t9L-mF-mEp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YzD-Lq-bXH" kind="relationship" relationship="rootViewController" id="nAs-G0-HqD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jaX-oE-rA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1488.8" y="206.44677661169416"/>
         </scene>
     </scenes>
 </document>
