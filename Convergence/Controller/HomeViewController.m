@@ -7,8 +7,12 @@
 //
 
 #import "HomeViewController.h"
-
+#import "ClubTableViewCell.h"
+#import "ExperienceTableViewCell.h"
+#import "HomeModel.h"
 @interface HomeViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+
 
 @end
 
