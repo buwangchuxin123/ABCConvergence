@@ -68,9 +68,9 @@
 		84D9C3C31F5A97ED00AC0B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3C21F5A97ED00AC0B75 /* Assets.xcassets */; };
 		84D9C3CD1F5AA0CF00AC0B75 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3CB1F5AA0CF00AC0B75 /* Login.storyboard */; };
 		84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3CF1F5AA1A600AC0B75 /* Activity.storyboard */; };
-		84D9C3D61F5AA43D00AC0B75 /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C3D41F5AA43D00AC0B75 /* MyOrder.storyboard */; };
 		84D9C3DA1F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */; };
 		A6EF6E13BDCD8108F5E49436 /* libPods-Convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */; };
+		B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,10 +203,10 @@
 		84D9C3C21F5A97ED00AC0B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Convergence/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		84D9C3CC1F5AA0CF00AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Login.storyboard; sourceTree = SOURCE_ROOT; };
 		84D9C3D01F5AA1A600AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Activity.storyboard; sourceTree = SOURCE_ROOT; };
-		84D9C3D51F5AA43D00AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/MyOrder.storyboard; sourceTree = SOURCE_ROOT; };
 		84D9C3D81F5AA4EC00AC0B75 /* ZLImageViewDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLImageViewDisplayView.h; sourceTree = "<group>"; };
 		84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29B9BEE1F5D0B16000230EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/MyOrder.storyboard; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -600,7 +600,7 @@
 		84D9C3D31F5AA3FB00AC0B75 /* MyOrder */ = {
 			isa = PBXGroup;
 			children = (
-				84D9C3D41F5AA43D00AC0B75 /* MyOrder.storyboard */,
+				B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */,
 			);
 			name = MyOrder;
 			sourceTree = "<group>";
@@ -748,7 +748,7 @@
 				843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */,
 				84D9C3C31F5A97ED00AC0B75 /* Assets.xcassets in Resources */,
 				84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */,
-				84D9C3D61F5AA43D00AC0B75 /* MyOrder.storyboard in Resources */,
+				B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */,
 				84D9C38F1F5A573700AC0B75 /* Setting.storyboard in Resources */,
 				84D9C3CD1F5AA0CF00AC0B75 /* Login.storyboard in Resources */,
 			);
@@ -967,10 +967,10 @@
 			name = Activity.storyboard;
 			sourceTree = "<group>";
 		};
-		84D9C3D41F5AA43D00AC0B75 /* MyOrder.storyboard */ = {
+		B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84D9C3D51F5AA43D00AC0B75 /* Base */,
+				B29B9BEE1F5D0B16000230EC /* Base */,
 			);
 			name = MyOrder.storyboard;
 			sourceTree = "<group>";
