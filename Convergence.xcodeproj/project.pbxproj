@@ -81,6 +81,9 @@
 		B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */; };
 		B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */; };
 		EE5AB18D1F5D3F9F00CD3D93 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */; };
+		EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */; };
+		EE5AB19F1F5D6C0000CD3D93 /* ExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */; };
+		EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +240,12 @@
 		B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
 		EE5AB18B1F5D3F9F00CD3D93 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		EE5AB19A1F5D6BF400CD3D93 /* ClubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClubTableViewCell.h; path = Convergence/Controller/ClubTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClubTableViewCell.m; path = Convergence/Controller/ClubTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		EE5AB19D1F5D6C0000CD3D93 /* ExperienceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExperienceTableViewCell.h; path = Convergence/Controller/ExperienceTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperienceTableViewCell.m; path = Convergence/Controller/ExperienceTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		EE5AB1A01F5D6C1400CD3D93 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeModel.h; path = Convergence/Controller/HomeModel.h; sourceTree = SOURCE_ROOT; };
+		EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeModel.m; path = Convergence/Controller/HomeModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,6 +604,10 @@
 		84D9C3C61F5A9DF000AC0B75 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EE5AB19D1F5D6C0000CD3D93 /* ExperienceTableViewCell.h */,
+				EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */,
+				EE5AB19A1F5D6BF400CD3D93 /* ClubTableViewCell.h */,
+				EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */,
 				84D9C3841F5A55D900AC0B75 /* Home.storyboard */,
 			);
 			name = Home;
@@ -708,6 +721,8 @@
 		EE5AB18A1F5D3F4000CD3D93 /* UserModel */ = {
 			isa = PBXGroup;
 			children = (
+				EE5AB1A01F5D6C1400CD3D93 /* HomeModel.h */,
+				EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */,
 				EE5AB18B1F5D3F9F00CD3D93 /* UserModel.h */,
 				EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */,
 			);
@@ -934,10 +949,12 @@
 				84D9C3BE1F5A5F9F00AC0B75 /* SKTagView.m in Sources */,
 				84D9C3831F5A44A800AC0B75 /* Order.m in Sources */,
 				84D9C3BC1F5A5F9F00AC0B75 /* SKTag.m in Sources */,
+				EE5AB19F1F5D6C0000CD3D93 /* ExperienceTableViewCell.m in Sources */,
 				84D9C35D1F5A3D3700AC0B75 /* DataVerifier.m in Sources */,
 				EE5AB18D1F5D3F9F00CD3D93 /* UserModel.m in Sources */,
 				84D9C3B31F5A5F6800AC0B75 /* rscode.m in Sources */,
 				84D9C3681F5A3D3700AC0B75 /* NSDateFormatter+Category.m in Sources */,
+				EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */,
 				84D9C36C1F5A3D3700AC0B75 /* Utilities.m in Sources */,
 				84D9C3651F5A3D3700AC0B75 /* JSONS.m in Sources */,
 				84791BDF1F5C081A008A83EB /* FindModel.m in Sources */,
@@ -954,6 +971,7 @@
 				B248F35F1F5D2FA000C3C0C5 /* ActivityCell.m in Sources */,
 				84D9C2FA1F5A39FB00AC0B75 /* Convergence.xcdatamodeld in Sources */,
 				843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */,
+				EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */,
 				84D9C3601F5A3D3700AC0B75 /* openssl_wrapper.m in Sources */,
 				842FA0B11F5CE84A00C1AA1D /* FindCollectionViewCell.m in Sources */,
 				84D9C3671F5A3D3700AC0B75 /* NSDate+Utility.m in Sources */,
