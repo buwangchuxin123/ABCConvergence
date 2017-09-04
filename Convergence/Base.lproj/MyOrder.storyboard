@@ -6,73 +6,70 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--My Order Table View Controller-->
         <scene sceneID="HDi-5M-p0c">
             <objects>
-                <tableViewController id="YDF-4b-79C" sceneMemberID="viewController">
+                <tableViewController id="YDF-4b-79C" customClass="MyOrderTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="133" sectionHeaderHeight="28" sectionFooterHeight="28" id="yZ6-I5-Uem">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="133" id="LNE-dH-JaZ" userLabel="Myorder Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="133" id="LNE-dH-JaZ" userLabel="Myorder Cell" customClass="MyOrderTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="133"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LNE-dH-JaZ" id="euN-h2-fSe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oWB-bX-UH6">
-                                            <rect key="frame" x="15" y="22" width="60" height="89"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FhR-rV-XMx">
+                                            <rect key="frame" x="15" y="15" width="154" height="102.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="oWB-bX-UH6" secondAttribute="height" multiplier="1:1.5" id="OBR-ee-oY0"/>
+                                                <constraint firstAttribute="width" secondItem="FhR-rV-XMx" secondAttribute="height" multiplier="3:2" id="LM4-9A-AFP"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="牧心堂射箭馆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2f-fG-sJy">
-                                            <rect key="frame" x="90" y="53" width="87" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" verticalCompressionResistancePriority="752" text="0元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0so-A2-anZ">
-                                            <rect key="frame" x="90" y="84" width="70" height="27"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="27" id="lmd-Uv-MWO"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="1" green="0.75447113610000005" blue="0.16513284419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新用户免费体验劵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdz-4M-sff">
-                                            <rect key="frame" x="90" y="22" width="107" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新用户免费体验券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pu8-xJ-4se">
+                                            <rect key="frame" x="184" y="15" width="176" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="沐心堂射箭馆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bij-pb-RlO">
+                                            <rect key="frame" x="184" y="51" width="176" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0元     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg9-J9-kzD">
+                                            <rect key="frame" x="184" y="87" width="59" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="1" green="0.75447113605246741" blue="0.16513284422770658" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="zdz-4M-sff" firstAttribute="top" secondItem="oWB-bX-UH6" secondAttribute="top" id="40D-sJ-LQc"/>
-                                        <constraint firstItem="p2f-fG-sJy" firstAttribute="leading" secondItem="zdz-4M-sff" secondAttribute="leading" id="5oz-h5-LMK"/>
-                                        <constraint firstItem="0so-A2-anZ" firstAttribute="leading" secondItem="zdz-4M-sff" secondAttribute="leading" id="9G4-b7-EHU"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0so-A2-anZ" secondAttribute="bottom" constant="13.5" id="GTh-54-yqF"/>
-                                        <constraint firstItem="oWB-bX-UH6" firstAttribute="leading" secondItem="euN-h2-fSe" secondAttribute="leadingMargin" constant="7" id="HeX-2D-Ts8"/>
-                                        <constraint firstItem="p2f-fG-sJy" firstAttribute="leading" secondItem="zdz-4M-sff" secondAttribute="leading" id="MNl-Ms-dPE"/>
-                                        <constraint firstItem="0so-A2-anZ" firstAttribute="leading" secondItem="oWB-bX-UH6" secondAttribute="trailing" constant="15" id="Qkr-Zz-zPK"/>
-                                        <constraint firstItem="0so-A2-anZ" firstAttribute="leading" secondItem="p2f-fG-sJy" secondAttribute="leading" id="U5k-Hd-cZg"/>
-                                        <constraint firstItem="p2f-fG-sJy" firstAttribute="leading" secondItem="oWB-bX-UH6" secondAttribute="trailing" constant="15" id="cx2-0e-BaJ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="0so-A2-anZ" secondAttribute="trailing" constant="207.5" id="eUZ-VR-0rr"/>
-                                        <constraint firstItem="oWB-bX-UH6" firstAttribute="centerY" secondItem="euN-h2-fSe" secondAttribute="centerY" id="fSY-gB-gIB"/>
-                                        <constraint firstItem="zdz-4M-sff" firstAttribute="leading" secondItem="oWB-bX-UH6" secondAttribute="trailing" constant="15" id="iAF-Fb-Ano"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="p2f-fG-sJy" secondAttribute="trailing" constant="190.5" id="mVB-yb-i9p"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="zdz-4M-sff" secondAttribute="trailing" constant="170.5" id="nDn-q7-TDB"/>
-                                        <constraint firstItem="p2f-fG-sJy" firstAttribute="top" secondItem="zdz-4M-sff" secondAttribute="bottom" constant="15" id="tpw-Pl-Ob1"/>
-                                        <constraint firstItem="0so-A2-anZ" firstAttribute="top" secondItem="p2f-fG-sJy" secondAttribute="bottom" constant="15" id="v7h-nb-gM3"/>
+                                        <constraint firstItem="FhR-rV-XMx" firstAttribute="leading" secondItem="euN-h2-fSe" secondAttribute="leading" constant="15" id="0r2-3q-FXi"/>
+                                        <constraint firstItem="eg9-J9-kzD" firstAttribute="leading" secondItem="bij-pb-RlO" secondAttribute="leading" id="6u0-KB-qwX"/>
+                                        <constraint firstAttribute="trailing" secondItem="bij-pb-RlO" secondAttribute="trailing" constant="15" id="8pn-NP-4aH"/>
+                                        <constraint firstItem="bij-pb-RlO" firstAttribute="top" secondItem="pu8-xJ-4se" secondAttribute="bottom" constant="15" id="FBd-Mp-jqx"/>
+                                        <constraint firstAttribute="bottom" secondItem="FhR-rV-XMx" secondAttribute="bottom" constant="15" id="Mxc-fy-3ak"/>
+                                        <constraint firstAttribute="trailing" secondItem="pu8-xJ-4se" secondAttribute="trailing" constant="15" id="hyZ-fC-Ame"/>
+                                        <constraint firstItem="eg9-J9-kzD" firstAttribute="top" secondItem="bij-pb-RlO" secondAttribute="bottom" constant="15" id="ive-r8-lEp"/>
+                                        <constraint firstItem="pu8-xJ-4se" firstAttribute="top" secondItem="euN-h2-fSe" secondAttribute="top" constant="15" id="jvJ-6H-jnu"/>
+                                        <constraint firstItem="bij-pb-RlO" firstAttribute="leading" secondItem="pu8-xJ-4se" secondAttribute="leading" id="o2N-LE-ILN"/>
+                                        <constraint firstItem="FhR-rV-XMx" firstAttribute="top" secondItem="euN-h2-fSe" secondAttribute="top" constant="15" id="qrq-Mi-rn3"/>
+                                        <constraint firstItem="pu8-xJ-4se" firstAttribute="leading" secondItem="FhR-rV-XMx" secondAttribute="trailing" constant="15" id="xAl-lD-eq6"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="OrderImageView" destination="FhR-rV-XMx" id="4YK-cS-IcN"/>
+                                    <outlet property="OrderName" destination="pu8-xJ-4se" id="RWI-Os-caE"/>
+                                    <outlet property="clubName" destination="bij-pb-RlO" id="SXm-zJ-M7y"/>
+                                    <outlet property="price" destination="eg9-J9-kzD" id="254-re-ze7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -80,10 +77,13 @@
                             <outlet property="delegate" destination="YDF-4b-79C" id="50d-CX-RyP"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="MyOrderTableView" destination="yZ6-I5-Uem" id="cOn-Yu-TpU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teF-G9-idt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="38"/>
+            <point key="canvasLocation" x="-670" y="-81"/>
         </scene>
     </scenes>
 </document>

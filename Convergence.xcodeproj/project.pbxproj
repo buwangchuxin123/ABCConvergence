@@ -71,6 +71,8 @@
 		84D9C3DA1F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */; };
 		A6EF6E13BDCD8108F5E49436 /* libPods-Convergence.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */; };
 		B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */; };
+		B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */; };
+		B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +209,10 @@
 		84D9C3D91F5AA4EC00AC0B75 /* ZLImageViewDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLImageViewDisplayView.m; sourceTree = "<group>"; };
 		9E1C9EFDAA8F718409951A33 /* libPods-Convergence.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Convergence.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29B9BEE1F5D0B16000230EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/MyOrder.storyboard; sourceTree = SOURCE_ROOT; };
+		B29B9BF41F5D10B9000230EC /* MyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewController.h; sourceTree = "<group>"; };
+		B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
+		B29B9BF81F5D1F9D000230EC /* MyOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewCell.h; sourceTree = "<group>"; };
+		B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +501,7 @@
 		84D9C3921F5A5D4300AC0B75 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				B29B9BF71F5D1F49000230EC /* MyOrder */,
 				84D9C3991F5A5DD500AC0B75 /* MyInfoViewController.h */,
 				84D9C39A1F5A5DD500AC0B75 /* MyInfoViewController.m */,
 				84D9C39C1F5A5DF200AC0B75 /* SettingViewController.h */,
@@ -601,6 +608,8 @@
 			isa = PBXGroup;
 			children = (
 				B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */,
+				B29B9BF81F5D1F9D000230EC /* MyOrderTableViewCell.h */,
+				B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */,
 			);
 			name = MyOrder;
 			sourceTree = "<group>";
@@ -629,6 +638,16 @@
 				81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B29B9BF71F5D1F49000230EC /* MyOrder */ = {
+			isa = PBXGroup;
+			children = (
+				B29B9BF41F5D10B9000230EC /* MyOrderTableViewController.h */,
+				B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */,
+			);
+			name = MyOrder;
+			path = ../View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -830,6 +849,7 @@
 				84D9C3AE1F5A5F6800AC0B75 /* bitstream.m in Sources */,
 				84D9C3B11F5A5F6800AC0B75 /* qrinput.m in Sources */,
 				84D9C35B1F5A3D3700AC0B75 /* base64.m in Sources */,
+				B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */,
 				84D9C3691F5A3D3700AC0B75 /* NSString+Crypt.m in Sources */,
 				84D9C2F11F5A39FB00AC0B75 /* AppDelegate.m in Sources */,
 				84D9C3B41F5A5F6800AC0B75 /* split.m in Sources */,
@@ -839,6 +859,7 @@
 				84D9C39B1F5A5DD500AC0B75 /* MyInfoViewController.m in Sources */,
 				84D9C39E1F5A5DF200AC0B75 /* SettingViewController.m in Sources */,
 				84D9C2EE1F5A39FB00AC0B75 /* main.m in Sources */,
+				B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */,
 				84D9C35F1F5A3D3700AC0B75 /* NSDataEx.m in Sources */,
 				84D9C35A1F5A3D3700AC0B75 /* GBAlipayManager.m in Sources */,
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
