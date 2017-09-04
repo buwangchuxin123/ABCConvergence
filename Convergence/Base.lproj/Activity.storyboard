@@ -136,6 +136,7 @@
                                             <outlet property="activityNameLabel" destination="gLp-J0-8CP" id="fpM-3T-zeh"/>
                                             <outlet property="activityUnlikeLabel" destination="sft-Sc-uAw" id="iFw-N0-6rd"/>
                                             <outlet property="favoBtn" destination="NuS-Uq-L1D" id="iZO-fl-vd4"/>
+                                            <segue destination="DJd-Jh-tXN" kind="show" id="ClP-vS-R0W"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -220,6 +221,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="applyAction:forEvent:" destination="DJd-Jh-tXN" eventType="touchUpInside" id="GBI-VM-pZD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="0.40336044519999997" colorSpace="custom" customColorSpace="sRGB"/>
@@ -265,7 +269,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="彭金平" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-Gt-SL2">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="钱毅强" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-Gt-SL2">
                                                 <rect key="frame" x="314" y="10" width="46" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -294,6 +298,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucr-Jc-Xgk">
                                         <rect key="frame" x="15" y="431" width="211" height="30"/>
                                         <state key="normal" title="报名活动发布者:13400005345"/>
+                                        <connections>
+                                            <action selector="callAction:forEvent:" destination="DJd-Jh-tXN" eventType="touchUpInside" id="vYG-by-ncp"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2Y-QB-K72">
                                         <rect key="frame" x="0.0" y="466" width="375" height="65"/>
@@ -476,10 +483,28 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="activityImageView" destination="wKR-gV-hgL" id="g1s-S4-imZ"/>
+                        <outlet property="addressLbl" destination="keg-Dh-clG" id="97d-r5-p12"/>
+                        <outlet property="applyBtn" destination="4Qq-nS-fBQ" id="2Yy-4a-S17"/>
+                        <outlet property="applyDueLbl" destination="BHK-yr-lCS" id="EbW-2f-pJS"/>
+                        <outlet property="applyDueView" destination="2bw-m9-rQZ" id="vbm-vy-Vjn"/>
+                        <outlet property="applyEndView" destination="GiV-wg-6qP" id="k0m-GE-cvx"/>
+                        <outlet property="applyFeeLabel" destination="sGQ-9b-69P" id="iKo-lO-Qok"/>
+                        <outlet property="applyIngView" destination="Xic-fI-2E5" id="Wlg-wX-ltg"/>
+                        <outlet property="applyStartView" destination="IlV-Qt-BY5" id="heT-2W-f7i"/>
+                        <outlet property="applyStateLbl" destination="1yu-Ko-ecm" id="eA8-qB-jTs"/>
+                        <outlet property="attentdenceLbl" destination="bnp-cf-8zM" id="mb8-mx-X6l"/>
+                        <outlet property="contentLbl" destination="U3i-p1-Dcg" id="k80-8z-RhB"/>
+                        <outlet property="issuerLbl" destination="aPb-Gt-SL2" id="2wa-RK-3hf"/>
+                        <outlet property="phoneBtn" destination="ucr-Jc-Xgk" id="7RJ-JC-dpe"/>
+                        <outlet property="timeLbl" destination="6D8-4j-j7d" id="90z-eH-kKN"/>
+                        <outlet property="typeLbl" destination="b1A-nb-boZ" id="7QC-L9-8p5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIL-Da-fK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047" y="115"/>
+            <point key="canvasLocation" x="2007" y="124"/>
         </scene>
         <!--Purchase Table View Controller-->
         <scene sceneID="XMq-bs-m0q">
