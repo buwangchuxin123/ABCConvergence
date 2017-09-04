@@ -35,12 +35,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAU-zN-ISL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="107"/>
+            <point key="canvasLocation" x="324" y="196"/>
         </scene>
-        <!--List View Controller-->
+        <!--Activity Table View Controller-->
         <scene sceneID="vCE-b7-pID">
             <objects>
-                <viewController id="Pw8-yg-Suw" customClass="ListViewController" sceneMemberID="viewController">
+                <viewController id="Pw8-yg-Suw" customClass="ActivityTableViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tao-4S-356"/>
                         <viewControllerLayoutGuide type="bottom" id="6o9-qM-TR7"/>
@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" editingAccessoryType="checkmark" rowHeight="120" id="gSk-rv-GeS" customClass="ActivityTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActivityCell" editingAccessoryType="checkmark" rowHeight="120" id="gSk-rv-GeS" customClass="ActivityCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSk-rv-GeS" id="6jo-mR-cCV">
@@ -128,6 +128,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outlet property="activityImageView" destination="op5-IO-XX4" id="Ccg-L6-K1V"/>
+                                            <outlet property="activityInfLabel" destination="5ZM-P0-vds" id="iQY-cL-apz"/>
+                                            <outlet property="activityLikeLabel" destination="haa-ek-NS7" id="YQg-dN-sol"/>
+                                            <outlet property="activityNameLabel" destination="gLp-J0-8CP" id="fpM-3T-zeh"/>
+                                            <outlet property="activityUnlikeLabel" destination="sft-Sc-uAw" id="iFw-N0-6rd"/>
+                                            <outlet property="favoBtn" destination="NuS-Uq-L1D" id="iZO-fl-vd4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -143,11 +151,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="PD4-sW-Y1t">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="kpA-vc-TBE">
-                            <connections>
-                                <action selector="switchAction:" destination="Pw8-yg-Suw" id="BTO-KE-06S"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="kpA-vc-TBE"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WXd-U4-6CL">
                             <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -156,19 +160,15 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="l19-dv-a6p">
-                            <connections>
-                                <action selector="searchAction:" destination="Pw8-yg-Suw" id="KBb-gm-w0H"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="l19-dv-a6p"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="ctiyButton" destination="WXd-U4-6CL" id="o0h-Mn-4WK"/>
+                        <outlet property="activityTableView" destination="qcG-CO-cOZ" id="CgI-oJ-74q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IeQ-fO-lnw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="115"/>
+            <point key="canvasLocation" x="1233" y="90"/>
         </scene>
     </scenes>
     <resources>
