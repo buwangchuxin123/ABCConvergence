@@ -16,16 +16,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *kindBtn;
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
-@property (strong,nonatomic)NSArray *hotarr;
-@property (strong,nonatomic)NSArray *upgradedArr;
-@property (strong,nonatomic)NSMutableArray *hotClubArr;
+@property (strong,nonatomic)NSMutableArray *ClubArr;
+@property (strong,nonatomic)NSMutableArray *TypeArr;
 @end
 
 @implementation FindViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _hotClubArr = [NSMutableArray new];
+     _ClubArr = [NSMutableArray new];
+    _TypeArr  = [NSMutableArray new];
     // Do any additional setup after loading the view.
     //禁止被选中
     _collectionView.allowsSelection = NO;
@@ -34,7 +34,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    // [self dataInitialize];
+   //[self dataInitialize];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -59,22 +59,53 @@
 #pragma mark - request
 -(void)dataInitialize{
    // [self hotRequest];
-    [self hotClubRequest];
+    [self TypeRequest];
 }
-- (void)hotClubRequest{
+- (void)TypeRequest{
     
     _avi = [Utilities getCoverOnView:self.view];
-     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6"};
-    [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+     NSDictionary *para =  @{@"city":@"无锡"};
+    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+     //   NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *features = responseObject[@"result"][@"features"];
+            NSArray *featureForm = features[@"featureForm"];
+            for(NSDictionary *dict in featureForm){
+                FindModel *model = [[FindModel alloc]initWithType:dict];
+                [_TypeArr addObject:model];
+              }
+            
+            [self ClubRequest];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+}
+
+- (void)ClubRequest{
+    
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
-           NSArray *result = responseObject[@"result"][@"models"];
-            for(NSDictionary *dict in result){
+          NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            for(NSDictionary *dict in array){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
-                [_hotClubArr  addObject: model];
-                NSLog(@"数组里的是：%@",model.clubName);
-              }
+                [_ClubArr addObject:model];
+            }
+    
             [_collectionView reloadData];
         }else{
             //业务逻辑失败的情况下
@@ -93,12 +124,12 @@
 #pragma mark - collectionView
 //每组有多少个items
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _hotClubArr.count;
+    return _ClubArr.count;
 }
 //每个items长什么样
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     FindCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
-    FindModel *model = _hotClubArr[indexPath.item];
+    FindModel *model = _ClubArr[indexPath.item];
     cell.clubName.text = model.clubName;
     cell.clubAddress.text = model.address;
     cell.clubDistance.text = [NSString stringWithFormat:@"%@米",model.distance];
@@ -176,6 +207,9 @@
 //    }];
 //
 //}
+
+
+
 //- (void)clubRequest{
 //
 //    _avi = [Utilities getCoverOnView:self.view];
@@ -206,4 +240,34 @@
 //    }];
 //
 //}
+//}
+
+
+//- (void)hotClubRequest{
+//    
+//    _avi = [Utilities getCoverOnView:self.view];
+//    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6"};
+//    [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+//        NSLog(@"responseObject:%@", responseObject);
+//        [_avi stopAnimating];
+//        if([responseObject[@"resultFlag"] integerValue] == 8001){
+//            [_avi stopAnimating];
+//            NSArray *result = responseObject[@"result"][@"models"];
+//            for(NSDictionary *dict in result){
+//                FindModel *model = [[FindModel alloc]initWithClub:dict];
+//                [_hotClubArr  addObject: model];
+//                NSLog(@"数组里的是：%@",model.clubName);
+//            }
+//            [_collectionView reloadData];
+//        }else{
+//            //业务逻辑失败的情况下
+//            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+//            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+//        }
+//        
+//    } failure:^(NSInteger statusCode, NSError *error) {
+//        [_avi stopAnimating];
+//        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+//    }];
+//    
 //}

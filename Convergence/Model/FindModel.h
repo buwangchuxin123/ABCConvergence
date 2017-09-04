@@ -25,6 +25,14 @@
 @property(strong,nonatomic)NSString *clubID;//会所id
 @property(strong,nonatomic)NSString *Image;//会所图片地址
 @property(strong,nonatomic)NSString *clubName;//会所名字
+@property(strong,nonatomic)NSString *clubLogo;//会所图片地址
+//筛选类型
+@property(strong,nonatomic)NSString *fId;//健身类型id
+@property(strong,nonatomic)NSString *fName;//健身类型名称
+@property(strong,nonatomic)NSString *total;//包含该健身类型的健身会所数量
+
+
 -(instancetype)initWithArr:(NSDictionary *)dict;
 -(instancetype)initWithClub:(NSDictionary *)dict;
+-(instancetype)initWithType:(NSDictionary *)dict;
 @end
