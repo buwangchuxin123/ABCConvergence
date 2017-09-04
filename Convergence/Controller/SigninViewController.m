@@ -31,7 +31,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//输入框内容改变的监听事件
+- (void)textChange: (UITextField *)textField{
+    //当文本框中的内容改变时判断内容长度是否为0，是：禁用按钮   否：启用按钮
+    if (_userTextField.text.length != 0 && _pwdTextField.text.length != 0) {
+        _signBtn.enabled = YES;
+        _signBtn.backgroundColor = UIColorFromRGB(99, 163, 210);
+    }else{
+        _signBtn.enabled = NO;
+        _signBtn.backgroundColor = UIColorFromRGB(200, 200, 200);
+    }
+}
 /*
  #pragma mark - Navigation
  
