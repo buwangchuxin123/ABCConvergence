@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843D553F1F5CE0C7000DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553B1F5CE0C7000DB239 /* LaunchScreen.storyboard */; };
+		843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553D1F5CE0C7000DB239 /* Main.storyboard */; };
 		84791BDB1F5BE94B008A83EB /* FindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */; };
 		84791BDF1F5C081A008A83EB /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDE1F5C081A008A83EB /* FindModel.m */; };
 		84D9C2EE1F5A39FB00AC0B75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2ED1F5A39FB00AC0B75 /* main.m */; };
 		84D9C2F11F5A39FB00AC0B75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2F01F5A39FB00AC0B75 /* AppDelegate.m */; };
-		84D9C2F71F5A39FB00AC0B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */; };
 		84D9C2FA1F5A39FB00AC0B75 /* Convergence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C2F81F5A39FB00AC0B75 /* Convergence.xcdatamodeld */; };
-		84D9C2FF1F5A39FB00AC0B75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D9C2FD1F5A39FB00AC0B75 /* LaunchScreen.storyboard */; };
 		84D9C30A1F5A39FC00AC0B75 /* ConvergenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3091F5A39FC00AC0B75 /* ConvergenceTests.m */; };
 		84D9C3151F5A39FC00AC0B75 /* ConvergenceUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3141F5A39FC00AC0B75 /* ConvergenceUITests.m */; };
 		84D9C32C1F5A3D1C00AC0B75 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D9C3281F5A3D1C00AC0B75 /* HMSegmentedControl.m */; };
@@ -93,6 +93,8 @@
 /* Begin PBXFileReference section */
 		6E0C5292616EB82BF6AB7E35 /* Pods-Convergence.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Convergence.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Convergence/Pods-Convergence.debug.xcconfig"; sourceTree = "<group>"; };
 		81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Convergence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Convergence/Pods-Convergence.release.xcconfig"; sourceTree = "<group>"; };
+		843D553C1F5CE0C7000DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		843D553E1F5CE0C7000DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		84791BD91F5BE94B008A83EB /* FindCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindCollectionViewCell.h; path = ../Model/FindCollectionViewCell.h; sourceTree = "<group>"; };
 		84791BDA1F5BE94B008A83EB /* FindCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindCollectionViewCell.m; path = ../Model/FindCollectionViewCell.m; sourceTree = "<group>"; };
 		84791BDD1F5C081A008A83EB /* FindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindModel.h; sourceTree = "<group>"; };
@@ -101,9 +103,7 @@
 		84D9C2ED1F5A39FB00AC0B75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84D9C2EF1F5A39FB00AC0B75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84D9C2F01F5A39FB00AC0B75 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84D9C2F61F5A39FB00AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84D9C2F91F5A39FB00AC0B75 /* Convergence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Convergence.xcdatamodel; sourceTree = "<group>"; };
-		84D9C2FE1F5A39FB00AC0B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84D9C3001F5A39FB00AC0B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D9C3051F5A39FB00AC0B75 /* ConvergenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvergenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D9C3091F5A39FC00AC0B75 /* ConvergenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvergenceTests.m; sourceTree = "<group>"; };
@@ -541,8 +541,8 @@
 		84D9C3C51F5A9DDA00AC0B75 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				84D9C2FD1F5A39FB00AC0B75 /* LaunchScreen.storyboard */,
-				84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */,
+				843D553B1F5CE0C7000DB239 /* LaunchScreen.storyboard */,
+				843D553D1F5CE0C7000DB239 /* Main.storyboard */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -742,10 +742,10 @@
 			files = (
 				84D9C37F1F5A43A600AC0B75 /* Localizable.strings in Resources */,
 				84D9C3861F5A55D900AC0B75 /* Home.storyboard in Resources */,
-				84D9C2FF1F5A39FB00AC0B75 /* LaunchScreen.storyboard in Resources */,
-				84D9C2F71F5A39FB00AC0B75 /* Main.storyboard in Resources */,
 				84D9C38C1F5A564600AC0B75 /* MyInfo.storyboard in Resources */,
+				843D553F1F5CE0C7000DB239 /* LaunchScreen.storyboard in Resources */,
 				84D9C3891F5A561500AC0B75 /* Find.storyboard in Resources */,
+				843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */,
 				84D9C3C31F5A97ED00AC0B75 /* Assets.xcassets in Resources */,
 				84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */,
 				84D9C3D61F5AA43D00AC0B75 /* MyOrder.storyboard in Resources */,
@@ -903,22 +903,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		84D9C2F51F5A39FB00AC0B75 /* Main.storyboard */ = {
+		843D553B1F5CE0C7000DB239 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84D9C2F61F5A39FB00AC0B75 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		84D9C2FD1F5A39FB00AC0B75 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84D9C2FE1F5A39FB00AC0B75 /* Base */,
+				843D553C1F5CE0C7000DB239 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = ..;
+			sourceTree = "<group>";
+		};
+		843D553D1F5CE0C7000DB239 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				843D553E1F5CE0C7000DB239 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		84D9C3841F5A55D900AC0B75 /* Home.storyboard */ = {
