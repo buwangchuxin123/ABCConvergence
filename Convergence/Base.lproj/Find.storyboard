@@ -11,7 +11,6 @@
         <!--Find View Controller-->
         <scene sceneID="jBC-5Z-8XV">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pY9-Ql-3T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Find" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHi-UY-h6L" customClass="FindViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fnk-a1-sNg"/>
@@ -30,6 +29,9 @@
                                         <state key="normal" title="全城">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="CityAction:forEvent:" destination="VHi-UY-h6L" eventType="touchUpInside" id="XRy-t2-Lpy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD6-Pf-iLl">
                                         <rect key="frame" x="155" y="6" width="65" height="28"/>
@@ -40,6 +42,9 @@
                                         <state key="normal" title="全部分类">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="KindAction:forEvent:" destination="VHi-UY-h6L" eventType="touchUpInside" id="QTh-xz-Fyn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-Eg-D6t">
                                         <rect key="frame" x="295" y="6" width="65" height="28"/>
@@ -47,6 +52,9 @@
                                         <state key="normal" title="按距离">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="DistanceAction:forEvent:" destination="VHi-UY-h6L" eventType="touchUpInside" id="T3I-T3-8MN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.090196078431372548" green="0.54117647058823526" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -131,16 +139,62 @@
                                     <outlet property="delegate" destination="VHi-UY-h6L" id="Ndk-Nd-of2"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9h3-1T-xZM">
+                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-H1-9WW">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="V0j-yZ-AbK" customClass="SortTableViewCell">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V0j-yZ-AbK" id="IJt-6F-Giy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部分类" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-xe-DvJ">
+                                                            <rect key="frame" x="15" y="5" width="69.5" height="33.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="EFq-xe-DvJ" secondAttribute="bottom" constant="5" id="1NE-0U-rEZ"/>
+                                                        <constraint firstItem="EFq-xe-DvJ" firstAttribute="leading" secondItem="IJt-6F-Giy" secondAttribute="leading" constant="15" id="JDC-IH-tnx"/>
+                                                        <constraint firstItem="EFq-xe-DvJ" firstAttribute="top" secondItem="IJt-6F-Giy" secondAttribute="top" constant="5" id="yeF-w0-fM6"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="kindLbl" destination="EFq-xe-DvJ" id="uNf-AJ-duW"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.20168309563758388" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mhq-H1-9WW" firstAttribute="top" secondItem="9h3-1T-xZM" secondAttribute="top" id="KUt-rp-cSL"/>
+                                    <constraint firstItem="mhq-H1-9WW" firstAttribute="leading" secondItem="9h3-1T-xZM" secondAttribute="leading" id="VCi-3e-deK"/>
+                                    <constraint firstAttribute="trailing" secondItem="mhq-H1-9WW" secondAttribute="trailing" id="qd8-OX-CHL"/>
+                                    <constraint firstAttribute="bottom" secondItem="mhq-H1-9WW" secondAttribute="bottom" constant="300" id="r7Z-0f-72J"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gar-Jk-NBy" firstAttribute="leading" secondItem="jgh-OY-Rox" secondAttribute="leading" id="7eM-8J-j9R"/>
                             <constraint firstAttribute="bottom" secondItem="ydG-sQ-loR" secondAttribute="bottom" id="7gf-3s-dGM"/>
+                            <constraint firstItem="9h3-1T-xZM" firstAttribute="top" secondItem="Gar-Jk-NBy" secondAttribute="bottom" id="CaZ-ie-2FJ"/>
+                            <constraint firstItem="9h3-1T-xZM" firstAttribute="leading" secondItem="jgh-OY-Rox" secondAttribute="leading" id="NDH-9M-1ve"/>
                             <constraint firstAttribute="trailing" secondItem="Gar-Jk-NBy" secondAttribute="trailing" id="SyD-71-utU"/>
                             <constraint firstItem="LD6-Pf-iLl" firstAttribute="centerX" secondItem="jgh-OY-Rox" secondAttribute="centerX" id="dAU-6j-cZC"/>
                             <constraint firstAttribute="trailing" secondItem="ydG-sQ-loR" secondAttribute="trailing" id="dxz-B0-NAb"/>
                             <constraint firstItem="ydG-sQ-loR" firstAttribute="leading" secondItem="jgh-OY-Rox" secondAttribute="leading" id="fuL-es-xZh"/>
+                            <constraint firstAttribute="trailing" secondItem="9h3-1T-xZM" secondAttribute="trailing" id="kFc-IB-Yhh"/>
                             <constraint firstItem="Gar-Jk-NBy" firstAttribute="top" secondItem="fnk-a1-sNg" secondAttribute="bottom" id="nBs-iY-L8n"/>
+                            <constraint firstItem="45I-ix-Dbg" firstAttribute="top" secondItem="9h3-1T-xZM" secondAttribute="bottom" id="q41-t1-AcQ"/>
                             <constraint firstItem="ydG-sQ-loR" firstAttribute="top" secondItem="Gar-Jk-NBy" secondAttribute="bottom" id="yj1-oT-Y3v"/>
                         </constraints>
                     </view>
@@ -148,14 +202,18 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="ButtonView" destination="Gar-Jk-NBy" id="22R-zq-x5P"/>
+                        <outlet property="bottomConstraint" destination="r7Z-0f-72J" id="Gcd-Au-cqQ"/>
                         <outlet property="cityBtn" destination="zwP-nA-jdI" id="z4I-zb-YKB"/>
                         <outlet property="collectionView" destination="ydG-sQ-loR" id="crq-U0-Zmf"/>
                         <outlet property="distanceBtn" destination="6DK-Eg-D6t" id="KuN-Yv-mFg"/>
                         <outlet property="kindBtn" destination="LD6-Pf-iLl" id="HT3-mX-cdo"/>
+                        <outlet property="membraneView" destination="9h3-1T-xZM" id="45x-TW-MMg"/>
+                        <outlet property="tableView" destination="mhq-H1-9WW" id="Q5f-XQ-oGX"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pY9-Ql-3T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60" y="103"/>
+            <point key="canvasLocation" x="-60" y="102.99850074962519"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Zqr-iB-VWi">
@@ -223,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6x-ks-C2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="196"/>
+            <point key="canvasLocation" x="844" y="188"/>
         </scene>
     </scenes>
 </document>

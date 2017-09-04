@@ -15,6 +15,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
 @property (weak, nonatomic) IBOutlet UIButton *kindBtn;
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;
+@property (weak, nonatomic) IBOutlet UIView *membraneView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+- (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)KindAction:(UIButton *)sender forEvent:(UIEvent *)event;
+- (IBAction)DistanceAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
+
+
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
 @property (strong,nonatomic)NSMutableArray *ClubArr;
 @property (strong,nonatomic)NSMutableArray *TypeArr;
@@ -90,7 +99,7 @@
     }];
     
 }
-
+//默认按距离请求数据
 - (void)ClubRequest{
     
     _avi = [Utilities getCoverOnView:self.view];
@@ -175,6 +184,14 @@
 }
 */
 
+- (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)KindAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+
+- (IBAction)DistanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
 @end
 
 //
