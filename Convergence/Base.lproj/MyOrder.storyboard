@@ -12,7 +12,7 @@
         <!--My Order Table View Controller-->
         <scene sceneID="HDi-5M-p0c">
             <objects>
-                <tableViewController id="YDF-4b-79C" customClass="MyOrderTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyOrder" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YDF-4b-79C" customClass="MyOrderTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="133" sectionHeaderHeight="28" sectionFooterHeight="28" id="yZ6-I5-Uem">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,7 +83,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teF-G9-idt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-670" y="-81"/>
+            <point key="canvasLocation" x="-660" y="-57"/>
         </scene>
     </scenes>
 </document>

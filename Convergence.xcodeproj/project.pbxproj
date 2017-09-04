@@ -78,6 +78,7 @@
 		B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */; };
 		B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */; };
 		B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */; };
+		EE5AB18D1F5D3F9F00CD3D93 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,8 @@
 		B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
 		B29B9BF81F5D1F9D000230EC /* MyOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewCell.h; sourceTree = "<group>"; };
 		B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
+		EE5AB18B1F5D3F9F00CD3D93 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +373,7 @@
 		84D9C3221F5A3CFF00AC0B75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EE5AB18A1F5D3F4000CD3D93 /* UserModel */,
 				B248F3591F5D2E1400C3C0C5 /* Activity */,
 				84791BDC1F5C07EB008A83EB /* Find */,
 				84D9C2F81F5A39FB00AC0B75 /* Convergence.xcdatamodeld */,
@@ -691,6 +695,15 @@
 			path = ../View;
 			sourceTree = "<group>";
 		};
+		EE5AB18A1F5D3F4000CD3D93 /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				EE5AB18B1F5D3F9F00CD3D93 /* UserModel.h */,
+				EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */,
+			);
+			name = UserModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -912,6 +925,7 @@
 				84D9C3831F5A44A800AC0B75 /* Order.m in Sources */,
 				84D9C3BC1F5A5F9F00AC0B75 /* SKTag.m in Sources */,
 				84D9C35D1F5A3D3700AC0B75 /* DataVerifier.m in Sources */,
+				EE5AB18D1F5D3F9F00CD3D93 /* UserModel.m in Sources */,
 				84D9C3B31F5A5F6800AC0B75 /* rscode.m in Sources */,
 				84D9C3681F5A3D3700AC0B75 /* NSDateFormatter+Category.m in Sources */,
 				84D9C36C1F5A3D3700AC0B75 /* Utilities.m in Sources */,
