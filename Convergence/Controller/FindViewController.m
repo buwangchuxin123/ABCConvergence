@@ -10,7 +10,10 @@
 #import "FindCollectionViewCell.h"
 #import "FindModel.h"
 #import "SortTableViewCell.h"
-@interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>{
+    NSInteger  flag;
+
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *ButtonView;
 @property (weak, nonatomic) IBOutlet UIButton *cityBtn;
@@ -28,7 +31,9 @@
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
 @property (strong,nonatomic)NSMutableArray *ClubArr;
 @property (strong,nonatomic)NSMutableArray *TypeArr;
-@property (strong,nonatomic)NSMutableArray *KindArr;
+@property (strong,nonatomic)NSArray *CityArr;
+@property (strong,nonatomic)NSMutableArray  *KindArr;
+@property (strong,nonatomic)NSArray *DistanceArr;
 @end
 
 @implementation FindViewController
@@ -38,9 +43,15 @@
      _ClubArr = [NSMutableArray new];
     _TypeArr  = [NSMutableArray new];
     _KindArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
+    _CityArr = [[NSArray alloc]initWithObjects:@"全城",@"距离我1KM",@"距离我2KM",@"距离我3KM",@"距离我5KM",nil];
+    _DistanceArr = [[NSArray alloc]initWithObjects:@"按距离",@"按人气", nil];
     // Do any additional setup after loading the view.
     //禁止被选中
-    _collectionView.allowsSelection = NO;
+  //  _collectionView.allowsSelection = NO;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView)];
+     tapGesture.delegate = self;
+    [self.membraneView addGestureRecognizer:tapGesture];
+    
     [self naviConfig];
     [self dataInitialize];
 }
@@ -68,89 +79,116 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
-#pragma mark - request
--(void)dataInitialize{
-   // [self hotRequest];
-    [self TypeRequest];
+-(void)clickView{
+    _membraneView.hidden = YES;
+    NSLog(@"view 被点击了");
+
 }
-- (void)TypeRequest{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     
-    _avi = [Utilities getCoverOnView:self.view];
-     NSDictionary *para =  @{@"city":@"无锡"};
-    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
-        [_avi stopAnimating];
-        if([responseObject[@"resultFlag"] integerValue] == 8001){
-            NSDictionary *features = responseObject[@"result"][@"features"];
-            NSArray *featureForm = features[@"featureForm"];
-            for(NSDictionary *dict in featureForm){
-                FindModel *model = [[FindModel alloc]initWithType:dict];
-                [_TypeArr addObject:model];
-            //    NSLog(@"数组里的是：%@",model.fName);
-              }
-                for(int i = 0; i < 4;i++){
-                FindModel *model = _TypeArr[i];
-                [_KindArr addObject:model.fName];
-                 }
-            self.HeightConstraint.constant = _KindArr.count *30 ;
-               [_tableView reloadData];
-               [self ClubRequest];
-            
-        }else{
-            //业务逻辑失败的情况下
-            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
-            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-        }
-        
-    } failure:^(NSInteger statusCode, NSError *error) {
-        [_avi stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
-    }];
-    
+    if ([touch.view isDescendantOfView:self.tableView]) {
+        return NO;
+    }
+    return YES;
 }
-//默认按距离请求数据
-- (void)ClubRequest{
-    
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0};
-    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-    //    NSLog(@"responseObject:%@", responseObject);
-        [_avi stopAnimating];
-        if([responseObject[@"resultFlag"] integerValue] == 8001){
-          NSDictionary *result = responseObject[@"result"];
-            NSArray *array = result[@"models"];
-            for(NSDictionary *dict in array){
-                FindModel *model = [[FindModel alloc]initWithClub:dict];
-                [_ClubArr addObject:model];
-                
-            }
-    
-            [_collectionView reloadData];
-        }else{
-            //业务逻辑失败的情况下
-            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
-            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
-        }
-        
-    } failure:^(NSInteger statusCode, NSError *error) {
-        [_avi stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
-    }];
-    
-}
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
+//    
+//    if([NSStringFromClass([touch.view class])isEqual:@"UITableViewCellContentView"]){
+//        
+//        return NO;
+//        
+//    }
+//    
+//    return YES;
+//    
+//    
+//    
+//}
 #pragma mark - tableView
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 30.f;
+    return 40.f;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(flag == 1){
+        return _CityArr.count;
+    }
+    if(flag == 2){
     return _KindArr.count;
+    }
+    if(flag == 3){
+        return _DistanceArr.count;
+    }
+    return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SortTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
-    
-    cell.kindLbl.text = _KindArr[indexPath.row];
+    if(flag == 1){
+        cell.kindLbl.text = _CityArr[indexPath.row];
+    }
+    if(flag == 2){
+        cell.kindLbl.text = _KindArr[indexPath.row];
+       
+            }
+    if(flag == 3){
+         cell.kindLbl.text = _DistanceArr[indexPath.row];
+    }
     return cell;
+   
 }
+//设置每一组中每一行被点击以后要做的事情
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(flag == 1){
+        if(indexPath.row == 0){
+            [self ClubRequest];//默认按距离请求
+        }
+        if(indexPath.row == 1){
+            [self oneKMClubRequest];
+        }
+        if(indexPath.row == 2){
+            
+        }
+        if(indexPath.row == 3){
+            
+        }
+        if(indexPath.row == 4){
+            
+        }
+        
+
+           }
+    if(flag == 2){
+        
+        if(indexPath.row == 0){
+            [self ClubRequest];
+        }
+        if(indexPath.row == 1){
+            
+        }
+        if(indexPath.row == 2){
+            
+        }
+        if(indexPath.row == 3){
+            
+        }
+        if(indexPath.row == 4){
+            
+        }
+
+    }
+    if(flag == 3){
+        if(indexPath.row == 0){
+            [self ClubRequest];
+        }
+        if(indexPath.row == 1){
+            
+        }
+        
+
+    }
+
+}
+
 
 #pragma mark - collectionView
 //每组有多少个items
@@ -172,10 +210,10 @@
 //    UIView *bv = [UIView new];
 //    bv.backgroundColor = [UIColor blueColor];
 //    cell.backgroundView = bv;
-//    //选中时cell的背景视图
-//    UIView *sbv = [UIView new];
-//    sbv.backgroundColor = [UIColor redColor];
-//    cell.selectedBackgroundView = sbv;
+     // 选中时cell的背景视图
+    UIView *sbv = [UIView new];
+    sbv.backgroundColor = UIColorFromRGB(192, 192, 192);
+    cell.selectedBackgroundView = sbv;
     return cell;
 }
 //设置每个cell的尺寸
@@ -205,16 +243,131 @@
     // Pass the selected object to the new view controller.
 }
 */
+#pragma mark - request
+-(void)dataInitialize{
+    // [self hotRequest];
+    [self TypeRequest];
+}
+//请求健身类型ID
+- (void)TypeRequest{
+    
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡"};
+    [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+      //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *features = responseObject[@"result"][@"features"];
+            NSArray *featureForm = features[@"featureForm"];
+            for(NSDictionary *dict in featureForm){
+                FindModel *model = [[FindModel alloc]initWithType:dict];
+                [_TypeArr addObject:model];
+                //    NSLog(@"数组里的是：%@",model.fName);
+            }
+            for(int i = 0; i < 4;i++){
+                FindModel *model = _TypeArr[i];
+                [_KindArr addObject:model.fName];
+            }
+            
+            //[_tableView reloadData];
+            [self ClubRequest];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+}
+//默认按距离请求数据
+- (void)ClubRequest{
+    
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+      //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+                [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                [_ClubArr addObject:model];
+                
+            }
+            
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+}
+//请求1千米范围内的会所
+- (void)oneKMClubRequest{
+    _membraneView.hidden = YES;
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0,@"distance":@"1000"};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                
+            }
+            NSLog(@"按1千米请求");
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+}
 
+#pragma mark - Action
 - (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event {
-  
+     flag = 1;
+    self.HeightConstraint.constant = _CityArr.count *40 ;
+    _membraneView.hidden = NO;
+    [_tableView reloadData];
 }
 
 - (IBAction)KindAction:(UIButton *)sender forEvent:(UIEvent *)event {
-      _membraneView.hidden = NO;
+    flag = 2;
+     self.HeightConstraint.constant = _KindArr.count *40 ;
+    _membraneView.hidden = NO;
+    [_tableView reloadData];
 }
 
 - (IBAction)DistanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 3;
+    self.HeightConstraint.constant = _DistanceArr.count *40;
+    _membraneView.hidden = NO;
+     [_tableView reloadData];
 }
 @end
 
