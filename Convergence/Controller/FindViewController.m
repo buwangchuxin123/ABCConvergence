@@ -35,6 +35,7 @@
 @property (strong,nonatomic)NSMutableArray  *KindArr;
 @property (strong,nonatomic)NSArray *DistanceArr;
 @property (strong,nonatomic)NSString *distance;
+@property (strong,nonatomic)NSString *kindId;
 @end
 
 @implementation FindViewController
@@ -49,6 +50,7 @@
     // Do any additional setup after loading the view.
     //禁止被选中
   //  _collectionView.allowsSelection = NO;
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView)];
      tapGesture.delegate = self;
     [self.membraneView addGestureRecognizer:tapGesture];
@@ -170,16 +172,20 @@
             [self ClubRequest];
         }
         if(indexPath.row == 1){
-            
+            _kindId = @"1";
+            [self KindClubRequest];
         }
         if(indexPath.row == 2){
-            
+            _kindId = @"2";
+            [self KindClubRequest];
         }
         if(indexPath.row == 3){
-            
+            _kindId = @"3";
+            [self KindClubRequest];
         }
         if(indexPath.row == 4){
-            
+            _kindId = @"4";
+            [self KindClubRequest];
         }
 
     }
@@ -188,7 +194,7 @@
             [self ClubRequest];
         }
         if(indexPath.row == 1){
-            
+            [self TypeClubRequest];
         }
         
 
@@ -261,7 +267,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡"};
     [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-      //  NSLog(@"responseObject:%@", responseObject);
+       NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *features = responseObject[@"result"][@"features"];
@@ -328,7 +334,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0,@"distance":_distance};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
+      //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
@@ -340,7 +346,7 @@
                 [_ClubArr addObject:model];
                 
             }
-            NSLog(@"按%@千米请求",_distance);
+            NSLog(@"按%@米请求",_distance);
             [_collectionView reloadData];
         }else{
             //业务逻辑失败的情况下
@@ -354,6 +360,70 @@
     }];
     
 }
+//按种类请求会所
+- (void)KindClubRequest{
+    _membraneView.hidden = YES;
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0,@"featureId":_kindId};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                
+            }
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+}
+
+//按人气请求会所
+- (void)TypeClubRequest{
+    _membraneView.hidden = YES;
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@1};
+    [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //  NSLog(@"responseObject:%@", responseObject);
+        [_avi stopAnimating];
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSDictionary *result = responseObject[@"result"];
+            NSArray *array = result[@"models"];
+            [_ClubArr removeAllObjects];
+            for(NSDictionary *dict in array){
+                FindModel *model = [[FindModel alloc]initWithClub:dict];
+                
+                [_ClubArr addObject:model];
+                
+            }
+            [_collectionView reloadData];
+        }else{
+            //业务逻辑失败的情况下
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+}
+
 
 #pragma mark - Action
 - (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event {
