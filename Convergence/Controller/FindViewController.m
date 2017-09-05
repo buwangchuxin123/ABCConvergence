@@ -16,8 +16,6 @@
     NSInteger totalPage;
     BOOL isLast;
     
-    
-    
     NSInteger pageSize;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -266,9 +264,9 @@
     [_collectionView addSubview:acquireRef];
     
 }
-//已获取列表下拉刷新事件
+//会所列表下拉刷新事件
 - (void)acquireRef{
-   // acquirePageNum = 1;
+     pageNum = 1;
     [self ClubRequest];
 }
 //细胞将要出现时调用
@@ -374,15 +372,22 @@
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
-            [_ClubArr removeAllObjects];
+            NSDictionary  *pageDict =result[@"pagingInfo"];
+            totalPage = [pageDict[@"totalPage"]integerValue];
+            if(pageNum == 1){
+                [_ClubArr removeAllObjects];
+            }
+
             for(NSDictionary *dict in array){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 
                 [_ClubArr addObject:model];
+                NSLog(@"数组里的是%@",model);
                 
-            }
+             }
             NSLog(@"按%@米请求",_distance);
             [_collectionView reloadData];
+            
         }else{
             //业务逻辑失败的情况下
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"result"] integerValue]];
