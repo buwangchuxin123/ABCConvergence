@@ -7,8 +7,15 @@
 //
 
 #import "PurchaseTableViewController.h"
+#import "GBAlipayManager.h"
+
+
 
 @interface PurchaseTableViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong ,nonatomic) NSArray *arr;
 
 @end
 
@@ -17,29 +24,122 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.tableView.tableFooterView = [UIView new];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+    [self naviConfig];
+    [self uiLayout];
+    [self dataInitialize];
+    
+    //注册一个通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseResultAction:) name:@"AlipayResult" object:nil];
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)naviConfig{
+    //设置导航栏标题文字
+    self.navigationItem.title = @"活动报名支付";
+    //为导航条右上角创建一个按钮
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"支付" style:UIBarButtonItemStylePlain target:self action:@selector(payAction)];
+    self.navigationItem.rightBarButtonItem = right;
+}
+
+-(void)dataInitialize{
+    _arr = @[@"支付宝支付",@"微信支付",@"银联支付"];
+}
+
+-(void)uiLayout{
+    _nameLabel.text = _activity.name;
+    _contentLabel.text = _activity.content;
+    _priceLabel.text = [NSString stringWithFormat:@"%@元",_activity.applyFee];
+
+        //将表格视图设置为“编辑中”
+    self.tableView.editing = YES;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //用代码来选中表格视图的某个细胞
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
+-(void)payAction{
+    switch (self.tableView.indexPathForSelectedRow.row) {
+        case 0:{
+            NSString *tradeNo = [GBAlipayManager generateTradeNO];
+            [GBAlipayManager alipayWithProductName:_activity.name amount:_activity.applyFee tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@的活动报名费",_activity.name] itBPay:@"30"];
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)purchaseResultAction:(NSNotification *)note{
+    NSString *result = note.object;
+    if ([result isEqualToString:@"9000"]) {
+        //成功
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"支付成功" message:@"恭喜您，你已成功完成报名" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alertView addAction:okAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }else{
+        //失败
+        [Utilities popUpAlertViewWithMsg:[result isEqualToString:@"4000"] ? @"未能成功支付，请保持账户余额充足" : @"您已取消支付" andTitle:@"支付失败" onView:self];
+    }
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    
+    return _arr.count;
 }
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PayCell" forIndexPath:indexPath];
+    
+    // Configure the cell...
+    cell.textLabel.text = _arr[indexPath.row];
+    return cell;
+}
+
+//设置每一组中每一行细胞的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+
+//设置组的头标题文字
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"支付方式";
+}
+
+//按住细胞以后（取消选择）
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //遍历表格视图中所有选中状态下的细胞
+    for (NSIndexPath *eschIP in tableView.indexPathsForSelectedRows) {
+        //当选中的细胞不是当前正在按得这个细胞的情况下
+        if (eschIP != indexPath) {
+            //将细胞从选中状态改为不选中状态
+            [tableView deselectRowAtIndexPath:eschIP animated:YES];
+        }
+    }
+}
+
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
