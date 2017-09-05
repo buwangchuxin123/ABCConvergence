@@ -34,6 +34,7 @@
 @property (strong,nonatomic)NSArray *CityArr;
 @property (strong,nonatomic)NSMutableArray  *KindArr;
 @property (strong,nonatomic)NSArray *DistanceArr;
+@property (strong,nonatomic)NSString *distance;
 @end
 
 @implementation FindViewController
@@ -87,8 +88,10 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     
     if ([touch.view isDescendantOfView:self.tableView]) {
+        NSLog(@"手势被中断了");
         return NO;
-    }
+        
+     }
     return YES;
 }
 //-(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
@@ -143,16 +146,20 @@
             [self ClubRequest];//默认按距离请求
         }
         if(indexPath.row == 1){
-            [self oneKMClubRequest];
+            _distance = @"1000";
+            [self KMClubRequest];
         }
         if(indexPath.row == 2){
-            
+            _distance = @"2000";
+            [self KMClubRequest];
         }
         if(indexPath.row == 3){
-            
+            _distance = @"3000";
+            [self KMClubRequest];
         }
         if(indexPath.row == 4){
-            
+            _distance = @"5000";
+            [self KMClubRequest];
         }
         
 
@@ -286,7 +293,7 @@
 }
 //默认按距离请求数据
 - (void)ClubRequest{
-    
+      _membraneView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
@@ -315,11 +322,11 @@
     }];
     
 }
-//请求1千米范围内的会所
-- (void)oneKMClubRequest{
+//请求n千米范围内的会所
+- (void)KMClubRequest{
     _membraneView.hidden = YES;
     _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0,@"distance":@"1000"};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0,@"distance":_distance};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -333,7 +340,7 @@
                 [_ClubArr addObject:model];
                 
             }
-            NSLog(@"按1千米请求");
+            NSLog(@"按%@千米请求",_distance);
             [_collectionView reloadData];
         }else{
             //业务逻辑失败的情况下
