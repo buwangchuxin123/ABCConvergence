@@ -22,4 +22,8 @@
     _orginPrice = [Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
     return self;
 }
+-(instancetype)initWithPhoto:(NSDictionary *)dict{
+    _imgurl = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
+    return self;
+}
 @end

@@ -24,6 +24,9 @@
 @property(strong,nonatomic)NSString *clubID;//会所id
 @property(strong,nonatomic)NSString *Image;//会所图片地址
 @property(strong,nonatomic)NSString *clubName;//会所名字
+//图片
+@property(strong,nonatomic)NSString *imgurl;
 -(instancetype)initWithExperience:(NSDictionary *)dict;
 -(instancetype)initWithClub:(NSDictionary *)dict;
+-(instancetype)initWithPhoto:(NSDictionary *)dict;
 @end
