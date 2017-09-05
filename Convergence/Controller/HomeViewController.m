@@ -26,7 +26,7 @@
 @property (strong, nonatomic)NSString *cityJing;
 @property (strong, nonatomic)NSString *cityWei;
 @property (strong, nonatomic)NSMutableArray *arr;
-@property (strong, nonatomic)NSMutableArray *arr2;
+//@property (strong, nonatomic)NSMutableArray *arr2;
 @property (strong, nonatomic)NSMutableArray *arr3;
 @property (weak, nonatomic) IBOutlet UIView *CycleAdView;
 @end
@@ -41,7 +41,7 @@
     _cityJing = @"120.300000";
     flag = YES;
     _arr = [NSMutableArray new];
-    _arr2 = [NSMutableArray new];
+    //_arr2 = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
     [self switchAction];
     [self naviConfig];
@@ -80,7 +80,7 @@
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        NSLog(@"responseObject:%@", responseObject);
+        //NSLog(@"responseObject:%@", responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
             NSDictionary*result = responseObject[@"result"];
             NSArray *advertisement =   responseObject[@"advertisement"];
@@ -91,22 +91,19 @@
             if (pageNum ==1) {
                 //清空数据
                 [_arr removeAllObjects];
-                [_arr2 removeAllObjects];
+               // [_arr2 removeAllObjects];
             }
             for (NSDictionary *dict3 in advertisement) {
                 HomeModel *homeModel3 = [[HomeModel alloc]initWithPhoto:dict3];
                 [_arr3 addObject:homeModel3.imgurl];
-                NSLog(@"图片地址是：%@",homeModel3.imgurl);
+                //NSLog(@"图片地址是：%@",homeModel3.imgurl);
             }
             for (NSDictionary *dict in models) {
                 HomeModel *homeModel = [[HomeModel alloc]initWithClub:dict];
                 [_arr addObject:homeModel];
-                            }
-            for (NSDictionary *dict2 in models) {
-                HomeModel *homeModel2 = [[HomeModel alloc]initWithExperience:dict2];
-                [_arr2 addObject:homeModel2];
-            }
-            if (flag) {
+        }
+            
+        if (flag) {
                 flag = NO;
                 [self addZLImageViewDisPlayView:_arr3];
             }
@@ -125,25 +122,48 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 200;
+    return 200.f;
 
+}
+//设置细胞有多少组
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableVie{
+    //会所列表中所存会所的总数量，一个组代表一个会所信息
+    return _arr.count;
 }
 //设置细胞有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;//1+数组的个数
+    //当前正在渲染的数组中的第section组
+    HomeModel*homeModel=_arr[section];
+    //Model中会所中的体验劵数量加第一行的会所（每组有多少行）
+    return 2;//homeModel.experience.count + 1;
 }
 //设置细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //根据当前正在渲染的组的组号当做数组的下标，拿到对应的存在数组里Model
+    HomeModel *homeModel = _arr[indexPath.section];
     if(indexPath.row == 0){
+    //
     ClubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clubCell" forIndexPath:indexPath];
-       // cell.imageView.image = [UIImage imageNamed:@"默认"];
-        cell.shopNameLab.text = @"模范瑜伽";
-        cell.addressLab.text = @"无锡市";
-        cell.distanceLab.text = @"1000米";
+        //将http请求的字符串转换为NSURL
+        NSURL *URL1=[NSURL URLWithString:homeModel.imgurl];
+        [cell.shopFrontImage sd_setImageWithURL:URL1 placeholderImage:[UIImage imageNamed:@"Home"]];
+        cell.shopNameLab.text = homeModel.clubName;
+        cell.addressLab.text = homeModel.address;
+        cell.distanceLab.text = homeModel.distance;
         return cell;
     }
     else{
-        ClubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eCell" forIndexPath:indexPath];
+        //将homeModel里的体验劵添加到新建的experiences数组中
+        NSArray *experiences = homeModel.experience;
+        //行数减去第一行就是体验劵的数量并存在字典中
+        NSDictionary*experience= experiences[indexPath.row - 1];
+        ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
+        NSURL *URL2=[NSURL URLWithString:homeModel.logo];
+        [cell.leftImage sd_setImageWithURL:URL2 placeholderImage:[UIImage imageNamed:@"默认"]];
+        cell.experLab.text = experience[@"name"];
+        cell.comLab.text = experience[@"categoryName"];
+        cell.priceLab.text = experience[@"orginPrice"];
+        cell.numberLab.text = experience[@"sellNumber"];
         return cell;
     }
 }

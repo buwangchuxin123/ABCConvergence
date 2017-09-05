@@ -10,18 +10,28 @@
 
 @implementation HomeModel
 -(instancetype)initWithClub:(NSDictionary *)dict{
+    if (self) {
+        
     _clubName = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
     _Image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@""];
     _address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@""];
     _distance= [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@""];
+    }
     return self;
 }
--(instancetype)initWithExperience:(NSDictionary *)dict{
+-(instancetype)initWithexperience:(NSDictionary *)dict{
+    if (self) {
     _name = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
     _logo = [Utilities nullAndNilCheck:dict[@"logo"] replaceBy:@""];
     _orginPrice = [Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
+    _sellNumber = [Utilities nullAndNilCheck:dict[@"sellNumber"] replaceBy:@""];
+    _categoryName = [Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+    }
     return self;
 }
+
+
+
 -(instancetype)initWithPhoto:(NSDictionary *)dict{
     _imgurl = [Utilities nullAndNilCheck:dict[@"imgurl"] replaceBy:@""];
     return self;

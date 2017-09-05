@@ -39,7 +39,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="Xp5-SQ-8cf">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xp5-SQ-8cf">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Xp5-SQ-8cf" secondAttribute="height" multiplier="2:1" id="yHg-oh-SaK"/>
@@ -100,7 +100,7 @@
                                             <outlet property="shopNameLab" destination="moo-DR-znP" id="tZN-cT-KAN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eCell" rowHeight="144" id="8Bv-wo-scS" customClass="ExperienceTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="experienceCell" rowHeight="144" id="8Bv-wo-scS" customClass="ExperienceTableViewCell">
                                         <rect key="frame" x="0.0" y="227" width="375" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Bv-wo-scS" id="fBG-hE-7KK">
@@ -190,7 +190,4 @@
             <point key="canvasLocation" x="-127.2" y="77.811094452773617"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="home" width="22" height="22"/>
-    </resources>
 </document>
