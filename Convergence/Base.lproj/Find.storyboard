@@ -139,12 +139,15 @@
                                     <outlet property="delegate" destination="VHi-UY-h6L" id="Ndk-Nd-of2"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9h3-1T-xZM">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9h3-1T-xZM">
                                 <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-H1-9WW">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="HyX-Xp-BeL"/>
+                                        </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" id="V0j-yZ-AbK" customClass="SortTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -171,6 +174,10 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="VHi-UY-h6L" id="SEK-ac-6iU"/>
+                                            <outlet property="delegate" destination="VHi-UY-h6L" id="Km3-Zp-BkT"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.20168309563758388" colorSpace="calibratedWhite"/>
@@ -178,7 +185,6 @@
                                     <constraint firstItem="mhq-H1-9WW" firstAttribute="top" secondItem="9h3-1T-xZM" secondAttribute="top" id="KUt-rp-cSL"/>
                                     <constraint firstItem="mhq-H1-9WW" firstAttribute="leading" secondItem="9h3-1T-xZM" secondAttribute="leading" id="VCi-3e-deK"/>
                                     <constraint firstAttribute="trailing" secondItem="mhq-H1-9WW" secondAttribute="trailing" id="qd8-OX-CHL"/>
-                                    <constraint firstAttribute="bottom" secondItem="mhq-H1-9WW" secondAttribute="bottom" constant="300" id="r7Z-0f-72J"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -202,7 +208,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="ButtonView" destination="Gar-Jk-NBy" id="22R-zq-x5P"/>
-                        <outlet property="bottomConstraint" destination="r7Z-0f-72J" id="Gcd-Au-cqQ"/>
+                        <outlet property="HeightConstraint" destination="HyX-Xp-BeL" id="WMP-7z-aNc"/>
                         <outlet property="cityBtn" destination="zwP-nA-jdI" id="z4I-zb-YKB"/>
                         <outlet property="collectionView" destination="ydG-sQ-loR" id="crq-U0-Zmf"/>
                         <outlet property="distanceBtn" destination="6DK-Eg-D6t" id="KuN-Yv-mFg"/>

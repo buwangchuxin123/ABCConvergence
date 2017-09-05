@@ -9,6 +9,7 @@
 #import "FindViewController.h"
 #import "FindCollectionViewCell.h"
 #import "FindModel.h"
+#import "SortTableViewCell.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *ButtonView;
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *distanceBtn;
 @property (weak, nonatomic) IBOutlet UIView *membraneView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HeightConstraint;
 - (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)KindAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)DistanceAction:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -27,6 +28,7 @@
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
 @property (strong,nonatomic)NSMutableArray *ClubArr;
 @property (strong,nonatomic)NSMutableArray *TypeArr;
+@property (strong,nonatomic)NSMutableArray *KindArr;
 @end
 
 @implementation FindViewController
@@ -35,6 +37,7 @@
     [super viewDidLoad];
      _ClubArr = [NSMutableArray new];
     _TypeArr  = [NSMutableArray new];
+    _KindArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
     // Do any additional setup after loading the view.
     //禁止被选中
     _collectionView.allowsSelection = NO;
@@ -75,7 +78,7 @@
     _avi = [Utilities getCoverOnView:self.view];
      NSDictionary *para =  @{@"city":@"无锡"};
     [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-     //   NSLog(@"responseObject:%@", responseObject);
+        NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *features = responseObject[@"result"][@"features"];
@@ -83,9 +86,15 @@
             for(NSDictionary *dict in featureForm){
                 FindModel *model = [[FindModel alloc]initWithType:dict];
                 [_TypeArr addObject:model];
+            //    NSLog(@"数组里的是：%@",model.fName);
               }
-            
-            [self ClubRequest];
+                for(int i = 0; i < 4;i++){
+                FindModel *model = _TypeArr[i];
+                [_KindArr addObject:model.fName];
+                 }
+            self.HeightConstraint.constant = _KindArr.count *30 ;
+               [_tableView reloadData];
+               [self ClubRequest];
             
         }else{
             //业务逻辑失败的情况下
@@ -105,7 +114,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@"1",@"perPage":@"6",@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@", responseObject);
+    //    NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
           NSDictionary *result = responseObject[@"result"];
@@ -113,6 +122,7 @@
             for(NSDictionary *dict in array){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 [_ClubArr addObject:model];
+                
             }
     
             [_collectionView reloadData];
@@ -128,7 +138,19 @@
     }];
     
 }
-
+#pragma mark - tableView
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 30.f;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _KindArr.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SortTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableViewCell" forIndexPath:indexPath];
+    
+    cell.kindLbl.text = _KindArr[indexPath.row];
+    return cell;
+}
 
 #pragma mark - collectionView
 //每组有多少个items
@@ -185,9 +207,11 @@
 */
 
 - (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+  
 }
 
 - (IBAction)KindAction:(UIButton *)sender forEvent:(UIEvent *)event {
+      _membraneView.hidden = NO;
 }
 
 - (IBAction)DistanceAction:(UIButton *)sender forEvent:(UIEvent *)event {
