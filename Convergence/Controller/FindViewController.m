@@ -55,20 +55,20 @@
     //禁止被选中
   //  _collectionView.allowsSelection = NO;
     pageNum = 1;
-    pageSize = 8;
+    pageSize = 10;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView)];
     //监听名为@"refreshHome"的通知，监听到后执行refreshHome方法
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHome) name:@"refreshHome" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHome) name:@"refreshHome" object:nil];
      tapGesture.delegate = self;
     [self.membraneView addGestureRecognizer:tapGesture];
     [self setRefreshControl];
     [self naviConfig];
     [self dataInitialize];
 }
-- (void)refreshHome{
-    [self ClubRequest];
-  
-}
+//- (void)refreshHome{
+//    [self ClubRequest];
+//  
+//}
 
 - (void)viewWillAppear:(BOOL)animated{
    //[self dataInitialize];
@@ -95,7 +95,7 @@
 
 -(void)clickView{
     _membraneView.hidden = YES;
-    NSLog(@"view 被点击了");
+    //NSLog(@"view 被点击了");
 
 }
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
@@ -257,25 +257,54 @@
 */
 
 - (void)setRefreshControl{
-    //已获取列表的刷新指示器
+   
     UIRefreshControl *acquireRef = [UIRefreshControl new];
     [acquireRef addTarget:self action:@selector(acquireRef) forControlEvents:UIControlEventValueChanged];
-    acquireRef.tag = 10001;
+       acquireRef.tag = 10001;
     [_collectionView addSubview:acquireRef];
     
 }
 //会所列表下拉刷新事件
 - (void)acquireRef{
      pageNum = 1;
-    [self ClubRequest];
+    if(flag == 1){
+       // _distance = @"5000";
+        
+      [self KMClubRequest];
+        return;
+    }
+    if(flag == 2){
+        [self KindClubRequest];
+        return;
+    }
+    if(flag == 3){
+        [self TypeClubRequest];
+        return;
+    }else{
+        [self ClubRequest];
+    }
 }
 //细胞将要出现时调用
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(indexPath.row == _ClubArr.count -1){
         if(pageNum != totalPage){
             pageNum ++;
+            if(flag == 1){
+                [self KMClubRequest];
+                return;
+            }
+            if(flag == 2){
+                [self KindClubRequest];
+                return;
+            }
+            if(flag == 3){
+                [self TypeClubRequest];
+                return;
+            }
+            else{
             [self ClubRequest];
             NSLog(@"不是最后一页");
+            }
         }
     }
 
@@ -336,6 +365,7 @@
             NSArray *array = result[@"models"];
             NSDictionary  *pageDict =result[@"pagingInfo"];
             totalPage = [pageDict[@"totalPage"]integerValue];
+            
             if(pageNum == 1){
                 [_ClubArr removeAllObjects];
             }
@@ -343,7 +373,7 @@
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 [_ClubArr addObject:model];
                 
-            }
+              }
             
             [_collectionView reloadData];
         }else{
@@ -369,11 +399,14 @@
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
             NSDictionary  *pageDict =result[@"pagingInfo"];
             totalPage = [pageDict[@"totalPage"]integerValue];
+            
             if(pageNum == 1){
                 [_ClubArr removeAllObjects];
             }
@@ -382,7 +415,7 @@
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 
                 [_ClubArr addObject:model];
-                NSLog(@"数组里的是%@",model);
+               // NSLog(@"数组里的是%@",model);
                 
              }
             NSLog(@"按%@米请求",_distance);
@@ -396,6 +429,8 @@
         
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
     
@@ -408,10 +443,15 @@
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
-            [_ClubArr removeAllObjects];
+            if(pageNum == 1){
+                [_ClubArr removeAllObjects];
+            }
+
             for(NSDictionary *dict in array){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 
@@ -427,6 +467,8 @@
         
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
     
@@ -440,6 +482,8 @@
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
@@ -459,6 +503,8 @@
         
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
+        [ref endRefreshing];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
     
