@@ -43,7 +43,8 @@
     //设置导航条标题的文字
     self.navigationItem.title = @"活动列表";
     //设置导航条的颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
+    //self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否被隐藏
@@ -117,7 +118,7 @@
         //开始请求
         [RequestAPI requestURL:request withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情
-          NSLog(@"responseObject = %@",responseObject);
+         // NSLog(@"responseObject = %@",responseObject);
             [self endAnimation];
             if ([responseObject[@"resultFlag"] integerValue] == 8001) {
                 //业务逻辑成功的情况下
@@ -206,7 +207,26 @@
     //将上3句合并
     //cell.activityImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:activity.imgUrl]]];
     //依靠SDWebImage来异步地下载一张远程路径中的图片并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
-    [cell.activityImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"鄱阳湖"]];
+    //不知道啥，加了可以请求到酒店图片
+    NSString *userAgent = @"";
+    userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(__bridge NSString *)kCFBundleVersionKey], [[UIDevice currentDevice] model], [[UIDevice currentDevice] systemVersion], [[UIScreen mainScreen] scale]];
+    
+    if (userAgent) {
+        if (![userAgent canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+            NSMutableString *mutableUserAgent = [userAgent mutableCopy];
+            if (CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false)) {
+                userAgent = mutableUserAgent;
+            }
+        }
+        [[SDWebImageDownloader sharedDownloader] setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+    }
+    
+    [SDWebImageDownloader.sharedDownloader setValue:@"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+                                 forHTTPHeaderField:@"Accept"];
+    /////////////////////////
+    
+
+    [cell.activityImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"默认"]];
     
     
     cell.activityNameLabel.text = activity.name;
@@ -215,14 +235,14 @@
     cell.activityUnlikeLabel.text = [NSString stringWithFormat:@"踩:%ld",(long)activity.unlike];
     //给每一行的收藏按钮打上下标，用来区分它是哪一行的按钮
     cell.favoBtn.tag = 100000 + indexPath.row;
-    //    if (activity.isFavo) {
-    //        cell.favoBtn.titleLabel.text = @"取消收藏";
-    //    }else{
-    //        cell.favoBtn.titleLabel.text = @"收藏";
-    //    }
-    //NSString *title = activity.isFavo ?@"取消收藏" :@"收藏";
-    [cell.favoBtn setTitle:activity.isFavo ? @"取消收藏" : @"收藏" forState:UIControlStateNormal];
-    
+        if (activity.isFavo) {
+            cell.favoBtn.titleLabel.text = @"取消收藏";
+        }else{
+            cell.favoBtn.titleLabel.text = @"收藏";
+        }
+   // NSString *title = activity.isFavo ?@"取消收藏" :@"收藏";
+  //  [cell.favoBtn setTitle:activity.isFavo ? @"取消收藏" : @"收藏" forState:UIControlStateNormal];
+   // [cell.favoBtn setTitle:@"收藏" forState:UIControlStateNormal];
     /*
      //组
      //indexPath.section;
@@ -271,7 +291,7 @@
     return cell.activityInfLabel.frame.origin.y + height + 10;
 }
 
-//设置每一组中没一行被点击以后要做的事情
+//设置每一组中每一行被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     //判断当前这个tableView是否为_activityTableView（这个条件判断常在一个页面中有多个tableView的时候）
     if ([tableView isEqual:_activityTableView]) {

@@ -48,7 +48,7 @@
     [super viewDidLoad];
      _ClubArr = [NSMutableArray new];
     _TypeArr  = [NSMutableArray new];
-    _KindArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
+   
     _CityArr = [[NSArray alloc]initWithObjects:@"全城",@"距离我1KM",@"距离我2KM",@"距离我3KM",@"距离我5KM",nil];
     _DistanceArr = [[NSArray alloc]initWithObjects:@"按距离",@"按人气", nil];
     // Do any additional setup after loading the view.
@@ -63,7 +63,7 @@
     [self.membraneView addGestureRecognizer:tapGesture];
     [self setRefreshControl];
     [self naviConfig];
-    [self dataInitialize];
+    //[self dataInitialize];
 }
 //- (void)refreshHome{
 //    [self ClubRequest];
@@ -71,7 +71,7 @@
 //}
 
 - (void)viewWillAppear:(BOOL)animated{
-   //[self dataInitialize];
+   [self dataInitialize];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -329,8 +329,10 @@
                 FindModel *model = [[FindModel alloc]initWithType:dict];
                 [_TypeArr addObject:model];
                 //    NSLog(@"数组里的是：%@",model.fName);
-            }
-            for(int i = 0; i < 4;i++){
+              }
+               [_KindArr removeAllObjects];
+             _KindArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
+               for(int i = 0; i < 4;i++){
                 FindModel *model = _TypeArr[i];
                 [_KindArr addObject:model.fName];
             }
