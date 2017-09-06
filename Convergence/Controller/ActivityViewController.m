@@ -1,19 +1,19 @@
 //
-//  ActivityTableViewController.m
+//  ActivityViewController.m
 //  Convergence
 //
-//  Created by admin1 on 2017/9/4.
+//  Created by admin1 on 2017/9/6.
 //  Copyright © 2017年 EDucation. All rights reserved.
 //
 
-#import "ActivityTableViewController.h"
+#import "ActivityViewController.h"
 #import "ActivityModel.h"
 #import "ActivityCell.h"
-@interface ActivityTableViewController ()<UITableViewDataSource ,UITableViewDelegate> {
-    NSInteger page;//页码
-    NSInteger perPage;//每页多少个内容
-    NSInteger totalPage;//多少页
-    BOOL isLoding;//判断是不是在加载中
+@interface ActivityViewController ()<UITableViewDataSource ,UITableViewDelegate> {
+    NSInteger page;
+    NSInteger perPage;
+    NSInteger totalPage;
+    BOOL isLoding;
     BOOL firstVisit;
 }
 
@@ -21,63 +21,24 @@
 @property (strong,nonatomic) NSMutableArray *arr;
 @end
 
-@implementation ActivityTableViewController
+@implementation ActivityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    //_arr = @[@"骑行",@"锡马",@"登月",@"下海",@"棚户"];
+    _arr = [NSMutableArray new];
+    // Do any additional setup after loading the view.
     [self naviConfig];
     [self uiLayout];
     
     [self dataInitialize];
-    
-    
-    
 }
 
-
-//每次将要来到这个页面的时候
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    
-}
-
-//每次到达了这个页面的时候
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
-
-//每次将要离开这个页面的时候
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    
-    
-}
-
-//每次离开这个页面
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    //获得当前页面的导航控制器所维系的关于导航关系的数组,判断该数组中是否包含自己来得知当前操作是离开本页面还是退出本页面
-    if(![self.navigationController.viewControllers containsObject:self]){
-        //在这里先释放所有监听（包括：Action事件；Protocol：协议；Gesture手势；Notification通知...）所有通过故事版添加德控件都会自动释放
-        
-    }
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
-//一旦退出这个页面的时候（并且所有的监听都已经全部释放了）
-- (void)dealloc {
-    //在这里释放所有内存（设置为nil）
-}
-
-//这个方法专门做导航条的控制
 - (void)naviConfig{
     //设置导航条标题的文字
     self.navigationItem.title = @"活动列表";
@@ -94,7 +55,7 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
-//这个方法专门做界面的时候
+
 - (void)uiLayout{
     //为表格视图创建footer(该方法可以去除表格视图底部多余的下划线)
     _activityTableView.tableFooterView = [UIView new];
@@ -111,7 +72,7 @@
     //设置标题
     NSString *title = @"大风车转悠悠";
     //创建属性字典
-    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor grayColor], NSBackgroundColorAttributeName : [UIColor clearColor]};//NSBackgroundColorAttributeName设置@"让小胖的菊花转起来"的背景颜色
+    NSDictionary *attrDict = @{NSForegroundColorAttributeName : [UIColor grayColor], NSBackgroundColorAttributeName : [UIColor clearColor]};//NSBackgroundColorAttributeName设置@"大风车转悠悠"的背景颜色
     //将文字和属性字典包裹一个带属性的字符串
     NSAttributedString *attriTitle = [[NSAttributedString alloc] initWithString:title attributes:attrDict];
     refreshControl.attributedTitle = attriTitle;
@@ -139,16 +100,8 @@
 
 //这个方法专门做数据的处理
 - (void)dataInitialize{
-    BOOL appInit = NO;
-    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
-        //说明是第一次打开APP
-        appInit = YES;
-    } else {
-        if ([Utilities getUserDefaults:@"UserCity"] == nil) {
-            //也说明是第一次打开APP
-            appInit = YES;
-        }
-    }
+   // BOOL appInit = NO;
+    [self networkRequest];
 }
 //执行网络请求
 - (void)networkRequest {
@@ -164,7 +117,7 @@
         //开始请求
         [RequestAPI requestURL:request withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情
-            //NSLog(@"responseObject = %@",responseObject);
+          NSLog(@"responseObject = %@",responseObject);
             [self endAnimation];
             if ([responseObject[@"resultFlag"] integerValue] == 8001) {
                 //业务逻辑成功的情况下
@@ -193,7 +146,7 @@
                 [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
             }
         } failure:^(NSInteger statusCode, NSError *error) {
-            //失败以后要做的事情
+            
             //NSLog(@"statusCode = %ld",(long)statusCode);
             [self endAnimation];
             [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
@@ -215,6 +168,7 @@
 
 //设置表格视图中每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSLog(@"个数是：%lu",(unsigned long)_arr.count);
     return _arr.count;
     
 }
@@ -234,7 +188,7 @@
 }
 
 
-//设置每一组中每一行的细胞长什么样
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //根据某个具体的名字找到该名字在页面上对应的细胞
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
@@ -378,5 +332,16 @@
 //
 //
 
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

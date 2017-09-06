@@ -40,7 +40,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xjU-Fb-iMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2637" y="-1149"/>
+            <point key="canvasLocation" x="2361" y="-1206"/>
         </scene>
         <!--Activity-->
         <scene sceneID="wsa-ye-dRj">
@@ -50,7 +50,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sr3-8f-0bJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2418" y="-476"/>
+            <point key="canvasLocation" x="2118" y="-520"/>
         </scene>
         <!--首页-->
         <scene sceneID="gjz-T4-IXc">
@@ -83,7 +83,7 @@
                     <connections>
                         <segue destination="E1h-CA-1EQ" kind="relationship" relationship="viewControllers" id="ilk-c5-iuM"/>
                         <segue destination="ZBM-eW-y4d" kind="relationship" relationship="viewControllers" id="POK-Ns-L3p"/>
-                        <segue destination="bbm-Vj-AmM" kind="relationship" relationship="viewControllers" id="S9s-rw-frn"/>
+                        <segue destination="bbm-Vj-AmM" kind="relationship" relationship="viewControllers" id="07R-Bj-u82"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCM-fF-LQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,12 +102,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6B5-RN-0JT" kind="relationship" relationship="rootViewController" id="fQx-Qa-C6y"/>
+                        <segue destination="6B5-RN-0JT" kind="relationship" relationship="rootViewController" id="nkr-zz-y0a"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEw-ac-oIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1702" y="-466"/>
+            <point key="canvasLocation" x="1303" y="-503"/>
         </scene>
         <!--发现-->
         <scene sceneID="SPU-OD-m4k">
