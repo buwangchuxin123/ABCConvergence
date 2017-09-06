@@ -16,7 +16,7 @@
 @property(strong,nonatomic)NSString *logo;//体验券图片地址
 @property(strong,nonatomic)NSString *name;//体验券名称
 @property(strong,nonatomic)NSString *orginPrice;//体验券原价 60
-//@property(strong,nonatomic)NSString *Price;//体验券价格 1
+@property(strong,nonatomic)NSString *Price;//体验券价格 1
 @property(strong,nonatomic)NSString *sellNumber;//体验券售出数量
 @property (strong,nonatomic) NSString *categoryName;//体验券类型名称
 //会所

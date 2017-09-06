@@ -19,6 +19,8 @@
     NSInteger pageNum;//页码
     NSInteger pageSize;//每页多少内容
     NSInteger totalPage;//多少页
+    NSInteger firstPage;
+    NSInteger isLastPage;
 }
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
@@ -40,12 +42,15 @@
     _cityWei = @" 31.570000";
     _cityJing = @"120.300000";
     flag = YES;
+    firstPage = 1;
     _arr = [NSMutableArray new];
     //_arr2 = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
     [self switchAction];
     [self naviConfig];
-    [self netRequest];
+    [self InitializeData];
+    [self setRefreshControl];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,19 +78,39 @@
     [_CycleAdView addSubview:imageViewDisplay];
     
 }
+//创建刷新指示器的方法
+- (void)setRefreshControl{
+    //已获取列表的刷新指示器
+    UIRefreshControl *Ref = [UIRefreshControl new];
+    [Ref addTarget:self action:@selector(Ref) forControlEvents:UIControlEventValueChanged];
+    Ref.tag = 10001;
+    [_homeTableView addSubview:Ref];
+}
+- (void)Ref{
+    pageNum = 1;
+    [self netRequest];
+}
+- (void)InitializeData{
+    _avi = [Utilities getCoverOnView:self.view];
+    [self netRequest];
+}
+//下拉刷新
+- (void)refreshRequest{
+    pageNum = 1;
+    [self netRequest];
+}
 
 -(void)netRequest{
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =@{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@"1",@"perPage":@"3"};
+    NSDictionary *para =@{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum),@"perPage":@"14"};
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        //NSLog(@"responseObject:%@", responseObject);
+        NSLog(@"responseObject:%@", responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
             NSDictionary*result = responseObject[@"result"];
             NSArray *advertisement =   responseObject[@"advertisement"];
             NSArray*models = result[@"models"];
-           
+            //NSArray *experience = result[@"models"][@"experience"];
             NSDictionary *pagingInfo = result[@"pagingInfo"];
             totalPage = [pagingInfo[@"totalPage"]integerValue];
             if (pageNum ==1) {
@@ -102,8 +127,11 @@
                 HomeModel *homeModel = [[HomeModel alloc]initWithClub:dict];
                 [_arr addObject:homeModel];
         }
-            
-        if (flag) {
+//            for (NSDictionary *dict2 in experience) {
+//                HomeModel*homeModel2 = [[HomeModel alloc]initWithexperience:dict2];
+//                [_arr2 addObject:homeModel2];
+//            }
+              if (flag) {
                 flag = NO;
                 [self addZLImageViewDisPlayView:_arr3];
             }
@@ -122,8 +150,18 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 200.f;
+    if(indexPath.row == 0){
+    return 220.f;
+    }
+    else{
+        ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell"];
+        HomeModel *homemodel = _arr[indexPath.section];
+        CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
+        CGSize contentSize = [homemodel.name boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.experLab.font} context:nil].size;
+        return contentSize.height + 144;
+    }
 
+    
 }
 //设置细胞有多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableVie{
@@ -135,7 +173,11 @@
     //当前正在渲染的数组中的第section组
     HomeModel*homeModel=_arr[section];
     //Model中会所中的体验劵数量加第一行的会所（每组有多少行）
-    return 2;//homeModel.experience.count + 1;
+//    NSLog(@"数组的个数：%lu",(unsigned long)homeModel.experience.count);
+//    for(NSDictionary *dict in homeModel.experience){
+//       NSLog(@"东东%@",dict);
+//    }
+    return homeModel.experience.count + 1;
 }
 //设置细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -145,28 +187,49 @@
     //
     ClubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"clubCell" forIndexPath:indexPath];
         //将http请求的字符串转换为NSURL
-        NSURL *URL1=[NSURL URLWithString:homeModel.imgurl];
+        NSURL *URL1=[NSURL URLWithString:homeModel.Image];
         [cell.shopFrontImage sd_setImageWithURL:URL1 placeholderImage:[UIImage imageNamed:@"Home"]];
         cell.shopNameLab.text = homeModel.clubName;
         cell.addressLab.text = homeModel.address;
-        cell.distanceLab.text = homeModel.distance;
+        cell.distanceLab.text = [NSString stringWithFormat:@"%@米",homeModel.distance];
         return cell;
     }
     else{
         //将homeModel里的体验劵添加到新建的experiences数组中
         NSArray *experiences = homeModel.experience;
-        //行数减去第一行就是体验劵的数量并存在字典中
-        NSDictionary*experience= experiences[indexPath.row - 1];
+        for (NSDictionary *dict in experiences) {
+            NSLog(@"dict = %@",dict.allValues);
+        }
         ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
-        NSURL *URL2=[NSURL URLWithString:homeModel.logo];
+        //行数减去第一行就是体验劵的数量并存在字典中
+        NSDictionary *experience= experiences[indexPath.row-1];
+        NSURL *URL2=[NSURL URLWithString:experience[@"logo"]];
+        //NSLog(@"%@",URL2);
         [cell.leftImage sd_setImageWithURL:URL2 placeholderImage:[UIImage imageNamed:@"默认"]];
-        cell.experLab.text = experience[@"name"];
-        cell.comLab.text = experience[@"categoryName"];
-        cell.priceLab.text = experience[@"orginPrice"];
-        cell.numberLab.text = experience[@"sellNumber"];
+        cell.experLab.text =experience[@"name"];
+        //NSLog(@"%@",homeModel.name);
+        cell.comLab.text = [experience[@"categoryName"]isKindOfClass:[NSNull class]]?@"综合卷":experience[@"categoryName"];
+        cell.priceLab.text = [NSString stringWithFormat:@"%@元",experience[@"price"]];
+        cell.numberLab.text = [NSString stringWithFormat:@"已售: %@",experience[@"sellNumber"]];
         return cell;
     }
 }
+//细胞选中后调用
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+//细胞将要出现时调用
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    //判断将要出现的细胞是不是当前最后一行
+    if (indexPath.row == _arr.count - 1) {
+        //当存在下一页的时候，页码自增，请求下一页数据
+        if (firstPage < isLastPage) {
+            firstPage ++;
+            [self netRequest];
+        }
+    }
+}
+
 /*
 #pragma mark - Navigation
 
