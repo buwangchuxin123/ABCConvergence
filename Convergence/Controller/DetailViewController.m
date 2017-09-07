@@ -102,13 +102,13 @@
     }];
 }
 - (IBAction)applyAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    if([Utilities loginCheck]){
-        PurchaseTableViewController *purchaseVC = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"Purchase"];
+    if(1){//[Utilities loginCheck]
+        PurchaseTableViewController *purchaseVC = [Utilities getStoryboardInstance:@"Activity" byIdentity:@"Purchase"];
         purchaseVC.activity = _activity;
         [self.navigationController pushViewController:purchaseVC animated:YES];
     }else{
         //获取要跳转过去的那个页面
-        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Member" byIdentity:@"SignNavi"];
+        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"SignNavi"];
         //执行跳转
         [self presentViewController:signNavi animated:YES completion:nil];
     }
@@ -123,7 +123,7 @@
     
 }
 - (void)uiLayout{
-    [_activityImageView sd_setImageWithURL:[NSURL URLWithString:_activity.imgUrl] placeholderImage:[UIImage imageNamed:@"png2"]];
+    [_activityImageView sd_setImageWithURL:[NSURL URLWithString:_activity.imgUrl] placeholderImage:[UIImage imageNamed:@"活动"]];
     [self addTapGestureRecognizer:_activityImageView];
     _applyFeeLabel.text = [NSString stringWithFormat:@"%@元", _activity.applyFee];
     _attentdenceLbl.text = [NSString stringWithFormat:@"%@/%@", _activity.attendence, _activity.limitation];
@@ -215,7 +215,7 @@
         //将http请求的字符串转换为nsurl
         NSURL *URL = [NSURL URLWithString:_activity.imgUrl];
         //依靠SDWebImage来异步地下载一张远程路径中的图片并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
-        [_image sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"png2"]];
+        [_image sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"活动"]];
         //设置图片地内容模式
         _image.contentMode = UIViewContentModeScaleAspectFit;
         //[UIApplication sharedApplication].keyWindow获得窗口实例，并将大图放置到窗口实例上，根据苹果规则，后添加的控件会盖住前面添加的控件
