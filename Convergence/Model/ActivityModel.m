@@ -11,7 +11,7 @@
 @implementation ActivityModel
 
 
-- (id) initWhitDictionary: (NSDictionary *)dict{
+- (id) initWithDictionary: (NSDictionary *)dict{
     //isKindOfClass:判断一个东西是否为空
     //    if ([dict[@"imgURL"] isKindOfClass:[NSNull class]]) {
     //        _imgUrl = @"http://7u2h3s.com2.z0.glb.qiniucdn.com/activityImg_2_0B28535F-B789-4E8B-9B5D-28DEDB728E9A";
@@ -31,7 +31,7 @@
     }
     return self;
 }
-- (id) initWhitDetailDictionary: (NSDictionary *)dict{
+- (id) initWithDetailDictionary: (NSDictionary *)dict{
     self = [super init];//self调用者本身
     if (self){
         _activityId = [Utilities nullAndNilCheck:dict[@"id"] replaceBy:@"0"];

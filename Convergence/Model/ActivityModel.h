@@ -28,7 +28,7 @@
 @property (nonatomic) NSTimeInterval startTime; //开始时间
 @property (nonatomic) NSTimeInterval endTime; //结束时间
 @property (nonatomic) NSInteger status; //状态
-- (id) initWhitDictionary: (NSDictionary *)dict;
-- (id) initWhitDetailDictionary: (NSDictionary *)dict;
+- (id) initWithDictionary: (NSDictionary *)dict;
+- (id) initWithDetailDictionary: (NSDictionary *)dict;
 
 @end

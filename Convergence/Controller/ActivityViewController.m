@@ -5,7 +5,7 @@
 //  Created by admin1 on 2017/9/6.
 //  Copyright © 2017年 EDucation. All rights reserved.
 //
-
+#import "DetailViewController.h"
 #import "ActivityViewController.h"
 #import "ActivityModel.h"
 #import "ActivityCell.h"
@@ -134,7 +134,7 @@
                 
                 for (NSDictionary *dict in models) {
                     //用ActivityModel类中定义的初始化方法initWhitDictionary: 将遍历得来的字典dict转换成为initWhitDictionary对象
-                    ActivityModel *activityModel = [[ActivityModel alloc] initWhitDictionary:dict];
+                    ActivityModel *activityModel = [[ActivityModel alloc] initWithDictionary:dict];
                     //将上述实例化好的ActivityModel对象插入_arr数组中
                     [_arr addObject:activityModel];
                 }
@@ -336,21 +336,21 @@
     }
 }
 
-////当某一个页面跳转行为将要发生的时候
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    if ([segue.identifier isEqualToString:@"List2Detail"]) {
-//        //当列表页到详情页的这个跳转要发生的时候
-//        //1.获取要传递到下一页的数据
-//        NSIndexPath *indexPath = [_activityTableView indexPathForSelectedRow];
-//        ActivityModel *activity = _arr[indexPath.row];
-//        //2.获取下一页的实例
-//        DetailViewController *detailVC = segue.destinationViewController;
-//        //3.把数据给下一页预备好的接收容器
-//        detailVC.activity = activity;
-//    }
-//}
-//
-//
+//当某一个页面跳转行为将要发生的时候
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"List2Detail"]) {
+        //当列表页到详情页的这个跳转要发生的时候
+        //1.获取要传递到下一页的数据
+        NSIndexPath *indexPath = [_activityTableView indexPathForSelectedRow];
+        ActivityModel *activity = _arr[indexPath.row];
+        //2.获取下一页的实例
+        DetailViewController *detailVC = segue.destinationViewController;
+        //3.把数据给下一页预备好的接收容器
+        detailVC.activity = activity;
+    }
+}
+
+
 
 
 
