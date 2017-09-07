@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface MyOrderTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *OrderImageView;
 @property (weak, nonatomic) IBOutlet UILabel *OrderName;

@@ -79,8 +79,8 @@
 		B248F35F1F5D2FA000C3C0C5 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B248F35E1F5D2FA000C3C0C5 /* ActivityCell.m */; };
 		B252ECAD1F5FC3F900210E3A /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B252ECAC1F5FC3F900210E3A /* ActivityViewController.m */; };
 		B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */; };
-		B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */; };
 		B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */; };
+		B2D889361F613A780017F4CE /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D889351F613A780017F4CE /* MyOrderTableViewController.m */; };
 		EE5AB18D1F5D3F9F00CD3D93 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */; };
 		EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */; };
 		EE5AB19F1F5D6C0000CD3D93 /* ExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */; };
@@ -237,10 +237,10 @@
 		B252ECAB1F5FC3F900210E3A /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		B252ECAC1F5FC3F900210E3A /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		B29B9BEE1F5D0B16000230EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/MyOrder.storyboard; sourceTree = SOURCE_ROOT; };
-		B29B9BF41F5D10B9000230EC /* MyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewController.h; sourceTree = "<group>"; };
-		B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
 		B29B9BF81F5D1F9D000230EC /* MyOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewCell.h; sourceTree = "<group>"; };
 		B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
+		B2D889341F613A780017F4CE /* MyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewController.h; sourceTree = "<group>"; };
+		B2D889351F613A780017F4CE /* MyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
 		EE5AB18B1F5D3F9F00CD3D93 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		EE5AB19A1F5D6BF400CD3D93 /* ClubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClubTableViewCell.h; path = Convergence/Controller/ClubTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -550,12 +550,10 @@
 		84D9C3921F5A5D4300AC0B75 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				B2D889331F6139050017F4CE /* MyInfo */,
+				B2D889321F6138CC0017F4CE /* Setting */,
 				843D55581F5D2A36000DB239 /* sign */,
 				B29B9BF71F5D1F49000230EC /* MyOrder */,
-				84D9C3991F5A5DD500AC0B75 /* MyInfoViewController.h */,
-				84D9C39A1F5A5DD500AC0B75 /* MyInfoViewController.m */,
-				84D9C39C1F5A5DF200AC0B75 /* SettingViewController.h */,
-				84D9C39D1F5A5DF200AC0B75 /* SettingViewController.m */,
 			);
 			name = MyInfo;
 			sourceTree = "<group>";
@@ -716,11 +714,29 @@
 		B29B9BF71F5D1F49000230EC /* MyOrder */ = {
 			isa = PBXGroup;
 			children = (
-				B29B9BF41F5D10B9000230EC /* MyOrderTableViewController.h */,
-				B29B9BF51F5D10B9000230EC /* MyOrderTableViewController.m */,
+				B2D889341F613A780017F4CE /* MyOrderTableViewController.h */,
+				B2D889351F613A780017F4CE /* MyOrderTableViewController.m */,
 			);
 			name = MyOrder;
 			path = ../View;
+			sourceTree = "<group>";
+		};
+		B2D889321F6138CC0017F4CE /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C39C1F5A5DF200AC0B75 /* SettingViewController.h */,
+				84D9C39D1F5A5DF200AC0B75 /* SettingViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		B2D889331F6139050017F4CE /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				84D9C3991F5A5DD500AC0B75 /* MyInfoViewController.h */,
+				84D9C39A1F5A5DD500AC0B75 /* MyInfoViewController.m */,
+			);
+			name = MyInfo;
 			sourceTree = "<group>";
 		};
 		EE5AB18A1F5D3F4000CD3D93 /* UserModel */ = {
@@ -934,7 +950,6 @@
 				84D9C3AE1F5A5F6800AC0B75 /* bitstream.m in Sources */,
 				84D9C3B11F5A5F6800AC0B75 /* qrinput.m in Sources */,
 				84D9C35B1F5A3D3700AC0B75 /* base64.m in Sources */,
-				B29B9BF61F5D10B9000230EC /* MyOrderTableViewController.m in Sources */,
 				84D9C3691F5A3D3700AC0B75 /* NSString+Crypt.m in Sources */,
 				84D9C2F11F5A39FB00AC0B75 /* AppDelegate.m in Sources */,
 				84D9C3B41F5A5F6800AC0B75 /* split.m in Sources */,
@@ -963,6 +978,7 @@
 				84D9C3681F5A3D3700AC0B75 /* NSDateFormatter+Category.m in Sources */,
 				EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */,
 				84D9C36C1F5A3D3700AC0B75 /* Utilities.m in Sources */,
+				B2D889361F613A780017F4CE /* MyOrderTableViewController.m in Sources */,
 				84D9C3651F5A3D3700AC0B75 /* JSONS.m in Sources */,
 				84791BDF1F5C081A008A83EB /* FindModel.m in Sources */,
 				84C6584D1F5D4D3B00224636 /* PurchaseTableViewController.m in Sources */,

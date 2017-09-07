@@ -2,14 +2,13 @@
 //  MyOrderTableViewController.m
 //  Convergence
 //
-//  Created by admin1 on 2017/9/4.
+//  Created by admin1 on 2017/9/7.
 //  Copyright © 2017年 EDucation. All rights reserved.
 //
 
 #import "MyOrderTableViewController.h"
-
+#import "MyOrderTableViewCell.h"
 @interface MyOrderTableViewController ()
-@property (strong, nonatomic) IBOutlet UITableView *MyOrderTableView;
 
 @end
 
@@ -32,25 +31,24 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return 10;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    MyOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.imageView.image = [UIImage imageNamed:@"默认"];
+    cell.OrderName.text = @"新用户免费体验券";
+    cell.clubName.text = @"沐心堂射箭馆";
+    cell.price.text = @"99";
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
