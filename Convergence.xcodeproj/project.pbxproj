@@ -12,6 +12,7 @@
 		843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553D1F5CE0C7000DB239 /* Main.storyboard */; };
 		843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555A1F5D2A7C000DB239 /* SigninViewController.m */; };
 		843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555D1F5D2A8F000DB239 /* SignUpViewController.m */; };
+		845A524C1F61579800964700 /* ClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A524B1F61579800964700 /* ClubDetailViewController.m */; };
 		846788311F5D7BC7004311A0 /* SortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846788301F5D7BC7004311A0 /* SortTableViewCell.m */; };
 		84791BDF1F5C081A008A83EB /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDE1F5C081A008A83EB /* FindModel.m */; };
 		84C6584D1F5D4D3B00224636 /* PurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C6584C1F5D4D3B00224636 /* PurchaseTableViewController.m */; };
@@ -86,7 +87,6 @@
 		EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */; };
 		EE5AB19F1F5D6C0000CD3D93 /* ExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */; };
 		EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */; };
-		EEB7E7B31F61562A0059D905 /* ClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB7E7B21F61562A0059D905 /* ClubDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +117,8 @@
 		843D555A1F5D2A7C000DB239 /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
 		843D555C1F5D2A8F000DB239 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		843D555D1F5D2A8F000DB239 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		845A524A1F61579800964700 /* ClubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDetailViewController.h; sourceTree = "<group>"; };
+		845A524B1F61579800964700 /* ClubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDetailViewController.m; sourceTree = "<group>"; };
 		8467882F1F5D7BC7004311A0 /* SortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortTableViewCell.h; sourceTree = "<group>"; };
 		846788301F5D7BC7004311A0 /* SortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortTableViewCell.m; sourceTree = "<group>"; };
 		84791BDD1F5C081A008A83EB /* FindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindModel.h; sourceTree = "<group>"; };
@@ -253,8 +255,6 @@
 		EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperienceTableViewCell.m; path = Convergence/Controller/ExperienceTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		EE5AB1A01F5D6C1400CD3D93 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeModel.h; path = Convergence/Controller/HomeModel.h; sourceTree = SOURCE_ROOT; };
 		EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeModel.m; path = Convergence/Controller/HomeModel.m; sourceTree = SOURCE_ROOT; };
-		EEB7E7B11F61562A0059D905 /* ClubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClubDetailViewController.h; path = "../../../huiju 2/Convergence/Controller/ClubDetailViewController.h"; sourceTree = "<group>"; };
-		EEB7E7B21F61562A0059D905 /* ClubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClubDetailViewController.m; path = "../../../huiju 2/Convergence/Controller/ClubDetailViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,8 +762,8 @@
 		EEB7E7B01F6156140059D905 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				EEB7E7B11F61562A0059D905 /* ClubDetailViewController.h */,
-				EEB7E7B21F61562A0059D905 /* ClubDetailViewController.m */,
+				845A524A1F61579800964700 /* ClubDetailViewController.h */,
+				845A524B1F61579800964700 /* ClubDetailViewController.m */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -985,7 +985,7 @@
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
 				843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */,
 				84D9C3AF1F5A5F6800AC0B75 /* mask.m in Sources */,
-				EEB7E7B31F61562A0059D905 /* ClubDetailViewController.m in Sources */,
+				845A524C1F61579800964700 /* ClubDetailViewController.m in Sources */,
 				84D9C36B1F5A3D3700AC0B75 /* StorageMgr.m in Sources */,
 				84D9C36A1F5A3D3700AC0B75 /* RequestAPI.m in Sources */,
 				84D9C3BE1F5A5F9F00AC0B75 /* SKTagView.m in Sources */,
