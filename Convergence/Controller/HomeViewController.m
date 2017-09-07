@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "ClubTableViewCell.h"
 #import "ExperienceTableViewCell.h"
+#import "ClubDetailViewController.h"
 #import "HomeModel.h"
 #import "ZLImageViewDisplayView.h"
 #import <CoreLocation/CoreLocation.h>//使用该框架才可以使用定位
@@ -105,7 +106,7 @@
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-       // NSLog(@"responseObject:%@", responseObject);
+        //NSLog(@"responseObject:%@", responseObject);
         UIRefreshControl *ref = (UIRefreshControl *)[_homeTableView viewWithTag:10001];
         [ref endRefreshing];
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
@@ -218,7 +219,8 @@
 }
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"clubToDetail" sender:nil];
 }
 //细胞将要出现时调用
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -231,7 +233,17 @@
         }
     }
 }
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //当从首页到详情页的这个跳转要发生的时候，获取要传递下一页的数据
+    if ([segue.identifier isEqualToString:@"clubToDetail"]) {
+        NSIndexPath *indexPath = [_homeTableView indexPathForSelectedRow];
+        HomeModel *home = _arr[indexPath.row];
+        //获取下一页的实例
+        ClubDetailViewController *detailVC = segue.destinationViewController;
+        //把数据给下一页预备好的接收容器
+        detailVC.home= home;
+    }
+}
 /*
 #pragma mark - Navigation
 

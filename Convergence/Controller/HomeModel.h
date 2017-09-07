@@ -22,7 +22,7 @@
 //会所
 @property(strong,nonatomic)NSString *address;//地址
 @property(strong,nonatomic)NSString *distance;//距离
-@property(strong,nonatomic)NSString *clubID;//会所id
+@property(nonatomic)NSInteger clubID;//会所id
 @property(strong,nonatomic)NSString *Image;//会所图片地址
 @property(strong,nonatomic)NSString *clubName;//会所名字
 //图片

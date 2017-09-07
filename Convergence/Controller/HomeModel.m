@@ -11,7 +11,7 @@
 @implementation HomeModel
 -(instancetype)initWithClub:(NSDictionary *)dict{
     if (self) {
-        
+    _clubID  = [[Utilities nullAndNilCheck:dict[@"id"] replaceBy:@""]integerValue];
     _clubName = [Utilities nullAndNilCheck:dict[@"name"] replaceBy:@""];
     _Image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@""];
     _address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@""];
