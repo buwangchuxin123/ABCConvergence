@@ -41,7 +41,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"forIndexPath:indexPath];
     
-    cell.imageView.image = [UIImage imageNamed:@"默认"];
+   // cell.imageView.image = [UIImage imageNamed:@"默认"];
     cell.OrderName.text = @"新用户免费体验券";
     cell.clubName.text = @"沐心堂射箭馆";
     cell.price.text = @"99";

@@ -8,6 +8,7 @@
 
 #import "MyInfoViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UserModel.h"
 @interface MyInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
@@ -29,6 +30,25 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if([Utilities loginCheck]){
+        //已登录
+        _loginBtn.hidden = YES;
+        _usernameLabel.hidden = NO;
+        
+        UserModel *usermodel = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
+        [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:usermodel.avatarUrl] placeholderImage:[UIImage imageNamed:@"Avatar"]];
+           _usernameLabel.text = usermodel.nickname;
+    }else{
+        //未登录
+        _loginBtn.hidden = NO;
+        _usernameLabel.hidden = YES;
+        
+        _avatarImageView.image = [UIImage imageNamed:@"Avatar"];
+       // _usernameLabel.text = @"游客";
+    }
 }
 
 /*
