@@ -86,6 +86,7 @@
 		EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */; };
 		EE5AB19F1F5D6C0000CD3D93 /* ExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */; };
 		EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */; };
+		EEB7E7B31F61562A0059D905 /* ClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB7E7B21F61562A0059D905 /* ClubDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -252,6 +253,8 @@
 		EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExperienceTableViewCell.m; path = Convergence/Controller/ExperienceTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		EE5AB1A01F5D6C1400CD3D93 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeModel.h; path = Convergence/Controller/HomeModel.h; sourceTree = SOURCE_ROOT; };
 		EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeModel.m; path = Convergence/Controller/HomeModel.m; sourceTree = SOURCE_ROOT; };
+		EEB7E7B11F61562A0059D905 /* ClubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClubDetailViewController.h; path = "../../../huiju 2/Convergence/Controller/ClubDetailViewController.h"; sourceTree = "<group>"; };
+		EEB7E7B21F61562A0059D905 /* ClubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClubDetailViewController.m; path = "../../../huiju 2/Convergence/Controller/ClubDetailViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +426,7 @@
 		84D9C3241F5A3D1400AC0B75 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EEB7E7B01F6156140059D905 /* Detail */,
 				84D9C3901F5A5D2800AC0B75 /* Home */,
 				84D9C3911F5A5D3900AC0B75 /* Find */,
 				84D9C3DB1F5AA51200AC0B75 /* Activity */,
@@ -755,6 +759,15 @@
 			name = UserModel;
 			sourceTree = "<group>";
 		};
+		EEB7E7B01F6156140059D905 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				EEB7E7B11F61562A0059D905 /* ClubDetailViewController.h */,
+				EEB7E7B21F61562A0059D905 /* ClubDetailViewController.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -972,6 +985,7 @@
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
 				843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */,
 				84D9C3AF1F5A5F6800AC0B75 /* mask.m in Sources */,
+				EEB7E7B31F61562A0059D905 /* ClubDetailViewController.m in Sources */,
 				84D9C36B1F5A3D3700AC0B75 /* StorageMgr.m in Sources */,
 				84D9C36A1F5A3D3700AC0B75 /* RequestAPI.m in Sources */,
 				84D9C3BE1F5A5F9F00AC0B75 /* SKTagView.m in Sources */,
