@@ -1,14 +1,18 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++047CFA0",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823" : 9223372036854775807
+    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++047CFA0" : 9223372036854775807,
+    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++F246555" : 9223372036854775807,
+    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++2327C6C" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "914110A5-7EAE-4A31-86A1-E3C312EDF9DB",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823" : "huiju%202\/"
+    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++047CFA0" : "huiju\/",
+    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++F246555" : "huiju%202\/",
+    "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++2327C6C" : "huiju%202\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Convergence",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -17,12 +21,17 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/buwangchuxin123\/ABCConvergence.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++047CFA0"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/buwangchuxin123\/ABCConvergence.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++2327C6C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/buwangchuxin123\/ABCConvergence.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EBA74D6DB141D3B1233532DCB27C129EBB2B0823+++F246555"
     }
   ]
 }

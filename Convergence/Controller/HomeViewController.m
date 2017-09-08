@@ -106,7 +106,7 @@
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        //NSLog(@"responseObject:%@", responseObject);
+    NSLog(@"responseObject:%@", responseObject);
         UIRefreshControl *ref = (UIRefreshControl *)[_homeTableView viewWithTag:10001];
         [ref endRefreshing];
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
@@ -211,7 +211,7 @@
         [cell.leftImage sd_setImageWithURL:URL2 placeholderImage:[UIImage imageNamed:@"默认"]];
         cell.experLab.text =experience[@"name"];
         //NSLog(@"%@",homeModel.name);
-        cell.comLab.text = [experience[@"categoryName"]isKindOfClass:[NSNull class]]?@"综合卷":experience[@"categoryName"];
+        cell.comLab.text = [experience[@"categoryName"]isKindOfClass:[NSNull class]]?@"综合券":experience[@"categoryName"];
         cell.priceLab.text = [NSString stringWithFormat:@"%@元",experience[@"price"]];
         cell.numberLab.text = [NSString stringWithFormat:@"已售: %@",experience[@"sellNumber"]];
         return cell;
@@ -220,7 +220,12 @@
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    // [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.row == 0){
     [self performSegueWithIdentifier:@"clubToDetail" sender:nil];
+    }else{
+    
+    
+    }
 }
 //细胞将要出现时调用
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -237,7 +242,7 @@
     //当从首页到详情页的这个跳转要发生的时候，获取要传递下一页的数据
     if ([segue.identifier isEqualToString:@"clubToDetail"]) {
         NSIndexPath *indexPath = [_homeTableView indexPathForSelectedRow];
-        HomeModel *home = _arr[indexPath.row];
+        HomeModel *home = _arr[indexPath.section];
         //获取下一页的实例
         ClubDetailViewController *detailVC = segue.destinationViewController;
         //把数据给下一页预备好的接收容器
