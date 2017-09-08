@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		842FA0B11F5CE84A00C1AA1D /* FindCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FA0B01F5CE84A00C1AA1D /* FindCollectionViewCell.m */; };
+		84321EE01F6221FD004FE0EA /* ExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84321EDF1F6221FD004FE0EA /* ExperienceViewController.m */; };
+		84321EE41F623177004FE0EA /* EModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84321EE31F623177004FE0EA /* EModel.m */; };
 		843D553F1F5CE0C7000DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553B1F5CE0C7000DB239 /* LaunchScreen.storyboard */; };
 		843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553D1F5CE0C7000DB239 /* Main.storyboard */; };
 		843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555A1F5D2A7C000DB239 /* SigninViewController.m */; };
@@ -111,6 +113,10 @@
 		81605ACE1D74BF12EABAF060 /* Pods-Convergence.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Convergence.release.xcconfig"; path = "Pods/Target Support Files/Pods-Convergence/Pods-Convergence.release.xcconfig"; sourceTree = "<group>"; };
 		842FA0AF1F5CE84A00C1AA1D /* FindCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindCollectionViewCell.h; sourceTree = "<group>"; };
 		842FA0B01F5CE84A00C1AA1D /* FindCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindCollectionViewCell.m; sourceTree = "<group>"; };
+		84321EDE1F6221FD004FE0EA /* ExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperienceViewController.h; sourceTree = "<group>"; };
+		84321EDF1F6221FD004FE0EA /* ExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperienceViewController.m; sourceTree = "<group>"; };
+		84321EE21F623177004FE0EA /* EModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EModel.h; sourceTree = "<group>"; };
+		84321EE31F623177004FE0EA /* EModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EModel.m; sourceTree = "<group>"; };
 		843D553C1F5CE0C7000DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		843D553E1F5CE0C7000DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		843D55591F5D2A7C000DB239 /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
@@ -307,6 +313,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84321EDA1F62219D004FE0EA /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				84321EDE1F6221FD004FE0EA /* ExperienceViewController.h */,
+				84321EDF1F6221FD004FE0EA /* ExperienceViewController.m */,
+			);
+			name = Experience;
+			sourceTree = "<group>";
+		};
+		84321EE11F623158004FE0EA /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				84321EE21F623177004FE0EA /* EModel.h */,
+				84321EE31F623177004FE0EA /* EModel.m */,
+			);
+			name = Experience;
+			sourceTree = "<group>";
+		};
 		843D55581F5D2A36000DB239 /* sign */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +421,7 @@
 		84D9C3221F5A3CFF00AC0B75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84321EE11F623158004FE0EA /* Experience */,
 				EE5AB18A1F5D3F4000CD3D93 /* UserModel */,
 				B248F3591F5D2E1400C3C0C5 /* Activity */,
 				84791BDC1F5C07EB008A83EB /* Find */,
@@ -426,6 +451,7 @@
 		84D9C3241F5A3D1400AC0B75 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84321EDA1F62219D004FE0EA /* Experience */,
 				EEB7E7B01F6156140059D905 /* Detail */,
 				84D9C3901F5A5D2800AC0B75 /* Home */,
 				84D9C3911F5A5D3900AC0B75 /* Find */,
@@ -965,6 +991,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84D9C3661F5A3D3700AC0B75 /* NSData+Base64.m in Sources */,
+				84321EE41F623177004FE0EA /* EModel.m in Sources */,
 				84D36C7E1F614ECD006BF630 /* SetUpTableViewCell.m in Sources */,
 				84D9C3AE1F5A5F6800AC0B75 /* bitstream.m in Sources */,
 				84D9C3B11F5A5F6800AC0B75 /* qrinput.m in Sources */,
@@ -982,6 +1009,7 @@
 				84D9C35F1F5A3D3700AC0B75 /* NSDataEx.m in Sources */,
 				84D9C35A1F5A3D3700AC0B75 /* GBAlipayManager.m in Sources */,
 				846788311F5D7BC7004311A0 /* SortTableViewCell.m in Sources */,
+				84321EE01F6221FD004FE0EA /* ExperienceViewController.m in Sources */,
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
 				843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */,
 				84D9C3AF1F5A5F6800AC0B75 /* mask.m in Sources */,

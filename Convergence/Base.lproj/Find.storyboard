@@ -221,12 +221,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pY9-Ql-3T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="63"/>
+            <point key="canvasLocation" x="231" y="56"/>
         </scene>
-        <!--View Controller-->
+        <!--Experience View Controller-->
         <scene sceneID="z8X-mN-yX2">
             <objects>
-                <viewController id="2N3-b7-pbI" sceneMemberID="viewController">
+                <viewController id="2N3-b7-pbI" customClass="ExperienceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kCm-GZ-A3C"/>
                         <viewControllerLayoutGuide type="bottom" id="J2f-ac-Lup"/>
@@ -275,6 +275,9 @@
                                                         <integer key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="PayAction:forEvent:" destination="2N3-b7-pbI" eventType="touchUpInside" id="WCQ-KP-i0P"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -320,6 +323,9 @@
                                                 <state key="normal" title="无锡市南长区城市花园b区">
                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="addressAction:forEvent:" destination="2N3-b7-pbI" eventType="touchUpInside" id="Hqm-ro-5IO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozA-x7-2ia">
                                                 <rect key="frame" x="330" y="38.5" width="30" height="30"/>
@@ -328,6 +334,9 @@
                                                     <constraint firstAttribute="width" secondItem="ozA-x7-2ia" secondAttribute="height" id="dx8-Zn-nLW"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="Call"/>
+                                                <connections>
+                                                    <action selector="callAction:forEvent:" destination="2N3-b7-pbI" eventType="touchUpInside" id="bjN-yh-v9L"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -519,10 +528,23 @@
                             <constraint firstItem="k83-tu-54u" firstAttribute="top" secondItem="1Ti-iv-UYp" secondAttribute="top" id="k5a-vG-cdy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Image" destination="KVw-oU-rqu" id="N4b-Cz-kce"/>
+                        <outlet property="addressBtn" destination="uPG-6d-9oG" id="czR-PD-TeU"/>
+                        <outlet property="clubName" destination="Ao7-i3-laS" id="oSp-rY-FWf"/>
+                        <outlet property="eName" destination="25u-vw-Ijg" id="6bx-ic-WRb"/>
+                        <outlet property="originPrice" destination="VqH-ww-9Ax" id="LK5-Vo-4SS"/>
+                        <outlet property="price" destination="fHd-vn-dme" id="jIB-fx-2Dh"/>
+                        <outlet property="sellNumber" destination="lwK-c4-KpL" id="fBN-wQ-XuL"/>
+                        <outlet property="useDate" destination="WaD-oA-lqi" id="cP3-pL-BYa"/>
+                        <outlet property="useRule" destination="HWh-dQ-ccV" id="ekH-fy-IGr"/>
+                        <outlet property="useTime" destination="Eyg-hi-wvD" id="yDS-P6-M2y"/>
+                        <outlet property="userInfo" destination="hBT-kg-LVk" id="vuR-3h-Dhu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLu-8Z-By7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="63"/>
+            <point key="canvasLocation" x="1233" y="55"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Zqr-iB-VWi">
@@ -591,23 +613,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6x-ks-C2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="721" y="1067"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="TWV-49-zx9">
-            <objects>
-                <viewController id="oQc-jG-52n" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JBJ-pI-hRB"/>
-                        <viewControllerLayoutGuide type="bottom" id="ohc-Xn-Js4"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6Mz-HT-Dab">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="047-ge-peP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
