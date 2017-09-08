@@ -10,6 +10,7 @@
 #import "FindCollectionViewCell.h"
 #import "FindModel.h"
 #import "SortTableViewCell.h"
+#import "ClubDetailViewController.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>{
     NSInteger  flag;
     NSInteger pageNum;
@@ -308,6 +309,16 @@
         }
     }
 
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    FindModel *model = _ClubArr[indexPath.row];
+    NSString *clubId = model.clubID;
+    [[StorageMgr singletonStorageMgr] setValue:@"clubId" forKey:clubId];
+    
+   ClubDetailViewController  *controller = [Utilities getStoryboardInstance:@"Home" byIdentity:@"Detail"];
+    [self.navigationController pushViewController:controller animated:YES];
+   // [self presentViewController:controller animated:YES completion:nil];
 }
 #pragma mark - request
 -(void)dataInitialize{

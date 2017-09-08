@@ -16,7 +16,7 @@
     _Image = [Utilities nullAndNilCheck:dict[@"image"] replaceBy:@""];
     _address = [Utilities nullAndNilCheck:dict[@"address"] replaceBy:@""];
     _distance= [Utilities nullAndNilCheck:dict[@"distance"] replaceBy:@""];
-    _experience = [dict[@"experience"] isKindOfClass:[NSNull class]] ?@[] :dict[@"experience"];
+    _experience = [dict[@"experience"] isKindOfClass:[NSNull class]] ?@[@"",@""] :dict[@"experience"];
 //        NSMutableArray *experiences = [NSMutableArray new];
 //        if (![dict[@"experience"]isKindOfClass:[NSNull class]]){
 //            for (NSDictionary *experience in dict[@"experience"]){
@@ -37,6 +37,7 @@
     _Price = [Utilities nullAndNilCheck:dict[@"price"] replaceBy:@""];
     _sellNumber = [Utilities nullAndNilCheck:dict[@"sellNumber"] replaceBy:@""];
     _categoryName = [Utilities nullAndNilCheck:dict[@"categoryName"] replaceBy:@""];
+    _experienceId = [Utilities nullAndNilCheck:dict[@"experienceId"] replaceBy:@""];
     }
     return self;
 }

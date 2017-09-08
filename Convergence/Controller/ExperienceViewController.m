@@ -46,7 +46,9 @@
 
 -(void)request{
     _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para = @{@"experienceId":@89};
+    
+    NSString *eId =  [[[StorageMgr singletonStorageMgr]objectForKey:@"eId"] isKindOfClass:[NSNull class]]?@"-1" : [[StorageMgr singletonStorageMgr]objectForKey:@"eId"] ;
+    NSDictionary *para = @{@"experienceId":eId};
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"]integerValue] == 8001){

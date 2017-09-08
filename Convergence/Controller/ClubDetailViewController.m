@@ -58,7 +58,8 @@
 
 - (void)netRequest{
     //[_avi stopAnimating];
-    NSDictionary *para = @{@"clubKeyId":@(_home.clubID)};
+    NSString *ClubId = [[StorageMgr singletonStorageMgr]objectForKey:@"clubId"];
+    NSDictionary *para = @{@"clubKeyId":ClubId};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
         NSLog(@"responseObject:%@", responseObject);

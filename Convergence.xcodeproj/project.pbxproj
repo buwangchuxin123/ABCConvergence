@@ -13,6 +13,8 @@
 		84321EE81F62A205004FE0EA /* promote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84321EE61F62A205004FE0EA /* promote.storyboard */; };
 		84321EEC1F62A25C004FE0EA /* Feedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84321EEA1F62A25C004FE0EA /* Feedback.storyboard */; };
 		84321EF11F62A284004FE0EA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84321EEF1F62A284004FE0EA /* About.storyboard */; };
+		84321EF71F62A586004FE0EA /* EDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84321EF51F62A586004FE0EA /* EDetail.storyboard */; };
+		84321EF91F62A5F0004FE0EA /* ClubDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84321EF81F62A5F0004FE0EA /* ClubDetail.storyboard */; };
 		843D553F1F5CE0C7000DB239 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553B1F5CE0C7000DB239 /* LaunchScreen.storyboard */; };
 		843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843D553D1F5CE0C7000DB239 /* Main.storyboard */; };
 		843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555A1F5D2A7C000DB239 /* SigninViewController.m */; };
@@ -125,6 +127,8 @@
 		84321EE71F62A205004FE0EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/promote.storyboard; sourceTree = SOURCE_ROOT; };
 		84321EEB1F62A25C004FE0EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Feedback.storyboard; sourceTree = SOURCE_ROOT; };
 		84321EF01F62A284004FE0EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/About.storyboard; sourceTree = SOURCE_ROOT; };
+		84321EF61F62A586004FE0EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/EDetail.storyboard; sourceTree = SOURCE_ROOT; };
+		84321EF81F62A5F0004FE0EA /* ClubDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClubDetail.storyboard; sourceTree = "<group>"; };
 		843D553C1F5CE0C7000DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		843D553E1F5CE0C7000DB239 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Convergence/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		843D55591F5D2A7C000DB239 /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
@@ -367,6 +371,31 @@
 			name = About;
 			sourceTree = "<group>";
 		};
+		84321EF21F62A4C6004FE0EA /* EDetail */ = {
+			isa = PBXGroup;
+			children = (
+				84321EF51F62A586004FE0EA /* EDetail.storyboard */,
+			);
+			name = EDetail;
+			sourceTree = "<group>";
+		};
+		84321EF31F62A547004FE0EA /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				84321EF41F62A552004FE0EA /* ClubDetail */,
+				84321EF21F62A4C6004FE0EA /* EDetail */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		84321EF41F62A552004FE0EA /* ClubDetail */ = {
+			isa = PBXGroup;
+			children = (
+				84321EF81F62A5F0004FE0EA /* ClubDetail.storyboard */,
+			);
+			name = ClubDetail;
+			sourceTree = "<group>";
+		};
 		843D55581F5D2A36000DB239 /* sign */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +500,7 @@
 		84D9C3231F5A3D0A00AC0B75 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84321EF31F62A547004FE0EA /* Detail */,
 				84D9C3CE1F5AA13200AC0B75 /* Activity */,
 				84D9C3C51F5A9DDA00AC0B75 /* main */,
 				84D9C3C61F5A9DF000AC0B75 /* Home */,
@@ -950,7 +980,9 @@
 				84D9C37F1F5A43A600AC0B75 /* Localizable.strings in Resources */,
 				84D9C3861F5A55D900AC0B75 /* Home.storyboard in Resources */,
 				84D9C38C1F5A564600AC0B75 /* MyInfo.storyboard in Resources */,
+				84321EF71F62A586004FE0EA /* EDetail.storyboard in Resources */,
 				843D553F1F5CE0C7000DB239 /* LaunchScreen.storyboard in Resources */,
+				84321EF91F62A5F0004FE0EA /* ClubDetail.storyboard in Resources */,
 				84D9C3891F5A561500AC0B75 /* Find.storyboard in Resources */,
 				843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */,
 				84321EEC1F62A25C004FE0EA /* Feedback.storyboard in Resources */,
@@ -1155,6 +1187,14 @@
 				84321EF01F62A284004FE0EA /* Base */,
 			);
 			name = About.storyboard;
+			sourceTree = "<group>";
+		};
+		84321EF51F62A586004FE0EA /* EDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84321EF61F62A586004FE0EA /* Base */,
+			);
+			name = EDetail.storyboard;
 			sourceTree = "<group>";
 		};
 		843D553B1F5CE0C7000DB239 /* LaunchScreen.storyboard */ = {

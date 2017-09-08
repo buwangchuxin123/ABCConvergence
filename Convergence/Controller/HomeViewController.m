@@ -106,7 +106,7 @@
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-   // NSLog(@"responseObject:%@", responseObject);
+   NSLog(@"responseObject:%@", responseObject);
         UIRefreshControl *ref = (UIRefreshControl *)[_homeTableView viewWithTag:10001];
         [ref endRefreshing];
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
@@ -200,9 +200,9 @@
     else{
         //将homeModel里的体验劵添加到新建的experiences数组中
         NSArray *experiences = homeModel.experience;
-        for (NSDictionary *dict in experiences) {
-            NSLog(@"dict = %@",dict.allValues);
-        }
+//        for (NSDictionary *dict in experiences) {
+//           // NSLog(@"dict = %@",dict.allValues);
+//        }
         ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell" forIndexPath:indexPath];
         //行数减去第一行就是体验劵的数量并存在字典中
         NSDictionary *experience= experiences[indexPath.row-1];
@@ -219,12 +219,18 @@
 }
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   // [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(indexPath.row == 0){
-    [self performSegueWithIdentifier:@"clubToDetail" sender:nil];
-    }else{
-    
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    HomeModel *model = _arr[indexPath.section];
+    NSString *Id =  [NSString stringWithFormat:@"%ld",model.clubID];
+    NSLog(@"id是：%@",Id);
+    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:Id];
+      if(indexPath.row == 0){
+           [self performSegueWithIdentifier:@"clubToDetail" sender:nil];
+    }else {
+        NSArray *array = model.experience;
+        NSDictionary *dict = array[indexPath.row-1];
+        NSString *eId =  dict[@"id"];
+        [[StorageMgr singletonStorageMgr] addKey:@"eId" andValue:eId];
     }
 }
 //细胞将要出现时调用
@@ -238,17 +244,17 @@
         }
     }
 }
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    //当从首页到详情页的这个跳转要发生的时候，获取要传递下一页的数据
-    if ([segue.identifier isEqualToString:@"clubToDetail"]) {
-        NSIndexPath *indexPath = [_homeTableView indexPathForSelectedRow];
-        HomeModel *home = _arr[indexPath.section];
-        //获取下一页的实例
-        ClubDetailViewController *detailVC = segue.destinationViewController;
-        //把数据给下一页预备好的接收容器
-        detailVC.home= home;
-    }
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    //当从首页到详情页的这个跳转要发生的时候，获取要传递下一页的数据
+//    if ([segue.identifier isEqualToString:@"clubToDetail"]) {
+//        NSIndexPath *indexPath = [_homeTableView indexPathForSelectedRow];
+//        HomeModel *home = _arr[indexPath.section];
+//        //获取下一页的实例
+//        ClubDetailViewController *detailVC = segue.destinationViewController;
+//        //把数据给下一页预备好的接收容器
+//        detailVC.home= home;
+//    }
+//}
 /*
 #pragma mark - Navigation
 
