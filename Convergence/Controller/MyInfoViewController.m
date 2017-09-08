@@ -102,7 +102,7 @@
                     
                     break;
                 case 3:
-                    
+                    [self performSegueWithIdentifier:@"MyInfo2Setting" sender:self];
                     break;
                 case 4:
                     
