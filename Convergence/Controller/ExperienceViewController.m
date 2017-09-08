@@ -69,15 +69,20 @@
     NSURL * url = [NSURL URLWithString:_model.eLogo];
     [_Image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
      _eName.text = _model.eName;
-     _price.text = _model.currentPrice;
-     _originPrice.text = _model.orginPrice;
+//    NSDictionary *Dict = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                   [UIFont systemFontOfSize:15.0],
+//                                   [UIColor redColor],nil];
+//    NSMutableAttributedString *yuan = [[NSMutableAttributedString alloc]initWithString:@"元" attributes:Dict];
+//    NSLog(@"东东：%@",yuan);
+    _price.text = _model.currentPrice;
+     _originPrice.text = [NSString stringWithFormat:@"原价:%@元",_model.orginPrice];;
      _clubName.text = _model.clubName;
-    _addressBtn.titleLabel.text = _model.eAddress;
-    _sellNumber.text = [NSString stringWithFormat:@"已售：%@",_model.saleCount];
-    _useDate.text = [NSString stringWithFormat:@"%@-%@",_model.beginDate,_model.endDate];
-    _useTime.text = _model.userTime;
-    _useRule.text = _model.rules;
-    _userInfo.text = _model.ePromot;
+     _addressBtn.titleLabel.text = _model.eAddress;
+     _sellNumber.text = [NSString stringWithFormat:@"已售:%@",_model.saleCount];
+     _useDate.text = [NSString stringWithFormat:@"%@-%@",_model.beginDate,_model.endDate];
+     _useTime.text = _model.userTime;
+     _useRule.text = _model.rules;
+     _userInfo.text = _model.ePromot;
 }
 /*
 #pragma mark - Navigation
