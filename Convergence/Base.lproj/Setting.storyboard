@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IDp-no-eTE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IDp-no-eTE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -59,7 +59,7 @@
                                     <constraint firstItem="4oK-pT-7Z1" firstAttribute="centerY" secondItem="Grb-bu-q7e" secondAttribute="centerY" id="p03-rd-byp"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cA9-7Z-Q9r">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cA9-7Z-Q9r">
                                 <rect key="frame" x="0.0" y="224" width="375" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -134,7 +134,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Cgc-lY-Jjk">
             <objects>
-                <navigationController storyboardIdentifier="Setting" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IDp-no-eTE" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Setting" automaticallyAdjustsScrollViewInsets="NO" id="IDp-no-eTE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fbF-0N-gak">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -147,7 +147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJT-22-BnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.59999999999999" y="71.514242878560722"/>
+            <point key="canvasLocation" x="223" y="63"/>
         </scene>
         <!--修改昵称-->
         <scene sceneID="pGJ-Ff-zAH">

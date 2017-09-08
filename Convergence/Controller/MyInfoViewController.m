@@ -87,21 +87,22 @@
 //按住细胞以后（取消选择）
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0) {
+   
         if ([Utilities loginCheck]) {
-            switch (indexPath.row) {
-                case 0:{
-                    [self performSegueWithIdentifier:@"Myinfo2Order" sender:self];
+            // if (indexPath.section == 0)
+         switch (indexPath.section){
+                case 0:
+                    [self performSegueWithIdentifier:@"MyInfo2MyOrder" sender:self];
                     
-                }
                     break;
                 case 1:
-                    
+                   [self performSegueWithIdentifier:@"MyInfo2Promote" sender:self];
                     break;
                 case 2:
                     
                     break;
                 case 3:
+                    
                     [self performSegueWithIdentifier:@"MyInfo2Setting" sender:self];
                     break;
                 case 4:
@@ -109,12 +110,14 @@
                     break;
                 default:
                     break;
+                    
             }
-        }else{
+        }
+     else{
             UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"LoginNavi"];
             [self presentViewController:signNavi animated:YES completion:nil];
-        }
-    }
+           }
+    
 }
 
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event {

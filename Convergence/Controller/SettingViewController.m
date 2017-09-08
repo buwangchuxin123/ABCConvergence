@@ -39,7 +39,7 @@
         
         
     }else{
-        _setupImage.image=[UIImage imageNamed:@"ic_user_head"];
+          _setupImage.image=[UIImage imageNamed:@"ic_user_head"];
         
     }
     
@@ -63,9 +63,9 @@
 
 
 -(void)naviConfig{
-    
+    self.navigationItem.title = @"设置";
     //设置导航条的颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 100, 255);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
     //设置导航条的标题颜色
     self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName : [UIColor whiteColor] };
     //设置导航条是否隐藏
@@ -118,14 +118,13 @@
 
 //设置组的底部视图高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0) {
-        return 5.f;
-    }
+    
     return 1.f;
+    
 }
 //设置细胞高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40.f;
+    return 50.f;
 }
 //细胞选中后调用
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -153,10 +152,10 @@
 //设置tableview的底部视图
 - (void)setFootViewForTableView{
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 45)];
-    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 300)];
+    view.backgroundColor = UIColorFromRGB(240, 235, 245);
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    exitBtn.frame = CGRectMake(0, 5, UI_SCREEN_W, 40.f);
+    exitBtn.frame = CGRectMake(0, 30, UI_SCREEN_W, 40.f);
     [exitBtn setTitle:@"退出" forState:UIControlStateNormal];
     //设置按钮标题的字体大小
     exitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.f];

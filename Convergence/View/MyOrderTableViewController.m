@@ -29,6 +29,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)request{
+    NSDictionary *para = @{@"memberId":[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"],@"type":@0};
+    [RequestAPI requestURL:@"/orderController/orderList" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        if([responseObject[@"resultFlag"] integerValue] == 8001){
+            NSLog(@"responseObject:%@",responseObject);
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        
+    }];
+    
+   
+
+}
+
 #pragma mark - Table view data source
 
 
