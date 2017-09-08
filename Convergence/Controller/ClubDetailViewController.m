@@ -71,7 +71,7 @@
             {
                 ClubDetailModel *model = [[ClubDetailModel alloc]initWithExper:dict];
                 [_arr addObject:model];
-                NSLog(@"dondong:%@",model.eName);
+               // NSLog(@"dondong:%@",model.eName);
             }
             [self uiLaout];
             [_experienceTableView reloadData];
@@ -112,7 +112,7 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"个数：%lu",(unsigned long)_arr.count);
+   // NSLog(@"个数：%lu",(unsigned long)_arr.count);
     return _arr.count;
 
 }

@@ -106,7 +106,7 @@
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-    NSLog(@"responseObject:%@", responseObject);
+   // NSLog(@"responseObject:%@", responseObject);
         UIRefreshControl *ref = (UIRefreshControl *)[_homeTableView viewWithTag:10001];
         [ref endRefreshing];
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
