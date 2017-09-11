@@ -25,6 +25,12 @@
 @property (strong, nonatomic)UIActivityIndicatorView * avi;
 @property (strong,nonatomic)ClubDetailModel *Model;
 @property (strong,nonatomic)NSMutableArray *arr;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *introduceHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewHeight;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
+
 @end
 
 @implementation ClubDetailViewController
@@ -34,12 +40,18 @@
     _arr = [NSMutableArray new];
     // Do any additional setup after loading the view.
     [self naviConfig];
-    [self netRequest];
+  //  [self introduceViewHeight];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)viewWillAppear:(BOOL)animated{
+   //[self introduceViewHeight];
+    [self netRequest];
 }
 -(void)naviConfig{
     //设置标题文字
@@ -62,7 +74,7 @@
     NSDictionary *para = @{@"clubKeyId":ClubId};
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
-        NSLog(@"responseObject:%@", responseObject);
+      //  NSLog(@"responseObject:%@", responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
             NSDictionary *result = responseObject[@"result"];
            _Model  = [[ClubDetailModel alloc]initWithClubDetail:result];
@@ -95,10 +107,40 @@
     _memberLab.text = _Model.clubMember;
     _placeLab.text =_Model.clubSite;
     _coachLab.text = _Model.clubPerson;
+    [self introduceViewHeight];
     _clubIntrodutioanView.text = _Model.clubIntroduce;
    // NSString *timeStr = [Utilities dateStrFromCstampTime:_Model.clubTime withDateFormat:@"HH:mm~HH:mm"];
     
     
+}
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//   // CGRect frame = textView.frame;
+//    float  height = [ _clubIntrodutioanView heightForTextView:_clubIntrodutioanView WithText:textView.text];
+//    _introduceHeight.constant = height;
+//    [UIView animateWithDuration:0.5 animations:^{
+//        
+//        textView.frame = frame;
+//        
+//    } completion:nil];
+//    
+//    return YES;
+//}
+-(void)introduceViewHeight{
+   /* CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
+    //拿的已经显示在textView上的高度
+    CGSize contentSize = [_clubIntrodutioanView.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_clubIntrodutioanView.font} context:nil].size;
+    //将文字内容的尺寸给textView高度约束
+    _introduceHeight.constant = contentSize.height + 16;
+    NSLog(@"内容高度是：%f",contentSize.height);
+    _viewHeight.constant =contentSize.height + 25;
+   */
+    /*
+    _introduceHeight.constant = _clubIntrodutioanView.contentSize.height + 16;
+    NSLog(@"内容高度是：%f",_clubIntrodutioanView.contentSize.height);
+    _viewHeight.constant = _clubIntrodutioanView.contentSize.height + 25;
+     */
+    _viewHeight.constant = 230.f;
 }
 /*
 #pragma mark - Navigation
@@ -117,8 +159,12 @@
     return _arr.count;
 
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+        return 100.f;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     eDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eExperienceCell" forIndexPath:indexPath];
+    _tableviewHeight.constant = _arr.count * 100;
    ClubDetailModel *model = _arr[indexPath.row];
    NSURL *url = [NSURL URLWithString:model.eLogo];
     [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
@@ -130,7 +176,7 @@
     cell.type.text = [dict[@"categoryName"] isKindOfClass:[NSNull class]]?@"综合券":dict[@"categoryName"];
     
     cell.price.text =[NSString stringWithFormat:@"%@元", model.price];
-   cell.count.text = [NSString stringWithFormat:@"已售:%@",model.salaCount];
+    cell.count.text = [NSString stringWithFormat:@"已售:%@",model.salaCount];
     return cell;
     
     
