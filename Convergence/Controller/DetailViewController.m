@@ -102,7 +102,7 @@
     }];
 }
 - (IBAction)applyAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    if(1){//[Utilities loginCheck]
+    if([Utilities loginCheck]){
         PurchaseTableViewController *purchaseVC = [Utilities getStoryboardInstance:@"Activity" byIdentity:@"Purchase"];
         purchaseVC.activity = _activity;
         [self.navigationController pushViewController:purchaseVC animated:YES];

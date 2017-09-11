@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIStepper *addUIStepper;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (strong,nonatomic)NSArray *arr;
+@property (nonatomic)float *sum;
+- (IBAction)addNumAction:(UIStepper *)sender forEvent:(UIEvent *)event;
 
 
 @end
@@ -25,6 +27,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _arr = [[NSArray alloc]initWithObjects:@"支付宝支付",@"微信支付",@"银联支付", nil];
+    [self uiLayout];
+    [self naviconfig];
+     self.tableView.tableFooterView = [UIView new];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -32,6 +37,46 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
+}
+-(void)naviconfig{
+
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"支付" style:UIBarButtonItemStylePlain target:self action:@selector(payAction)];
+    self.navigationItem.rightBarButtonItem = right;
+}
+-(void)uiLayout{
+    
+    //将表格视图设置为“编辑中”
+    self.tableView.editing = YES;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //用代码来选中表格视图的某个细胞
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    _clubName.text = _Model.eName;
+    _useClub.text = [NSString stringWithFormat:@"用于 %@",_Model.clubName];
+    _singlePrice.text = [NSString stringWithFormat:@"单价：%@元",_Model.currentPrice];
+    _Number.text = @"1";
+    _price.text = [NSString stringWithFormat:@"%@元",_Model.currentPrice];
+    
+}
+-(void)payAction{
+    switch (self.tableView.indexPathForSelectedRow.row) {
+        case 0:{
+            NSString *tradeNo = [GBAlipayManager generateTradeNO];
+            [GBAlipayManager alipayWithProductName:_Model.eName amount:_Model.currentPrice tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@购买费",_Model.eName] itBPay:@"30"];
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            
+        }
+            break;
+        default:
+            break;
+    }
+
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +101,27 @@
     // Configure the cell...
     
     return cell;
+}
+//设置每一组中每一行细胞的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+
+//设置组的头标题文字
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"支付方式";
+}
+
+//按住细胞以后（取消选择）
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //遍历表格视图中所有选中状态下的细胞
+    for (NSIndexPath *eschIP in tableView.indexPathsForSelectedRows) {
+        //当选中的细胞不是当前正在按得这个细胞的情况下
+        if (eschIP != indexPath) {
+            //将细胞从选中状态改为不选中状态
+            [tableView deselectRowAtIndexPath:eschIP animated:YES];
+        }
+    }
 }
 
 
@@ -103,4 +169,16 @@
 }
 */
 
+- (IBAction)addNumAction:(UIStepper *)sender forEvent:(UIEvent *)event {
+    _Number.text = [NSString stringWithFormat:@"%g",sender.value];
+    NSString *Number = [NSString stringWithFormat:@"%g",sender.value];
+    NSInteger N=[Number integerValue];
+    NSString *Price=[NSString stringWithFormat:@"%@元",_Model.currentPrice];
+    float P =[Price floatValue];
+    
+    float sum1=N*P;
+    _sum = &sum1;
+    _price.text=[NSString stringWithFormat:@"%0.1f元",sum1];
+   
+}
 @end

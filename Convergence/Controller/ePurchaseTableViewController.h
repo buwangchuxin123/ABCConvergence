@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "EModel.h"
 @interface ePurchaseTableViewController : UITableViewController
-
+@property (strong, nonatomic)EModel *Model;
 @end

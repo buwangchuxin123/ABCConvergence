@@ -21,4 +21,5 @@
 #import "NSString+Crypt.h"
 #import "UIImageView+WebCache.h"//图片异步下载
 #import "NSDate+Utility.h"
+#import "GBAlipayManager.h"
 #endif /* PrefixHeader_pch */

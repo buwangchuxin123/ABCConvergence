@@ -8,6 +8,7 @@
 
 #import "ExperienceViewController.h"
 #import "EModel.h"
+#import "ePurchaseTableViewController.h"
 @interface ExperienceViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *Image;
 @property (weak, nonatomic) IBOutlet UILabel *eName;
@@ -135,7 +136,16 @@
 */
 
 - (IBAction)PayAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    
+    if([Utilities loginCheck]){
+        ePurchaseTableViewController *purchase = [Utilities getStoryboardInstance:@"Home" byIdentity:@"Purchase"];
+        purchase.Model = _model;
+        [self.navigationController pushViewController:purchase animated:YES];
+    }else{
+        //获取要跳转过去的那个页面
+        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"LoginNavi"];
+        //执行跳转
+        [self presentViewController:signNavi animated:YES completion:nil];
+    }
     
 }
 

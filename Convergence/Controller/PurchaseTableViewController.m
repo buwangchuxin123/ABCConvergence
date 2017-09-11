@@ -7,7 +7,7 @@
 //
 
 #import "PurchaseTableViewController.h"
-#import "GBAlipayManager.h"
+
 
 
 
