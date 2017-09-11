@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self naviConfig];
     [self request];
     
 }
@@ -46,6 +47,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)naviConfig{
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    self.navigationItem.title = @"体验券详情";
+    //设置导航条的颜色（风格颜色）
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
+    //设置导航条标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //设置导航条是否被隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+}
+
 
 -(void)request{
     _avi = [Utilities getCoverOnView:self.view];
@@ -118,6 +135,8 @@
 */
 
 - (IBAction)PayAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    
 }
 
 - (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event {
