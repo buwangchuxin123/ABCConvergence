@@ -314,7 +314,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     FindModel *model = _ClubArr[indexPath.row];
     NSString *clubId = model.clubID;
-    [[StorageMgr singletonStorageMgr] setValue:@"clubId" forKey:clubId];
+    [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:clubId];
     
    ClubDetailViewController  *controller = [Utilities getStoryboardInstance:@"Home" byIdentity:@"Detail"];
     [self.navigationController pushViewController:controller animated:YES];

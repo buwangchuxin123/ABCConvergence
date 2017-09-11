@@ -137,7 +137,10 @@
     
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ClubDetailModel *model = _arr[indexPath.row];
+    [[StorageMgr singletonStorageMgr]addKey:@"eId" andValue:model.eId];
+}
 
 
 - (IBAction)addressBtn:(UIButton *)sender forEvent:(UIEvent *)event {
