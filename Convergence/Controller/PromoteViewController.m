@@ -44,8 +44,37 @@
         NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
         //    NSDictionary *result = responseObject[@"result"];
-         //   _QR = result[@"result"];
-          _QR =  responseObject[@"result"];
+            //   _QR = result[@"result"];
+            _QR =  responseObject[@"result"];
+            
+            //创建一个二维码滤镜实例（CIFilter）
+            CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+            //滤镜恢复默认设置
+            [filter setDefaults];
+            //给滤镜添加数据
+            NSString *string = [NSString stringWithFormat:@"http://dwz.cn/%@",_QR];
+            //将字符串转成二进制数据
+            NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+            //通过KVC设置滤镜inputMessage数据
+            [filter setValue:data forKeyPath:@"inputMessage"];
+            //4.获取生成的图片
+            CIImage *ciImg = filter.outputImage;
+            //5.设置二维码的前景色和背景颜色
+            CIFilter *colorFilter = [CIFilter filterWithName:@"CIFalseColor"];
+            //5.1设置默认值
+            [colorFilter setDefaults];
+            [colorFilter setValue:ciImg forKey:@"inputImage"];
+            [colorFilter setValue:[CIColor colorWithRed:255 green:255 blue:255] forKey:@"inputColor0"];
+            [colorFilter setValue:[CIColor colorWithRed:255 green:0 blue:255 alpha:0] forKey:@"inputColor1"];
+            //[colorFilter setValue:[UIColor redColor] forKey:@"inputColor1"];
+            // 6.获取滤镜输出的图像
+            //CIImage *outputImage = [filter outputImage];
+            ciImg = colorFilter.outputImage;
+            // 7.将CIImage转成UIImage
+            UIImage *image = [self createNonInterpolatedUIImageFormCIImage:ciImg withSize:200];
+            
+            //显示二维码
+            _imageView.image = image;
         }
     } failure:^(NSInteger statusCode, NSError *error) {
         //失败以后要做的事情
@@ -55,35 +84,10 @@
 
     }];
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//创建一个二维码滤镜实例（CIFilter）
-    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    //滤镜恢复默认设置
-    [filter setDefaults];
-    //给滤镜添加数据
-    NSString *string = [NSString stringWithFormat:@"http://dwz.cn/%@",_QR];
-    //将字符串转成二进制数据
-    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    //通过KVC设置滤镜inputMessage数据
-    [filter setValue:data forKeyPath:@"inputMessage"];
-    //4.获取生成的图片
-    CIImage *ciImg=filter.outputImage;
-    //5.设置二维码的前景色和背景颜色
-    CIFilter *colorFilter=[CIFilter filterWithName:@"CIFalseColor"];
-    //5.1设置默认值
-    [colorFilter setDefaults];
-    [colorFilter setValue:ciImg forKey:@"inputImage"];
-    [colorFilter setValue:[CIColor colorWithRed:255 green:255 blue:255] forKey:@"inputColor0"];
-    [colorFilter setValue:[CIColor colorWithRed:0 green:0 blue:255] forKey:@"inputColor1"];
-    // 6.获取滤镜输出的图像
-    //CIImage *outputImage = [filter outputImage];
-    ciImg = colorFilter.outputImage;
-    // 7.将CIImage转成UIImage
-    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:ciImg withSize:200];
-    
-    //显示二维码
-    _imageView.image = image;
-}
+
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    
+//}
 
 - (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size
 {

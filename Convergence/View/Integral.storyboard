@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T8T-Cw-MPv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Integral View Controller-->
+        <scene sceneID="RJZ-XH-0ft">
+            <objects>
+                <viewController id="JU3-5y-grO" customClass="IntegralViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vQW-dP-Smp"/>
+                        <viewControllerLayoutGuide type="bottom" id="NxV-pi-XPG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bAQ-sv-apg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="背景" translatesAutoresizingMaskIntoConstraints="NO" id="b1h-M1-d2A">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b1h-M1-d2A" firstAttribute="leading" secondItem="bAQ-sv-apg" secondAttribute="leading" id="DXT-42-YyJ"/>
+                            <constraint firstAttribute="trailing" secondItem="b1h-M1-d2A" secondAttribute="trailing" id="M3c-zh-aja"/>
+                            <constraint firstItem="NxV-pi-XPG" firstAttribute="top" secondItem="b1h-M1-d2A" secondAttribute="bottom" id="bk4-2J-qCX"/>
+                            <constraint firstItem="b1h-M1-d2A" firstAttribute="top" secondItem="bAQ-sv-apg" secondAttribute="top" id="olq-qy-kQz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zJE-dg-fEF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZA-jI-pPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="-134.48275862068968"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HCq-e4-qlg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T8T-Cw-MPv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rHb-bb-YoO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JU3-5y-grO" kind="relationship" relationship="rootViewController" id="OKf-CB-9Z3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MZe-if-Thf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-28" y="-134.48275862068968"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="背景" width="405" height="670"/>
+    </resources>
+</document>

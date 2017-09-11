@@ -98,7 +98,7 @@
                 case 1:
                    [self performSegueWithIdentifier:@"MyInfo2Promote" sender:self];
                     break;
-                case 2:
+                case 2:[self performSegueWithIdentifier:@"MyInfo2Integral" sender:self];
                     
                     break;
                 case 3:
