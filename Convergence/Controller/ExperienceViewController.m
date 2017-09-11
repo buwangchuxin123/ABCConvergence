@@ -28,6 +28,9 @@
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
 @property (strong,nonatomic)EModel *model;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
+
+
 @end
 
 @implementation ExperienceViewController
@@ -56,6 +59,7 @@
             NSDictionary *result = responseObject[@"result"];
             _model = [[EModel alloc]initWithexperience:result];
             [self uiLayout];
+            [self introduceViewHeight];
         }else{
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:@"提示" onView:self];
@@ -86,6 +90,23 @@
      _useRule.text = _model.rules;
      _userInfo.text = _model.ePromot;
 }
+-(void)introduceViewHeight{
+    CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
+    //拿的已经显示在textView上的高度
+    CGSize contentSize = [_useRule.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_useRule.font} context:nil].size;
+    //将文字内容的尺寸给textView高度约束
+   // _introduceHeight.constant = contentSize.height + 36;
+     NSLog(@"内容高度是：%f",contentSize.height);
+    _viewHeight.constant =contentSize.height + 36 + 175;
+    
+    /*
+     _introduceHeight.constant = _clubIntrodutioanView.contentSize.height + 16;
+     NSLog(@"内容高度是：%f",_clubIntrodutioanView.contentSize.height);
+     _viewHeight.constant = _clubIntrodutioanView.contentSize.height + 25;
+     */
+    // _viewHeight.constant = 230.f;
+}
+
 /*
 #pragma mark - Navigation
 

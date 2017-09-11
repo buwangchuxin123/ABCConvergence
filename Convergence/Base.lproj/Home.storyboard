@@ -320,8 +320,11 @@
                                         <rect key="frame" x="0.0" y="448" width="374" height="200"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="会所简介" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ufh-w1-AmT">
-                                                <rect key="frame" x="15" y="10" width="344" height="33"/>
+                                                <rect key="frame" x="15" y="10" width="344" height="180"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="wju-4L-z9p"/>
+                                                </constraints>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -468,6 +471,7 @@
                         <outlet property="coachLab" destination="jV8-zb-GjX" id="Qg9-YJ-QMc"/>
                         <outlet property="experienceTableView" destination="N71-Q3-JiB" id="DdG-TB-f3h"/>
                         <outlet property="headerImage" destination="gXA-f6-Glo" id="H1h-KU-tdV"/>
+                        <outlet property="introduceHeight" destination="wju-4L-z9p" id="844-7y-jDr"/>
                         <outlet property="memberLab" destination="9MP-cL-XBS" id="oie-zM-l6r"/>
                         <outlet property="placeLab" destination="eUf-2r-ma4" id="Uja-qF-GUM"/>
                         <outlet property="tableviewHeight" destination="Tr8-ZT-lha" id="VH2-Sj-7Mv"/>
@@ -703,6 +707,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="本单限年龄18岁，配有免费运动的器材，健身器械，需自带，停车位收费标准：具体质询商家本单限年龄18岁，配有免费运动的器材，健身器械，需自带，停车位收费标准：具体质询商家本单限年龄18岁，配有免费运动的器材，健身器械，需自带，停车位收费标准：具体质询商家" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MaA-7I-aaL">
                                                 <rect key="frame" x="15" y="165" width="345" height="210"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -712,7 +717,7 @@
                                             <constraint firstItem="wId-3I-qEn" firstAttribute="top" secondItem="jwb-9Y-mHg" secondAttribute="bottom" constant="10" id="0tU-Mp-oWw"/>
                                             <constraint firstItem="ouC-fU-4t2" firstAttribute="leading" secondItem="wId-3I-qEn" secondAttribute="leading" id="8Hp-Ow-X6v"/>
                                             <constraint firstItem="Ex0-Y5-6Rv" firstAttribute="leading" secondItem="Tgf-iA-TfT" secondAttribute="leading" id="Eok-0N-OiR"/>
-                                            <constraint firstAttribute="width" secondItem="rYs-S6-Uop" secondAttribute="height" multiplier="5:5" id="GM5-N7-g6a"/>
+                                            <constraint firstAttribute="height" constant="375" id="HIL-gP-TQv"/>
                                             <constraint firstItem="jwb-9Y-mHg" firstAttribute="leading" secondItem="rYs-S6-Uop" secondAttribute="leading" constant="15" id="JrC-vC-Esc"/>
                                             <constraint firstItem="Ex0-Y5-6Rv" firstAttribute="top" secondItem="Tgf-iA-TfT" secondAttribute="bottom" constant="10" id="VJe-oU-gsg"/>
                                             <constraint firstItem="wId-3I-qEn" firstAttribute="leading" secondItem="jwb-9Y-mHg" secondAttribute="leading" id="YQI-mo-1Dc"/>
@@ -807,6 +812,7 @@
                         <outlet property="useRule" destination="MaA-7I-aaL" id="veg-Z1-Zzf"/>
                         <outlet property="useTime" destination="Tgf-iA-TfT" id="gn7-lh-oBG"/>
                         <outlet property="userInfo" destination="OJ5-A5-MsA" id="mfP-Hj-Yt9"/>
+                        <outlet property="viewHeight" destination="HIL-gP-TQv" id="vbY-XC-Qvp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFK-Pa-p7i" userLabel="First Responder" sceneMemberID="firstResponder"/>

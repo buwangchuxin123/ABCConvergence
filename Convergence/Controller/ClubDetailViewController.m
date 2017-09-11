@@ -51,7 +51,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
    //[self introduceViewHeight];
-    [self netRequest];
+     [self netRequest];
 }
 -(void)naviConfig{
     //设置标题文字
@@ -86,7 +86,9 @@
                 [_arr addObject:model];
                // NSLog(@"dondong:%@",model.eName);
             }
-            [self uiLaout];
+            
+             [self uiLaout];
+             [self introduceViewHeight];
             [_experienceTableView reloadData];
           //  NSArray *clubDetail =@[result];
      //       _home = [HomeModel alloc];
@@ -107,40 +109,28 @@
     _memberLab.text = _Model.clubMember;
     _placeLab.text =_Model.clubSite;
     _coachLab.text = _Model.clubPerson;
-    [self introduceViewHeight];
+    
     _clubIntrodutioanView.text = _Model.clubIntroduce;
    // NSString *timeStr = [Utilities dateStrFromCstampTime:_Model.clubTime withDateFormat:@"HH:mm~HH:mm"];
     
     
 }
-//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-//{
-//   // CGRect frame = textView.frame;
-//    float  height = [ _clubIntrodutioanView heightForTextView:_clubIntrodutioanView WithText:textView.text];
-//    _introduceHeight.constant = height;
-//    [UIView animateWithDuration:0.5 animations:^{
-//        
-//        textView.frame = frame;
-//        
-//    } completion:nil];
-//    
-//    return YES;
-//}
+
 -(void)introduceViewHeight{
-   /* CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
+    CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
     //拿的已经显示在textView上的高度
     CGSize contentSize = [_clubIntrodutioanView.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_clubIntrodutioanView.font} context:nil].size;
     //将文字内容的尺寸给textView高度约束
-    _introduceHeight.constant = contentSize.height + 16;
-    NSLog(@"内容高度是：%f",contentSize.height);
-    _viewHeight.constant =contentSize.height + 25;
-   */
+    _introduceHeight.constant = contentSize.height + 36;
+   // NSLog(@"内容高度是：%f",contentSize.height);
+    _viewHeight.constant =_introduceHeight.constant + 30;
+   
     /*
     _introduceHeight.constant = _clubIntrodutioanView.contentSize.height + 16;
     NSLog(@"内容高度是：%f",_clubIntrodutioanView.contentSize.height);
     _viewHeight.constant = _clubIntrodutioanView.contentSize.height + 25;
      */
-    _viewHeight.constant = 230.f;
+   // _viewHeight.constant = 230.f;
 }
 /*
 #pragma mark - Navigation
