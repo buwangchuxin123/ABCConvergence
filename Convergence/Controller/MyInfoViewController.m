@@ -101,14 +101,12 @@
                 case 2:[self performSegueWithIdentifier:@"MyInfo2Integral" sender:self];
                     
                     break;
-                case 3:
-                    
-                    [self performSegueWithIdentifier:@"MyInfo2Setting" sender:self];
+                case 3:[self performSegueWithIdentifier:@"MyInfo2Setting" sender:self];
                     break;
-                case 4:
-                    
+                case 4: [self performSegueWithIdentifier:@"MyInfo2Feedback" sender:self];
                     break;
                 default:
+                 
                     break;
                     
             }

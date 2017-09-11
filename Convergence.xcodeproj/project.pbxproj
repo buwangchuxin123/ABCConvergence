@@ -101,6 +101,7 @@
 		EEF2FEE41F661CA200B73D82 /* PromoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */; };
 		EEF2FEE71F66670B00B73D82 /* Integral.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF2FEE61F66670B00B73D82 /* Integral.storyboard */; };
 		EEF2FEEB1F6667AA00B73D82 /* IntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEEA1F6667AA00B73D82 /* IntegralViewController.m */; };
+		EEF2FEF61F66846100B73D82 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEF51F66846100B73D82 /* FeedbackViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,8 @@
 		EEF2FEE61F66670B00B73D82 /* Integral.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Integral.storyboard; sourceTree = "<group>"; };
 		EEF2FEE91F6667AA00B73D82 /* IntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralViewController.h; sourceTree = "<group>"; };
 		EEF2FEEA1F6667AA00B73D82 /* IntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralViewController.m; sourceTree = "<group>"; };
+		EEF2FEF41F66846100B73D82 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		EEF2FEF51F66846100B73D82 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -670,6 +673,7 @@
 		84D9C3921F5A5D4300AC0B75 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				EEF2FEF01F66841500B73D82 /* Feedback */,
 				EEF2FEE81F66678000B73D82 /* Integral */,
 				EEF2FEE11F661C3E00B73D82 /* Promote */,
 				B2D889331F6139050017F4CE /* MyInfo */,
@@ -922,6 +926,15 @@
 			name = Integral;
 			sourceTree = "<group>";
 		};
+		EEF2FEF01F66841500B73D82 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				EEF2FEF41F66846100B73D82 /* FeedbackViewController.h */,
+				EEF2FEF51F66846100B73D82 /* FeedbackViewController.m */,
+			);
+			name = Feedback;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -992,7 +1005,6 @@
 				TargetAttributes = {
 					84D9C2E81F5A39FB00AC0B75 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = C9MJ9QVT2Z;
 						ProvisioningStyle = Automatic;
 					};
 					84D9C3041F5A39FB00AC0B75 = {
@@ -1161,6 +1173,7 @@
 				84D9C3B31F5A5F6800AC0B75 /* rscode.m in Sources */,
 				84D9C3681F5A3D3700AC0B75 /* NSDateFormatter+Category.m in Sources */,
 				EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */,
+				EEF2FEF61F66846100B73D82 /* FeedbackViewController.m in Sources */,
 				84D9C36C1F5A3D3700AC0B75 /* Utilities.m in Sources */,
 				B2D889361F613A780017F4CE /* MyOrderTableViewController.m in Sources */,
 				84D9C3651F5A3D3700AC0B75 /* JSONS.m in Sources */,
@@ -1430,7 +1443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = C9MJ9QVT2Z;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Convergence",
@@ -1456,7 +1469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = C9MJ9QVT2Z;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Convergence",

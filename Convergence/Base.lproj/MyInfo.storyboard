@@ -137,6 +137,7 @@
                         <segue destination="Bbi-Hm-lZv" kind="show" identifier="MyInfo2Setting" id="lNa-ID-HEo"/>
                         <segue destination="F6S-e6-PFs" kind="show" identifier="MyInfo2Promote" id="3ES-ra-DY2"/>
                         <segue destination="Zre-9H-HXp" kind="presentation" identifier="MyInfo2Integral" id="GHP-QP-JM5"/>
+                        <segue destination="fTL-nz-hmT" kind="presentation" identifier="MyInfo2Feedback" id="2O9-d8-5yW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3M-w8-aVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,13 +184,13 @@
             </objects>
             <point key="canvasLocation" x="564" y="7"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Feedback-->
         <scene sceneID="Bga-St-4dK">
             <objects>
-                <viewControllerPlaceholder id="fTL-nz-hmT" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Feedback" id="fTL-nz-hmT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wn-Pu-y0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="558" y="160"/>
+            <point key="canvasLocation" x="585" y="108"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="mbF-b4-rJ7">
