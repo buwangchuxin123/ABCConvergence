@@ -96,6 +96,7 @@
 		EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */; };
 		EE9EC5AD1F627FF9008E40E0 /* eDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9EC5AC1F627FF9008E40E0 /* eDetailTableViewCell.m */; };
 		EE9EC5B01F628037008E40E0 /* ClubDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9EC5AF1F628037008E40E0 /* ClubDetailModel.m */; };
+		EEF2FEE41F661CA200B73D82 /* PromoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,6 +278,8 @@
 		EE9EC5AC1F627FF9008E40E0 /* eDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eDetailTableViewCell.m; sourceTree = "<group>"; };
 		EE9EC5AE1F628037008E40E0 /* ClubDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDetailModel.h; sourceTree = "<group>"; };
 		EE9EC5AF1F628037008E40E0 /* ClubDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDetailModel.m; sourceTree = "<group>"; };
+		EEF2FEE21F661CA200B73D82 /* PromoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoteViewController.h; sourceTree = "<group>"; };
+		EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,6 +649,7 @@
 		84D9C3921F5A5D4300AC0B75 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				EEF2FEE11F661C3E00B73D82 /* Promote */,
 				B2D889331F6139050017F4CE /* MyInfo */,
 				B2D889321F6138CC0017F4CE /* Setting */,
 				843D55581F5D2A36000DB239 /* sign */,
@@ -865,6 +869,15 @@
 				845A524B1F61579800964700 /* ClubDetailViewController.m */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		EEF2FEE11F661C3E00B73D82 /* Promote */ = {
+			isa = PBXGroup;
+			children = (
+				EEF2FEE21F661CA200B73D82 /* PromoteViewController.h */,
+				EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */,
+			);
+			name = Promote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1120,6 +1133,7 @@
 				84D9C3641F5A3D3700AC0B75 /* ErrorHandler.m in Sources */,
 				B248F35F1F5D2FA000C3C0C5 /* ActivityCell.m in Sources */,
 				84D9C2FA1F5A39FB00AC0B75 /* Convergence.xcdatamodeld in Sources */,
+				EEF2FEE41F661CA200B73D82 /* PromoteViewController.m in Sources */,
 				843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */,
 				B252ECAD1F5FC3F900210E3A /* ActivityViewController.m in Sources */,
 				EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */,

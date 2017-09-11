@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self naviConfig];
+ //   [self naviConfig];
     [self netRequest];
 }
 
@@ -27,14 +27,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)naviConfig{
-    self.navigationItem.title = @"我的推广";
-    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 124, 236);
-   // self.navigationController.na
-    self.navigationController.navigationBar.titleTextAttributes =@{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationController.navigationBar.hidden = NO;
-    self.navigationController.navigationBar.translucent = YES;
-}
+//-(void)naviConfig{
+//    self.navigationItem.title = @"我的推广";
+//    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 124, 236);
+//   // self.navigationController.na
+//    self.navigationController.navigationBar.titleTextAttributes =@{NSForegroundColorAttributeName:[UIColor whiteColor]};
+//    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.translucent = YES;
+//}
 -(void)netRequest{
     NSMutableDictionary *para = [NSMutableDictionary new];
     [para setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"] forKey:@"memberId"];
@@ -66,10 +66,20 @@
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
     //通过KVC设置滤镜inputMessage数据
     [filter setValue:data forKeyPath:@"inputMessage"];
+    //4.获取生成的图片
+    CIImage *ciImg=filter.outputImage;
+    //5.设置二维码的前景色和背景颜色
+    CIFilter *colorFilter=[CIFilter filterWithName:@"CIFalseColor"];
+    //5.1设置默认值
+    [colorFilter setDefaults];
+    [colorFilter setValue:ciImg forKey:@"inputImage"];
+    [colorFilter setValue:[CIColor colorWithRed:255 green:255 blue:255] forKey:@"inputColor0"];
+    [colorFilter setValue:[CIColor colorWithRed:0 green:0 blue:255] forKey:@"inputColor1"];
     // 6.获取滤镜输出的图像
-    CIImage *outputImage = [filter outputImage];
+    //CIImage *outputImage = [filter outputImage];
+    ciImg = colorFilter.outputImage;
     // 7.将CIImage转成UIImage
-    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
+    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:ciImg withSize:200];
     
     //显示二维码
     _imageView.image = image;
@@ -78,8 +88,8 @@
 - (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat) size
 {
     CGRect extent = CGRectIntegral(image.extent);
-    //CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
-    CGFloat scale = MIN(10, 20);
+    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
+    //CGFloat scale = MIN(10, 20);
     
     // 1.创建bitmap;
     size_t width = CGRectGetWidth(extent) * scale;
@@ -98,7 +108,6 @@
     CGImageRelease(bitmapImage);
     return [UIImage imageWithCGImage:scaledImage];
 }
-
 
 
 /*
