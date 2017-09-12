@@ -20,6 +20,7 @@
 		843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555A1F5D2A7C000DB239 /* SigninViewController.m */; };
 		843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555D1F5D2A8F000DB239 /* SignUpViewController.m */; };
 		845A524C1F61579800964700 /* ClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A524B1F61579800964700 /* ClubDetailViewController.m */; };
+		8465787A1F676F55002F1D03 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846578791F676F55002F1D03 /* OrderModel.m */; };
 		846788311F5D7BC7004311A0 /* SortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846788301F5D7BC7004311A0 /* SortTableViewCell.m */; };
 		84791BDF1F5C081A008A83EB /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDE1F5C081A008A83EB /* FindModel.m */; };
 		84B93C4C1F66824C00C9738A /* ePurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B93C4B1F66824C00C9738A /* ePurchaseTableViewController.m */; };
@@ -143,6 +144,8 @@
 		843D555D1F5D2A8F000DB239 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		845A524A1F61579800964700 /* ClubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDetailViewController.h; sourceTree = "<group>"; };
 		845A524B1F61579800964700 /* ClubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDetailViewController.m; sourceTree = "<group>"; };
+		846578781F676F55002F1D03 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		846578791F676F55002F1D03 /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		8467882F1F5D7BC7004311A0 /* SortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortTableViewCell.h; sourceTree = "<group>"; };
 		846788301F5D7BC7004311A0 /* SortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortTableViewCell.m; sourceTree = "<group>"; };
 		84791BDD1F5C081A008A83EB /* FindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindModel.h; sourceTree = "<group>"; };
@@ -424,6 +427,15 @@
 			name = sign;
 			sourceTree = "<group>";
 		};
+		846578771F676EF6002F1D03 /* OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				846578781F676F55002F1D03 /* OrderModel.h */,
+				846578791F676F55002F1D03 /* OrderModel.m */,
+			);
+			name = OrderModel;
+			sourceTree = "<group>";
+		};
 		84791BDC1F5C07EB008A83EB /* Find */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +524,7 @@
 		84D9C3221F5A3CFF00AC0B75 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				846578771F676EF6002F1D03 /* OrderModel */,
 				84321EE11F623158004FE0EA /* Experience */,
 				EE5AB18A1F5D3F4000CD3D93 /* UserModel */,
 				B248F3591F5D2E1400C3C0C5 /* Activity */,
@@ -1161,6 +1174,7 @@
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
 				843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */,
 				84B93C4C1F66824C00C9738A /* ePurchaseTableViewController.m in Sources */,
+				8465787A1F676F55002F1D03 /* OrderModel.m in Sources */,
 				84D9C3AF1F5A5F6800AC0B75 /* mask.m in Sources */,
 				845A524C1F61579800964700 /* ClubDetailViewController.m in Sources */,
 				84D9C36B1F5A3D3700AC0B75 /* StorageMgr.m in Sources */,

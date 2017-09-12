@@ -8,7 +8,11 @@
 
 #import "MyOrderTableViewController.h"
 #import "MyOrderTableViewCell.h"
+#import "OrderModel.h"
 @interface MyOrderTableViewController ()
+@property(strong,nonatomic)NSMutableArray *arr;
+@property(strong,nonatomic)UIActivityIndicatorView *avi;
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 
 @end
 
@@ -16,28 +20,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _arr = [NSMutableArray new];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self naviConfig];
+    [self request];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)naviConfig{
+    //设置标题文字
+    self.navigationItem.title = @"我的订单";
+    //设置导航条的风格颜色
+    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 124, 236);
+    //设置导航条的标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+}
 
 -(void)request{
+    _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para = @{@"memberId":[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"],@"type":@0};
     [RequestAPI requestURL:@"/orderController/orderList" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        NSLog(@"responseObject:%@",responseObject);
+        [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
-            NSLog(@"responseObject:%@",responseObject);
+            NSArray *array = responseObject[@"result"][@"orderList"];
+            for(NSDictionary *dict in array){
+                OrderModel *model = [[OrderModel alloc]initWithOrder:dict];
+                [_arr addObject:model];
+            }
+             [_tableview reloadData];
+        }
+        
+        else{
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
-        
+        [_avi stopAnimating];
     }];
     
    
@@ -46,20 +80,23 @@
 
 #pragma mark - Table view data source
 
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120.f;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 10;
+    return _arr.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"forIndexPath:indexPath];
-    
-   // cell.imageView.image = [UIImage imageNamed:@"默认"];
-    cell.OrderName.text = @"新用户免费体验券";
-    cell.clubName.text = @"沐心堂射箭馆";
-    cell.price.text = @"99";
+    OrderModel *Model = _arr[indexPath.row];
+    NSURL *url = [NSURL URLWithString: Model.imgUrl];
+    [cell.OrderImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
+    cell.OrderName.text = Model.productName;
+    cell.clubName.text = Model.clubName;
+    cell.price.text = [NSString stringWithFormat:@"%@元",Model.shouldpay];
     
     return cell;
 }
