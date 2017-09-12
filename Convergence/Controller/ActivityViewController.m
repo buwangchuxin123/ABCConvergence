@@ -288,7 +288,7 @@
     //根据三元素计算尺寸
     CGFloat height = [activityContent boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : font} context:nil].size.height;
     //活动内容标签的原点y轴的位置+活动内容标签根据文字自适应大小后获得的高度+活动内容标签距离细胞底部的间距
-    return cell.activityInfLabel.frame.origin.y + height + 10;
+    return cell.activityInfLabel.frame.origin.y + height + 10 + 5;//高度
 }
 
 //设置每一组中每一行被点击以后要做的事情

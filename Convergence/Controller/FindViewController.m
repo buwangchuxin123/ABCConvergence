@@ -30,7 +30,7 @@
 - (IBAction)CityAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)KindAction:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)DistanceAction:(UIButton *)sender forEvent:(UIEvent *)event;
-
+@property (strong, nonatomic) UIImageView *NothingImg;
 
 
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
@@ -71,7 +71,10 @@
 //}
 
 - (void)viewWillAppear:(BOOL)animated{
-   //
+    //if(_ClubArr.count == 0)
+    {
+       // [self nothingForCollectionView];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -196,6 +199,7 @@
             [self clubRequestData];
         }
         if(indexPath.row == 1){
+            isdistance = NO;
             [self TypeClubRequestData];
         }
         
@@ -302,9 +306,9 @@
 }
 //细胞将要出现时调用
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    if(indexPath.row == _ClubArr.count -1){
+    if(indexPath.row == _ClubArr.count-1){
         if(pageNum1 != totalPage){
-            pageNum1 ++;
+             pageNum1 ++;
             if(flag == 1){
                 if(_distance1 == nil){
                     [self ClubRequest];
@@ -312,17 +316,23 @@
                     [self KMClubRequest];
                 }
                 return;
-            }
+             }
+            
             if(flag == 2){
                 if(_kindId == nil){
                     [self ClubRequest];
                 }else{
-                    [self KindClubRequest];
+                 //   [self KindClubRequest];
                 }
                 return;
             }
+        
             if(flag == 3){
-                [self TypeClubRequest];
+                if(isdistance){
+                  [self ClubRequest];
+                }else{
+                 [self TypeClubRequest];
+                }
                 return;
             }
             else{
@@ -335,6 +345,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [_collectionView deselectItemAtIndexPath:indexPath animated:YES];
     FindModel *model = _ClubArr[indexPath.row];
     NSString *clubId = model.clubID;
     [[StorageMgr singletonStorageMgr] addKey:@"clubId" andValue:clubId];
@@ -343,6 +354,16 @@
     [self.navigationController pushViewController:controller animated:YES];
    // [self presentViewController:controller animated:YES completion:nil];
 }
+//当tableView没有数据时显示图片的方法
+- (void)nothingForCollectionView{
+    _NothingImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"no_things"]];
+    _NothingImg.frame = CGRectMake((UI_SCREEN_W - 100) / 2, 50, 100, 100);
+    
+    
+    [_collectionView addSubview:_NothingImg];
+   
+}
+
 #pragma mark - request
 -(void)dataInitialize{
     // [self hotRequest];
@@ -365,7 +386,9 @@
                 [_TypeArr addObject:model];
                 //    NSLog(@"数组里的是：%@",model.fName);
               }
+            if(pageNum1 == 1){
                [_KindArr removeAllObjects];
+            }
              _KindArr  = [[NSMutableArray alloc]initWithObjects:@"全部分类", nil];
                for(int i = 0; i < 4;i++){
                 FindModel *model = _TypeArr[i];
@@ -393,6 +416,7 @@
 }
 //默认按距离请求数据
 - (void)ClubRequest{
+    //NSLog(@"默认");
       _membraneView.hidden = YES;
    
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0};
@@ -440,7 +464,7 @@
 //请求n千米范围内的会所
 - (void)KMClubRequest{
     _membraneView.hidden = YES;
-  
+   // NSLog(@"千米");
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"distance":_distance1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       //  NSLog(@"responseObject:%@", responseObject);
@@ -464,6 +488,7 @@
                // NSLog(@"数组里的是%@",model);
                 
              }
+            
            // NSLog(@"按%@米请求",_distance);
             [_collectionView reloadData];
             
@@ -488,16 +513,18 @@
 //按种类请求会所
 - (void)KindClubRequest{
     _membraneView.hidden = YES;
-  
+    //NSLog(@"种类");
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"featureId":_kindId};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-          NSLog(@"responseObject:%@", responseObject);
+      // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
         [ref endRefreshing];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
+            NSDictionary  *pageDict =result[@"pagingInfo"];
+            totalPage = [pageDict[@"totalPage"]integerValue];
             if(pageNum1 == 1){
                 [_ClubArr removeAllObjects];
             }
@@ -530,7 +557,7 @@
 //按人气请求会所
 - (void)TypeClubRequest{
     _membraneView.hidden = YES;
-   
+  // NSLog(@"人气");
     NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
@@ -540,7 +567,11 @@
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
-            [_ClubArr removeAllObjects];
+            NSDictionary  *pageDict =result[@"pagingInfo"];
+            totalPage = [pageDict[@"totalPage"]integerValue];
+            if(pageNum1 == 1){
+              [_ClubArr removeAllObjects];
+            }
             for(NSDictionary *dict in array){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 
