@@ -27,7 +27,7 @@
 }
 - (void)naviConfig{
     self.navigationItem.title = @"我的积分";
-    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(58, 150, 252);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
     
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
@@ -60,7 +60,7 @@
     NSMutableDictionary *para = [NSMutableDictionary new];
     [para setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"] forKey:@"memberId"];
     [RequestAPI requestURL:@"/score/memberScore" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"resposeObject = %@",responseObject);
+       // NSLog(@"resposeObject = %@",responseObject);
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
             NSString *integral = responseObject[@"result"];
             NSString *string  =[NSString stringWithFormat:@"当前积分:%@",integral];

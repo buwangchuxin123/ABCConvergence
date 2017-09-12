@@ -35,7 +35,7 @@
 }
 - (void)naviConfig{
     self.navigationItem.title = @"意见反馈";
-    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(58, 150, 252);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
     
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
