@@ -105,7 +105,7 @@
                     break;
                 case 4: [self performSegueWithIdentifier:@"MyInfo2Feedback" sender:self];
                     break;
-                default:
+             default:[self performSegueWithIdentifier:@"MyInfo2About" sender:self];
                  
                     break;
                     

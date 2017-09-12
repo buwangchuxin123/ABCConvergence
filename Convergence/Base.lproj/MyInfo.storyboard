@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WKu-rY-E8s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WKu-rY-E8s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -95,7 +95,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberCell" textLabel="g9m-fg-BlE" style="IBUITableViewCellStyleDefault" id="3Ck-Dv-tqM">
-                                        <rect key="frame" x="0.0" y="198" width="312.5" height="44"/>
+                                        <rect key="frame" x="0.0" y="198" width="312" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Ck-Dv-tqM" id="P80-DZ-CHF">
                                             <rect key="frame" x="0.0" y="0.0" width="279.5" height="43.5"/>
@@ -138,6 +138,7 @@
                         <segue destination="fTL-nz-hmT" kind="presentation" identifier="MyInfo2Feedback" id="2O9-d8-5yW"/>
                         <segue destination="F6S-e6-PFs" kind="presentation" identifier="MyInfo2Promote" id="lhf-Fv-5VR"/>
                         <segue destination="xeO-LC-NPb" kind="presentation" identifier="MyInfo2MyOrder" id="jHN-m3-UAK"/>
+                        <segue destination="Omk-3I-SSb" kind="presentation" identifier="MyInfo2About" id="p8d-yw-O24"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3M-w8-aVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,13 +193,13 @@
             </objects>
             <point key="canvasLocation" x="585" y="108"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--About-->
         <scene sceneID="mbF-b4-rJ7">
             <objects>
-                <viewControllerPlaceholder id="Omk-3I-SSb" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="About" id="Omk-3I-SSb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mbi-sS-km3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="248"/>
+            <point key="canvasLocation" x="585" y="175"/>
         </scene>
     </scenes>
     <resources>
