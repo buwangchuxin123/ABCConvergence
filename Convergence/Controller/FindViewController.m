@@ -431,7 +431,7 @@
                // NSLog(@"数组里的是%@",model);
                 
              }
-            NSLog(@"按%@米请求",_distance);
+           // NSLog(@"按%@米请求",_distance);
             [_collectionView reloadData];
             
         }else{

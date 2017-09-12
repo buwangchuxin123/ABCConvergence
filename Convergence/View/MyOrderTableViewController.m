@@ -48,9 +48,21 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
     
+    
+    //实例化一个button 类型为UIButtonTypeSystem
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置其背景图片为返回图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     //为导航条左上角创建一个按钮
-    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = left;
+   // UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];UIBarButtonSystemItemStop
+   // self.navigationItem.leftBarButtonItem = left;
 }
 //用model的方式返回上一页
 - (void)backAction{
@@ -63,7 +75,7 @@
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para = @{@"memberId":[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"],@"type":@0};
     [RequestAPI requestURL:@"/orderController/orderList" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject:%@",responseObject);
+       // NSLog(@"responseObject:%@",responseObject);
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSArray *array = responseObject[@"result"][@"orderList"];

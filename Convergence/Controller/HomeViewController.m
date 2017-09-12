@@ -154,7 +154,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0){
-    return 220.f;
+       return 220.f;
     }
     else{
         ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell"];

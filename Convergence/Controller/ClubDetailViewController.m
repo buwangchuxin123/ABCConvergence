@@ -159,7 +159,7 @@
    NSURL *url = [NSURL URLWithString:model.eLogo];
     [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
    cell.name.text = model.eName;
-    NSLog(@"ename:%@",model.eName);
+   // NSLog(@"ename:%@",model.eName);
     NSArray *array = _home.experience;
     NSDictionary *dict = array[indexPath.row];
   

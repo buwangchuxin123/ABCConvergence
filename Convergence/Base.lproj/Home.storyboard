@@ -31,13 +31,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r87-kt-lhn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="187.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="r87-kt-lhn" secondAttribute="height" multiplier="2:1" id="enN-4J-05l"/>
-                                            </constraints>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="190.5"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-8Z-tdI">
-                                            <rect key="frame" x="0.0" y="125" width="375" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="128" width="375" height="62.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4v-Wd-kyE">
                                                     <rect key="frame" x="15" y="10" width="43.5" height="21"/>
@@ -953,6 +950,6 @@
         <image name="默认" width="330" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kaj-22-DxE"/>
+        <segue reference="3Nn-0G-msy"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -80,13 +80,13 @@
 - (void)networkRequest{
     UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
     NSString *request =[NSString stringWithFormat:@"/event/%@",_activity.activityId];
-    NSLog(@"%@",request);
+   // NSLog(@"%@",request);
     NSMutableDictionary *parmeters = [NSMutableDictionary new];
     if([Utilities loginCheck]){
         [parmeters setObject:[[StorageMgr singletonStorageMgr] objectForKey:@"MemberId"] forKey:@"memberId"];
     }
     [RequestAPI requestURL:request withParameters:parmeters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
+       // NSLog(@"responseObject = %@",responseObject);
         [avi stopAnimating];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];

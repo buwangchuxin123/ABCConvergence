@@ -73,7 +73,7 @@
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"]integerValue] == 8001){
-            NSLog(@"responseObject:%@",responseObject);
+           // NSLog(@"responseObject:%@",responseObject);
             NSDictionary *result = responseObject[@"result"];
             _model = [[EModel alloc]initWithexperience:result];
             [self uiLayout];
@@ -114,7 +114,7 @@
     CGSize contentSize = [_useRule.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_useRule.font} context:nil].size;
     //将文字内容的尺寸给textView高度约束
    // _introduceHeight.constant = contentSize.height + 36;
-     NSLog(@"内容高度是：%f",contentSize.height);
+     //NSLog(@"内容高度是：%f",contentSize.height);
     _viewHeight.constant =contentSize.height + 36 + 175;
     
     /*

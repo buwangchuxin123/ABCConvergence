@@ -169,7 +169,7 @@
 
 //设置表格视图中每一组有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"个数是：%lu",(unsigned long)_arr.count);
+    //NSLog(@"个数是：%lu",(unsigned long)_arr.count);
     return _arr.count;
     
 }
