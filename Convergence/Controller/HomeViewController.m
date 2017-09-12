@@ -59,6 +59,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)naviConfig{
+     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;//状态栏
     self.navigationItem.title = @"首页";
     //设置导航条颜色
     self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 124, 236);

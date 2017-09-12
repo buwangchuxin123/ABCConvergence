@@ -856,9 +856,9 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-gw-Cd4">
-                                    <rect key="frame" x="55" y="159" width="30" height="18"/>
+                                    <rect key="frame" x="55" y="159" width="20" height="18"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="jNp-au-d86"/>
+                                        <constraint firstAttribute="width" constant="20" id="jNp-au-d86"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.090196078430000007" green="0.54117647059999996" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -870,8 +870,8 @@
                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="yl8-gB-DzX">
-                                    <rect key="frame" x="105" y="154" width="94" height="29"/>
+                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="yl8-gB-DzX">
+                                    <rect key="frame" x="85" y="154" width="94" height="29"/>
                                     <connections>
                                         <action selector="addNumAction:forEvent:" destination="RnA-Lf-WYw" eventType="valueChanged" id="5Ug-jC-N1e"/>
                                     </connections>
@@ -891,7 +891,7 @@
                                 <constraint firstItem="BUs-x8-aGy" firstAttribute="top" secondItem="ZrS-4g-RmM" secondAttribute="bottom" constant="15" id="bhY-yA-iLL"/>
                                 <constraint firstItem="2fA-ss-q3j" firstAttribute="centerY" secondItem="yl8-gB-DzX" secondAttribute="centerY" id="cP6-Jg-oTN"/>
                                 <constraint firstItem="ZrS-4g-RmM" firstAttribute="top" secondItem="fWB-Tp-ZYh" secondAttribute="top" constant="15" id="cxC-QG-rTN"/>
-                                <constraint firstItem="yl8-gB-DzX" firstAttribute="leading" secondItem="tnV-gw-Cd4" secondAttribute="trailing" constant="20" id="fcG-DC-gS6"/>
+                                <constraint firstItem="yl8-gB-DzX" firstAttribute="leading" secondItem="tnV-gw-Cd4" secondAttribute="trailing" constant="10" id="fcG-DC-gS6"/>
                                 <constraint firstItem="BUs-x8-aGy" firstAttribute="leading" secondItem="ZrS-4g-RmM" secondAttribute="leading" id="nQk-r1-zZj"/>
                                 <constraint firstItem="OjI-WO-tpx" firstAttribute="top" secondItem="nFQ-wr-7HH" secondAttribute="bottom" constant="40" id="qAb-VK-iwQ"/>
                             </constraints>

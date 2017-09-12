@@ -66,7 +66,7 @@
     //设置导航条标题的文字
     self.navigationItem.title = _activity.name;
     //设置导航条的颜色（风格颜色）
-    self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     //设置导航条是否被隐藏
@@ -108,7 +108,7 @@
         [self.navigationController pushViewController:purchaseVC animated:YES];
     }else{
         //获取要跳转过去的那个页面
-        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Detail" byIdentity:@"SignNavi"];
+        UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Login" byIdentity:@"LoginNavi"];
         //执行跳转
         [self presentViewController:signNavi animated:YES completion:nil];
     }

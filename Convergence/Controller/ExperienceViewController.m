@@ -50,7 +50,7 @@
 }
 - (void)naviConfig{
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    self.navigationItem.title = @"体验券详情";
+    self.navigationItem.title = @"体验券信息";
     //设置导航条的颜色（风格颜色）
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
     //设置导航条标题颜色
