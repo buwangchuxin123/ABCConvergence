@@ -182,5 +182,15 @@
 - (IBAction)addressBtn:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)callBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+
+//    //配置电话APP的路径，并将要拨打的号码组合到路径中
+   NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_Model.clubTel];
+//    NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
+//    //从当前APP跳转到其他指定的APP中
+//    [[UIApplication sharedApplication] openURL:targetAppUrl];
+    UIWebView *callWebview =[[UIWebView alloc]init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+    [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+  
 }
 @end
