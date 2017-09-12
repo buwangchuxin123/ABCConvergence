@@ -1,7 +1,80 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--About View Controller-->
+        <scene sceneID="oQ4-qM-hqV">
+            <objects>
+                <viewController id="gQv-tG-IAn" customClass="aboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gAt-vn-3nQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="t60-Vp-dxU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ze5-mP-Neb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLa-Ac-fGY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-Da-IEd">
+                                        <rect key="frame" x="127" y="224" width="55.5" height="70"/>
+                                        <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="55"/>
+                                        <color key="textColor" red="0.18823529411764706" green="0.98431372549019602" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYT-LU-STt">
+                                        <rect key="frame" x="190.5" y="233" width="51" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Copyright   2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKO-Tr-Q3y">
+                                        <rect key="frame" x="127" y="602" width="115" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.65098039215686276" green="0.94509803921568625" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tPl-Da-IEd" firstAttribute="leading" secondItem="eLa-Ac-fGY" secondAttribute="leading" constant="127" id="CIF-ai-j43"/>
+                                    <constraint firstItem="mYT-LU-STt" firstAttribute="leading" secondItem="tPl-Da-IEd" secondAttribute="trailing" constant="8" id="Dy4-oo-kUO"/>
+                                    <constraint firstItem="XKO-Tr-Q3y" firstAttribute="leading" secondItem="eLa-Ac-fGY" secondAttribute="leading" constant="127" id="EYl-4h-oRR"/>
+                                    <constraint firstAttribute="bottom" secondItem="mYT-LU-STt" secondAttribute="bottom" constant="381" id="LZr-RE-FqK"/>
+                                    <constraint firstItem="mYT-LU-STt" firstAttribute="top" secondItem="eLa-Ac-fGY" secondAttribute="top" constant="233" id="LhW-Yg-WF8"/>
+                                    <constraint firstAttribute="trailing" secondItem="XKO-Tr-Q3y" secondAttribute="trailing" constant="133" id="fO4-UN-zgf"/>
+                                    <constraint firstItem="mYT-LU-STt" firstAttribute="leading" secondItem="tPl-Da-IEd" secondAttribute="trailing" constant="8" id="fT0-Dl-hIT"/>
+                                    <constraint firstItem="tPl-Da-IEd" firstAttribute="top" secondItem="eLa-Ac-fGY" secondAttribute="top" constant="224" id="jsb-g1-lIm"/>
+                                    <constraint firstItem="XKO-Tr-Q3y" firstAttribute="top" secondItem="tPl-Da-IEd" secondAttribute="bottom" constant="308" id="n19-V5-Eyp"/>
+                                    <constraint firstAttribute="trailing" secondItem="mYT-LU-STt" secondAttribute="trailing" constant="133.5" id="qbQ-Jd-ZGT"/>
+                                    <constraint firstAttribute="bottom" secondItem="XKO-Tr-Q3y" secondAttribute="bottom" constant="44" id="vnH-uh-Uj8"/>
+                                    <constraint firstAttribute="bottom" secondItem="tPl-Da-IEd" secondAttribute="bottom" constant="373" id="y1n-ga-J4l"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eLa-Ac-fGY" secondAttribute="trailing" id="fSv-pJ-TuX"/>
+                            <constraint firstAttribute="bottom" secondItem="eLa-Ac-fGY" secondAttribute="bottom" id="glJ-y0-3wJ"/>
+                            <constraint firstItem="eLa-Ac-fGY" firstAttribute="top" secondItem="ze5-mP-Neb" secondAttribute="top" id="kQm-FF-EJ2"/>
+                            <constraint firstItem="eLa-Ac-fGY" firstAttribute="leading" secondItem="ze5-mP-Neb" secondAttribute="leading" id="qoP-N4-zIf"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="firstLab" destination="tPl-Da-IEd" id="YRC-OO-B5B"/>
+                        <outlet property="secendLab" destination="mYT-LU-STt" id="ZNS-eZ-aVR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8lx-q6-Gv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-82.400000000000006" y="-194.75262368815595"/>
+        </scene>
+    </scenes>
 </document>

@@ -99,6 +99,7 @@
 		EE5AB1A21F5D6C1400CD3D93 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB1A11F5D6C1400CD3D93 /* HomeModel.m */; };
 		EE9EC5AD1F627FF9008E40E0 /* eDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9EC5AC1F627FF9008E40E0 /* eDetailTableViewCell.m */; };
 		EE9EC5B01F628037008E40E0 /* ClubDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9EC5AF1F628037008E40E0 /* ClubDetailModel.m */; };
+		EEBE47771F67E14300153D28 /* aboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEBE47761F67E14300153D28 /* aboutViewController.m */; };
 		EEF2FEE41F661CA200B73D82 /* PromoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */; };
 		EEF2FEE71F66670B00B73D82 /* Integral.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF2FEE61F66670B00B73D82 /* Integral.storyboard */; };
 		EEF2FEEB1F6667AA00B73D82 /* IntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEEA1F6667AA00B73D82 /* IntegralViewController.m */; };
@@ -290,6 +291,8 @@
 		EE9EC5AC1F627FF9008E40E0 /* eDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eDetailTableViewCell.m; sourceTree = "<group>"; };
 		EE9EC5AE1F628037008E40E0 /* ClubDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDetailModel.h; sourceTree = "<group>"; };
 		EE9EC5AF1F628037008E40E0 /* ClubDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDetailModel.m; sourceTree = "<group>"; };
+		EEBE47751F67E14300153D28 /* aboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutViewController.h; sourceTree = "<group>"; };
+		EEBE47761F67E14300153D28 /* aboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutViewController.m; sourceTree = "<group>"; };
 		EEF2FEE21F661CA200B73D82 /* PromoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoteViewController.h; sourceTree = "<group>"; };
 		EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoteViewController.m; sourceTree = "<group>"; };
 		EEF2FEE61F66670B00B73D82 /* Integral.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Integral.storyboard; sourceTree = "<group>"; };
@@ -686,6 +689,7 @@
 		84D9C3921F5A5D4300AC0B75 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				EEBE47741F67E11E00153D28 /* About */,
 				EEF2FEF01F66841500B73D82 /* Feedback */,
 				EEF2FEE81F66678000B73D82 /* Integral */,
 				EEF2FEE11F661C3E00B73D82 /* Promote */,
@@ -911,6 +915,15 @@
 				845A524B1F61579800964700 /* ClubDetailViewController.m */,
 			);
 			name = Detail;
+			sourceTree = "<group>";
+		};
+		EEBE47741F67E11E00153D28 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				EEBE47751F67E14300153D28 /* aboutViewController.h */,
+				EEBE47761F67E14300153D28 /* aboutViewController.m */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		EEF2FEE11F661C3E00B73D82 /* Promote */ = {
@@ -1170,6 +1183,7 @@
 				84D9C35F1F5A3D3700AC0B75 /* NSDataEx.m in Sources */,
 				84D9C35A1F5A3D3700AC0B75 /* GBAlipayManager.m in Sources */,
 				846788311F5D7BC7004311A0 /* SortTableViewCell.m in Sources */,
+				EEBE47771F67E14300153D28 /* aboutViewController.m in Sources */,
 				84321EE01F6221FD004FE0EA /* ExperienceViewController.m in Sources */,
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
 				843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */,
