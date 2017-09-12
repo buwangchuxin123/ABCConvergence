@@ -13,11 +13,11 @@
 #import "ClubDetailViewController.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>{
     NSInteger  flag;
-    NSInteger pageNum;
+    NSInteger pageNum1;
     NSInteger totalPage;
     BOOL isLast;
-    
-    NSInteger pageSize;
+    NSInteger pageSize1;
+    BOOL isdistance;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *ButtonView;
@@ -39,7 +39,7 @@
 @property (strong,nonatomic)NSArray *CityArr;
 @property (strong,nonatomic)NSMutableArray  *KindArr;
 @property (strong,nonatomic)NSArray *DistanceArr;
-@property (strong,nonatomic)NSString *distance;
+@property (strong,nonatomic)NSString *distance1;
 @property (strong,nonatomic)NSString *kindId;
 @end
 
@@ -49,18 +49,17 @@
     [super viewDidLoad];
      _ClubArr = [NSMutableArray new];
     _TypeArr  = [NSMutableArray new];
-   
+    isdistance = NO;
     _CityArr = [[NSArray alloc]initWithObjects:@"全城",@"距离我1KM",@"距离我2KM",@"距离我3KM",@"距离我5KM",nil];
     _DistanceArr = [[NSArray alloc]initWithObjects:@"按距离",@"按人气", nil];
     // Do any additional setup after loading the view.
     //禁止被选中
   //  _collectionView.allowsSelection = NO;
-    pageNum = 1;
-    pageSize = 10;
+    pageNum1 = 1;
+    pageSize1 = 10;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView)];
-    //监听名为@"refreshHome"的通知，监听到后执行refreshHome方法
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshHome) name:@"refreshHome" object:nil];
-     tapGesture.delegate = self;
+ 
+    tapGesture.delegate = self;
     [self.membraneView addGestureRecognizer:tapGesture];
     [self setRefreshControl];
     [self naviConfig];
@@ -113,6 +112,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40.f;
 }
+//筛选条件
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(flag == 1){
         return _CityArr.count;
@@ -143,25 +143,26 @@
 //设置每一组中每一行被点击以后要做的事情
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+     pageNum1 = 1;
     if(flag == 1){
         if(indexPath.row == 0){
-            [self ClubRequest];//默认按距离请求
+            [self clubRequestData];//默认按距离请求
         }
         if(indexPath.row == 1){
-            _distance = @"1000";
-            [self KMClubRequest];
+            _distance1 = @"1000";
+            [self KMClubRequestData];
         }
         if(indexPath.row == 2){
-            _distance = @"2000";
-            [self KMClubRequest];
+            _distance1 = @"2000";
+            [self KMClubRequestData];
         }
         if(indexPath.row == 3){
-            _distance = @"3000";
-            [self KMClubRequest];
+            _distance1 = @"3000";
+            [self KMClubRequestData];
         }
         if(indexPath.row == 4){
-            _distance = @"5000";
-            [self KMClubRequest];
+            _distance1 = @"5000";
+            [self KMClubRequestData];
         }
         
 
@@ -169,32 +170,33 @@
     if(flag == 2){
         
         if(indexPath.row == 0){
-            [self ClubRequest];
+            [self clubRequestData];
         }
         if(indexPath.row == 1){
             _kindId = @"1";
-            [self KindClubRequest];
+            [self KindClubRequestData];
         }
         if(indexPath.row == 2){
             _kindId = @"2";
-            [self KindClubRequest];
+            [self KindClubRequestData];
         }
         if(indexPath.row == 3){
             _kindId = @"3";
-            [self KindClubRequest];
+            [self KindClubRequestData];
         }
         if(indexPath.row == 4){
             _kindId = @"4";
-            [self KindClubRequest];
+            [self KindClubRequestData];
         }
 
     }
     if(flag == 3){
         if(indexPath.row == 0){
-            [self ClubRequest];
+            isdistance = YES;
+            [self clubRequestData];
         }
         if(indexPath.row == 1){
-            [self TypeClubRequest];
+            [self TypeClubRequestData];
         }
         
 
@@ -267,35 +269,56 @@
 }
 //会所列表下拉刷新事件
 - (void)acquireRef{
-     pageNum = 1;
+     pageNum1 = 1;
     if(flag == 1){
        // _distance = @"5000";
-        
-      [self KMClubRequest];
+        if(_distance1 == nil){
+            [self ClubRequest];
+        }else{
+         [self KMClubRequest];
+        }
         return;
     }
     if(flag == 2){
-        [self KindClubRequest];
+        if(_kindId == nil){
+            [self ClubRequest];
+        }else{
+         [self KindClubRequest];
+        }
         return;
     }
     if(flag == 3){
-        [self TypeClubRequest];
-        return;
-    }else{
+        if(isdistance){
+            [self ClubRequest];//默认
+            return;
+        }else{
+         [self TypeClubRequest];
+         return;
+        }
+    }
+    else{
         [self ClubRequest];
     }
 }
 //细胞将要出现时调用
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(indexPath.row == _ClubArr.count -1){
-        if(pageNum != totalPage){
-            pageNum ++;
+        if(pageNum1 != totalPage){
+            pageNum1 ++;
             if(flag == 1){
-                [self KMClubRequest];
+                if(_distance1 == nil){
+                    [self ClubRequest];
+                }else{
+                    [self KMClubRequest];
+                }
                 return;
             }
             if(flag == 2){
-                [self KindClubRequest];
+                if(_kindId == nil){
+                    [self ClubRequest];
+                }else{
+                    [self KindClubRequest];
+                }
                 return;
             }
             if(flag == 3){
@@ -304,7 +327,7 @@
             }
             else{
             [self ClubRequest];
-            NSLog(@"不是最后一页");
+          //  NSLog(@"不是最后一页");
             }
         }
     }
@@ -372,7 +395,7 @@
 - (void)ClubRequest{
       _membraneView.hidden = YES;
    
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0};
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
     // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -384,9 +407,9 @@
             NSDictionary  *pageDict =result[@"pagingInfo"];
             totalPage = [pageDict[@"totalPage"]integerValue];
             
-            if(pageNum == 1){
+            if(pageNum1 == 1){
                 [_ClubArr removeAllObjects];
-            }
+              }
             for(NSDictionary *dict in array){
                 FindModel *model = [[FindModel alloc]initWithClub:dict];
                 [_ClubArr addObject:model];
@@ -409,11 +432,16 @@
     }];
     
 }
+-(void)KMClubRequestData{
+  _avi = [Utilities getCoverOnView:self.view];
+    [self KMClubRequest];
+}
+
 //请求n千米范围内的会所
 - (void)KMClubRequest{
     _membraneView.hidden = YES;
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0,@"distance":_distance};
+  
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"distance":_distance1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -425,7 +453,7 @@
             NSDictionary  *pageDict =result[@"pagingInfo"];
             totalPage = [pageDict[@"totalPage"]integerValue];
             
-            if(pageNum == 1){
+            if(pageNum1 == 1){
                 [_ClubArr removeAllObjects];
             }
 
@@ -453,20 +481,24 @@
     }];
     
 }
+-(void)KindClubRequestData{
+  _avi = [Utilities getCoverOnView:self.view];
+    [self KindClubRequest];
+}
 //按种类请求会所
 - (void)KindClubRequest{
     _membraneView.hidden = YES;
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@0,@"featureId":_kindId};
+  
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"featureId":_kindId};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-        //  NSLog(@"responseObject:%@", responseObject);
+          NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
         UIRefreshControl *ref = (UIRefreshControl *)[_collectionView viewWithTag:10001];
         [ref endRefreshing];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
             NSArray *array = result[@"models"];
-            if(pageNum == 1){
+            if(pageNum1 == 1){
                 [_ClubArr removeAllObjects];
             }
 
@@ -491,12 +523,15 @@
     }];
     
 }
-
+-(void)TypeClubRequestData{
+ _avi = [Utilities getCoverOnView:self.view];
+    [self TypeClubRequest];
+}
 //按人气请求会所
 - (void)TypeClubRequest{
     _membraneView.hidden = YES;
-    _avi = [Utilities getCoverOnView:self.view];
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum),@"perPage":@(pageSize),@"Type":@1};
+   
+    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
