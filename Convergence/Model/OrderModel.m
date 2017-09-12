@@ -16,6 +16,8 @@
     _clubName = [Utilities nullAndNilCheck:dict[@"clubName"] replaceBy:@""];
     _productName = [Utilities nullAndNilCheck:dict[@"productName"] replaceBy:@""];
     _shouldpay = [Utilities nullAndNilCheck:dict[@"shouldpay"] replaceBy:@""];
+        _orderNum = [Utilities nullAndNilCheck:dict[@"orderNum"] replaceBy:@""];
+
     }
     return self;
 }

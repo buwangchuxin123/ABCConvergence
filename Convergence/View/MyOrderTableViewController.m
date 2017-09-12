@@ -47,7 +47,17 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
+    
+    //为导航条左上角创建一个按钮
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
 }
+//用model的方式返回上一页
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];//用push返回上一页
+}
+
 
 -(void)request{
     _avi = [Utilities getCoverOnView:self.view];
@@ -81,17 +91,39 @@
 #pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120.f;
+    return 110.f;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return _arr.count;
+  
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return _arr.count;
+    return 1;//_arr.count;
+}
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+
+{
+    
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    
+    header.textLabel.textColor = [UIColor darkGrayColor];
+    header.textLabel.font = [UIFont systemFontOfSize:13];
+    header.contentView.backgroundColor = UIColorFromRGB(240, 239, 245);
+    
 }
 
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+       OrderModel *Model = _arr[section];
+    NSString *upper = [Model.orderNum uppercaseString];
+    NSString *string = [NSString stringWithFormat:@"订单号:%@",upper];
+    return string;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"forIndexPath:indexPath];
-    OrderModel *Model = _arr[indexPath.row];
+    OrderModel *Model = _arr[indexPath.section];
     NSURL *url = [NSURL URLWithString: Model.imgUrl];
     [cell.OrderImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
     cell.OrderName.text = Model.productName;

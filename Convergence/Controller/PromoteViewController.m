@@ -19,13 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
- //   [self naviConfig];
-    [self netRequest];
+     [self naviConfig];
+     [self netRequest];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+   
 }
 //-(void)naviConfig{
 //    self.navigationItem.title = @"我的推广";
@@ -35,6 +36,31 @@
 //    self.navigationController.navigationBar.hidden = NO;
 //    self.navigationController.navigationBar.translucent = YES;
 //}
+-(void)naviConfig{
+    //设置标题文字
+    self.navigationItem.title = @"我的推广";
+    //设置导航条的风格颜色
+    self.navigationController.navigationBar.barTintColor=UIColorFromRGB(20, 124, 236);
+    //设置导航条的标题颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    //设置导航条是否隐藏
+    self.navigationController.navigationBar.hidden = NO;
+    //设置导航条上按钮的风格颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //设置是否需要毛玻璃效果
+    self.navigationController.navigationBar.translucent = YES;
+    
+    //为导航条左上角创建一个按钮
+    UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];//用push返回上一页
+}
+
+
 -(void)netRequest{
     NSMutableDictionary *para = [NSMutableDictionary new];
     [para setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"] forKey:@"memberId"];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WKu-rY-E8s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WKu-rY-E8s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -133,11 +133,11 @@
                         <outlet property="tableView" destination="KHH-PK-tHS" id="l00-lU-qER"/>
                         <outlet property="usernameLabel" destination="MPG-9t-A0k" id="6ny-DG-Ym3"/>
                         <segue destination="h0u-bO-xUf" kind="presentation" identifier=" Myinfo2Login" id="bZM-gG-F6T"/>
-                        <segue destination="xeO-LC-NPb" kind="show" identifier="MyInfo2MyOrder" id="alk-u4-WnC"/>
                         <segue destination="Bbi-Hm-lZv" kind="show" identifier="MyInfo2Setting" id="lNa-ID-HEo"/>
-                        <segue destination="F6S-e6-PFs" kind="show" identifier="MyInfo2Promote" id="3ES-ra-DY2"/>
                         <segue destination="Zre-9H-HXp" kind="presentation" identifier="MyInfo2Integral" id="GHP-QP-JM5"/>
                         <segue destination="fTL-nz-hmT" kind="presentation" identifier="MyInfo2Feedback" id="2O9-d8-5yW"/>
+                        <segue destination="F6S-e6-PFs" kind="presentation" identifier="MyInfo2Promote" id="lhf-Fv-5VR"/>
+                        <segue destination="xeO-LC-NPb" kind="presentation" identifier="MyInfo2MyOrder" id="jHN-m3-UAK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3M-w8-aVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
