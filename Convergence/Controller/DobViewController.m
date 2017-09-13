@@ -71,7 +71,9 @@
         NSLog(@"responseObject:%@",responseObject);
         if([responseObject[@"resultFlag"]integerValue] == 8001){
             //  NSDictionary *result= responseObject[@"result"];
-            NSNotification *note = [NSNotification notificationWithName:@"refreshSR" object:nil userInfo:nil];
+            
+            NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
+            
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             

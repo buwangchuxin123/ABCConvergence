@@ -55,7 +55,7 @@
 }
 -(void)save{
     NSString * nc  = _nickTextField.text;
-    [[StorageMgr singletonStorageMgr]addKey:@"NC" andValue:nc];
+   // [[StorageMgr singletonStorageMgr]addKey:@"NC" andValue:nc];
     
     _avi=[Utilities getCoverOnView:self.view];
     
@@ -67,11 +67,12 @@
         NSLog(@"responseObject:%@",responseObject);
         if([responseObject[@"resultFlag"]integerValue] == 8001){
             //     NSDictionary *result= responseObject[@"result"];
-            NSNotification *note = [NSNotification notificationWithName:@"refreshNick" object:nil userInfo:nil];
+            NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
+            
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+           // [self dismissViewControllerAnimated:YES completion:nil];
             
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];

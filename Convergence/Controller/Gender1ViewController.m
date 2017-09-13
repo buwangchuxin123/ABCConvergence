@@ -76,19 +76,24 @@
 */
 -(void)save{
     NSString *xb=_genderTextField.text;
-    [[StorageMgr singletonStorageMgr]addKey:@"XB" andValue:xb];
-    
+  //  [[StorageMgr singletonStorageMgr]addKey:@"XB" andValue:xb];
+    NSNumber *gender;
+    if([xb isEqualToString:@"男"]){
+        gender = @1;
+    }else{
+        gender = @2;
+    }
     _avi=[Utilities getCoverOnView:self.view];
     
     //NSLog(@"%@",_user.nickname);
     
-    NSDictionary *para = @{@"memberId":_user.memberId,@"gender":@1};
+    NSDictionary *para = @{@"memberId":_user.memberId,@"gender":gender};
     [RequestAPI requestURL:@"/mySelfController/updateMyselfInfos" withParameters:para andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
         [_avi stopAnimating];
         NSLog(@"responseObject:%@",responseObject);
         if([responseObject[@"resultFlag"]integerValue] == 8001){
             //  NSDictionary *result= responseObject[@"result"];
-            NSNotification *note = [NSNotification notificationWithName:@"refreshXB" object:nil userInfo:nil];
+            NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             

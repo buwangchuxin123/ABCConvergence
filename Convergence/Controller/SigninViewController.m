@@ -129,6 +129,7 @@
             NSString *modulus = result[@"modulus"];
             //对内容进行MD5加密
             NSString *md5Str = [_pwdTextField.text getMD5_32BitString];
+            [[StorageMgr singletonStorageMgr]addKey:@"pwd"andValue:_pwdTextField.text];
             //用模数与指数对MD5加密过后的密码进行加密
             NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
             //加密完成执行接口
@@ -151,6 +152,12 @@
         [_avi stopAnimating];
        // NSLog(@"responseObject = %@",responseObject);
         if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            //将登陆入参存储，以便后面登陆
+             [[StorageMgr singletonStorageMgr]addKey:@"userName" andValue:_userTextField.text];
+              [[StorageMgr singletonStorageMgr]addKey:@"password" andValue:encryptPwd];
+             [[StorageMgr singletonStorageMgr]addKey:@"deviceId" andValue:str];
+            
+            
             NSDictionary *result = responseObject[@"result"];
             UserModel *usermodel =[[UserModel alloc]initWithDictionary:result];
             //将登录获取到的用户信息打包存储到单例化全局变量中

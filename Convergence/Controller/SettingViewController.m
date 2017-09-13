@@ -27,6 +27,7 @@
     [super viewDidLoad];
     [self naviConfig];
     //  _setupArr = [[NSMutableArray alloc]initWithObjects:@{@"nicknameLabel":@"昵称",@"infoLabel":_user.nickname},@{@"nicknameLabel":@"性别",@"infoLabel":_user.gender},@{@"nicknameLabel":@"生日",@"infoLabel":_user.dob},@{@"nicknameLabel":@"身份证号码",@"infoLabel":_user.idCardNo}, nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refresh" object:nil];
     if ([Utilities loginCheck]) {
         //已登录
         
@@ -56,11 +57,86 @@
 }
 //当前页面将要显示的时候，显示导航栏
 - (void)viewWillAppear:(BOOL)animated{
+    [_SetUpTableView reloadData];
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     
 }
 
+- (void)request{
+    NSString *str = [Utilities uniqueVendor];
+    _avi = [Utilities getCoverOnView:self.view];
+    NSDictionary *prarmeter = @{@"deviceType" : @7001, @"deviceId" : str};
+    //开始请求
+    [RequestAPI requestURL:@"/login/getKey" withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //成功以后要做的事情
+        //NSLog(@"responseObject = %@",responseObject);
+        if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+            NSDictionary *result = responseObject[@"result"];
+            NSString *exponent = result[@"exponent"];
+            NSString *modulus = result[@"modulus"];
+            NSString *string = [[StorageMgr singletonStorageMgr]objectForKey:@"pwd"];
+            //对内容进行MD5加密
+            NSString *md5Str = [string getMD5_32BitString];
+            //用模数与指数对MD5加密过后的密码进行加密
+            NSString *rsaStr = [NSString encryptWithPublicKeyFromModulusAndExponent:md5Str.UTF8String modulus:modulus exponent:exponent];
+            //加密完成执行接口
+            [self signWithEncryptPwd:rsaStr];
+        }else{
+            [_avi stopAnimating];
+            NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+        }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
+        //失败以后要做的事情
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+}
+
+
+
+- (void)signWithEncryptPwd:(NSString *)encryptPwd {
+
+NSString *userName = [[StorageMgr singletonStorageMgr]objectForKey:@"userName"];
+//NSString *password = [[StorageMgr singletonStorageMgr]objectForKey:@"password"];
+NSString *deviceId = [[StorageMgr singletonStorageMgr]objectForKey:@"deviceId"];
+
+NSLog(@"username:%@",userName);
+[RequestAPI requestURL:@"/login" withParameters:@{@"userName" : userName, @"password" : encryptPwd, @"deviceType" : @7001, @"deviceId" : deviceId} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
+    [_avi stopAnimating];
+    // NSLog(@"responseObject = %@",responseObject);
+    if ([responseObject[@"resultFlag"] integerValue] == 8001) {
+        NSDictionary *result = responseObject[@"result"];
+        UserModel *usermodel =[[UserModel alloc]initWithDictionary:result];
+        //将登录获取到的用户信息打包存储到单例化全局变量中
+        [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:usermodel];
+        //单独将用户的ID也存储进单例化全局变量来作为用户是否已经登录的判断依据，同时也方便其它所有页面更快捷地使用ID这个参数
+        [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:usermodel.memberId];
+        //让根视图结束编辑状态达到收起键盘的目的
+        [self.view endEditing:YES];
+        //情空密码输入框里的内容
+        // _pwdTextField.text = @"";
+        //记忆用户名
+        [Utilities setUserDefaults:@"Username" content:userName];
+        //用model的方式返回上一页
+        //  [self dismissViewControllerAnimated:YES completion:nil];
+        //[_SetUpTableView reloadData];
+    }else{
+        NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+        [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+    }
+} failure:^(NSInteger statusCode, NSError *error) {
+    [_avi stopAnimating];
+    [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+}];
+}
+
+-(void)refresh{
+    
+    [self request];
+    
+    }
 
 -(void)naviConfig{
     self.navigationItem.title = @"设置";
@@ -149,7 +225,7 @@
             [self performSegueWithIdentifier:@"setting2gender" sender:self];
             break;
         case 2:
-            [self performSegueWithIdentifier:@"settingdob" sender:self];
+            [self performSegueWithIdentifier:@"setting2dob" sender:self];
             break;
         default:
             [self performSegueWithIdentifier:@"setting2IdNum" sender:self];
