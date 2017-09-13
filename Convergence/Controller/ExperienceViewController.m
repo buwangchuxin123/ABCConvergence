@@ -9,7 +9,7 @@
 #import "ExperienceViewController.h"
 #import "EModel.h"
 #import "ePurchaseTableViewController.h"
-@interface ExperienceViewController ()
+@interface ExperienceViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *Image;
 @property (weak, nonatomic) IBOutlet UILabel *eName;
 @property (weak, nonatomic) IBOutlet UILabel *price;
@@ -30,7 +30,7 @@
 @property (strong,nonatomic)EModel *model;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
-
+@property (weak,nonatomic)NSArray *arr;
 
 @end
 
@@ -41,6 +41,7 @@
     // Do any additional setup after loading the view.
     [self naviConfig];
     [self request];
+
     
 }
 
@@ -73,7 +74,7 @@
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"]integerValue] == 8001){
-           // NSLog(@"responseObject:%@",responseObject);
+        NSLog(@"responseObject:%@",responseObject);
             NSDictionary *result = responseObject[@"result"];
             _model = [[EModel alloc]initWithexperience:result];
             [self uiLayout];
@@ -134,6 +135,25 @@
     // Pass the selected object to the new view controller.
 }
 */
+//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确定删除吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//
+//
+//
+//typedef NS_ENUM(NSInteger, UIAlertControllerStyle) {
+//    UIAlertControllerStyleActionSheet = 0,  //底部弹出
+//    UIAlertControllerStyleAlert                  //中间出现
+//} NS_ENUM_AVAILABLE_IOS(8_0);
+////提示框样式
+//typedef NS_ENUM(NSInteger, UIAlertActionStyle) {
+//    UIAlertActionStyleDefault = 0,   //默认
+//    UIAlertActionStyleCancel,    //显示在最下面  或 在左边
+//    UIAlertActionStyleDestructive  //变为红色
+//} NS_ENUM_AVAILABLE_IOS(8_0);
+//
+//
+//UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示"message:@"我是最牛逼的开发者"preferredStyle:UIAlertControllerStyleActionSheet];
+//alert.delegate = self;
+
 
 - (IBAction)PayAction:(UIButton *)sender forEvent:(UIEvent *)event {
     if([Utilities loginCheck]){
@@ -153,5 +173,55 @@
 }
 
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    NSString *string = _model.clubTel;
+    _arr =  [string componentsSeparatedByString:@","];
+    NSLog(@"数组里的是：%@",_arr);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    for(int i = 0; i < _arr.count ;i ++){
+    
+        UIAlertAction *callAction = [UIAlertAction actionWithTitle:_arr[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"拨打的电话是：%d",i);
+            //配置电话APP的路径，并将要拨打的号码组合到路径中
+            NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_arr[i]];
+            
+            UIWebView *callWebview =[[UIWebView alloc]init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+            
+            
+        }];
+        [alertController addAction:callAction];
+    
+    }
+//     UIAlertAction *callAction = [UIAlertAction actionWithTitle:_model.clubTel style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
+  //  [alertController addAction:callAction];
+    [alertController addAction:cancelAction];
+    
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//        NSLog(@"点击确认");
+//        
+//    }]];
+//    
+    
+    
+    
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+//        
+//        NSLog(@"添加一个textField就会调用 这个block");
+//        
+//    }];
+    
+    
+    
+    // 由于它是一个控制器 直接modal出来就好了
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 @end
