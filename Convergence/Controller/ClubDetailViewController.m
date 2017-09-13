@@ -180,6 +180,7 @@
 
 
 - (IBAction)addressBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    //[self performSegueWithIdentifier:@"detail2Map" sender:self];
 }
 - (IBAction)callBtn:(UIButton *)sender forEvent:(UIEvent *)event {
 
@@ -196,7 +197,7 @@
     //遍历判断数组中有几个值
     for (int i = 0; i < _arr1.count; i++) {
         UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr1[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+
         }];
             [alert addAction:actionA];
     }

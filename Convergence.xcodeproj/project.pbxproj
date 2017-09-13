@@ -93,6 +93,7 @@
 		B29B9BEF1F5D0B16000230EC /* MyOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B29B9BED1F5D0B16000230EC /* MyOrder.storyboard */; };
 		B29B9BFA1F5D1F9D000230EC /* MyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */; };
 		B2D889361F613A780017F4CE /* MyOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D889351F613A780017F4CE /* MyOrderTableViewController.m */; };
+		EE4AA81C1F6936EF0057550B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4AA81B1F6936EF0057550B /* MapViewController.m */; };
 		EE5AB18D1F5D3F9F00CD3D93 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */; };
 		EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19B1F5D6BF400CD3D93 /* ClubTableViewCell.m */; };
 		EE5AB19F1F5D6C0000CD3D93 /* ExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5AB19E1F5D6C0000CD3D93 /* ExperienceTableViewCell.m */; };
@@ -279,6 +280,8 @@
 		B29B9BF91F5D1F9D000230EC /* MyOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewCell.m; sourceTree = "<group>"; };
 		B2D889341F613A780017F4CE /* MyOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderTableViewController.h; sourceTree = "<group>"; };
 		B2D889351F613A780017F4CE /* MyOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderTableViewController.m; sourceTree = "<group>"; };
+		EE4AA81A1F6936EF0057550B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		EE4AA81B1F6936EF0057550B /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		EE5AB18B1F5D3F9F00CD3D93 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		EE5AB18C1F5D3F9F00CD3D93 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		EE5AB19A1F5D6BF400CD3D93 /* ClubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClubTableViewCell.h; path = Convergence/Controller/ClubTableViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -556,6 +559,7 @@
 		84D9C3241F5A3D1400AC0B75 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EE4AA8191F6936C80057550B /* Map */,
 				84B93C491F66822500C9738A /* EPurchase */,
 				84321EDA1F62219D004FE0EA /* Experience */,
 				EEB7E7B01F6156140059D905 /* Detail */,
@@ -895,6 +899,15 @@
 			name = MyInfo;
 			sourceTree = "<group>";
 		};
+		EE4AA8191F6936C80057550B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				EE4AA81A1F6936EF0057550B /* MapViewController.h */,
+				EE4AA81B1F6936EF0057550B /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		EE5AB18A1F5D3F4000CD3D93 /* UserModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1190,6 +1203,7 @@
 				84B93C4C1F66824C00C9738A /* ePurchaseTableViewController.m in Sources */,
 				8465787A1F676F55002F1D03 /* OrderModel.m in Sources */,
 				84D9C3AF1F5A5F6800AC0B75 /* mask.m in Sources */,
+				EE4AA81C1F6936EF0057550B /* MapViewController.m in Sources */,
 				845A524C1F61579800964700 /* ClubDetailViewController.m in Sources */,
 				84D9C36B1F5A3D3700AC0B75 /* StorageMgr.m in Sources */,
 				84D9C36A1F5A3D3700AC0B75 /* RequestAPI.m in Sources */,
