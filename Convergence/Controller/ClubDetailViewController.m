@@ -25,7 +25,7 @@
 @property (strong, nonatomic)UIActivityIndicatorView * avi;
 @property (strong,nonatomic)ClubDetailModel *Model;
 @property (strong,nonatomic)NSMutableArray *arr;
-
+@property (strong,nonatomic)NSArray *arr1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *introduceHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewHeight;
 
@@ -188,6 +188,23 @@
 //    NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
 //    //从当前APP跳转到其他指定的APP中
 //    [[UIApplication sharedApplication] openURL:targetAppUrl];
+    NSString *string = _Model.clubTel;
+    //按逗号截取字符串
+    _arr1 = [string componentsSeparatedByString:@","];
+    //创建一个从底部弹出的弹窗
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    //遍历判断数组中有几个值
+    for (int i = 0; i < _arr1.count; i++) {
+        UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr1[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+            [alert addAction:actionA];
+    }
+    
+    UIAlertAction *actionB = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alert addAction:actionB];
+    [self presentViewController:alert animated:YES completion:nil];
     UIWebView *callWebview =[[UIWebView alloc]init];
     [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
     [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
