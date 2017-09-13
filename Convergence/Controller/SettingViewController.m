@@ -143,16 +143,16 @@
     
     switch (indexPath.section) {
         case 0:
-            [self performSegueWithIdentifier:@"SetUpToNC" sender:self];
+            [self performSegueWithIdentifier:@"setting2nick" sender:self];
             break;
         case 1:
-            [self performSegueWithIdentifier:@"SetUpToXB" sender:self];
+            [self performSegueWithIdentifier:@"setting2gender" sender:self];
             break;
         case 2:
-            [self performSegueWithIdentifier:@"SetUpToSR" sender:self];
+            [self performSegueWithIdentifier:@"settingdob" sender:self];
             break;
         default:
-            [self performSegueWithIdentifier:@"SetUpToSFZHM" sender:self];
+            [self performSegueWithIdentifier:@"setting2IdNum" sender:self];
             break;
     }
 }

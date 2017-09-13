@@ -20,6 +20,10 @@
 		843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555A1F5D2A7C000DB239 /* SigninViewController.m */; };
 		843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D555D1F5D2A8F000DB239 /* SignUpViewController.m */; };
 		845A524C1F61579800964700 /* ClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A524B1F61579800964700 /* ClubDetailViewController.m */; };
+		845BE4631F69554600B5D6A5 /* DobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BE45C1F69554600B5D6A5 /* DobViewController.m */; };
+		845BE4641F69554600B5D6A5 /* Gender1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BE45E1F69554600B5D6A5 /* Gender1ViewController.m */; };
+		845BE4651F69554600B5D6A5 /* IDNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BE4601F69554600B5D6A5 /* IDNumViewController.m */; };
+		845BE4661F69554600B5D6A5 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BE4621F69554600B5D6A5 /* NickNameViewController.m */; };
 		8465787A1F676F55002F1D03 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846578791F676F55002F1D03 /* OrderModel.m */; };
 		846788311F5D7BC7004311A0 /* SortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846788301F5D7BC7004311A0 /* SortTableViewCell.m */; };
 		84791BDF1F5C081A008A83EB /* FindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84791BDE1F5C081A008A83EB /* FindModel.m */; };
@@ -147,6 +151,14 @@
 		843D555D1F5D2A8F000DB239 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		845A524A1F61579800964700 /* ClubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDetailViewController.h; sourceTree = "<group>"; };
 		845A524B1F61579800964700 /* ClubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDetailViewController.m; sourceTree = "<group>"; };
+		845BE45B1F69554600B5D6A5 /* DobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DobViewController.h; sourceTree = "<group>"; };
+		845BE45C1F69554600B5D6A5 /* DobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DobViewController.m; sourceTree = "<group>"; };
+		845BE45D1F69554600B5D6A5 /* Gender1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gender1ViewController.h; sourceTree = "<group>"; };
+		845BE45E1F69554600B5D6A5 /* Gender1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gender1ViewController.m; sourceTree = "<group>"; };
+		845BE45F1F69554600B5D6A5 /* IDNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNumViewController.h; sourceTree = "<group>"; };
+		845BE4601F69554600B5D6A5 /* IDNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNumViewController.m; sourceTree = "<group>"; };
+		845BE4611F69554600B5D6A5 /* NickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameViewController.h; sourceTree = "<group>"; };
+		845BE4621F69554600B5D6A5 /* NickNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NickNameViewController.m; sourceTree = "<group>"; };
 		846578781F676F55002F1D03 /* OrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
 		846578791F676F55002F1D03 /* OrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
 		8467882F1F5D7BC7004311A0 /* SortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortTableViewCell.h; sourceTree = "<group>"; };
@@ -889,6 +901,14 @@
 				84D9C39D1F5A5DF200AC0B75 /* SettingViewController.m */,
 				84D36C7C1F614ECD006BF630 /* SetUpTableViewCell.h */,
 				84D36C7D1F614ECD006BF630 /* SetUpTableViewCell.m */,
+				845BE45B1F69554600B5D6A5 /* DobViewController.h */,
+				845BE45C1F69554600B5D6A5 /* DobViewController.m */,
+				845BE45D1F69554600B5D6A5 /* Gender1ViewController.h */,
+				845BE45E1F69554600B5D6A5 /* Gender1ViewController.m */,
+				845BE45F1F69554600B5D6A5 /* IDNumViewController.h */,
+				845BE4601F69554600B5D6A5 /* IDNumViewController.m */,
+				845BE4611F69554600B5D6A5 /* NickNameViewController.h */,
+				845BE4621F69554600B5D6A5 /* NickNameViewController.m */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -1185,6 +1205,7 @@
 				84D9C3661F5A3D3700AC0B75 /* NSData+Base64.m in Sources */,
 				84321EE41F623177004FE0EA /* EModel.m in Sources */,
 				84D36C7E1F614ECD006BF630 /* SetUpTableViewCell.m in Sources */,
+				845BE4651F69554600B5D6A5 /* IDNumViewController.m in Sources */,
 				84D9C3AE1F5A5F6800AC0B75 /* bitstream.m in Sources */,
 				84D9C3B11F5A5F6800AC0B75 /* qrinput.m in Sources */,
 				84D9C35B1F5A3D3700AC0B75 /* base64.m in Sources */,
@@ -1206,6 +1227,7 @@
 				84D9C3BD1F5A5F9F00AC0B75 /* SKTagButton.m in Sources */,
 				843D555E1F5D2A8F000DB239 /* SignUpViewController.m in Sources */,
 				84B93C4C1F66824C00C9738A /* ePurchaseTableViewController.m in Sources */,
+				845BE4661F69554600B5D6A5 /* NickNameViewController.m in Sources */,
 				8465787A1F676F55002F1D03 /* OrderModel.m in Sources */,
 				84D9C3AF1F5A5F6800AC0B75 /* mask.m in Sources */,
 				EE4AA81C1F6936EF0057550B /* MapViewController.m in Sources */,
@@ -1242,11 +1264,13 @@
 				B248F35F1F5D2FA000C3C0C5 /* ActivityCell.m in Sources */,
 				84D9C2FA1F5A39FB00AC0B75 /* Convergence.xcdatamodeld in Sources */,
 				EEF2FEE41F661CA200B73D82 /* PromoteViewController.m in Sources */,
+				845BE4641F69554600B5D6A5 /* Gender1ViewController.m in Sources */,
 				843D555B1F5D2A7C000DB239 /* SigninViewController.m in Sources */,
 				B252ECAD1F5FC3F900210E3A /* ActivityViewController.m in Sources */,
 				EE5AB19C1F5D6BF400CD3D93 /* ClubTableViewCell.m in Sources */,
 				84D9C3601F5A3D3700AC0B75 /* openssl_wrapper.m in Sources */,
 				842FA0B11F5CE84A00C1AA1D /* FindCollectionViewCell.m in Sources */,
+				845BE4631F69554600B5D6A5 /* DobViewController.m in Sources */,
 				84D9C3671F5A3D3700AC0B75 /* NSDate+Utility.m in Sources */,
 				84D9C3611F5A3D3700AC0B75 /* RSADataSigner.m in Sources */,
 				B248F35C1F5D2E5600C3C0C5 /* ActivityModel.m in Sources */,

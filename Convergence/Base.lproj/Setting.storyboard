@@ -121,15 +121,15 @@
                         <outlet property="SetUpTableView" destination="cA9-7Z-Q9r" id="kl7-Wf-T8q"/>
                         <outlet property="modificationBtn" destination="kME-IV-8R4" id="fXU-yX-haJ"/>
                         <outlet property="setupImage" destination="4oK-pT-7Z1" id="Bos-w4-PWg"/>
-                        <segue destination="GQr-CH-9Ky" kind="show" id="7BG-4F-jqx"/>
-                        <segue destination="YWZ-gQ-jqQ" kind="show" id="PAj-76-ikU"/>
-                        <segue destination="uU2-0O-FGw" kind="show" id="RfC-af-PxP"/>
-                        <segue destination="HK9-Oa-0Mg" kind="show" id="FKe-Cs-2aY"/>
+                        <segue destination="GQr-CH-9Ky" kind="show" identifier="setting2nick" id="7BG-4F-jqx"/>
+                        <segue destination="JuU-ys-0UP" kind="show" identifier="setting2IdNum" id="FKe-Cs-2aY"/>
+                        <segue destination="8lt-hS-Qx8" kind="show" identifier="setting2gender" id="myl-xX-3WV"/>
+                        <segue destination="6tT-VR-gqU" kind="show" identifier="settingdob" id="80V-Fz-Fti"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dO2-04-hNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040.8" y="71.514242878560722"/>
+            <point key="canvasLocation" x="1084" y="72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cgc-lY-Jjk">
@@ -152,7 +152,7 @@
         <!--修改昵称-->
         <scene sceneID="pGJ-Ff-zAH">
             <objects>
-                <viewController title="修改昵称" id="zbs-Ga-H4R" customClass="NCViewController" sceneMemberID="viewController">
+                <viewController title="修改昵称" id="zbs-Ga-H4R" customClass="NickNameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l5U-he-PUW"/>
                         <viewControllerLayoutGuide type="bottom" id="EKb-mL-MKP"/>
@@ -186,13 +186,14 @@
                             <constraint firstItem="EKb-mL-MKP" firstAttribute="top" secondItem="0Pf-DI-LCZ" secondAttribute="bottom" id="gU4-0G-zdX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="修改昵称" id="16m-CV-omz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gLg-e7-Egg"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="修改昵称" id="16m-CV-omz"/>
+                    <connections>
+                        <outlet property="nickTextField" destination="yN7-ij-ek6" id="Sfl-Cd-IXM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2M-kY-o5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3199" y="72"/>
+            <point key="canvasLocation" x="3111" y="77"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cJB-Gq-C3F">
@@ -212,96 +213,10 @@
             </objects>
             <point key="canvasLocation" x="2210" y="72"/>
         </scene>
-        <!--修改性别-->
-        <scene sceneID="TDv-ul-Whf">
-            <objects>
-                <viewController title="修改性别" id="wHZ-dn-2yZ" customClass="XBViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ben-Fb-qL4"/>
-                        <viewControllerLayoutGuide type="bottom" id="fod-XJ-KDs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JYw-vJ-kv0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZdK-Ne-VRd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="uhN-6s-swX"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hj3-xJ-uIp">
-                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fod-XJ-KDs" firstAttribute="top" secondItem="hj3-xJ-uIp" secondAttribute="bottom" id="87M-L9-gZf"/>
-                            <constraint firstItem="ZdK-Ne-VRd" firstAttribute="top" secondItem="ben-Fb-qL4" secondAttribute="bottom" id="Eta-8w-4ww"/>
-                            <constraint firstAttribute="trailing" secondItem="ZdK-Ne-VRd" secondAttribute="trailing" id="IPf-lA-3yw"/>
-                            <constraint firstAttribute="trailing" secondItem="hj3-xJ-uIp" secondAttribute="trailing" id="MVC-19-zcn"/>
-                            <constraint firstItem="hj3-xJ-uIp" firstAttribute="top" secondItem="ZdK-Ne-VRd" secondAttribute="bottom" id="QhO-V0-NPb"/>
-                            <constraint firstItem="ZdK-Ne-VRd" firstAttribute="leading" secondItem="JYw-vJ-kv0" secondAttribute="leading" id="iaj-9w-cpC"/>
-                            <constraint firstItem="hj3-xJ-uIp" firstAttribute="leading" secondItem="JYw-vJ-kv0" secondAttribute="leading" id="zDx-r1-CeJ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="修改性别" id="1WE-b0-dfT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k4z-wx-zxt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1772" y="1027.736131934033"/>
-        </scene>
-        <!--修改生日-->
-        <scene sceneID="GQ1-Sm-iVG">
-            <objects>
-                <viewController title="修改生日" id="uU2-0O-FGw" customClass="SRViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="us6-zA-GIS"/>
-                        <viewControllerLayoutGuide type="bottom" id="jiY-oV-ON0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lLX-go-Geu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-61-KRe">
-                                <rect key="frame" x="0.0" y="64" width="375" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="R7e-QB-0kW"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fti-PZ-LxT">
-                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="C3v-61-KRe" secondAttribute="trailing" id="1dG-QO-JdO"/>
-                            <constraint firstItem="Fti-PZ-LxT" firstAttribute="leading" secondItem="lLX-go-Geu" secondAttribute="leading" id="2qd-Bi-HvI"/>
-                            <constraint firstAttribute="trailing" secondItem="Fti-PZ-LxT" secondAttribute="trailing" id="CM6-fN-1bh"/>
-                            <constraint firstItem="C3v-61-KRe" firstAttribute="top" secondItem="us6-zA-GIS" secondAttribute="bottom" id="MhT-AY-2nU"/>
-                            <constraint firstItem="Fti-PZ-LxT" firstAttribute="top" secondItem="C3v-61-KRe" secondAttribute="bottom" id="Su4-NH-I3h"/>
-                            <constraint firstItem="C3v-61-KRe" firstAttribute="leading" secondItem="lLX-go-Geu" secondAttribute="leading" id="sht-qc-bpn"/>
-                            <constraint firstItem="jiY-oV-ON0" firstAttribute="top" secondItem="Fti-PZ-LxT" secondAttribute="bottom" id="vKB-fA-j6g"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="修改生日" id="lQB-Ul-qiU"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8EI-E8-ror" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3188" y="1051.1244377811095"/>
-        </scene>
         <!--修改身份证号码-->
         <scene sceneID="Flc-RJ-yFX">
             <objects>
-                <viewController title="修改身份证号码" id="HK9-Oa-0Mg" customClass="SFZHMViewController" sceneMemberID="viewController">
+                <viewController title="修改身份证号码" id="HK9-Oa-0Mg" customClass="IDNumViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gUn-8H-37A"/>
                         <viewControllerLayoutGuide type="bottom" id="mZU-Ha-fxv"/>
@@ -335,29 +250,214 @@
                             <constraint firstItem="mZU-Ha-fxv" firstAttribute="top" secondItem="Jbf-Sl-pCn" secondAttribute="bottom" id="tGV-le-dzB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="修改身份证号码" id="fmS-UN-7V9"/>
+                    <navigationItem key="navigationItem" title="修改身份证号码" id="fmS-UN-7V9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ptf-ej-fRr"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="idNumTextField" destination="jz9-0G-28A" id="i89-0o-2sP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uw-6W-HYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5175.1999999999998" y="1075.4122938530736"/>
+            <point key="canvasLocation" x="7956" y="1075"/>
+        </scene>
+        <!--修改性别-->
+        <scene sceneID="Wyl-RN-w1j">
+            <objects>
+                <viewController title="修改性别" id="sw0-PC-KEm" customClass="Gender1ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="alM-3L-ieT"/>
+                        <viewControllerLayoutGuide type="bottom" id="vki-ja-41y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WC7-u7-bJy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-Sr-UW8">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sw0-PC-KEm" id="fOM-hY-6gL"/>
+                                    <outlet property="delegate" destination="sw0-PC-KEm" id="H2y-Gg-Dp2"/>
+                                </connections>
+                            </pickerView>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-yR-zS3">
+                                <rect key="frame" x="0.0" y="407" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="gjD-EN-dIZ">
+                                        <connections>
+                                            <action selector="cancelAction:" destination="sw0-PC-KEm" id="KEb-qU-nIa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dnJ-5F-55k"/>
+                                    <barButtonItem title="Done" id="xKv-6h-xGx">
+                                        <connections>
+                                            <action selector="doneAction:" destination="sw0-PC-KEm" id="qfW-9b-z0S"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-Lh-7aB">
+                                <rect key="frame" x="0.0" y="94" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5rr-WI-8q9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="touchAction:forEvent:" destination="sw0-PC-KEm" eventType="touchUpInside" id="VQc-wQ-YVO"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="y9J-yR-zS3" firstAttribute="leading" secondItem="WC7-u7-bJy" secondAttribute="leading" id="3s7-hw-PDj"/>
+                            <constraint firstItem="EYc-Lh-7aB" firstAttribute="top" secondItem="alM-3L-ieT" secondAttribute="bottom" constant="30" id="4Aa-9d-d2G"/>
+                            <constraint firstItem="9hz-Sr-UW8" firstAttribute="top" secondItem="y9J-yR-zS3" secondAttribute="bottom" id="6IH-fG-2cN"/>
+                            <constraint firstAttribute="trailing" secondItem="y9J-yR-zS3" secondAttribute="trailing" id="LZB-wh-Myn"/>
+                            <constraint firstItem="EYc-Lh-7aB" firstAttribute="leading" secondItem="WC7-u7-bJy" secondAttribute="leading" id="OeR-Dw-rOl"/>
+                            <constraint firstAttribute="trailing" secondItem="EYc-Lh-7aB" secondAttribute="trailing" id="eUn-Ds-iGe"/>
+                            <constraint firstAttribute="trailing" secondItem="9hz-Sr-UW8" secondAttribute="trailing" id="eme-Yk-JGs"/>
+                            <constraint firstItem="vki-ja-41y" firstAttribute="top" secondItem="9hz-Sr-UW8" secondAttribute="bottom" id="ozy-MM-DqM"/>
+                            <constraint firstItem="9hz-Sr-UW8" firstAttribute="leading" secondItem="WC7-u7-bJy" secondAttribute="leading" id="wsA-0I-beq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改性别" id="w6d-3I-xwn"/>
+                    <connections>
+                        <outlet property="genderPickerview" destination="9hz-Sr-UW8" id="grv-OY-hGq"/>
+                        <outlet property="genderTextField" destination="EYc-Lh-7aB" id="nRe-EK-VCE"/>
+                        <outlet property="toolbar" destination="y9J-yR-zS3" id="9cL-HK-nvv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rxk-h6-jig" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2554" y="1068"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="SSa-w5-hIb">
+        <scene sceneID="tIP-n2-BEW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YWZ-gQ-jqQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8lt-hS-Qx8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RuN-Pg-QY6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vY1-8c-waK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wHZ-dn-2yZ" kind="relationship" relationship="rootViewController" id="M3t-hc-tbI"/>
+                        <segue destination="sw0-PC-KEm" kind="relationship" relationship="rootViewController" id="wYI-cq-dQI"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GNm-lI-a6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxB-I4-AFr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832.79999999999995" y="1027.736131934033"/>
+            <point key="canvasLocation" x="1455" y="1051"/>
+        </scene>
+        <!--修改生日-->
+        <scene sceneID="FmE-Pp-4N1">
+            <objects>
+                <viewController title="修改生日" id="kAq-PC-ZuU" customClass="DobViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ddX-3k-cuF"/>
+                        <viewControllerLayoutGuide type="bottom" id="9bY-Eo-kWu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3uA-ss-bSa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oob-qb-hVi">
+                                <rect key="frame" x="0.0" y="94" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ljq-No-mDS"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="touchAction:forEvent:" destination="kAq-PC-ZuU" eventType="touchUpInside" id="l6G-BN-fvY"/>
+                                </connections>
+                            </textField>
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-fY-CSs">
+                                <rect key="frame" x="0.0" y="407" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Cancel" id="OD3-4c-ZfP">
+                                        <connections>
+                                            <action selector="cancelAction:" destination="kAq-PC-ZuU" id="XGk-r1-PTH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hF7-dS-4Nx"/>
+                                    <barButtonItem title="Done" id="vUA-1k-9li">
+                                        <connections>
+                                            <action selector="doneAction:" destination="kAq-PC-ZuU" id="0kN-rh-4LG"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FiT-Zu-M15">
+                                <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="526552725.61865699">
+                                    <!--2017-09-08 08:38:45 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="zh-Hans"/>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pcb-fY-CSs" firstAttribute="leading" secondItem="3uA-ss-bSa" secondAttribute="leading" id="1eJ-lL-GvT"/>
+                            <constraint firstAttribute="trailing" secondItem="pcb-fY-CSs" secondAttribute="trailing" id="4Ab-wx-A28"/>
+                            <constraint firstItem="Oob-qb-hVi" firstAttribute="top" secondItem="ddX-3k-cuF" secondAttribute="bottom" constant="30" id="5dP-M5-gzW"/>
+                            <constraint firstItem="Oob-qb-hVi" firstAttribute="leading" secondItem="3uA-ss-bSa" secondAttribute="leading" id="EW3-QX-iFB"/>
+                            <constraint firstAttribute="trailing" secondItem="Oob-qb-hVi" secondAttribute="trailing" id="FeJ-lG-5yI"/>
+                            <constraint firstAttribute="trailing" secondItem="FiT-Zu-M15" secondAttribute="trailing" id="XLJ-aF-By7"/>
+                            <constraint firstItem="9bY-Eo-kWu" firstAttribute="top" secondItem="FiT-Zu-M15" secondAttribute="bottom" id="caG-59-ucq"/>
+                            <constraint firstItem="FiT-Zu-M15" firstAttribute="top" secondItem="pcb-fY-CSs" secondAttribute="bottom" id="czz-n9-kz6"/>
+                            <constraint firstItem="FiT-Zu-M15" firstAttribute="leading" secondItem="3uA-ss-bSa" secondAttribute="leading" id="ggj-dv-bTP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改生日" id="Qm3-Iq-zs9"/>
+                    <connections>
+                        <outlet property="datePicker" destination="FiT-Zu-M15" id="o1x-Xh-9BR"/>
+                        <outlet property="dobTextField" destination="Oob-qb-hVi" id="0MZ-gU-qlW"/>
+                        <outlet property="toolbar" destination="pcb-fY-CSs" id="N6O-JA-uuY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WM1-3w-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4676" y="1084.4077961019491"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iff-Vj-iz0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6tT-VR-gqU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TzM-37-60D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kAq-PC-ZuU" kind="relationship" relationship="rootViewController" id="HaX-Lk-3Yy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BdV-ZX-DPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3736.8000000000002" y="1084.4077961019491"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wnW-b0-jgi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JuU-ys-0UP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DII-tl-KnM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HK9-Oa-0Mg" kind="relationship" relationship="rootViewController" id="bWD-9U-l0M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DlG-VB-Csr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7053.6000000000004" y="1075.4122938530736"/>
         </scene>
     </scenes>
 </document>
