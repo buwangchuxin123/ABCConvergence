@@ -8,6 +8,7 @@
 
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
+#import "Annotation.h"
 @interface MapViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>{
 
     NSInteger count;
@@ -152,8 +153,51 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         NSLog(@"长按");
         //获得手势（长按手势）在指定视图坐标系中的位置（locationInView是获得单个手指位置的方法）
-
+        CGPoint touchPoint = [sender locationInView:_mapView];
+        //将touchPoint这个在地图上触摸的点换成地图相对应的坐标
+        CLLocationCoordinate2D mapCoordinate =[_mapView convertPoint:touchPoint toCoordinateFromView:_mapView];
+        [self pinAnnotationViaCoordinate:mapCoordinate];
     }
+}
+//根据坐标创建大头针并安插
+-(void)pinAnnotationViaCoordinate:(CLLocationCoordinate2D)mapCoordinate{
+    //设置弱引用的自身以供block使用来解开强引用循环（双下划线）
+   // __weak ViewController *weakSelf = self;
+    //设置大头针的标题与副标题
+    [self setAnnotationWithDescriptionOnCoordinate:mapCoordinate completionHandler:^(NSDictionary *info) {
+        //初始化一个大头针对象
+        Annotation *annotation = [[Annotation alloc] init];
+        //将方法参数中的坐标设置为大头针的坐标属性
+        annotation.coordinate = mapCoordinate;
+        if (info) {
+            //设置大头针的标题与副标题属性
+            annotation.title = info[@"City"];
+            annotation.subtitle = info[@"Name"];
+        }
+        //将大头针插入地图视图
+     //   [weakSelf.mapView addAnnotation:annotation];
+    }];
+
+}
+//逆地理编码方法（这里是block的声明方式（创建block甲方的方式），看！看！看！！！）
+- (void)setAnnotationWithDescriptionOnCoordinate:(CLLocationCoordinate2D)mapCoordinate completionHandler:(void (^)(NSDictionary *info))annotationCompletionHandler {
+    //初始化一个地理编码对象
+    CLGeocoder *revGeo = [[CLGeocoder alloc] init];
+    //将CLLocationCoordinate2D对象转换成CLLocation对象
+    CLLocation *annoLoc = [[CLLocation alloc] initWithLatitude:mapCoordinate.latitude longitude:mapCoordinate.longitude];
+    //执行逆地理编码方法
+    [revGeo reverseGeocodeLocation:annoLoc completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error) {
+            //获取成功得到逆地理编码结果中的地址信息字典
+            NSDictionary *info = [placemarks[0] addressDictionary];
+            NSLog(@"info = %@", info);
+            //在此处触发annotationCompletionHandler这个block发生，并把info作为参数传递给方法执行方（乙方）（由此可见，此block会在逆地理编码成功获得信息后触发）
+            annotationCompletionHandler(info);
+        } else {
+            [self checkError:error];
+            annotationCompletionHandler(nil);
+        }
+    }];
 }
 
 /*
