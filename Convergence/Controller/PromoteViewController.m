@@ -107,22 +107,25 @@
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
     //通过KVC设置滤镜inputMessage数据
     [filter setValue:data forKeyPath:@"inputMessage"];
+  
     //4.获取生成的图片
     CIImage *ciImg = filter.outputImage;
-    //5.设置二维码的前景色和背景颜色
-    CIFilter *colorFilter = [CIFilter filterWithName:@"CIFalseColor"];
-    //5.1设置默认值
-    [colorFilter setDefaults];
-    NSLog(@"%@",colorFilter.inputKeys);
-    //设置添加颜色的图片
-    [colorFilter setValue:ciImg forKey:@"inputImage"];
-    [colorFilter setValue:[CIColor colorWithRed:255 green:255 blue:255 alpha:1] forKey:@"inputColor0"];
-    [colorFilter setValue:[CIColor colorWithRed:0 green:1 blue:0 alpha:0] forKey:@"inputColor1"];
-    //[colorFilter setValue:[UIColor redColor] forKey:@"inputColor1"];
-    // 6.获取滤镜输出的图像
-    //CIImage *outputImage = [filter outputImage];
-    //获取设置完颜色的图片
-    ciImg = colorFilter.outputImage;
+    //////////////////////////////
+//    //5.设置二维码的前景色和背景颜色
+//    CIFilter *colorFilter = [CIFilter filterWithName:@"CIFalseColor"];
+//    //5.1设置默认值
+//    [colorFilter setDefaults];
+//    NSLog(@"%@",colorFilter.inputKeys);
+//    //设置添加颜色的图片
+//    [colorFilter setValue:ciImg forKey:@"inputImage"];
+//    [colorFilter setValue:[CIColor colorWithRed:255 green:255 blue:255 alpha:1] forKey:@"inputColor0"];
+//    [colorFilter setValue:[CIColor colorWithRed:0 green:1 blue:0 alpha:0] forKey:@"inputColor1"];
+//    //[colorFilter setValue:[UIColor redColor] forKey:@"inputColor1"];
+//    // 6.获取滤镜输出的图像
+//    //CIImage *outputImage = [filter outputImage];
+//    //获取设置完颜色的图片
+//    ciImg = colorFilter.outputImage;
+    //////////////////////////////
     // 7.将CIImage转成UIImage
     UIImage *image = [self createNonInterpolatedUIImageFormCIImage:ciImg withSize:200];
     //显示二维码
@@ -133,6 +136,7 @@
     _imageView.layer.shadowColor = [UIColor blackColor].CGColor; // 设置阴影的颜色为黑色
     _imageView.layer.shadowOpacity = 1; // 设置阴影的不透明度
         _imageView.image = customQrcode;
+       //_imageView.image = image;
 }
 
 

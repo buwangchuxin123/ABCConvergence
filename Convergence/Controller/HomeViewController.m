@@ -13,6 +13,7 @@
 #import "HomeModel.h"
 #import "ZLImageViewDisplayView.h"
 #import <CoreLocation/CoreLocation.h>//使用该框架才可以使用定位
+
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     //BOOL isLoding;//判断是不是在加载
    // BOOL firstVisit;
@@ -22,6 +23,7 @@
     NSInteger totalPage;//多少页
     NSInteger firstPage;
     NSInteger isLastPage;
+    BOOL firstVisit;
 }
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
@@ -32,6 +34,8 @@
 //@property (strong, nonatomic)NSMutableArray *arr2;
 @property (strong, nonatomic)NSMutableArray *arr3;
 @property (weak, nonatomic) IBOutlet UIView *CycleAdView;
+@property (strong, nonatomic) CLLocationManager *locMgr;
+@property (strong, nonatomic) CLLocation *location;
 @end
 
 @implementation HomeViewController
@@ -41,7 +45,7 @@
     // Do any additional setup after loading the view.
     _cityName = @"无锡";
     _cityWei = @" 31.570000";
-    _cityJing = @"120.300000";
+   _cityJing = @"120.300000";
     flag = YES;
     firstPage = 1;
     _arr = [NSMutableArray new];
@@ -49,7 +53,7 @@
     _arr3 = [NSMutableArray new];
    // [self switchAction];
     [self naviConfig];
-    [self InitializeData];
+ //  [self dataInitialize];
     [self setRefreshControl];
     
 }
@@ -58,6 +62,166 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+//每次将要来到这个页面的时候
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+  //  [self dataInitialize];
+    [self locationConfig];
+    [self locationStart];
+    
+    
+}
+//每次将要离开这个页面的时候
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //关掉开关
+    [_locMgr stopUpdatingLocation];
+}
+
+//这个方法专门做数据的处理
+- (void)dataInitialize{
+    BOOL appInit = NO;
+    if ([[Utilities getUserDefaults:@"UserCity"] isKindOfClass:[NSNull class]]) {
+        //说明是第一次打开APP
+        appInit = YES;
+    }
+    else {
+         NSString *userCity = [Utilities getUserDefaults:@"UserCity12"];
+        NSLog(@"城市是:%@",userCity);
+        if ([Utilities getUserDefaults:@"UserCity12"] == nil) {
+            //也说明是第一次打开APP
+            appInit = YES;
+          }
+    }
+    
+    
+if (appInit) {
+        if([[[StorageMgr singletonStorageMgr]objectForKey:@"UserCity12"] isKindOfClass:[NSNull class]]){
+             _cityName = @"无锡";
+        }else{
+            NSString *userCity = [Utilities getUserDefaults:@"UserCity12"];
+            _cityName = userCity;
+        }
+        if([[[StorageMgr singletonStorageMgr]objectForKey:@"cityjing"] isKindOfClass:[NSNull class]]){
+          _cityJing = @"120.300000";
+        }else{
+        
+            NSString *jing = [Utilities getUserDefaults:@"cityjing"];
+            _cityJing = jing;
+        }
+        
+        if([[[StorageMgr singletonStorageMgr]objectForKey:@"cityWei"] isKindOfClass:[NSNull class]]){
+            _cityJing = @"31.570000";
+        }else{
+            
+            NSString *wei = [Utilities getUserDefaults:@"cityWei"];
+            _cityWei = wei;
+        }
+        
+
+       
+    
+      //  NSString *userCity = _cityBtn.titleLabel.text;
+        
+      //  [Utilities setUserDefaults:@"UserCity" content:userCity];
+        
+    } else {
+        
+        NSString *userCity = [[StorageMgr singletonStorageMgr]objectForKey:@"UserCity12"];
+        _cityName = userCity;
+        NSString *jing = [[StorageMgr singletonStorageMgr]objectForKey:@"cityjing"];;
+        _cityJing = jing;
+        NSString *wei = [[StorageMgr singletonStorageMgr]objectForKey:@"cityWei"];;
+        _cityWei = wei;
+
+        
+//        //不是第一次来到APP则将记忆城市与按钮上的城市名反向同步
+//        NSString *userCity = [Utilities getUserDefaults:@"UserCity"];
+//        [_cityBtn setTitle:userCity forState:UIControlStateNormal];
+    }
+
+    firstVisit = YES;
+
+   [self InitializeData]; 
+}
+
+//这个方法专门处理定位的基本设置
+- (void) locationConfig {
+    _locMgr = [CLLocationManager new];
+    //签协议
+    _locMgr.delegate = self;
+    //定位到的设备位移多少距离进行一次识别
+    _locMgr.distanceFilter = kCLHeadingFilterNone;
+    //设置把地球分割成边长多少精度的方块
+    _locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+}
+
+//这个方法处理开始定位
+- (void) locationStart {
+    //（判断用户是否选择过定位）
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        //询问用户是否愿意打开定位
+#ifdef __IPHONE_8_0
+        if ([_locMgr respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            //使用“使用中打开定位”这个策略去运用定位功能
+            [_locMgr requestWhenInUseAuthorization];
+        }
+        
+#endif
+    }
+    //打开定位服务的开关（开始定位）
+    [_locMgr startUpdatingLocation];
+}
+//定位成功时
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+      NSLog(@"纬度:%f",newLocation.coordinate.latitude);
+      NSLog(@"经度:%f",newLocation.coordinate.longitude);
+    NSString *jing =[NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
+    NSString *wei =[NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
+    [[StorageMgr singletonStorageMgr]addKey:@"cityWei" andValue:wei];
+    [[StorageMgr singletonStorageMgr]addKey:@"cityjing" andValue:jing];
+       [Utilities setUserDefaults:@"cityWei" content:wei];
+       [Utilities setUserDefaults:@"cityjing" content:jing];
+
+    //_wxlatitude = newLocation.coordinate.latitude;
+    _location = newLocation;
+    //用flag思想判断是否可以去根据定位拿到城市
+    if (firstVisit) {
+        firstVisit = !firstVisit;
+        //根据定位拿到城市
+        [self getRegeoViaCoordinate];
+    }
+    
+}
+- (void) getRegeoViaCoordinate {
+    //duration表示从now开始过3个SEC
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    //用duration这个设置好的策略去做某些事
+    dispatch_after(duration, dispatch_get_main_queue(), ^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //反向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (!error) {
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                // NSLog(@"locDict:%@",locDict);
+                NSString *cityStr = locDict[@"City"];
+                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                [[StorageMgr singletonStorageMgr] removeObjectForKey:@"LocCity"];
+                //将定位到的城市存进单例化全局变量
+                [[StorageMgr singletonStorageMgr] addKey:@"LocCity" andValue:cityStr];
+                 [Utilities setUserDefaults:@"UserCity12" content:cityStr];
+            }
+        }];
+        //关掉开关
+        [_locMgr stopUpdatingLocation];
+    });
+}
+
+
 -(void)naviConfig{
      [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;//状态栏
     self.navigationItem.title = @"首页";
@@ -103,6 +267,14 @@
 }
 
 -(void)netRequest{
+    
+//    NSString *userCity = [Utilities getUserDefaults:@"UserCity"];
+//    _cityName = userCity;
+//    NSString *jing = [Utilities getUserDefaults:@"cityjing"];
+//    _cityJing = jing;
+//    NSString *wei = [Utilities getUserDefaults:@"cityWei"];
+//    _cityJing = wei;
+
     NSDictionary *para =@{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum),@"perPage":@"14"};
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
