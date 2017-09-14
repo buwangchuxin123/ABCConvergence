@@ -35,6 +35,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [_nickTextField becomeFirstResponder];
+ 
+}
 // 这个方法专门做导航条的控制
 -(void)naviConfig{
     //设置导航条标题文字
@@ -70,8 +75,8 @@
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
-            
-            
+//             [Utilities popUpAlertViewWithMsg:@"修改昵称成功" andTitle:nil onView:self];
+            [self.navigationController popViewControllerAnimated:YES];
            // [self dismissViewControllerAnimated:YES completion:nil];
             
         }else{

@@ -30,6 +30,10 @@
     // Do any additional setup after loading the view.
     _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     _dobTextField.text=_user.dob;
+    UIView *v1 = [[_datePicker subviews] objectAtIndex:0];
+    v1.backgroundColor = [UIColor whiteColor];
+    UIView *v3 = [[v1 subviews] objectAtIndex:0 ];
+    v3.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +78,7 @@
             
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
-            
+             [Utilities popUpAlertViewWithMsg:@"修改生日成功" andTitle:nil onView:self];
        
             
         }else{

@@ -97,7 +97,7 @@
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
-            
+             [Utilities popUpAlertViewWithMsg:@"修改性别成功" andTitle:nil onView:self];
             
     
             

@@ -255,6 +255,7 @@
                         <subviews>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hz-Sr-UW8">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="sw0-PC-KEm" id="fOM-hY-6gL"/>
                                     <outlet property="delegate" destination="sw0-PC-KEm" id="H2y-Gg-Dp2"/>
@@ -281,15 +282,15 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5rr-WI-8q9"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="sw0-PC-KEm" id="170-0h-F1R"/>
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.48627450979999998" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="y9J-yR-zS3" firstAttribute="leading" secondItem="WC7-u7-bJy" secondAttribute="leading" id="3s7-hw-PDj"/>
                             <constraint firstItem="EYc-Lh-7aB" firstAttribute="top" secondItem="alM-3L-ieT" secondAttribute="bottom" constant="30" id="4Aa-9d-d2G"/>
@@ -311,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxk-h6-jig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087" y="1002"/>
+            <point key="canvasLocation" x="1951" y="961"/>
         </scene>
         <!--修改生日-->
         <scene sceneID="FmE-Pp-4N1">
@@ -355,13 +356,14 @@
                             </toolbar>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FiT-Zu-M15">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <date key="date" timeIntervalSinceReferenceDate="526552725.61865699">
                                     <!--2017-09-08 08:38:45 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="zh-Hans"/>
                             </datePicker>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.48627450979999998" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pcb-fY-CSs" firstAttribute="leading" secondItem="3uA-ss-bSa" secondAttribute="leading" id="1eJ-lL-GvT"/>
                             <constraint firstAttribute="trailing" secondItem="pcb-fY-CSs" secondAttribute="trailing" id="4Ab-wx-A28"/>
@@ -383,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WM1-3w-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2831" y="1002"/>
+            <point key="canvasLocation" x="2812" y="960"/>
         </scene>
     </scenes>
 </document>
