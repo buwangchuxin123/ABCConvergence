@@ -66,6 +66,95 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - CLLocationManagerDelegate
+//当设备位置变化时执行以下方法，如果位置不变也会每秒执行一次（必须当开关打开时才会执行）（只有当distanceFilter属性为0时，该方法才会每秒调用）
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    BOOL shouldUpdate = NO;
+    if (++ count == 1) {
+        shouldUpdate  = YES;
+    }else{
+        if(newLocation.coordinate.longitude != oldLocation.coordinate.longitude || newLocation.coordinate.latitude != oldLocation.coordinate.latitude){
+            shouldUpdate = YES;
+        }
+    }
+    if (shouldUpdate) {
+        NSLog(@"CLLocation:%f",newLocation.coordinate.longitude);
+        NSLog(@"CLlocation:%f",newLocation.coordinate.latitude);
+        _longitudeLabel.text = [NSString stringWithFormat:@"%f",newLocation.coordinate.longitude];
+        _latitudeLabel.text = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
+    }
+    //停止获取用户坐标（关闭开关）
+    //[manager stopUpdatingLocation];
+    //过5秒钟后停止获取用户坐标（关闭开关）
+    [manager performSelector:@selector(stopUpdatingLocation) withObject:nil afterDelay:5.f];
+}
+//当设备获取坐标失败是调用一下方法
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    if (error) {
+        [self checkError:error];
+    }
+}
+
+#pragma mark - MKMapViewDelegate
+//当设备位置更新时调用
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    NSLog(@"MKUserLocation经度：%f", userLocation.coordinate.longitude);
+    NSLog(@"MKUserLocation纬度：%f", userLocation.coordinate.latitude);
+    
+    //初始化MKCoordinateRegion这个视角对象
+    MKCoordinateRegion region;
+    //初始化MKCoordinateSpan这个缩放值对象
+    MKCoordinateSpan span;
+    //设置x和y方向上具体的视角缩放值
+    span.longitudeDelta = 0.01;
+    span.latitudeDelta = 0.01;
+    //初始化CLLocationCoordinate2D这个坐标对象
+    CLLocationCoordinate2D location;
+    //设置具体经纬度作为视角中心点
+    location.longitude = userLocation.coordinate.longitude;
+    location.latitude = userLocation.coordinate.latitude;
+    //将设置好点缩放值和中心点打包放入region结构中
+    region.span = span;
+    region.center = location;
+    //将打包好的视角结构作为参数运用到map view的设置视角的方法中去
+    [mapView setRegion:region animated:YES];
+}
+//当地图加载失败时调用
+- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
+    if (error) {
+        [self checkError:error];
+    }
+}
+#pragma mark - Private
+
+//错误判断与处理
+- (void)checkError:(NSError *)error {
+    switch (error.code) {
+        case kCLErrorNetwork: {
+            NSLog(@"没网");
+        }
+            break;
+        case kCLErrorDenied: {
+            NSLog(@"没开定位");
+        }
+            break;
+        case kCLErrorLocationUnknown: {
+            NSLog(@"荒山野岭，定位不到");
+        }
+            break;
+        default: {
+            NSLog(@"其他");
+        }
+            break;
+    }
+}
+-(void)longPressAction:(UILongPressGestureRecognizer*)sender{
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"长按");
+        //获得手势（长按手势）在指定视图坐标系中的位置（locationInView是获得单个手指位置的方法）
+
+    }
+}
 
 /*
 #pragma mark - Navigation
