@@ -99,10 +99,10 @@
         [Utilities popUpAlertViewWithMsg:@"请输入您的密码" andTitle:nil onView:self];
         return;
     }
-    if(_pwdTextField.text.length < 6 || _pwdTextField.text.length > 18){
-        [Utilities popUpAlertViewWithMsg:@"您的密码必须在6~18之间" andTitle:nil onView:self];
-        return;
-    }
+//    if(_pwdTextField.text.length < 6 || _pwdTextField.text.length > 18){
+//        [Utilities popUpAlertViewWithMsg:@"您的密码必须在6~18之间" andTitle:nil onView:self];
+//        return;
+//    }
     //判断某个字符串中是否每个字符都是数字(invertedSet:反向设置，Digits：数字)
     NSCharacterSet *notDigits = [[NSCharacterSet decimalDigitCharacterSet]invertedSet];
     if(_userTextField.text.length < 11 || [_userTextField.text rangeOfCharacterFromSet:notDigits].location != NSNotFound){

@@ -19,8 +19,6 @@
 @property(strong,nonatomic)NSArray *pickerArr;
 @property (strong,nonatomic)UserModel *user;
 @property (strong,nonatomic) UIActivityIndicatorView *avi;
-- (IBAction)touchAction:(UITextField *)sender forEvent:(UIEvent *)event;
-
 @end
 
 @implementation DobViewController
@@ -77,7 +75,7 @@
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+       
             
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
@@ -117,13 +115,15 @@
     NSString *theDate = [formatter stringFromDate:date];
     _dobTextField.text = theDate;
     _toolbar.hidden = YES;
-    _dobTextField.hidden = YES;
+    _datePicker.hidden = YES;
     
 
 }
-- (IBAction)touchAction:(UITextField *)sender forEvent:(UIEvent *)event {
-    
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //写你要实现的
     _datePicker.hidden = NO;
     _toolbar.hidden = NO;
+    return NO;
 }
 @end

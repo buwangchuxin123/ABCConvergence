@@ -64,9 +64,6 @@
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
             
-            
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];

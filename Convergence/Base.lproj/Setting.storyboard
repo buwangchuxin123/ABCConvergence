@@ -239,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uw-6W-HYQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3246" y="1093"/>
+            <point key="canvasLocation" x="3630" y="1002"/>
         </scene>
         <!--修改性别-->
         <scene sceneID="Wyl-RN-w1j">
@@ -263,20 +263,20 @@
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9J-yR-zS3">
                                 <rect key="frame" x="0.0" y="407" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Cancel" id="gjD-EN-dIZ">
+                                    <barButtonItem title="取消" id="gjD-EN-dIZ">
                                         <connections>
                                             <action selector="cancelAction:" destination="sw0-PC-KEm" id="KEb-qU-nIa"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dnJ-5F-55k"/>
-                                    <barButtonItem title="Done" id="xKv-6h-xGx">
+                                    <barButtonItem title="确定" id="xKv-6h-xGx">
                                         <connections>
                                             <action selector="doneAction:" destination="sw0-PC-KEm" id="qfW-9b-z0S"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-Lh-7aB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-Lh-7aB">
                                 <rect key="frame" x="0.0" y="94" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5rr-WI-8q9"/>
@@ -285,7 +285,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="touchAction:forEvent:" destination="sw0-PC-KEm" eventType="touchUpInside" id="VQc-wQ-YVO"/>
+                                    <outlet property="delegate" destination="sw0-PC-KEm" id="170-0h-F1R"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -311,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxk-h6-jig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1634" y="1093"/>
+            <point key="canvasLocation" x="2087" y="1002"/>
         </scene>
         <!--修改生日-->
         <scene sceneID="FmE-Pp-4N1">
@@ -325,7 +325,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oob-qb-hVi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oob-qb-hVi">
                                 <rect key="frame" x="0.0" y="94" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ljq-No-mDS"/>
@@ -334,19 +334,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="touchAction:forEvent:" destination="kAq-PC-ZuU" eventType="touchUpInside" id="l6G-BN-fvY"/>
+                                    <outlet property="delegate" destination="kAq-PC-ZuU" id="Z4W-sM-ILD"/>
                                 </connections>
                             </textField>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-fY-CSs">
                                 <rect key="frame" x="0.0" y="407" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Cancel" id="OD3-4c-ZfP">
+                                    <barButtonItem title="取消" id="OD3-4c-ZfP">
                                         <connections>
                                             <action selector="cancelAction:" destination="kAq-PC-ZuU" id="XGk-r1-PTH"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hF7-dS-4Nx"/>
-                                    <barButtonItem title="Done" id="vUA-1k-9li">
+                                    <barButtonItem title="确定" id="vUA-1k-9li">
                                         <connections>
                                             <action selector="doneAction:" destination="kAq-PC-ZuU" id="0kN-rh-4LG"/>
                                         </connections>
@@ -383,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WM1-3w-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="1076"/>
+            <point key="canvasLocation" x="2831" y="1002"/>
         </scene>
     </scenes>
 </document>

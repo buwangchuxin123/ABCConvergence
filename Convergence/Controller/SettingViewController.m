@@ -10,7 +10,7 @@
 #import "SetUpTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UserModel.h"
-
+#import "HomeViewController.h"
 @interface SettingViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *setupImage;
 - (IBAction)modificationBtn:(UIButton *)sender forEvent:(UIEvent *)event;
@@ -28,11 +28,19 @@
     [self naviConfig];
     //  _setupArr = [[NSMutableArray alloc]initWithObjects:@{@"nicknameLabel":@"昵称",@"infoLabel":_user.nickname},@{@"nicknameLabel":@"性别",@"infoLabel":_user.gender},@{@"nicknameLabel":@"生日",@"infoLabel":_user.dob},@{@"nicknameLabel":@"身份证号码",@"infoLabel":_user.idCardNo}, nil];
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"refresh" object:nil];
+    [self initarr];
+    _SetUpTableView.tableFooterView = [UIView new];
+    [self setFootViewForTableView];
+    
+}
+
+-(void)initarr{
+
     if ([Utilities loginCheck]) {
         //已登录
         
         _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
-        NSLog(@"是：%@",_user.dob);
+      //  NSLog(@"是：%@",_user.dob);
         _setupArr = [[NSMutableArray alloc]initWithObjects:@{@"nicknameLabel":@"昵称",@"infoLabel":_user.nickname},@{@"nicknameLabel":@"性别",@"infoLabel":_user.gender},@{@"nicknameLabel":@"生日",@"infoLabel":_user.dob},@{@"nicknameLabel":@"身份证号码",@"infoLabel":_user.idCardNo}, nil];
         [_setupImage sd_setImageWithURL:[NSURL URLWithString:_user.avatarUrl] placeholderImage:[UIImage imageNamed:@"ic_user_head"]];
         
@@ -40,16 +48,13 @@
         
         
     }else{
-          _setupImage.image=[UIImage imageNamed:@"ic_user_head"];
+        _setupImage.image=[UIImage imageNamed:@"ic_user_head"];
         
     }
-    
-    _SetUpTableView.tableFooterView = [UIView new];
-    [self setFootViewForTableView];
-    
+
+
+
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -57,7 +62,6 @@
 }
 //当前页面将要显示的时候，显示导航栏
 - (void)viewWillAppear:(BOOL)animated{
-    [_SetUpTableView reloadData];
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     
@@ -102,7 +106,6 @@ NSString *userName = [[StorageMgr singletonStorageMgr]objectForKey:@"userName"];
 //NSString *password = [[StorageMgr singletonStorageMgr]objectForKey:@"password"];
 NSString *deviceId = [[StorageMgr singletonStorageMgr]objectForKey:@"deviceId"];
 
-NSLog(@"username:%@",userName);
 [RequestAPI requestURL:@"/login" withParameters:@{@"userName" : userName, @"password" : encryptPwd, @"deviceType" : @7001, @"deviceId" : deviceId} andHeader:nil byMethod:kPost andSerializer:kJson success:^(id responseObject) {
     [_avi stopAnimating];
     // NSLog(@"responseObject = %@",responseObject);
@@ -119,6 +122,8 @@ NSLog(@"username:%@",userName);
         // _pwdTextField.text = @"";
         //记忆用户名
         [Utilities setUserDefaults:@"Username" content:userName];
+        [self initarr];
+        [_SetUpTableView reloadData];
         //用model的方式返回上一页
         //  [self dismissViewControllerAnimated:YES completion:nil];
         //[_SetUpTableView reloadData];
@@ -133,9 +138,8 @@ NSLog(@"username:%@",userName);
 }
 
 -(void)refresh{
-    
     [self request];
-    
+
     }
 
 -(void)naviConfig{
@@ -265,9 +269,24 @@ NSLog(@"username:%@",userName);
 }
 
 - (void)exit{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    /*UINavigationController *SignNavi=[Utilities getStoryboardInstance:@"SetUp" byIdentity:@"SignNavi"];
-     [self presentViewController:SignNavi animated:YES completion:nil];*/
+   [self dismissViewControllerAnimated:YES completion:nil];
+    [[StorageMgr singletonStorageMgr]removeObjectForKey:@"MemberId"];
+    
+    NSNotification *note = [NSNotification notificationWithName:@"LeftSwitch" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+  //  [self performSegueWithIdentifier:@"Setting2Home" sender:self];
+//   HomeViewController  *controller = [Utilities getStoryboardInstance:@"Home" byIdentity:@"HomeView"];
+//  //  [ self presentViewController:controller animated: YES completion:nil];
+//   [self.navigationController pushViewController:controller animated:YES];
+   // [self.navigationController modalv];
+//    [self.navigationController presentationController:controller animated:YES];
+    //返回根视图
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//    
+//    UINavigationController *SignNavi=[Utilities getStoryboardInstance:@"Home" byIdentity:@"SignNavi"];
+//     [self presentViewController:SignNavi animated:YES completion:nil];
+   // [self.navigationController popToViewController:controller animated:YES];
 }
 
 //设置组的底部视图颜色为透明

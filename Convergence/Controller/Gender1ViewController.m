@@ -19,7 +19,8 @@
 @property(strong,nonatomic)NSArray *pickerArr;
 @property (strong,nonatomic)UserModel *user;
 @property (strong,nonatomic) UIActivityIndicatorView *avi;
-- (IBAction)touchAction:(UITextField *)sender forEvent:(UIEvent *)event;
+
+
 
 
 @end
@@ -98,7 +99,7 @@
             
             
             
-            [self dismissViewControllerAnimated:YES completion:nil];
+    
             
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
@@ -160,8 +161,15 @@
     _genderPickerview.hidden=YES;
 
 }
-- (IBAction)touchAction:(UITextField *)sender forEvent:(UIEvent *)event {
+//- (IBAction)touchAction:(UITextField *)sender forEvent:(UIEvent *)event {
+//    NSLog(@"你被点了");
+//    _genderPickerview.hidden = NO;
+//    _toolbar.hidden = NO;
+//}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    //写你要实现的：页面跳转的相关代码
     _genderPickerview.hidden = NO;
     _toolbar.hidden = NO;
+    return NO;
 }
 @end

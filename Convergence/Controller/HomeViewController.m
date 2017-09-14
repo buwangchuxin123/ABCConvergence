@@ -47,7 +47,7 @@
     _arr = [NSMutableArray new];
     //_arr2 = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
-    [self switchAction];
+   // [self switchAction];
     [self naviConfig];
     [self InitializeData];
     [self setRefreshControl];
@@ -265,8 +265,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (void)switchAction{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
-}
+//- (void)switchAction{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
+//}
 
 @end
