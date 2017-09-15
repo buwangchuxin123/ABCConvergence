@@ -182,6 +182,8 @@
 - (IBAction)addressBtn:(UIButton *)sender forEvent:(UIEvent *)event {
     [[StorageMgr singletonStorageMgr]addKey:@"weidu" andValue:_Model.wei];
     [[StorageMgr singletonStorageMgr]addKey:@"jingdu" andValue:_Model.jing];
+    [[StorageMgr singletonStorageMgr]addKey:@"clubName" andValue:_Model.clubName];
+    [[StorageMgr singletonStorageMgr]addKey:@"clubAddress" andValue:_Model.clubAddress];
 }
 - (IBAction)callBtn:(UIButton *)sender forEvent:(UIEvent *)event {
 

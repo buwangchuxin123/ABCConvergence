@@ -24,8 +24,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self locationConfig];
+    [self annotionWithLocation];
     
     }
+//每次将要离开这个页面的时候
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //关掉开关
+    [_locationManager stopUpdatingLocation];
+}
+- (void)dealloc
+{
+#if DEBUG
+    // Xcode8/iOS10 MKMapView bug workaround
+    static NSMutableArray* unusedObjects;
+    if (!unusedObjects)
+        unusedObjects = [NSMutableArray new];
+    [unusedObjects addObject:_mapView];
+#endif
+}
 #pragma mark - MKMapViewDelegate
 
 -(void)locationConfig{
@@ -48,7 +65,7 @@
 #endif
     }
     //开始持续获取用户设备坐标（开关打开）
-    [_locationManager startUpdatingLocation];
+ //   [_locationManager startUpdatingLocation];
 
     //创建一个地图视图，将他设置为与根视图同一位置
     _mapView = [[MKMapView alloc]initWithFrame:self.view.bounds];
@@ -77,7 +94,10 @@
     span.longitudeDelta = 0.01;
     span.latitudeDelta = 0.01;
     //初始化CLLocationCoordinate2D这个坐标对象
-    CLLocationCoordinate2D location;
+     CLLocationCoordinate2D location;
+    //设置具体经纬度作为视角中心点
+  //  location.longitude = userLocation.coordinate.longitude;
+   // location.latitude = userLocation.coordinate.latitude;
     _latitude = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
     _longitude = [[StorageMgr singletonStorageMgr]objectForKey:@"jingdu"];
     location.latitude= [_latitude doubleValue];
@@ -90,6 +110,84 @@
 
 
 }
+//根据坐标
+-(void)annotionWithLocation{
+    CLLocationCoordinate2D location;
+    //设置具体经纬度作为视角中心点
+    //  location.longitude = userLocation.coordinate.longitude;
+    // location.latitude = userLocation.coordinate.latitude;
+    _latitude = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
+    _longitude = [[StorageMgr singletonStorageMgr]objectForKey:@"jingdu"];
+    location.latitude= [_latitude doubleValue];
+    location.longitude = [_longitude doubleValue];
+   CLLocationCoordinate2D coords = CLLocationCoordinate2DMake(location.latitude,location.longitude);
+
+    [self pinAnnotationViaCoordinate:coords];
+
+}
+////显示大头针时触发，返回大头针视图，通常自定义大头针可以通过此方法进行
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id)annotation{
+////    _latitude = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
+////    _longitude = [[StorageMgr singletonStorageMgr]objectForKey:@"jingdu"];
+//    
+//    CGPoint location = [annotation locationInView:_mapView];
+//    CLLocationCoordinate2D mapCoordinate = [_mapView convertPoint:location toCoordinateFromView:_mapView];
+//    [self pinAnnotationViaCoordinate:mapCoordinate];
+//}
+//根据坐标创建大头针并安插
+-(void)pinAnnotationViaCoordinate:(CLLocationCoordinate2D)mapCoordinate{
+    //设置弱引用的自身以供block使用来解开强引用循环（双下划线）
+    __weak MapViewController *weakSelf = self;
+    //设置大头针的标题与副标题
+    
+    [self setAnnotationWithDescriptionOnCoordinate:mapCoordinate completionHandler:^(NSDictionary *info) {
+        //初始化一个大头针对象
+        Annotation *annotation = [[Annotation alloc] init];
+        //将方法参数中的坐标设置为大头针的坐标属性
+        annotation.coordinate = mapCoordinate;
+        NSString *name = [[StorageMgr singletonStorageMgr]objectForKey:@"clubName"];
+       NSString *address = [[StorageMgr singletonStorageMgr]objectForKey:@"clubAddress"];
+        annotation.title = name;
+        annotation.subtitle = address;
+        
+//        if (info) {
+//            //设置大头针的标题与副标题属性
+//            annotation.title = info[@"City"];
+//            annotation.subtitle = info[@"Name"];
+//        }
+        //将大头针插入地图视图
+        [weakSelf.mapView addAnnotation:annotation];
+       [weakSelf.mapView selectAnnotation:annotation animated:YES];//标题和子标题自动显示
+    }];
+   // [Annotation release];
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+//逆地理编码方法（这里是block的声明方式（创建block甲方的方式），看！看！看！！！）
+- (void)setAnnotationWithDescriptionOnCoordinate:(CLLocationCoordinate2D)mapCoordinate completionHandler:(void (^)(NSDictionary *info))annotationCompletionHandler {
+    //初始化一个地理编码对象
+    CLGeocoder *revGeo = [[CLGeocoder alloc] init];
+    //将CLLocationCoordinate2D对象转换成CLLocation对象
+    CLLocation *annoLoc = [[CLLocation alloc] initWithLatitude:mapCoordinate.latitude longitude:mapCoordinate.longitude];
+    //执行逆地理编码方法
+    [revGeo reverseGeocodeLocation:annoLoc completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error) {
+            //获取成功得到逆地理编码结果中的地址信息字典
+            NSDictionary *info = [placemarks[0] addressDictionary];
+            NSLog(@"info = %@", info);
+            //在此处触发annotationCompletionHandler这个block发生，并把info作为参数传递给方法执行方（乙方）（由此可见，此block会在逆地理编码成功获得信息后触发）
+            annotationCompletionHandler(info);
+        } else {
+           // [self checkError:error];
+            annotationCompletionHandler(nil);
+        }
+    }];
+}
+
 
 
 //当设备获取坐标失败时调用以下方法
@@ -125,73 +223,5 @@
             break;
     }
 }
-
-
-////显示大头针时触发，返回大头针视图，通常自定义大头针可以通过此方法进行
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id)annotation{
-////    _latitude = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];
-////    _longitude = [[StorageMgr singletonStorageMgr]objectForKey:@"jingdu"];
-//    
-//    CGPoint location = [annotation locationInView:_mapView];
-//    CLLocationCoordinate2D mapCoordinate = [_mapView convertPoint:location toCoordinateFromView:_mapView];
-//    [self pinAnnotationViaCoordinate:mapCoordinate];
-//}
-//根据坐标创建大头针并安插
--(void)pinAnnotationViaCoordinate:(CLLocationCoordinate2D)mapCoordinate{
-    //设置弱引用的自身以供block使用来解开强引用循环（双下划线）
-    __weak MapViewController *weakSelf = self;
-    //设置大头针的标题与副标题
-    
-    [self setAnnotationWithDescriptionOnCoordinate:mapCoordinate completionHandler:^(NSDictionary *info) {
-        //初始化一个大头针对象
-        Annotation *annotation = [[Annotation alloc] init];
-        //将方法参数中的坐标设置为大头针的坐标属性
-        annotation.coordinate = mapCoordinate;
-        if (info) {
-            //设置大头针的标题与副标题属性
-            annotation.title = info[@"City"];
-            annotation.subtitle = info[@"Name"];
-        }
-        //将大头针插入地图视图
-        [weakSelf.mapView addAnnotation:annotation];
-    }];
-
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-//逆地理编码方法（这里是block的声明方式（创建block甲方的方式），看！看！看！！！）
-- (void)setAnnotationWithDescriptionOnCoordinate:(CLLocationCoordinate2D)mapCoordinate completionHandler:(void (^)(NSDictionary *info))annotationCompletionHandler {
-    //初始化一个地理编码对象
-    CLGeocoder *revGeo = [[CLGeocoder alloc] init];
-    //将CLLocationCoordinate2D对象转换成CLLocation对象
-    CLLocation *annoLoc = [[CLLocation alloc] initWithLatitude:mapCoordinate.latitude longitude:mapCoordinate.longitude];
-    //执行逆地理编码方法
-    [revGeo reverseGeocodeLocation:annoLoc completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (!error) {
-            //获取成功得到逆地理编码结果中的地址信息字典
-            NSDictionary *info = [placemarks[0] addressDictionary];
-            NSLog(@"info = %@", info);
-            //在此处触发annotationCompletionHandler这个block发生，并把info作为参数传递给方法执行方（乙方）（由此可见，此block会在逆地理编码成功获得信息后触发）
-            annotationCompletionHandler(info);
-        } else {
-           // [self checkError:error];
-            annotationCompletionHandler(nil);
-        }
-    }];
-}
-
-///*
-//#pragma mark - Navigation
-//
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
-//*/
 
 @end

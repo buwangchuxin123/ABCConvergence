@@ -102,7 +102,8 @@
     _price.text = _model.currentPrice;
      _originPrice.text = [NSString stringWithFormat:@"原价:%@元",_model.orginPrice];;
      _clubName.text = _model.clubName;
-     _addressBtn.titleLabel.text = _model.eAddress;
+     //_addressBtn.titleLabel.text = _model.eAddress;
+    [_addressBtn setTitle:_model.eAddress forState:UIControlStateNormal];
      _sellNumber.text = [NSString stringWithFormat:@"已售:%@",_model.saleCount];
      _useDate.text = [NSString stringWithFormat:@"%@-%@",_model.beginDate,_model.endDate];
      _useTime.text = _model.userTime;

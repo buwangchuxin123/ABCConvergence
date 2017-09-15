@@ -58,7 +58,7 @@
     
     
    //[self performSelector:@selector(reload) withObject:self afterDelay:5 ];
-    [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(reload) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:6.0f target:self selector:@selector(reload) userInfo:nil repeats:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +73,7 @@
   
     NSString *userCity = [[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"];
     NSLog(@"usercity:%@",userCity);
-    _cityName = [Utilities nullAndNilCheck: userCity replaceBy:@"南京"];
+    _cityName = [Utilities nullAndNilCheck: userCity replaceBy:@"无锡"];
     
     NSString *jing = [[StorageMgr singletonStorageMgr]objectForKey:@"cityjing"];
     NSLog(@"cityJing:%@",jing);
@@ -82,6 +82,7 @@
     NSString *wei = [[StorageMgr singletonStorageMgr]objectForKey:@"cityWei"];
     NSLog(@"cityWei:%@",wei);
       _cityWei = [Utilities nullAndNilCheck:wei replaceBy:@"31.570000"];
+     pageNum = 1;
     [self InitializeData];
     NSString *string = [NSString stringWithFormat:@"首页数据刷新成功,您当前定位城市为%@",_cityName];
     [Utilities popUpAlertViewWithMsg: string andTitle:@"提示" onView:self];

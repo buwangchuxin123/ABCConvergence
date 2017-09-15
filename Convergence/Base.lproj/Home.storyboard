@@ -277,7 +277,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jV8-zb-GjX">
                                                 <rect key="frame" x="270" y="79" width="42" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -484,7 +484,7 @@
         <!--Map View Controller-->
         <scene sceneID="A9k-Tc-uYE">
             <objects>
-                <viewController id="zFP-lE-ENM" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="zFP-lE-ENM" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MtD-fE-4PD"/>
                         <viewControllerLayoutGuide type="bottom" id="pMG-36-tvd"/>
