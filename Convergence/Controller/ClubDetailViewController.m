@@ -180,7 +180,8 @@
 
 
 - (IBAction)addressBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    //[self performSegueWithIdentifier:@"detail2Map" sender:self];
+    [[StorageMgr singletonStorageMgr]addKey:@"weidu" andValue:_Model.wei];
+    [[StorageMgr singletonStorageMgr]addKey:@"jingdu" andValue:_Model.jing];
 }
 - (IBAction)callBtn:(UIButton *)sender forEvent:(UIEvent *)event {
 
