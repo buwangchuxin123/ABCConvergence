@@ -55,8 +55,8 @@
     [self naviConfig];
     [self InitializeData];
     [self setRefreshControl];
-  //  [self reload];
-  
+    
+    
    //[self performSelector:@selector(reload) withObject:self afterDelay:5 ];
     [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(reload) userInfo:nil repeats:NO];
 }
