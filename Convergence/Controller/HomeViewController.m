@@ -83,7 +83,7 @@
     NSLog(@"cityWei:%@",wei);
       _cityWei = [Utilities nullAndNilCheck:wei replaceBy:@"31.570000"];
     [self InitializeData];
-    NSString *string = [NSString stringWithFormat:@"数据刷新成功,您当前定位城市为%@",_cityName];
+    NSString *string = [NSString stringWithFormat:@"首页数据刷新成功,您当前定位城市为%@",_cityName];
     [Utilities popUpAlertViewWithMsg: string andTitle:@"提示" onView:self];
     //  });
     //}

@@ -20,12 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
-    _firstLab.font = [UIFont fontWithName:@"AmericanTypewriter" size:55];
-    _secendLab.font = [UIFont fontWithName:@"AmericanTypewriter" size:55];
+
 }
 - (void)naviConfig{
     self.navigationItem.title = @"关于我们";
-    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(20, 124, 236);
+    self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0, 122, 255);
     
     //设置导航条标题颜色
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};

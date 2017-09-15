@@ -23,7 +23,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-       //创建一个地图视图，将他设置为与根视图同一位置
+    [self locationConfig];
+    
+    }
+#pragma mark - MKMapViewDelegate
+
+-(void)locationConfig{
+    count = 0;
+    //初始化位置管理器对象作为定位功能的基础
+    _locationManager = [[CLLocationManager alloc] init];
+    //签署协议
+    _locationManager.delegate = self;
+    //表示每移动多少距离可以被识别
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    //表示把地球分割的精度（分割成边长为多少的小方块）
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    //判断用户有没有决定过要不要使用定位功能（如果没有就执行if语句里面的操作）
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        //判断设备是否为iOS8.0以上系统
+#ifdef __IPHONE_8_0
+        //表示询问用户是否要使用定位功能（但是如果info.plist文件内没有设置好询问的语句内容，则不会出现弹窗）（requestWhenInUseAuthorization：表示当APP运行过程中使用定位；requestAlwaysAuthorization：表示只要装着这个APP就使用定位功能）
+        [_locationManager requestWhenInUseAuthorization];
+#endif
+    }
+    //开始持续获取用户设备坐标（开关打开）
+    [_locationManager startUpdatingLocation];
+
+    //创建一个地图视图，将他设置为与根视图同一位置
     _mapView = [[MKMapView alloc]initWithFrame:self.view.bounds];
     //签署协议
     _mapView.delegate = self;
@@ -37,9 +64,9 @@
     _mapView.showsUserLocation = YES;
     //将地图视图放在根视图
     [self.view addSubview:_mapView];
-    
 }
-#pragma mark - MKMapViewDelegate
+
+
 //当设备位置更新时调用(确定位置同时放大地图)
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     //初始化MKCoordinateRegion这个视角对象
@@ -63,6 +90,43 @@
 
 
 }
+
+
+//当设备获取坐标失败时调用以下方法
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    if (error) {
+        [self checkError:error];
+    }
+}
+//当地图加载失败时调用
+- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
+    if (error) {
+        [self checkError:error];
+    }
+}
+//错误判断与处理
+- (void)checkError:(NSError *)error {
+    switch (error.code) {
+        case kCLErrorNetwork: {
+            NSLog(@"没网");
+        }
+            break;
+        case kCLErrorDenied: {
+            NSLog(@"没开定位");
+        }
+            break;
+        case kCLErrorLocationUnknown: {
+            NSLog(@"荒山野岭，定位不到");
+        }
+            break;
+        default: {
+            NSLog(@"其他");
+        }
+            break;
+    }
+}
+
+
 ////显示大头针时触发，返回大头针视图，通常自定义大头针可以通过此方法进行
 //- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id)annotation{
 ////    _latitude = [[StorageMgr singletonStorageMgr]objectForKey:@"weidu"];

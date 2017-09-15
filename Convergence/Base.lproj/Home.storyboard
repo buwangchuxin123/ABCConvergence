@@ -416,7 +416,7 @@
                                             <outlet property="delegate" destination="qPs-vc-rTW" id="z65-xR-lbM"/>
                                         </connections>
                                     </tableView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Call" translatesAutoresizingMaskIntoConstraints="NO" id="gXA-f6-Glo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gXA-f6-Glo">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="DKI-K8-GwJ"/>
@@ -976,6 +976,6 @@
         <image name="默认" width="330" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3Nn-0G-msy"/>
+        <segue reference="Kaj-22-DxE"/>
     </inferredMetricsTieBreakers>
 </document>
