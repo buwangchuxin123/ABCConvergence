@@ -69,8 +69,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];//用push返回上一页
 }
-
-
+//网络请求
 -(void)request{
     _avi = [Utilities getCoverOnView:self.view];
     NSDictionary *para = @{@"memberId":[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"],@"type":@0};
@@ -94,6 +93,7 @@
         
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
+        //业务逻辑失败的情况下
     }];
     
    
@@ -101,14 +101,16 @@
 }
 
 #pragma mark - Table view data source
-
+//设置每行高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110.f;
 }
+//设置表格视图一共有多少组
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _arr.count;
   
 }
+//每组多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return 1;//_arr.count;
@@ -132,7 +134,7 @@
     NSString *string = [NSString stringWithFormat:@"订单号:%@",upper];
     return string;
 }
-
+//细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"forIndexPath:indexPath];
     OrderModel *Model = _arr[indexPath.section];
