@@ -49,6 +49,7 @@
     [self initMainScrollView];                          //初始化滚动视图
     [self addImageviewsForMainScroll];    //添加ImageView
     [self addTimerLoop];            //添加timer
+    // [self twothread];
     [self addPageControl];
     [self initImageViewButton];
 }
@@ -160,13 +161,18 @@
     BOOL isMatch = [pred evaluateWithObject:url];
     return isMatch;
 }
-
-- (void) addTimerLoop{
+//-(void)twothread{
+//   [NSThread detachNewThreadSelector:@selector(addTimerLoop) toTarget:self withObject:nil];
+//
+//}
+- (void)addTimerLoop{
     if (_timer == nil) {
         _timer = [NSTimer scheduledTimerWithTimeInterval:_scrollInterval target:self selector:@selector(changeOffset) userInfo:nil repeats:YES];
-    }
+          }
+
 }
 
+//页面重新播放
 - (void)changeOffset{
     
     _currentPage ++;
