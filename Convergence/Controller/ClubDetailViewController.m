@@ -80,6 +80,8 @@
            _Model  = [[ClubDetailModel alloc]initWithClubDetail:result];
             
             NSArray *array = result[@"experienceInfos"];
+            //清空数组
+            [_arr removeAllObjects];
             for(NSDictionary *dict in array)
             {
                 ClubDetailModel *model = [[ClubDetailModel alloc]initWithExper:dict];
@@ -188,7 +190,7 @@
 - (IBAction)callBtn:(UIButton *)sender forEvent:(UIEvent *)event {
 
 //    //配置电话APP的路径，并将要拨打的号码组合到路径中
-   NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_Model.clubTel];
+  // NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_Model.clubTel];
 //    NSURL *targetAppUrl = [NSURL URLWithString:targetAppStr];
 //    //从当前APP跳转到其他指定的APP中
 //    [[UIApplication sharedApplication] openURL:targetAppUrl];
@@ -197,21 +199,32 @@
     _arr1 = [string componentsSeparatedByString:@","];
     //创建一个从底部弹出的弹窗
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    //遍历判断数组中有几个值
-    for (int i = 0; i < _arr1.count; i++) {
-        UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr1[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+        UIAlertAction *actionA = [UIAlertAction actionWithTitle:_arr1[0] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_arr1[0]];
+            UIWebView *callWebview =[[UIWebView alloc]init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
 
         }];
             [alert addAction:actionA];
+    
+    if (_arr1.count == 2) {
+        UIAlertAction *actionB = [UIAlertAction actionWithTitle:_arr1[1] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSString *targetAppStr = [NSString stringWithFormat:@"tel:%@",_arr1[1]];
+            UIWebView *callWebview =[[UIWebView alloc]init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
+            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+            
+        }];
+        [alert addAction:actionB];
     }
+    UIAlertAction *actionC = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     
-    UIAlertAction *actionB = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    
-    [alert addAction:actionB];
+    [alert addAction:actionC];
+    // 由于它是一个控制器 直接modal出来就好了
     [self presentViewController:alert animated:YES completion:nil];
-    UIWebView *callWebview =[[UIWebView alloc]init];
-    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:targetAppStr]]];
-    [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+    
   
 }
 @end

@@ -213,10 +213,6 @@
         [alertController addAction:callAction];
     
     }
-    
-    
-    
-    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
   //  [alertController addAction:callAction];
     [alertController addAction:cancelAction];
