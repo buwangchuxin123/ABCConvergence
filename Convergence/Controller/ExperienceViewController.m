@@ -9,6 +9,7 @@
 #import "ExperienceViewController.h"
 #import "EModel.h"
 #import "ePurchaseTableViewController.h"
+#import "MapViewController.h"
 @interface ExperienceViewController ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *Image;
 @property (weak, nonatomic) IBOutlet UILabel *eName;
@@ -171,6 +172,13 @@
 }
 
 - (IBAction)addressAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    [[StorageMgr singletonStorageMgr]addKey:@"weidu" andValue:_model.latitude];
+    [[StorageMgr singletonStorageMgr]addKey:@"jingdu" andValue:_model.longitude];
+    [[StorageMgr singletonStorageMgr]addKey:@"clubName" andValue:_model.clubName];
+    [[StorageMgr singletonStorageMgr]addKey:@"clubAddress" andValue:_model.eAddress];
+  MapViewController  *controller = [Utilities getStoryboardInstance:@"Home" byIdentity:@"map"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)callAction:(UIButton *)sender forEvent:(UIEvent *)event {

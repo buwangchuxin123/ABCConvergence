@@ -19,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *activityTableView;
 @property (strong,nonatomic) NSMutableArray *arr;
+@property (strong,nonatomic) UIActivityIndicatorView *avi;
 @end
 
 @implementation ActivityViewController
@@ -82,7 +83,7 @@
     //设置背景色
     refreshControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //定义用户触发下拉事件时执行的方法
-    //  [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
+      [refreshControl addTarget:self action:@selector(refreshPage) forControlEvents:UIControlEventValueChanged];
     //将下拉刷新控件添加activityTableView中 (在tableView中，下拉刷新控件会自动放置在表格视图顶部后侧位置)
     [self.activityTableView addSubview:refreshControl];
 }
@@ -92,6 +93,12 @@
  [self performSelector:@selector(end) withObject:nil afterDelay:2];
  }
  */
+
+- (void)refreshPage{
+    page = 1;
+    [self networkRequest];
+}
+
 - (void)end{
     //在activityTableView中，根据下标10001获得其子视图:下拉刷新控件
     UIRefreshControl *refresh = (UIRefreshControl *)[self.activityTableView viewWithTag:10001];
@@ -99,13 +106,19 @@
     [refresh endRefreshing];
 }
 
+//这个方法处理网络请求未完成后所有不同类型的动画终止
+- (void)endAnimation{
+     isLoding = NO;
+    [_avi stopAnimating];
+    [self end];
+}
 //这个方法专门做数据的处理
 - (void)dataInitialize{
-   // BOOL appInit = NO;
+    _avi = [Utilities getCoverOnView:self.view];
     [self networkRequest];
 }
 //执行网络请求
-- (void)networkRequest {
+- (void)networkRequest{
     perPage = 10;
     if (!isLoding) {
         isLoding = YES;
@@ -119,7 +132,8 @@
         [RequestAPI requestURL:request withParameters:prarmeter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情
          // NSLog(@"responseObject = %@",responseObject);
-            [self endAnimation];
+            [self endAnimation];//暂停
+    
             if ([responseObject[@"resultFlag"] integerValue] == 8001) {
                 //业务逻辑成功的情况下
                 NSDictionary *result = responseObject[@"result"];
@@ -155,12 +169,7 @@
     }
 }
 
-//这个方法处理网络请求未完成后所有不同类型的动画终止
-- (void)endAnimation{
-    isLoding = NO;
-    
-    [self end];
-}
+
 
 //设置表格视图一共有多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

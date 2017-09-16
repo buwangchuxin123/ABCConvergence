@@ -484,7 +484,7 @@
         <!--Map View Controller-->
         <scene sceneID="A9k-Tc-uYE">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="zFP-lE-ENM" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="map" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zFP-lE-ENM" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MtD-fE-4PD"/>
                         <viewControllerLayoutGuide type="bottom" id="pMG-36-tvd"/>
@@ -504,7 +504,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eaZ-r9-mbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="632"/>
+            <point key="canvasLocation" x="865" y="634"/>
         </scene>
         <!--Experience View Controller-->
         <scene sceneID="dZy-lN-1gd">
