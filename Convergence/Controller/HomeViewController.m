@@ -199,7 +199,7 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 -(void) addZLImageViewDisPlayView:(NSArray *)arr{
-    CGRect frame = CGRectMake(0,0, UI_SCREEN_W, 150);
+    CGRect frame = CGRectMake(0,0, UI_SCREEN_W, 130);
     //初始化控件
     ZLImageViewDisplayView *imageViewDisplay = [ZLImageViewDisplayView zlImageViewDisplayViewWithFrame:frame];
     imageViewDisplay.imageViewArray = arr;
@@ -293,14 +293,14 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0){
-       return 220.f;
+       return 200.f;
     }
     else{
-        ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell"];
-        HomeModel *homemodel = _arr[indexPath.section];
-        CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
-        CGSize contentSize = [homemodel.name boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.experLab.font} context:nil].size;
-        return contentSize.height + 144;
+      //  ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell"];
+      //  HomeModel *homemodel = _arr[indexPath.section];
+      //  CGSize maxSize = CGSizeMake(UI_SCREEN_W - 30, 1000);
+//        CGSize contentSize = [homemodel.name boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:cell.experLab.font} context:nil].size;
+        return  110;//contentSize.height +
     }
 
     
