@@ -43,6 +43,9 @@
 @property (strong,nonatomic)NSArray *DistanceArr;
 @property (strong,nonatomic)NSString *distance1;
 @property (strong,nonatomic)NSString *kindId;
+@property (strong,nonatomic)NSString *cityName;
+@property (strong,nonatomic)NSString *cityJing ;
+@property (strong,nonatomic)NSString *cityWei;
 @end
 
 @implementation FindViewController
@@ -57,6 +60,7 @@
     // Do any additional setup after loading the view.
     //禁止被选中
   //  _collectionView.allowsSelection = NO;
+    [self cityInfo];
     pageNum1 = 1;
     pageSize1 = 10;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickView)];
@@ -81,6 +85,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)cityInfo{
+    NSString *userCity = [[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"];
+ //   NSLog(@"usercity:%@",userCity);
+    _cityName = [Utilities nullAndNilCheck: userCity replaceBy:@"无锡"];
+    
+    NSString *jing = [[StorageMgr singletonStorageMgr]objectForKey:@"cityjing"];
+ //   NSLog(@"cityJing:%@",jing);
+    _cityJing = [Utilities nullAndNilCheck:jing replaceBy:@"120.300000"];
+    
+    NSString *wei = [[StorageMgr singletonStorageMgr]objectForKey:@"cityWei"];
+ //   NSLog(@"cityWei:%@",wei);
+    _cityWei = [Utilities nullAndNilCheck:wei replaceBy:@"31.570000"];
+
 }
 - (void)naviConfig{
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -391,7 +409,7 @@
 - (void)TypeRequest{
     
   
-    NSDictionary *para =  @{@"city":@"无锡"};
+    NSDictionary *para =  @{@"city":_cityName};
     [RequestAPI requestURL:@"/clubController/getNearInfos" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -436,7 +454,7 @@
     //NSLog(@"默认");
       _membraneView.hidden = YES;
    
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0};
+    NSDictionary *para =  @{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
     // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -482,7 +500,7 @@
 - (void)KMClubRequest{
     _membraneView.hidden = YES;
    // NSLog(@"千米");
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"distance":_distance1};
+    NSDictionary *para =  @{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"distance":_distance1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -531,7 +549,7 @@
 - (void)KindClubRequest{
     _membraneView.hidden = YES;
     //NSLog(@"种类");
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"featureId":_kindId};
+    NSDictionary *para =  @{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@0,@"featureId":_kindId};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
       // NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];
@@ -575,7 +593,7 @@
 - (void)TypeClubRequest{
     _membraneView.hidden = YES;
   // NSLog(@"人气");
-    NSDictionary *para =  @{@"city":@"无锡",@"jing":@"120.300000",@"wei":@"31.570000",@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@1};
+    NSDictionary *para =  @{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum1),@"perPage":@(pageSize1),@"Type":@1};
     [RequestAPI requestURL:@"/clubController/nearSearchClub" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         //  NSLog(@"responseObject:%@", responseObject);
         [_avi stopAnimating];

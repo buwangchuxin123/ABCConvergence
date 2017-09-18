@@ -73,20 +73,20 @@
    //  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
   
     NSString *userCity = [[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"];
-    NSLog(@"usercity:%@",userCity);
+  //  NSLog(@"usercity:%@",userCity);
     _cityName = [Utilities nullAndNilCheck: userCity replaceBy:@"无锡"];
     
     NSString *jing = [[StorageMgr singletonStorageMgr]objectForKey:@"cityjing"];
-    NSLog(@"cityJing:%@",jing);
+  //  NSLog(@"cityJing:%@",jing);
     _cityJing = [Utilities nullAndNilCheck:jing replaceBy:@"120.300000"];
     
     NSString *wei = [[StorageMgr singletonStorageMgr]objectForKey:@"cityWei"];
-    NSLog(@"cityWei:%@",wei);
+ // NSLog(@"cityWei:%@",wei);
       _cityWei = [Utilities nullAndNilCheck:wei replaceBy:@"31.570000"];
      pageNum = 1;
     if(!isLoding){
      [self InitializeData];
-    NSString *string = [NSString stringWithFormat:@"首页数据刷新成功,您当前定位城市为%@",_cityName];
+    NSString *string = [NSString stringWithFormat:@"您当前定位城市为%@",_cityName];
     [Utilities popUpAlertViewWithMsg: string andTitle:@"提示" onView:self];
     }
     //  });
@@ -295,7 +295,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0){
-       return 200.f;
+       return 210.f;
     }
     else{
       //  ExperienceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"experienceCell"];

@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIStepper *addUIStepper;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (strong,nonatomic)NSArray *arr;
-@property (nonatomic)float *sum;
+@property (nonatomic)NSString *sum;
 - (IBAction)addNumAction:(UIStepper *)sender forEvent:(UIEvent *)event;
 
 
@@ -69,7 +69,7 @@
     switch (self.tableView.indexPathForSelectedRow.row) {
         case 0:{
             NSString *tradeNo = [GBAlipayManager generateTradeNO];
-            [GBAlipayManager alipayWithProductName:_Model.eName amount:_Model.currentPrice tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@购买费",_Model.eName] itBPay:@"30"];
+            [GBAlipayManager alipayWithProductName:_Model.eName amount:_sum tradeNO:tradeNo notifyURL:nil productDescription:[NSString stringWithFormat:@"%@购买费",_Model.eName] itBPay:@"30"];
         }
             break;
         case 1:{
@@ -124,7 +124,7 @@
 }
 //设置每一组中每一行细胞的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 45;
 }
 
 //设置组的头标题文字
@@ -205,7 +205,7 @@
     float P =[Price floatValue];
     
     float sum1=N*P;
-    _sum = &sum1;
+    _sum = [NSString stringWithFormat:@"%f",sum1];
     _price.text=[NSString stringWithFormat:@"%0.1f元",sum1];
    
 }

@@ -75,7 +75,7 @@
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
         if([responseObject[@"resultFlag"]integerValue] == 8001){
-        NSLog(@"responseObject:%@",responseObject);
+       // NSLog(@"responseObject:%@",responseObject);
             NSDictionary *result = responseObject[@"result"];
             _model = [[EModel alloc]initWithexperience:result];
             [self uiLayout];
