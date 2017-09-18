@@ -64,6 +64,12 @@
             NSNotification *note = [NSNotification notificationWithName:@"refresh" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
              [Utilities popUpAlertViewWithMsg:@"修改身份证号码成功" andTitle:nil onView:self];
+            //延迟0.5秒返回上一页
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+                //[Utilities popUpAlertViewWithMsg:@"修改昵称成功" andTitle:nil onView:self];
+                // [self dismissViewControllerAnimated:YES completion:nil];
+            });
         }else{
             NSString *errorMsg=[ErrorHandler getProperErrorString:[responseObject[@"resultFlag"]integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];

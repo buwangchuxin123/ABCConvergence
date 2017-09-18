@@ -107,6 +107,7 @@
     [_headerImage sd_setImageWithURL:[NSURL URLWithString:_Model.clubLogo]placeholderImage:[UIImage imageNamed:@"clubLogo"]];
     _clubName.text = _Model.clubName;
     [_addressBtn setTitle:_Model.clubAddress forState:UIControlStateNormal];
+     _addressBtn.titleLabel.lineBreakMode =  NSLineBreakByTruncatingTail;
     _timeLab.text = _Model.clubTime;
     _memberLab.text = _Model.clubMember;
     _placeLab.text =_Model.clubSite;
@@ -162,11 +163,11 @@
     [cell.image sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"默认"]];
    cell.name.text = model.eName;
    // NSLog(@"ename:%@",model.eName);
-    NSArray *array = _home.experience;
-    NSDictionary *dict = array[indexPath.row];
+   // NSArray *array = _home.experience;
+  //  NSDictionary *dict = array[indexPath.row];
   
-    cell.type.text = [dict[@"categoryName"] isKindOfClass:[NSNull class]]?@"综合券":dict[@"categoryName"];
-    
+  //  cell.type.text = [dict[@"categoryName"] isKindOfClass:[NSNull class]]?@"综合券":dict[@"categoryName"];
+    cell.type.text = @"综合券";
     cell.price.text =[NSString stringWithFormat:@"%@元", model.price];
     cell.count.text = [NSString stringWithFormat:@"已售:%@",model.salaCount];
     return cell;

@@ -11,7 +11,9 @@
 
 
 
-@interface PurchaseTableViewController ()
+@interface PurchaseTableViewController (){
+    NSInteger flag;
+}
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
@@ -29,7 +31,7 @@
     [self naviConfig];
     [self uiLayout];
     [self dataInitialize];
-    
+   // flag = 0;
     //注册一个通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseResultAction:) name:@"AlipayResult" object:nil];
     }
@@ -62,6 +64,7 @@
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 -(void)payAction{
+   // NSLog(@"xuhao:%ld",self.tableView.indexPathForSelectedRow.row);
     switch (self.tableView.indexPathForSelectedRow.row) {
         case 0:{
             NSString *tradeNo = [GBAlipayManager generateTradeNO];
@@ -79,6 +82,7 @@
         default:
             break;
     }
+  
 }
 
 -(void)purchaseResultAction:(NSNotification *)note{
@@ -130,6 +134,9 @@
 
 //按住细胞以后（取消选择）
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //NSLog(@"flag:%ld",(long)flag);
+    if (indexPath.row != flag) {
+        flag = indexPath.row;
     //遍历表格视图中所有选中状态下的细胞
     for (NSIndexPath *eschIP in tableView.indexPathsForSelectedRows) {
         //当选中的细胞不是当前正在按得这个细胞的情况下
@@ -137,20 +144,17 @@
             //将细胞从选中状态改为不选中状态
             [tableView deselectRowAtIndexPath:eschIP animated:YES];
         }
+        }
     }
+  
 }
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+     // NSLog(@"flag11:%ld",(long)flag);
+    if (indexPath.row == flag) {
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
 
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
 }
-*/
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -185,7 +189,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -193,6 +197,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

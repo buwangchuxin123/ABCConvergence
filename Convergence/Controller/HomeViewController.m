@@ -24,6 +24,7 @@
     NSInteger firstPage;
     NSInteger isLastPage;
     BOOL firstVisit;
+    BOOL isLoding;//判断是不是在加载中
 }
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
@@ -83,9 +84,11 @@
     NSLog(@"cityWei:%@",wei);
       _cityWei = [Utilities nullAndNilCheck:wei replaceBy:@"31.570000"];
      pageNum = 1;
-    [self InitializeData];
+    if(!isLoding){
+     [self InitializeData];
     NSString *string = [NSString stringWithFormat:@"首页数据刷新成功,您当前定位城市为%@",_cityName];
     [Utilities popUpAlertViewWithMsg: string andTitle:@"提示" onView:self];
+    }
     //  });
     //}
   //  [NSObject cancelPreviousPerformRequestsWithTarget:self];
@@ -221,6 +224,7 @@
     [self netRequest];
 }
 - (void)InitializeData{
+     isLoding = NO;
     _avi = [Utilities getCoverOnView:self.view];
     [self netRequest];
 }
@@ -232,13 +236,8 @@
 
 -(void)netRequest{
     
-//    NSString *userCity = [Utilities getUserDefaults:@"UserCity"];
-//    _cityName = userCity;
-//    NSString *jing = [Utilities getUserDefaults:@"cityjing"];
-//    _cityJing = jing;
-//    NSString *wei = [Utilities getUserDefaults:@"cityWei"];
-//    _cityJing = wei;
-
+    if (!isLoding) {
+    isLoding = YES;
     NSDictionary *para =@{@"city":_cityName,@"jing":_cityJing,@"wei":_cityWei,@"page":@(pageNum),@"perPage":@"14"};
     //NSLog(@"para%@", para);
     [RequestAPI requestURL:@"/homepage/choice" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
@@ -280,17 +279,20 @@
 
             //刷新数据
             [self.homeTableView reloadData];
+            isLoding = NO;
         }else{
             //业务逻辑失败的情况下
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
+            isLoding = NO;
         }
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+        isLoding = NO;
     }];
 }
-
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0){
        return 200.f;

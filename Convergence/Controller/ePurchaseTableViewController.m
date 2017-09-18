@@ -8,7 +8,10 @@
 
 #import "ePurchaseTableViewController.h"
 #import "ePayTableViewCell.h"
-@interface ePurchaseTableViewController ()
+@interface ePurchaseTableViewController (){
+    NSInteger flag;
+}
+
 @property (weak, nonatomic) IBOutlet UILabel *clubName;
 @property (weak, nonatomic) IBOutlet UILabel *useClub;
 @property (weak, nonatomic) IBOutlet UILabel *singlePrice;
@@ -35,8 +38,13 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //注册一个通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(purchaseResultAction:) name:@"AlipayResult" object:nil];
     
-    
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 -(void)naviconfig{
 
@@ -79,9 +87,21 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(void)purchaseResultAction:(NSNotification *)note{
+    NSString *result = note.object;
+    if ([result isEqualToString:@"9000"]) {
+        //成功
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"支付成功" message:@"恭喜您，你已成功完成报名" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alertView addAction:okAction];
+        [self presentViewController:alertView animated:YES completion:nil];
+    }else{
+        //失败
+        [Utilities popUpAlertViewWithMsg:[result isEqualToString:@"4000"] ? @"未能成功支付，请保持账户余额充足" : @"您已取消支付" andTitle:@"支付失败" onView:self];
+    }
 }
 
 #pragma mark - Table view data source
@@ -111,21 +131,29 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"支付方式";
 }
-
 //按住细胞以后（取消选择）
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //遍历表格视图中所有选中状态下的细胞
-    for (NSIndexPath *eschIP in tableView.indexPathsForSelectedRows) {
-        //当选中的细胞不是当前正在按得这个细胞的情况下
-        if (eschIP != indexPath) {
-            //将细胞从选中状态改为不选中状态
-            [tableView deselectRowAtIndexPath:eschIP animated:YES];
+    //NSLog(@"flag:%ld",(long)flag);
+    if (indexPath.row != flag) {
+        flag = indexPath.row;
+        //遍历表格视图中所有选中状态下的细胞
+        for (NSIndexPath *eschIP in tableView.indexPathsForSelectedRows) {
+            //当选中的细胞不是当前正在按得这个细胞的情况下
+            if (eschIP != indexPath) {
+                //将细胞从选中状态改为不选中状态
+                [tableView deselectRowAtIndexPath:eschIP animated:YES];
+            }
         }
     }
+    
 }
-
-
-/*
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // NSLog(@"flag11:%ld",(long)flag);
+    if (indexPath.row == flag) {
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    }
+    
+}/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
