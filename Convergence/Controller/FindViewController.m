@@ -343,32 +343,38 @@
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(nonnull UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(indexPath.row == _ClubArr.count-1){
         if(pageNum1 != totalPage){
-             pageNum1 ++;
-            if(flag == 1){
+            pageNum1 ++;
+         if(flag == 1){
                 if(_distance1 == nil){
                     [self ClubRequest];
-                }else{
+                      return;
+                }else if(!isFirstCell){
                     [self KMClubRequest];
+                       return;
                 }
-                return;
+             
              }
             
             if(flag == 2){
                 if(_kindId == nil){
                     [self ClubRequest];
-                }else{
-                 //   [self KindClubRequest];
+                       return;
+                }else if(!isFirstCell){
+                    [self KindClubRequest];
+                    return;
                 }
-                return;
+        
             }
         
             if(flag == 3){
                 if(isdistance){
                   [self ClubRequest];
+                    return;
                 }else{
                  [self TypeClubRequest];
+                  return;
                 }
-                return;
+                
             }
             else{
             [self ClubRequest];
