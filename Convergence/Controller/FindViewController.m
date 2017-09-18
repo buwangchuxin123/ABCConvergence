@@ -13,11 +13,13 @@
 #import "ClubDetailViewController.h"
 @interface FindViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIGestureRecognizerDelegate>{
     NSInteger  flag;
+    NSInteger  cellFlag;
     NSInteger pageNum1;
     NSInteger totalPage;
     BOOL isLast;
     NSInteger pageSize1;
     BOOL isdistance;
+    BOOL isFirstCell;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIView *ButtonView;
@@ -149,21 +151,26 @@
      pageNum1 = 1;
     if(flag == 1){
         if(indexPath.row == 0){
+            isFirstCell =  YES;
             [self clubRequestData];//默认按距离请求
         }
         if(indexPath.row == 1){
+            cellFlag = 11;
             _distance1 = @"1000";
             [self KMClubRequestData];
         }
         if(indexPath.row == 2){
+             cellFlag = 12;
             _distance1 = @"2000";
             [self KMClubRequestData];
         }
         if(indexPath.row == 3){
+            cellFlag = 13;
             _distance1 = @"3000";
             [self KMClubRequestData];
         }
         if(indexPath.row == 4){
+            cellFlag = 14;
             _distance1 = @"5000";
             [self KMClubRequestData];
         }
@@ -173,21 +180,26 @@
     if(flag == 2){
         
         if(indexPath.row == 0){
+            isFirstCell =  YES;
             [self clubRequestData];
         }
         if(indexPath.row == 1){
+            cellFlag = 21;
             _kindId = @"1";
             [self KindClubRequestData];
         }
         if(indexPath.row == 2){
+            cellFlag = 22;
             _kindId = @"2";
             [self KindClubRequestData];
         }
         if(indexPath.row == 3){
+            cellFlag = 23;
             _kindId = @"3";
             [self KindClubRequestData];
         }
         if(indexPath.row == 4){
+            cellFlag = 24;
             _kindId = @"4";
             [self KindClubRequestData];
         }
@@ -278,17 +290,22 @@
        // _distance = @"5000";
         if(_distance1 == nil){
             [self ClubRequest];
+        }else if(!isFirstCell){
+            [self KMClubRequest];
         }else{
-         [self KMClubRequest];
+            [self ClubRequest];
         }
         return;
     }
     if(flag == 2){
         if(_kindId == nil){
             [self ClubRequest];
-        }else{
+        }else if(!isFirstCell){
          [self KindClubRequest];
+        }else{
+           [self ClubRequest];
         }
+        
         return;
     }
     if(flag == 3){
