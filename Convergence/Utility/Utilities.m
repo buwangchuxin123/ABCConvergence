@@ -108,7 +108,7 @@
         return replacement;
     } else {
         if (target == nil) {
-            return replacement;
+             return replacement;
         } else {
             if ([target isKindOfClass:[NSString class]]) {
                 if ([target isEqualToString:@""]) {

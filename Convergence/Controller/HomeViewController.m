@@ -73,8 +73,8 @@
    //  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
   
     NSString *userCity = [[StorageMgr singletonStorageMgr]objectForKey:@"LocCity"];
-  //  NSLog(@"usercity:%@",userCity);
-    _cityName = [Utilities nullAndNilCheck: userCity replaceBy:@"无锡"];
+   // NSLog(@"usercity:%@",userCity);
+    _cityName = [Utilities nullAndNilCheck:userCity replaceBy:@"无锡"];
     
     NSString *jing = [[StorageMgr singletonStorageMgr]objectForKey:@"cityjing"];
   //  NSLog(@"cityJing:%@",jing);
@@ -87,6 +87,7 @@
     if(!isLoding){
      [self InitializeData];
     NSString *string = [NSString stringWithFormat:@"您当前定位城市为%@",_cityName];
+       // NSLog(@"cityName:%@",_cityName);
     [Utilities popUpAlertViewWithMsg: string andTitle:@"提示" onView:self];
     }
     //  });
@@ -174,7 +175,9 @@
                 NSDictionary *locDict = first.addressDictionary;
                 // NSLog(@"locDict:%@",locDict);
                 NSString *cityStr = locDict[@"City"];
-                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                // NSLog(@"定位到的城市是：%@",cityStr);
+               // cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                   //  NSLog(@"定位到的城市是：%@",cityStr);
                 [[StorageMgr singletonStorageMgr] removeObjectForKey:@"LocCity"];
                 //将定位到的城市存进单例化全局变量
                 [[StorageMgr singletonStorageMgr] addKey:@"LocCity" andValue:cityStr];
