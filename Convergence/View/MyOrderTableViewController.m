@@ -9,7 +9,7 @@
 #import "MyOrderTableViewController.h"
 #import "MyOrderTableViewCell.h"
 #import "OrderModel.h"
-@interface MyOrderTableViewController ()
+@interface MyOrderTableViewController ()<UITableViewDataSource>
 @property(strong,nonatomic)NSMutableArray *arr;
 @property(strong,nonatomic)UIActivityIndicatorView *avi;
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
@@ -28,6 +28,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self naviConfig];
     [self request];
+    self.tableView.sectionHeaderHeight = 35;
+    self.tableView.sectionFooterHeight = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,6 +103,9 @@
 }
 
 #pragma mark - Table view data source
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return tableView.sectionHeaderHeight;
+}
 //设置每行高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110.f;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IDp-no-eTE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IDp-no-eTE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -68,7 +68,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bkn-AW-Ake" id="01L-fa-Y2f">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-V3-P7r">
@@ -161,8 +161,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="阿凡达" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yN7-ij-ek6">
-                                <rect key="frame" x="0.0" y="64" width="375" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="   阿凡达" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yN7-ij-ek6">
+                                <rect key="frame" x="0.0" y="64" width="360" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Muo-6c-Tub"/>
                                 </constraints>
@@ -180,7 +180,7 @@
                             <constraint firstItem="0Pf-DI-LCZ" firstAttribute="top" secondItem="yN7-ij-ek6" secondAttribute="bottom" id="EqD-b7-QF0"/>
                             <constraint firstAttribute="trailing" secondItem="0Pf-DI-LCZ" secondAttribute="trailing" id="HoD-JR-qqR"/>
                             <constraint firstItem="0Pf-DI-LCZ" firstAttribute="leading" secondItem="scJ-3n-Rko" secondAttribute="leading" id="J4y-Gz-m8u"/>
-                            <constraint firstAttribute="trailing" secondItem="yN7-ij-ek6" secondAttribute="trailing" id="RCm-10-Xp1"/>
+                            <constraint firstAttribute="trailing" secondItem="yN7-ij-ek6" secondAttribute="trailing" constant="15" id="RCm-10-Xp1"/>
                             <constraint firstItem="yN7-ij-ek6" firstAttribute="top" secondItem="l5U-he-PUW" secondAttribute="bottom" id="RbD-3R-K77"/>
                             <constraint firstItem="yN7-ij-ek6" firstAttribute="leading" secondItem="scJ-3n-Rko" secondAttribute="leading" id="a5E-pr-yhA"/>
                             <constraint firstItem="EKb-mL-MKP" firstAttribute="top" secondItem="0Pf-DI-LCZ" secondAttribute="bottom" id="gU4-0G-zdX"/>

@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-7K-JBy">
-                                        <rect key="frame" x="8" y="108" width="359" height="301"/>
+                                        <rect key="frame" x="16" y="78" width="343" height="331"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -37,9 +37,9 @@
                                 <color key="backgroundColor" red="0.098039215686274508" green="0.58039215686274503" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="gHA-7K-JBy" secondAttribute="bottom" constant="250" id="CMx-Vi-3Nf"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="gHA-7K-JBy" secondAttribute="trailing" id="S2x-h3-N0V"/>
-                                    <constraint firstItem="gHA-7K-JBy" firstAttribute="top" secondItem="Zcx-xq-EsC" secondAttribute="topMargin" constant="100" id="a1D-O5-gRC"/>
-                                    <constraint firstItem="gHA-7K-JBy" firstAttribute="leading" secondItem="Zcx-xq-EsC" secondAttribute="leadingMargin" id="rNt-DM-xJL"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="gHA-7K-JBy" secondAttribute="trailing" constant="8" id="S2x-h3-N0V"/>
+                                    <constraint firstItem="gHA-7K-JBy" firstAttribute="top" secondItem="Zcx-xq-EsC" secondAttribute="topMargin" constant="70" id="a1D-O5-gRC"/>
+                                    <constraint firstItem="gHA-7K-JBy" firstAttribute="leading" secondItem="Zcx-xq-EsC" secondAttribute="leadingMargin" constant="8" id="rNt-DM-xJL"/>
                                 </constraints>
                             </view>
                         </subviews>

@@ -11,7 +11,7 @@
 #import "SetUpTableViewCell.h"
 #import "SettingViewController.h"
 @interface NickNameViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *nickTextField;
+@property (strong, nonatomic) IBOutlet UITextField *nickTextField;
 @property (strong,nonatomic)UserModel *user;
 @property (strong,nonatomic) UIActivityIndicatorView *avi;
 
@@ -28,7 +28,13 @@
     // Do any additional setup after loading the view.
     _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     _nickTextField.text=_user.nickname;
-
+    [self setTextFieldLeftPadding:_nickTextField forWidth:15];
+//    UIButton *button = [_nickTextField valueForKey:@"_clearButton"];
+//    [button setImage:[UIImage imageNamed:@"CHA"] forState:UIControlStateNormal];
+//    _nickTextField.clearButtonMode = UITextFieldViewModeAlways;
+//     button.frame = CGRectMake(UI_SCREEN_W-60, UI_SCREEN_H-60, 120, 20);
+//     [_nickTextField addSubview: button];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +44,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [_nickTextField becomeFirstResponder];
- 
+
 }
 // 这个方法专门做导航条的控制
 -(void)naviConfig{
@@ -93,9 +99,20 @@
         [Utilities popUpAlertViewWithMsg:@"网络请求失败😂" andTitle:nil onView:self];
     }];
     
-    
-
 }
+//文本框左侧空出一定的间距
+-(void)setTextFieldLeftPadding:(UITextField *)textField forWidth:(CGFloat)leftWidth
+{
+    CGRect frame = textField.frame;
+    frame.size.width = leftWidth;
+    UIView *leftview = [[UIView alloc] initWithFrame:frame];
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    textField.leftView = leftview;
+//    UIView *rightview = [[UIView alloc]initWithFrame:frame];
+//    textField.rightViewMode = UITextFieldViewModeAlways;
+//    textField.rightView =rightview;
+}
+
 /*
 #pragma mark - Navigation
 
