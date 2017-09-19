@@ -32,6 +32,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
 @property (strong,nonatomic)NSArray *arr;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -41,8 +42,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
-    [self request];
-
+    [self initilizedata];
+    [self setRefreshControl];
     
 }
 
@@ -50,6 +51,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)setRefreshControl{
+    
+    UIRefreshControl *acquireRef = [UIRefreshControl new];
+    [acquireRef addTarget:self action:@selector(acquireRef) forControlEvents:UIControlEventValueChanged];
+    acquireRef.tag = 10001;
+    [self.scrollView addSubview:acquireRef];
+    
+    
+}
+- (void)acquireRef{
+    
+    [self request];
+}
+
+-(void)initilizedata{
+    _avi = [Utilities getCoverOnView:self.view];
+    [self request];
+    
+}
+
 - (void)naviConfig{
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.navigationItem.title = @"体验券信息";
@@ -74,6 +95,8 @@
     NSDictionary *para = @{@"experienceId":eId};
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[self.scrollView viewWithTag:10001];
+        [ref endRefreshing];
         if([responseObject[@"resultFlag"]integerValue] == 8001){
        // NSLog(@"responseObject:%@",responseObject);
             NSDictionary *result = responseObject[@"result"];
@@ -86,7 +109,10 @@
         }
         
     } failure:^(NSInteger statusCode, NSError *error) {
+        [_avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络通畅" andTitle:@"提示" onView:self];
+        UIRefreshControl *ref = (UIRefreshControl *)[self.scrollView viewWithTag:10001];
+        [ref endRefreshing];
     }];
 
 }

@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableviewHeight;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic,assign) NSInteger refreshTag;
 
 @end
 
@@ -42,7 +44,7 @@
     [self naviConfig];
   //  [self introduceViewHeight];
     
-    
+    [self setRefreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,7 +53,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
    //[self introduceViewHeight];
-     [self netRequest];
+     [self initilizedata];
 }
 -(void)naviConfig{
     //设置标题文字
@@ -68,6 +70,26 @@
     self.navigationController.navigationBar.translucent = YES;
 }
 
+- (void)setRefreshControl{
+    
+    UIRefreshControl *acquireRef = [UIRefreshControl new];
+    [acquireRef addTarget:self action:@selector(acquireRef) forControlEvents:UIControlEventValueChanged];
+    acquireRef.tag = 10001;
+   [self.scrollView addSubview:acquireRef];
+    
+    
+}
+- (void)acquireRef{
+    
+    [self netRequest];
+}
+
+-(void)initilizedata{
+    _avi = [Utilities getCoverOnView:self.view];
+    [self netRequest];
+
+}
+
 - (void)netRequest{
     //[_avi stopAnimating];
     NSString *ClubId = [[StorageMgr singletonStorageMgr]objectForKey:@"clubId"];
@@ -75,6 +97,9 @@
     [RequestAPI requestURL:@"/clubController/getClubDetails" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         [_avi stopAnimating];
       //  NSLog(@"responseObject:%@", responseObject);
+        UIRefreshControl *ref = (UIRefreshControl *)[self.scrollView viewWithTag:10001];
+        [ref endRefreshing];
+
         if ([responseObject[@"resultFlag"]integerValue]==8001) {
             NSDictionary *result = responseObject[@"result"];
            _Model  = [[ClubDetailModel alloc]initWithClubDetail:result];
@@ -101,6 +126,9 @@
     } failure:^(NSInteger statusCode, NSError *error) {
         [_avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+        UIRefreshControl *ref = (UIRefreshControl *)[self.scrollView viewWithTag:10001];
+        [ref endRefreshing];
+
     }];
 }
 -(void)uiLaout{

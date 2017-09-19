@@ -173,11 +173,13 @@
             if (!error) {
                 CLPlacemark *first = placemarks.firstObject;
                 NSDictionary *locDict = first.addressDictionary;
-                // NSLog(@"locDict:%@",locDict);
+                 NSLog(@"locDict:%@",locDict);
                 NSString *cityStr = locDict[@"City"];
                 // NSLog(@"定位到的城市是：%@",cityStr);
-               // cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
+                if(cityStr.length == 3){
+                cityStr = [cityStr substringToIndex:(cityStr.length - 1)];
                    //  NSLog(@"定位到的城市是：%@",cityStr);
+                }
                 [[StorageMgr singletonStorageMgr] removeObjectForKey:@"LocCity"];
                 //将定位到的城市存进单例化全局变量
                 [[StorageMgr singletonStorageMgr] addKey:@"LocCity" andValue:cityStr];

@@ -142,7 +142,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9h3-1T-xZM">
                                 <rect key="frame" x="0.0" y="104" width="375" height="514"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-H1-9WW">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-H1-9WW">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -180,7 +180,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.20168309563758388" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.39529152684563756" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="mhq-H1-9WW" firstAttribute="top" secondItem="9h3-1T-xZM" secondAttribute="top" id="KUt-rp-cSL"/>
                                     <constraint firstItem="mhq-H1-9WW" firstAttribute="leading" secondItem="9h3-1T-xZM" secondAttribute="leading" id="VCi-3e-deK"/>

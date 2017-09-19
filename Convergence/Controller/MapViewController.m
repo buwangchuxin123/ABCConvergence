@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self locationConfig];
-    [self annotionWithLocation];
+   
     
     }
 //每次将要离开这个页面的时候
@@ -108,7 +108,7 @@
     //将打包好的视角结构作为参数运用到map view的设置视角的方法中去
     [mapView setRegion:region animated:YES];
 
-
+    [self annotionWithLocation];
 }
 //根据坐标
 -(void)annotionWithLocation{
@@ -158,6 +158,8 @@
         //将大头针插入地图视图
         [weakSelf.mapView addAnnotation:annotation];
        [weakSelf.mapView selectAnnotation:annotation animated:YES];//标题和子标题自动显示
+//        //将大头针插入地图视图
+//        [weakSelf.mapView addAnnotation:annotation];
     }];
    // [Annotation release];
 }
