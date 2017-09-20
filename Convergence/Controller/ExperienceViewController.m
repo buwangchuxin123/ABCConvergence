@@ -62,7 +62,7 @@
     [super viewDidDisappear:animated];
     //在其他离开该页面的方法同样加上下面代码
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 }
 - (void)setRefreshControl{

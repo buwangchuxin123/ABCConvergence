@@ -43,6 +43,10 @@
     _window.rootViewController = _slidingVC;
     //注册侧滑按钮被按的监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
+    //注册离开页面禁止侧滑监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
+    //  _slidingVC.panGesture.enabled = NO;
+
     return YES;
     
 }
