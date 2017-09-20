@@ -270,7 +270,9 @@ NSString *deviceId = [[StorageMgr singletonStorageMgr]objectForKey:@"deviceId"];
 
 - (void)exit{
    [self dismissViewControllerAnimated:YES completion:nil];
+    //移除单例化全局变量
     [[StorageMgr singletonStorageMgr]removeObjectForKey:@"MemberId"];
+    [[StorageMgr singletonStorageMgr]removeObjectForKey:@"MemberUrl"];
     
     NSNotification *note = [NSNotification notificationWithName:@"LeftSwitch" object:nil userInfo:nil];
     

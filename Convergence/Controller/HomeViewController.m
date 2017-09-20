@@ -106,6 +106,15 @@
     [self locationConfig];
     [self locationStart];
     
+    if([Utilities loginCheck]){
+//    UIImage *image = [UIImage imageNamed:@"人像"];
+//         _imgView.image = image;
+    }else{
+        UIImage *image = [UIImage imageNamed:@"人像"];
+        _imgView.image = image;
+    
+    }
+    
     
 }
 //每次将要离开这个页面的时候
