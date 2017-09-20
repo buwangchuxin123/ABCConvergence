@@ -51,6 +51,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    //在其他离开该页面的方法同样加上下面代码
+    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+}
 - (void)setRefreshControl{
     
     UIRefreshControl *acquireRef = [UIRefreshControl new];
@@ -89,8 +103,6 @@
 
 
 -(void)request{
-    _avi = [Utilities getCoverOnView:self.view];
-    
     NSString *eId =  [[[StorageMgr singletonStorageMgr]objectForKey:@"eId"] isKindOfClass:[NSNull class]]?@"-1" : [[StorageMgr singletonStorageMgr]objectForKey:@"eId"] ;
     NSDictionary *para = @{@"experienceId":eId};
     [RequestAPI requestURL:@"/clubController/experienceDetail" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {

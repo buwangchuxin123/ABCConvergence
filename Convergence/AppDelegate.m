@@ -44,6 +44,7 @@
     //注册侧滑按钮被按的监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
     return YES;
+    
 }
 //收到通知要执行的方法
 -(void)leftSwitchAction:(NSNotification *)note{
