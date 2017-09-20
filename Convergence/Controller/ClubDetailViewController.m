@@ -168,14 +168,14 @@
     CGSize contentSize = [_clubIntrodutioanView.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine |NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_clubIntrodutioanView.font} context:nil].size;
     //将文字内容的尺寸给textView高度约束
     _introduceHeight.constant = contentSize.height + 36;
-   // NSLog(@"内容高度是：%f",contentSize.height);
-    _viewHeight.constant =_introduceHeight.constant + 30;
+    //NSLog(@"内容高度是：%f",contentSize.height);
+    _viewHeight.constant =_introduceHeight.constant + 10;
    
-    /*
+   /*
     _introduceHeight.constant = _clubIntrodutioanView.contentSize.height + 16;
     NSLog(@"内容高度是：%f",_clubIntrodutioanView.contentSize.height);
     _viewHeight.constant = _clubIntrodutioanView.contentSize.height + 25;
-     */
+  */
    // _viewHeight.constant = 230.f;
 }
 /*

@@ -225,7 +225,7 @@
             if (!error) {
                 CLPlacemark *first = placemarks.firstObject;
                 NSDictionary *locDict = first.addressDictionary;
-                 NSLog(@"locDict:%@",locDict);
+                 //NSLog(@"locDict:%@",locDict);
                 NSString *cityStr = locDict[@"City"];
                 // NSLog(@"定位到的城市是：%@",cityStr);
                 if(cityStr.length == 3){

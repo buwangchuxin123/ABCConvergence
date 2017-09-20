@@ -44,7 +44,9 @@
     [self naviConfig];
     [self initilizedata];
     [self setRefreshControl];
-    
+   // self.view.gestureRecognizers = [UIPanGestureRecognizer alloc];
+   //  self.view.gestureRecognizers=NO ;
+    // self.view.UIPanGestureRecognizer.enabled = NO
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,7 +159,7 @@
     //将文字内容的尺寸给textView高度约束
    // _introduceHeight.constant = contentSize.height + 36;
      //NSLog(@"内容高度是：%f",contentSize.height);
-    _viewHeight.constant =contentSize.height + 36 + 175;
+    _viewHeight.constant =contentSize.height + 6 + 175;
     
     /*
      _introduceHeight.constant = _clubIntrodutioanView.contentSize.height + 16;

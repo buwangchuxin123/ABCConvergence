@@ -36,7 +36,7 @@
                                             <rect key="frame" x="15" y="0.0" width="345" height="190.5"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbJ-8Z-tdI">
-                                            <rect key="frame" x="15" y="127.5" width="345" height="63"/>
+                                            <rect key="frame" x="15" y="128" width="345" height="62.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4v-Wd-kyE">
                                                     <rect key="frame" x="15" y="10" width="43" height="20.5"/>
@@ -45,7 +45,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLl-yq-xTt">
-                                                    <rect key="frame" x="15" y="37" width="33" height="16"/>
+                                                    <rect key="frame" x="15" y="36.5" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -325,7 +325,7 @@
                                                     <constraint firstAttribute="height" constant="180" id="wju-4L-z9p"/>
                                                 </constraints>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
@@ -732,8 +732,8 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="本单限年龄18岁，配有免费运动的器材，健身器械，需自带，停车位收费标准：具体质询商家本单限年龄18岁，配有免费运动的器材，健身器械，需自带，停车位收费标准：具体质询商家本单限年龄18岁，配有免费运动的器材，健身器械，需自带，停车位收费标准：具体质询商家" translatesAutoresizingMaskIntoConstraints="NO" id="MaA-7I-aaL">
                                                 <rect key="frame" x="9" y="150" width="351" height="225"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
@@ -764,10 +764,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2b-IL-0DR">
-                                        <rect key="frame" x="0.0" y="940.5" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="940.5" width="375" height="47"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="没有温馨提示，没有温馨提示没有温馨提示" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OJ5-A5-MsA">
-                                                <rect key="frame" x="15" y="10" width="345" height="65"/>
+                                                <rect key="frame" x="15" y="10" width="345" height="37"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -778,7 +778,7 @@
                                             <constraint firstItem="OJ5-A5-MsA" firstAttribute="top" secondItem="G2b-IL-0DR" secondAttribute="top" constant="10" id="G36-gT-5mG"/>
                                             <constraint firstItem="OJ5-A5-MsA" firstAttribute="leading" secondItem="G2b-IL-0DR" secondAttribute="leading" constant="15" id="I2z-NF-JdF"/>
                                             <constraint firstAttribute="trailing" secondItem="OJ5-A5-MsA" secondAttribute="trailing" constant="15" id="IAA-7P-PPv"/>
-                                            <constraint firstAttribute="width" secondItem="G2b-IL-0DR" secondAttribute="height" multiplier="5:1" id="qcV-OB-f6v"/>
+                                            <constraint firstAttribute="width" secondItem="G2b-IL-0DR" secondAttribute="height" multiplier="8:1" id="qcV-OB-f6v"/>
                                             <constraint firstAttribute="bottom" secondItem="OJ5-A5-MsA" secondAttribute="bottom" id="zuZ-8G-njk"/>
                                         </constraints>
                                     </view>
