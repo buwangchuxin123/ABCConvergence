@@ -14,7 +14,7 @@
 #import "ZLImageViewDisplayView.h"
 #import <CoreLocation/CoreLocation.h>//使用该框架才可以使用定位
 
-@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
+@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate,UIGestureRecognizerDelegate>{
     //BOOL isLoding;//判断是不是在加载
    // BOOL firstVisit;
     BOOL flag;
@@ -25,6 +25,7 @@
     NSInteger isLastPage;
     BOOL firstVisit;
     BOOL isLoding;//判断是不是在加载中
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 @property (strong,nonatomic)UIActivityIndicatorView *avi;
@@ -37,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIView *CycleAdView;
 @property (strong, nonatomic) CLLocationManager *locMgr;
 @property (strong, nonatomic) CLLocation *location;
+@property (strong,nonatomic)UIImageView *imgView;
 @end
 
 @implementation HomeViewController
@@ -53,12 +55,14 @@
     _arr = [NSMutableArray new];
     //_arr2 = [NSMutableArray new];
     _arr3 = [NSMutableArray new];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(imageActions:) name:@"ImageSwitch" object:nil];
     [self naviConfig];
     [self InitializeData];
     [self setRefreshControl];
-    
+    [self uilayout];
     
    //[self performSelector:@selector(reload) withObject:self afterDelay:5 ];
+    //过6秒重新网络请求
     [NSTimer scheduledTimerWithTimeInterval:6.0f target:self selector:@selector(reload) userInfo:nil repeats:NO];
 }
 
@@ -102,12 +106,51 @@
     [self locationConfig];
     [self locationStart];
     
+    
 }
 //每次将要离开这个页面的时候
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     //关掉开关
     [_locMgr stopUpdatingLocation];
+}
+//收到通知之后执行的方法
+-(void)imageActions:(NSNotification *)note{
+    //从登录界面拿到MemberUrl
+    NSString *string =[[StorageMgr singletonStorageMgr]objectForKey:@"MemberUrl"];
+    NSLog(@"zifuchuan%@",string);
+    [_imgView sd_setImageWithURL:[NSURL URLWithString:string] placeholderImage:[UIImage imageNamed:@"人像"]];
+//    [_imgView sd_setImageWithURL:[NSURL URLWithString:string] placeholderImage: [UIImage imageNamed:@"Avatar"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//         NSLog(@"=====error=%@",error);
+//    }];
+   
+}
+-(void)uilayout{
+    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    _imgView.layer.cornerRadius = _imgView.frame.size.width/2;//将圆层的边框设为圆角
+    _imgView.layer.masksToBounds = YES;//隐藏边界
+    _imgView.userInteractionEnabled = YES;
+    //给imageview添加Tap手势
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap)];
+    //签协议
+    tap.delegate = self;
+    //设置属性 1单击
+    tap.numberOfTapsRequired =1;
+//    if ([Utilities loginCheck]) {
+//        //已登录
+//        NSString *string =[[StorageMgr singletonStorageMgr]objectForKey:@"MemberUrl"];
+//        NSLog(@"zifuchuan%@",string);
+//        [_imgView sd_setImageWithURL:[NSURL URLWithString:string] placeholderImage:[UIImage imageNamed:@"人像"]];
+//    }else{
+        //未登录
+        UIImage *image = [UIImage imageNamed:@"人像"];
+        _imgView.image = image;
+    
+    [_imgView addGestureRecognizer:tap];
+    //将imgview添加到导航条上（这个方法可以在导航条添加任意控件）
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_imgView];
+
+
 }
 //这个方法专门处理定位的基本设置
 - (void) locationConfig {
@@ -205,7 +248,34 @@
     self.navigationController.navigationBar.hidden = NO;
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
+
+//    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+//    imgView.userInteractionEnabled = YES;
+//    //给imageview添加Tap手势
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewTap)];
+//    //签协议
+//    tap.delegate = self;
+//    //设置属性 1单击
+//    tap.numberOfTapsRequired =1;
+//   if ([Utilities loginCheck]) {
+//        //已登录
+//       NSString *string =[[StorageMgr singletonStorageMgr]objectForKey:@"MemberUrl"];
+//      [imgView sd_setImageWithURL:[NSURL URLWithString:string] placeholderImage:[UIImage imageNamed:@"人像"]];
+//    }else{
+//       //未登录
+//        UIImage *image = [UIImage imageNamed:@"人像"];
+//        imgView.image = image;
+//    }
+//     [imgView addGestureRecognizer:tap];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:imgView];
+    //[imgView addSubview:self];
 }
+- (void)imageViewTap{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
+}
+ 
+
+//设置滚动视图
 -(void) addZLImageViewDisPlayView:(NSArray *)arr{
     CGRect frame = CGRectMake(0,0, UI_SCREEN_W, 130);
     //初始化控件
@@ -410,8 +480,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-//- (void)switchAction{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"LeftSwitch" object:nil];
-//}
+
 
 @end

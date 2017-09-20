@@ -42,6 +42,8 @@
         
         UserModel *usermodel = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
         [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:usermodel.avatarUrl] placeholderImage:[UIImage imageNamed:@"Avatar"]];
+       
+      //  NSLog(@"ssss %@",usermodel.avatarUrl);
            _usernameLabel.text = usermodel.nickname;
     }else{
         //未登录

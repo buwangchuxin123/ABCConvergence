@@ -164,12 +164,15 @@
          [[StorageMgr singletonStorageMgr]addKey:@"MemberInfo" andValue:usermodel];
             //单独将用户的ID也存储进单例化全局变量来作为用户是否已经登录的判断依据，同时也方便其它所有页面更快捷地使用ID这个参数
          [[StorageMgr singletonStorageMgr]addKey:@"MemberId" andValue:usermodel.memberId];
+          [[StorageMgr singletonStorageMgr]addKey:@"MemberUrl" andValue:usermodel.avatarUrl];
             //让根视图结束编辑状态达到收起键盘的目的
             [self.view endEditing:YES];
             //情空密码输入框里的内容
             _pwdTextField.text = @"";
             //记忆用户名
             [Utilities setUserDefaults:@"Username" content:_userTextField.text];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ImageSwitch" object:nil];
+            
             //用model的方式返回上一页
             [self dismissViewControllerAnimated:YES completion:nil];
         }else{
