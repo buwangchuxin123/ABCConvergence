@@ -107,8 +107,6 @@
 		EE9EC5B01F628037008E40E0 /* ClubDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9EC5AF1F628037008E40E0 /* ClubDetailModel.m */; };
 		EEBE47771F67E14300153D28 /* aboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEBE47761F67E14300153D28 /* aboutViewController.m */; };
 		EEF2FEE41F661CA200B73D82 /* PromoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */; };
-		EEF2FEE71F66670B00B73D82 /* Integral.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEF2FEE61F66670B00B73D82 /* Integral.storyboard */; };
-		EEF2FEEB1F6667AA00B73D82 /* IntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEEA1F6667AA00B73D82 /* IntegralViewController.m */; };
 		EEF2FEF61F66846100B73D82 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF2FEF51F66846100B73D82 /* FeedbackViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -313,9 +311,6 @@
 		EEBE47761F67E14300153D28 /* aboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutViewController.m; sourceTree = "<group>"; };
 		EEF2FEE21F661CA200B73D82 /* PromoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoteViewController.h; sourceTree = "<group>"; };
 		EEF2FEE31F661CA200B73D82 /* PromoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoteViewController.m; sourceTree = "<group>"; };
-		EEF2FEE61F66670B00B73D82 /* Integral.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Integral.storyboard; sourceTree = "<group>"; };
-		EEF2FEE91F6667AA00B73D82 /* IntegralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntegralViewController.h; sourceTree = "<group>"; };
-		EEF2FEEA1F6667AA00B73D82 /* IntegralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntegralViewController.m; sourceTree = "<group>"; };
 		EEF2FEF41F66846100B73D82 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		EEF2FEF51F66846100B73D82 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -710,7 +705,6 @@
 			children = (
 				EEBE47741F67E11E00153D28 /* About */,
 				EEF2FEF01F66841500B73D82 /* Feedback */,
-				EEF2FEE81F66678000B73D82 /* Integral */,
 				EEF2FEE11F661C3E00B73D82 /* Promote */,
 				B2D889331F6139050017F4CE /* MyInfo */,
 				B2D889321F6138CC0017F4CE /* Setting */,
@@ -795,7 +789,6 @@
 		84D9C3C81F5A9E1600AC0B75 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				EEF2FEE51F6666A000B73D82 /* Intergral */,
 				84321EED1F62A262004FE0EA /* About */,
 				84321EE91F62A22F004FE0EA /* Feedback */,
 				84321EE51F62A1AE004FE0EA /* Promote */,
@@ -973,23 +966,6 @@
 			name = Promote;
 			sourceTree = "<group>";
 		};
-		EEF2FEE51F6666A000B73D82 /* Intergral */ = {
-			isa = PBXGroup;
-			children = (
-				EEF2FEE61F66670B00B73D82 /* Integral.storyboard */,
-			);
-			name = Intergral;
-			sourceTree = "<group>";
-		};
-		EEF2FEE81F66678000B73D82 /* Integral */ = {
-			isa = PBXGroup;
-			children = (
-				EEF2FEE91F6667AA00B73D82 /* IntegralViewController.h */,
-				EEF2FEEA1F6667AA00B73D82 /* IntegralViewController.m */,
-			);
-			name = Integral;
-			sourceTree = "<group>";
-		};
 		EEF2FEF01F66841500B73D82 /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -1119,7 +1095,6 @@
 				843D55401F5CE0C7000DB239 /* Main.storyboard in Resources */,
 				84321EEC1F62A25C004FE0EA /* Feedback.storyboard in Resources */,
 				84D9C3C31F5A97ED00AC0B75 /* Assets.xcassets in Resources */,
-				EEF2FEE71F66670B00B73D82 /* Integral.storyboard in Resources */,
 				84321EF11F62A284004FE0EA /* About.storyboard in Resources */,
 				84321EE81F62A205004FE0EA /* promote.storyboard in Resources */,
 				84D9C3D11F5AA1A600AC0B75 /* Activity.storyboard in Resources */,
@@ -1250,7 +1225,6 @@
 				84D9C3651F5A3D3700AC0B75 /* JSONS.m in Sources */,
 				84791BDF1F5C081A008A83EB /* FindModel.m in Sources */,
 				84C6584D1F5D4D3B00224636 /* PurchaseTableViewController.m in Sources */,
-				EEF2FEEB1F6667AA00B73D82 /* IntegralViewController.m in Sources */,
 				84D9C32D1F5A3D1C00AC0B75 /* BasicEncodingRules.m in Sources */,
 				84C658501F5D4D6D00224636 /* DetailViewController.m in Sources */,
 				84D9C35C1F5A3D3700AC0B75 /* DataSigner.m in Sources */,

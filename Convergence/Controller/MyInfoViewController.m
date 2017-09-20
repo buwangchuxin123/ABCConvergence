@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (strong, nonatomic)NSArray *arr;
+@property(strong,nonatomic)NSString *string;
 @end
 
 @implementation MyInfoViewController
@@ -25,6 +26,7 @@
     // Do any additional setup after loading the view.
     [self uiLayout];
     [self dataInitialize];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +67,7 @@
 
 }
 -(void)dataInitialize{
-    _arr =@[@{@"title":@"我的订单"},@{@"title":@"我的推广"},@{@"title":@"积分中心"},@{@"title":@"我的设置"},@{@"title":@"意见反馈"},@{@"title":@"关于我们"}];
+    _arr =@[@{@"title":@"我的设置"},@{@"title":@"我的推广"},@{@"title":@"积分中心"},@{@"title":@"我的订单"},@{@"title":@"意见反馈"},@{@"title":@"关于我们"}];
 }
 //有多少组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -81,6 +83,14 @@
     cell.textLabel.text = dict[@"title"];
         return cell;
 }
+//设置组的底部视图高度
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+//    if (section == 0) {
+//        return 15.f;
+//    }
+//    return 0.f;
+//}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40.f;
 }
@@ -92,16 +102,15 @@
             // if (indexPath.section == 0)
          switch (indexPath.section){
                 case 0:
-                    [self performSegueWithIdentifier:@"MyInfo2MyOrder" sender:self];
+                    [self performSegueWithIdentifier:@"MyInfo2Setting" sender:self];
                     
                     break;
                 case 1:
                    [self performSegueWithIdentifier:@"MyInfo2Promote" sender:self];
                     break;
-                case 2:[self performSegueWithIdentifier:@"MyInfo2Integral" sender:self];
-                    
+                case 2:[self netRequest1];
                     break;
-                case 3:[self performSegueWithIdentifier:@"MyInfo2Setting" sender:self];
+                case 3:[self performSegueWithIdentifier:@"MyInfo2MyOrder" sender:self];
                     break;
                 case 4: [self performSegueWithIdentifier:@"MyInfo2Feedback" sender:self];
                     break;
@@ -116,6 +125,23 @@
             [self presentViewController:signNavi animated:YES completion:nil];
            }
     
+}
+-(void)netRequest1{
+    NSMutableDictionary *para = [NSMutableDictionary new];
+    [para setObject:[[StorageMgr singletonStorageMgr]objectForKey:@"MemberId"] forKey:@"memberId"];
+    [RequestAPI requestURL:@"/score/memberScore" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        // NSLog(@"resposeObject = %@",responseObject);
+        if ([responseObject[@"resultFlag"]integerValue]==8001) {
+            NSString *integral = responseObject[@"result"];
+            _string  =[NSString stringWithFormat:@"当前积分:%@",integral];
+            [Utilities popUpAlertViewWithMsg:@"积分商城即将登录，准备好了吗，亲！" andTitle:_string onView:self];
+            }
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //失败以后要做的事情
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
 }
 
 - (IBAction)loginAction:(UIButton *)sender forEvent:(UIEvent *)event {

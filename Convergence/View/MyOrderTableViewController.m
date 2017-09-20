@@ -28,6 +28,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self naviConfig];
     [self request];
+    //设置组头的高度
     self.tableView.sectionHeaderHeight = 35;
     self.tableView.sectionFooterHeight = 0;
 }
@@ -103,6 +104,7 @@
 }
 
 #pragma mark - Table view data source
+//设置组头的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return tableView.sectionHeaderHeight;
 }
