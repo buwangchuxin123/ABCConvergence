@@ -25,6 +25,7 @@
     // Do any additional setup after loading the view.
     _user=[[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
     _idNumTextField.text=_user.idCardNo;
+    [self setTextFieldLeftPadding:_idNumTextField forWidth:15];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,9 +82,15 @@
         [Utilities popUpAlertViewWithMsg:@"网络请求失败😂" andTitle:nil onView:self];
     }];
     
-    
-
-
+}
+//文本框左侧空出一定的间距
+-(void)setTextFieldLeftPadding:(UITextField *)textField forWidth:(CGFloat)leftWidth
+{
+    CGRect frame = textField.frame;
+    frame.size.width = leftWidth;
+    UIView *leftview = [[UIView alloc] initWithFrame:frame];
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    textField.leftView = leftview;
 }
 /*
 #pragma mark - Navigation

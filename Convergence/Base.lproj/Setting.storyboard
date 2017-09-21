@@ -207,8 +207,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jz9-0G-28A">
-                                <rect key="frame" x="0.0" y="64" width="375" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="jz9-0G-28A">
+                                <rect key="frame" x="0.0" y="64" width="360" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="1Iw-Np-eUJ"/>
                                 </constraints>
@@ -223,7 +223,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jz9-0G-28A" secondAttribute="trailing" id="CVM-9t-frx"/>
+                            <constraint firstAttribute="trailing" secondItem="jz9-0G-28A" secondAttribute="trailing" constant="15" id="CVM-9t-frx"/>
                             <constraint firstAttribute="trailing" secondItem="Jbf-Sl-pCn" secondAttribute="trailing" id="IhG-bA-8Pi"/>
                             <constraint firstItem="jz9-0G-28A" firstAttribute="top" secondItem="gUn-8H-37A" secondAttribute="bottom" id="Kok-FT-EFX"/>
                             <constraint firstItem="jz9-0G-28A" firstAttribute="leading" secondItem="HiK-dS-AkB" secondAttribute="leading" id="UEu-HT-j5H"/>
