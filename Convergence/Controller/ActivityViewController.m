@@ -66,6 +66,7 @@
     
 }
 
+
 - (void)refreshConfiguration{
     //初始化一个下拉刷新控件
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc]init];

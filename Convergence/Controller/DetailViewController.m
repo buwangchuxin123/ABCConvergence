@@ -30,7 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIView *applyEndView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLbl;
 @property (strong ,nonatomic)UIImageView * image;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong,nonatomic)UIActivityIndicatorView *avi;
 @end
 
 @implementation DetailViewController
@@ -41,6 +42,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self naviConfig];
+    [self setRefreshControl];
 }
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear: animated];
@@ -75,6 +77,21 @@
     }
 }
 
+- (void)setRefreshControl{
+    
+    UIRefreshControl *acquireRef = [UIRefreshControl new];
+    [acquireRef addTarget:self action:@selector(acquireRef) forControlEvents:UIControlEventValueChanged];
+    acquireRef.tag = 10001;
+    [self.scrollView addSubview:acquireRef];
+    
+    
+}
+- (void)acquireRef{
+    
+    [self networkRequest];
+}
+
+
 //这个方法专门做导航条的控制
 - (void)naviConfig{
     //设置导航条标题的文字
@@ -91,8 +108,14 @@
     //设置是否需要毛玻璃效果
     self.navigationController.navigationBar.translucent = YES;
 }
+-(void)initializedata{
+  _avi = [Utilities getCoverOnView:self.view];
+  [self networkRequest];
+
+}
+
 - (void)networkRequest{
-    UIActivityIndicatorView *avi = [Utilities getCoverOnView:self.view];
+    
     NSString *request =[NSString stringWithFormat:@"/event/%@",_activity.activityId];
    // NSLog(@"%@",request);
     NSMutableDictionary *parmeters = [NSMutableDictionary new];
@@ -101,17 +124,21 @@
     }
     [RequestAPI requestURL:request withParameters:parmeters andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
        // NSLog(@"responseObject = %@",responseObject);
-        [avi stopAnimating];
+        [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[self.scrollView viewWithTag:10001];
+        [ref endRefreshing];
         if([responseObject[@"resultFlag"] integerValue] == 8001){
             NSDictionary *result = responseObject[@"result"];
           _activity = [[ActivityModel alloc]initWithDetailDictionary:result];            [self uiLayout];
         }else{
-            [avi stopAnimating];
+            [_avi stopAnimating];
             NSString *errorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
             [Utilities popUpAlertViewWithMsg:errorMsg andTitle:nil onView:self];
         }
     } failure:^(NSInteger statusCode, NSError *error) {
-        [avi stopAnimating];
+        [_avi stopAnimating];
+        UIRefreshControl *ref = (UIRefreshControl *)[self.scrollView viewWithTag:10001];
+        [ref endRefreshing];
         [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
 }

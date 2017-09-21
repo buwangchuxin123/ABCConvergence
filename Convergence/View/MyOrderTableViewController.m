@@ -29,7 +29,7 @@
     [self naviConfig];
     [self request];
     //设置组头的高度
-    self.tableView.sectionHeaderHeight = 35;
+    self.tableView.sectionHeaderHeight = 30;
     self.tableView.sectionFooterHeight = 0;
 }
 

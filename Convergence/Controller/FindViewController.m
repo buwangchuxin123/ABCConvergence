@@ -310,6 +310,7 @@
             [self ClubRequest];
         }else if(!isFirstCell){
             [self KMClubRequest];
+            return;
         }else{
             [self ClubRequest];
         }
@@ -320,6 +321,7 @@
             [self ClubRequest];
         }else if(!isFirstCell){
          [self KindClubRequest];
+            return;
         }else{
            [self ClubRequest];
         }

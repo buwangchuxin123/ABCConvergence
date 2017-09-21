@@ -426,7 +426,7 @@
                                     <constraint firstItem="wKR-gV-hgL" firstAttribute="centerX" secondItem="nfB-lF-OUb" secondAttribute="centerX" id="XNa-y6-O6P"/>
                                     <constraint firstItem="Ctj-dA-a9d" firstAttribute="trailing" secondItem="wKR-gV-hgL" secondAttribute="trailing" id="XPE-52-rV1"/>
                                     <constraint firstItem="ucr-Jc-Xgk" firstAttribute="top" secondItem="BHK-yr-lCS" secondAttribute="bottom" constant="10" id="a1X-nO-zGA"/>
-                                    <constraint firstAttribute="bottom" secondItem="U3i-p1-Dcg" secondAttribute="bottom" constant="20" id="cQd-zd-Q8M"/>
+                                    <constraint firstAttribute="bottom" secondItem="U3i-p1-Dcg" secondAttribute="bottom" constant="60" id="cQd-zd-Q8M"/>
                                     <constraint firstItem="ucr-Jc-Xgk" firstAttribute="leading" secondItem="BHK-yr-lCS" secondAttribute="leading" id="ca0-6T-7VE"/>
                                     <constraint firstItem="Ctj-dA-a9d" firstAttribute="bottom" secondItem="wKR-gV-hgL" secondAttribute="bottom" id="crT-jE-z7v"/>
                                     <constraint firstItem="BHK-yr-lCS" firstAttribute="top" secondItem="vzw-Cd-O0a" secondAttribute="bottom" constant="10" id="gl0-sP-oh8"/>
@@ -458,6 +458,7 @@
                         <outlet property="contentLbl" destination="U3i-p1-Dcg" id="k80-8z-RhB"/>
                         <outlet property="issuerLbl" destination="aPb-Gt-SL2" id="2wa-RK-3hf"/>
                         <outlet property="phoneBtn" destination="ucr-Jc-Xgk" id="7RJ-JC-dpe"/>
+                        <outlet property="scrollView" destination="nfB-lF-OUb" id="clH-VW-SDc"/>
                         <outlet property="timeLbl" destination="6D8-4j-j7d" id="90z-eH-kKN"/>
                         <outlet property="typeLbl" destination="b1A-nb-boZ" id="7QC-L9-8p5"/>
                     </connections>
