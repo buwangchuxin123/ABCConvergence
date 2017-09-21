@@ -46,6 +46,12 @@
 @property (strong,nonatomic)NSString *cityName;
 @property (strong,nonatomic)NSString *cityJing ;
 @property (strong,nonatomic)NSString *cityWei;
+@property (weak, nonatomic) IBOutlet UIButton *firstButton;
+@property (weak, nonatomic) IBOutlet UIButton *secondButton;
+@property (weak, nonatomic) IBOutlet UIButton *thirdButton;
+
+
+
 @end
 
 @implementation FindViewController
@@ -170,26 +176,36 @@
     if(flag == 1){
         if(indexPath.row == 0){
             isFirstCell =  YES;
+            NSString *string = @"全城";
+            [_firstButton setTitle:string forState:UIControlStateNormal];
             [self clubRequestData];//默认按距离请求
         }
         if(indexPath.row == 1){
             cellFlag = 11;
             _distance1 = @"1000";
+            NSString *string = @"1KM以内";
+            [_firstButton setTitle:string forState:UIControlStateNormal];
             [self KMClubRequestData];
         }
         if(indexPath.row == 2){
              cellFlag = 12;
             _distance1 = @"2000";
+            NSString *string = @"2KM以内";
+            [_firstButton setTitle:string forState:UIControlStateNormal];
             [self KMClubRequestData];
         }
         if(indexPath.row == 3){
             cellFlag = 13;
             _distance1 = @"3000";
+            NSString *string = @"3KM以内";
+            [_firstButton setTitle:string forState:UIControlStateNormal];
             [self KMClubRequestData];
         }
         if(indexPath.row == 4){
             cellFlag = 14;
             _distance1 = @"5000";
+            NSString *string = @"4KM以内";
+            [_firstButton setTitle:string forState:UIControlStateNormal];
             [self KMClubRequestData];
         }
         
@@ -199,26 +215,37 @@
         
         if(indexPath.row == 0){
             isFirstCell =  YES;
+            NSString *string = @"全部分类";
+            [_secondButton setTitle:string forState:UIControlStateNormal];
+
             [self clubRequestData];
         }
         if(indexPath.row == 1){
             cellFlag = 21;
             _kindId = @"1";
+            NSString *string = @"动感单车";
+            [_secondButton setTitle:string forState:UIControlStateNormal];
             [self KindClubRequestData];
         }
         if(indexPath.row == 2){
             cellFlag = 22;
             _kindId = @"2";
+            NSString *string = @"力量机械";
+            [_secondButton setTitle:string forState:UIControlStateNormal];
             [self KindClubRequestData];
         }
         if(indexPath.row == 3){
             cellFlag = 23;
             _kindId = @"3";
+            NSString *string = @"瑜伽/普拉提";
+            [_secondButton setTitle:string forState:UIControlStateNormal];
             [self KindClubRequestData];
         }
         if(indexPath.row == 4){
             cellFlag = 24;
             _kindId = @"4";
+            NSString *string = @"有氧运动";
+            [_secondButton setTitle:string forState:UIControlStateNormal];
             [self KindClubRequestData];
         }
 
@@ -226,10 +253,14 @@
     if(flag == 3){
         if(indexPath.row == 0){
             isdistance = YES;
+            NSString *string = @"按距离";
+            [_thirdButton setTitle:string forState:UIControlStateNormal];
             [self clubRequestData];
         }
         if(indexPath.row == 1){
             isdistance = NO;
+            NSString *string = @"按人气";
+            [_thirdButton setTitle:string forState:UIControlStateNormal];
             [self TypeClubRequestData];
         }
         

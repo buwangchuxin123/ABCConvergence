@@ -107,8 +107,11 @@
     region.center = location;
     //将打包好的视角结构作为参数运用到map view的设置视角的方法中去
     [mapView setRegion:region animated:YES];
+    //延迟
+      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-    [self annotionWithLocation];
+          [self annotionWithLocation];
+      });
 }
 //根据坐标
 -(void)annotionWithLocation{

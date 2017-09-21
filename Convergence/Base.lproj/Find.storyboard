@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwP-nA-jdI">
-                                        <rect key="frame" x="15" y="6" width="65" height="28"/>
+                                        <rect key="frame" x="30" y="6" width="40" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <state key="normal" title="全城">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,9 +34,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LD6-Pf-iLl">
-                                        <rect key="frame" x="155" y="6" width="65" height="28"/>
+                                        <rect key="frame" x="137.5" y="6" width="100" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="65" id="fcn-bB-Z7h"/>
+                                            <constraint firstAttribute="width" constant="100" id="qpp-Af-XbT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <state key="normal" title="全部分类">
@@ -47,7 +47,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DK-Eg-D6t">
-                                        <rect key="frame" x="295" y="6" width="65" height="28"/>
+                                        <rect key="frame" x="305" y="6" width="40" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <state key="normal" title="按距离">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,13 +60,12 @@
                                 <color key="backgroundColor" red="0.078431372549019607" green="0.48627450980392156" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="LD6-Pf-iLl" firstAttribute="centerY" secondItem="Gar-Jk-NBy" secondAttribute="centerY" id="EV6-sK-MhY"/>
-                                    <constraint firstItem="LD6-Pf-iLl" firstAttribute="width" secondItem="zwP-nA-jdI" secondAttribute="width" id="Ieg-6W-5ZR"/>
                                     <constraint firstItem="zwP-nA-jdI" firstAttribute="centerY" secondItem="Gar-Jk-NBy" secondAttribute="centerY" id="QoN-oE-amg"/>
                                     <constraint firstItem="6DK-Eg-D6t" firstAttribute="width" secondItem="zwP-nA-jdI" secondAttribute="width" id="bOf-1Y-dH0"/>
                                     <constraint firstItem="6DK-Eg-D6t" firstAttribute="centerY" secondItem="Gar-Jk-NBy" secondAttribute="centerY" id="hZp-ys-qDq"/>
-                                    <constraint firstItem="zwP-nA-jdI" firstAttribute="leading" secondItem="Gar-Jk-NBy" secondAttribute="leading" constant="15" id="sg4-Bd-Ldi"/>
+                                    <constraint firstItem="zwP-nA-jdI" firstAttribute="leading" secondItem="Gar-Jk-NBy" secondAttribute="leading" constant="30" id="sg4-Bd-Ldi"/>
                                     <constraint firstAttribute="height" constant="40" id="uom-5W-eIo"/>
-                                    <constraint firstAttribute="trailing" secondItem="6DK-Eg-D6t" secondAttribute="trailing" constant="15" id="wSF-aY-qg1"/>
+                                    <constraint firstAttribute="trailing" secondItem="6DK-Eg-D6t" secondAttribute="trailing" constant="30" id="wSF-aY-qg1"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ydG-sQ-loR">
@@ -180,7 +179,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.39529152684563756" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.40344484060402686" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="mhq-H1-9WW" firstAttribute="top" secondItem="9h3-1T-xZM" secondAttribute="top" id="KUt-rp-cSL"/>
                                     <constraint firstItem="mhq-H1-9WW" firstAttribute="leading" secondItem="9h3-1T-xZM" secondAttribute="leading" id="VCi-3e-deK"/>
@@ -212,9 +211,12 @@
                         <outlet property="cityBtn" destination="zwP-nA-jdI" id="z4I-zb-YKB"/>
                         <outlet property="collectionView" destination="ydG-sQ-loR" id="crq-U0-Zmf"/>
                         <outlet property="distanceBtn" destination="6DK-Eg-D6t" id="KuN-Yv-mFg"/>
+                        <outlet property="firstButton" destination="zwP-nA-jdI" id="rMc-n3-Vbo"/>
                         <outlet property="kindBtn" destination="LD6-Pf-iLl" id="HT3-mX-cdo"/>
                         <outlet property="membraneView" destination="9h3-1T-xZM" id="45x-TW-MMg"/>
+                        <outlet property="secondButton" destination="LD6-Pf-iLl" id="2p4-0T-F5j"/>
                         <outlet property="tableView" destination="mhq-H1-9WW" id="Q5f-XQ-oGX"/>
+                        <outlet property="thirdButton" destination="6DK-Eg-D6t" id="eis-qw-5Tg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pY9-Ql-3T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
