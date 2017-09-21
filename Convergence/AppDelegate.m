@@ -44,11 +44,22 @@
     //注册侧滑按钮被按的监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
     //注册离开页面禁止侧滑监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(opendoor:) name:@"opendoor" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ban:) name:@"ban" object:nil];
     //  _slidingVC.panGesture.enabled = NO;
 
     return YES;
     
+}
+-(void)ban:(NSNotification *)note{
+
+   _slidingVC.panGesture.enabled = NO;
+
+}
+-(void)opendoor:(NSNotification *)note{
+   _slidingVC.panGesture.enabled = YES;
+
 }
 //收到通知要执行的方法
 -(void)leftSwitchAction:(NSNotification *)note{

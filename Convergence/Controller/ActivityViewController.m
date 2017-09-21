@@ -38,7 +38,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)viewDidAppear:(BOOL)animated{
+    NSNotification *note = [NSNotification notificationWithName:@"opendoor" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+}
 
+-(void)viewDidDisappear:(BOOL)animated{
+    NSNotification *note = [NSNotification notificationWithName:@"ban" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+    
+}
 
 - (void)naviConfig{
     //设置导航条标题的文字

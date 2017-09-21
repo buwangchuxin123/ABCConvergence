@@ -82,11 +82,17 @@
 //  
 //}
 
-- (void)viewWillAppear:(BOOL)animated{
-    //if(_ClubArr.count == 0)
-    {
-       // [self nothingForCollectionView];
-    }
+- (void)viewDidAppear:(BOOL)animated{
+    NSNotification *note = [NSNotification notificationWithName:@"opendoor" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    NSNotification *note = [NSNotification notificationWithName:@"ban" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

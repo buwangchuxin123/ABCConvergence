@@ -99,10 +99,12 @@
   //  [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 //每次将要来到这个页面的时候
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
   //  [self dataInitialize];
-  
+    NSNotification *note = [NSNotification notificationWithName:@"opendoor" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
     [self locationConfig];
     [self locationStart];
     
@@ -118,8 +120,11 @@
     
 }
 //每次将要离开这个页面的时候
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    NSNotification *note = [NSNotification notificationWithName:@"ban" object:nil userInfo:nil];
+    
+    [[NSNotificationCenter defaultCenter] performSelectorOnMainThread:@selector(postNotification:) withObject:note waitUntilDone:YES];
     //关掉开关
     [_locMgr stopUpdatingLocation];
 }
